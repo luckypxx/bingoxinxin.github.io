@@ -124,6 +124,23 @@
     </entry>
     
     <entry>
+      <title>Python中的文件操作</title>
+      <link href="/2018/08/14/Python%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+      <url>/2018/08/14/Python%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<p>读写缓冲区具体实现步骤？</p><p>文件指针？</p><a id="more"></a><h3 id="读写缓冲区"><a href="#读写缓冲区" class="headerlink" title="读写缓冲区"></a>读写缓冲区</h3><pre><code>f=open(&quot;文件名&quot;,&quot;w&quot;,&quot;开辟缓冲区字节数&quot;)flush()f.close()</code></pre><p>读写缓冲区具体实现步骤： </p><blockquote><p>flush刷新缓冲区</p></blockquote><blockquote><p>关闭文件写入</p></blockquote><blockquote><p>缓冲区满，则刷新缓冲区，将内容写入文件</p></blockquote><h3 id="文件指针"><a href="#文件指针" class="headerlink" title="文件指针"></a>文件指针</h3><p><strong>seek</strong></p><p>seek将文件指针移动到从文件开头、结尾或当前位置算起的字节处。共接受两个参数，第一个参数表示偏移量，第二个参数是偏移量的起始位置：0表示从文件开始处，1表示从当前位置，2表示从文件结尾</p><p><strong>tell</strong></p><p>获取当前文件指针指向的位置，返回当前位置到文件开头的偏移量</p><h3 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h3><pre><code>with open(&quot;test.txt&quot;) as f    print &apos;&apos;.join(f.readlines())</code></pre><h3 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h3><p><strong>基于一个简单的文本构造大文本</strong></p><pre><code>#!/usr/bin/python#coding utf-8&apos;&apos;&apos;根据内容输入文件，构造一个大文本input.txt output.txt&apos;&apos;&apos;import sys#获取命令行参数#获取到内容输入文件的路径input_file_path=sys.argv[1]#输出文件的路径output_file_path=sys.argv[2]#获取构造文本的大小output_size =int(sys.argv[3])*1024*1024#打开内容输入文件input_file=open(input_file_path,&quot;r&quot;)#读取全部内容到input_data []input_data=input_file.readlines()#打开内容输出文件output_file=open(output_file_path,&quot;a+&quot;)#行数计数器count=0#当前文件大小while true:    if totol_size &gt; output_size:        break;       output_file.write(input_data[index % len(input_data)])    totl_size += len(input_data[index % len(input_data)])    index+=1</code></pre><p>ghjk</p><pre><code>#构造一个内容读取函数def Printscreen(f):#行数计数器line_num=0for line in f:print lineif line_num&gt;25breakline_num+=1path = sys.argv[1]f=open(path,&quot;r&quot;)while True:os.system(&quot;clear&quot;)Printscreen(f)command=input(&quot;:&quot;)if(command == q)break</code></pre><h3 id="打印文件名"><a href="#打印文件名" class="headerlink" title="打印文件名"></a>打印文件名</h3><p>import os</p><p>print os.path.basename(“文件路径”)</p><h3 id="打印文件目录"><a href="#打印文件目录" class="headerlink" title="打印文件目录"></a>打印文件目录</h3><p>print os.path.dirname(“文件路径”)</p><p>欢迎交流~</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Linux常用指令</title>
       <link href="/2018/08/12/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
       <url>/2018/08/12/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>

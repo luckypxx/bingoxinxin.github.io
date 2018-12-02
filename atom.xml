@@ -178,6 +178,27 @@
   </entry>
   
   <entry>
+    <title>Python中的文件操作</title>
+    <link href="http://www.bingoxin.top/2018/08/14/Python%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    <id>http://www.bingoxin.top/2018/08/14/Python中的文件操作/</id>
+    <published>2018-08-14T11:52:56.000Z</published>
+    <updated>2018-12-03T11:54:07.499Z</updated>
+    
+    <content type="html"><![CDATA[<p>读写缓冲区具体实现步骤？</p><p>文件指针？</p><a id="more"></a><h3 id="读写缓冲区"><a href="#读写缓冲区" class="headerlink" title="读写缓冲区"></a>读写缓冲区</h3><pre><code>f=open(&quot;文件名&quot;,&quot;w&quot;,&quot;开辟缓冲区字节数&quot;)flush()f.close()</code></pre><p>读写缓冲区具体实现步骤： </p><blockquote><p>flush刷新缓冲区</p></blockquote><blockquote><p>关闭文件写入</p></blockquote><blockquote><p>缓冲区满，则刷新缓冲区，将内容写入文件</p></blockquote><h3 id="文件指针"><a href="#文件指针" class="headerlink" title="文件指针"></a>文件指针</h3><p><strong>seek</strong></p><p>seek将文件指针移动到从文件开头、结尾或当前位置算起的字节处。共接受两个参数，第一个参数表示偏移量，第二个参数是偏移量的起始位置：0表示从文件开始处，1表示从当前位置，2表示从文件结尾</p><p><strong>tell</strong></p><p>获取当前文件指针指向的位置，返回当前位置到文件开头的偏移量</p><h3 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h3><pre><code>with open(&quot;test.txt&quot;) as f    print &apos;&apos;.join(f.readlines())</code></pre><h3 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h3><p><strong>基于一个简单的文本构造大文本</strong></p><pre><code>#!/usr/bin/python#coding utf-8&apos;&apos;&apos;根据内容输入文件，构造一个大文本input.txt output.txt&apos;&apos;&apos;import sys#获取命令行参数#获取到内容输入文件的路径input_file_path=sys.argv[1]#输出文件的路径output_file_path=sys.argv[2]#获取构造文本的大小output_size =int(sys.argv[3])*1024*1024#打开内容输入文件input_file=open(input_file_path,&quot;r&quot;)#读取全部内容到input_data []input_data=input_file.readlines()#打开内容输出文件output_file=open(output_file_path,&quot;a+&quot;)#行数计数器count=0#当前文件大小while true:    if totol_size &gt; output_size:        break;       output_file.write(input_data[index % len(input_data)])    totl_size += len(input_data[index % len(input_data)])    index+=1</code></pre><p>ghjk</p><pre><code>#构造一个内容读取函数def Printscreen(f):#行数计数器line_num=0for line in f:print lineif line_num&gt;25breakline_num+=1path = sys.argv[1]f=open(path,&quot;r&quot;)while True:os.system(&quot;clear&quot;)Printscreen(f)command=input(&quot;:&quot;)if(command == q)break</code></pre><h3 id="打印文件名"><a href="#打印文件名" class="headerlink" title="打印文件名"></a>打印文件名</h3><p>import os</p><p>print os.path.basename(“文件路径”)</p><h3 id="打印文件目录"><a href="#打印文件目录" class="headerlink" title="打印文件目录"></a>打印文件目录</h3><p>print os.path.dirname(“文件路径”)</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;读写缓冲区具体实现步骤？&lt;/p&gt;
+&lt;p&gt;文件指针？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.bingoxin.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux常用指令</title>
     <link href="http://www.bingoxin.top/2018/08/12/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
     <id>http://www.bingoxin.top/2018/08/12/Linux常用指令/</id>
@@ -449,27 +470,6 @@
     
     
       <category term="测试" scheme="http://www.bingoxin.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++的三大特性之多态</title>
-    <link href="http://www.bingoxin.top/2018/07/01/C-%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%A4%9A%E6%80%81/"/>
-    <id>http://www.bingoxin.top/2018/07/01/C-的三大特性之多态/</id>
-    <published>2018-07-01T04:12:26.000Z</published>
-    <updated>2018-12-26T11:17:54.202Z</updated>
-    
-    <content type="html"><![CDATA[<p>若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容</p><p>接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！ </p><a id="more"></a><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><font color="blue" size="3">首先你可以讲述一下多态的概念</font><p>多态，即事物表现出的多种形态</p><p>然后你可以举个栗子~</p><p>就像是一个演员，他可以演好人，也可以演坏人。</p><p>接下来，可以说一下<font color="blue" size="3">多态的种类</font></p><p>多态分为静态多态和动态多态两种</p><h3 id="静态多态（函数重载、泛型编程）"><a href="#静态多态（函数重载、泛型编程）" class="headerlink" title="静态多态（函数重载、泛型编程）"></a>静态多态（函数重载、泛型编程）</h3><p>静态多态是编译器在编译期间完成的，根据实参类型调用函数，若实参类型与形参都不同，则系统会报错</p><p>关于函数重载的实现，可戳</p><h3 id="动态多态：（虚函数）"><a href="#动态多态：（虚函数）" class="headerlink" title="动态多态：（虚函数）"></a>动态多态：（虚函数）</h3><p>动态多态是在程序运行时完成的</p><p>讲到这里你可以讲一下<font color="blue" size="3">动态多态的实现条件</font></p><p>其需要满足两个条件：</p><blockquote><p>1.基类中必须包含虚函数，并且派生类中要对基类中的该虚函数进行重写</p></blockquote><blockquote><p>2.通过基类对象的指针或引用来调用虚函数</p></blockquote><p>关于动态多态的实现，可戳<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A4%9A%E6%80%81.cpp" target="_blank" rel="noopener">动态多态例程</a></p><p>在上面讲述动态多态的实现条件时，提到了<font color="blue" size="3">重写</font>的概念</p><h3 id="重写的实现条件"><a href="#重写的实现条件" class="headerlink" title="重写的实现条件"></a>重写的实现条件</h3><blockquote><p>1.基类中被重写的函数必须为虚函数</p></blockquote><blockquote><p>2.基类和派生类中虚函数的原型必须保持一致（即函数名，函数返回类型，函数参数列表完全相同）</p></blockquote><p>基类中将被重写的虚函数和派生类中与其对应的虚函数的访问限定符可以不同</p><font color="red" size="3">两个例外：</font><p>a.析构函数</p><p>b.协变：基类（派生类）虚函数返回基类（派生类）指针或引用</p><p>关于多态实现的原理，请戳</p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容&lt;/p&gt;
-&lt;p&gt;接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！ &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
     
   </entry>
   

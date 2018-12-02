@@ -15,20 +15,18 @@
 
 
 
-<meta name="description" content="今天来为大家介绍一下继承~ 继承使代码可以复用，他是为多态做铺垫的">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="读写缓冲区具体实现步骤？ 文件指针？">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++的三大特性之继承">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/27/C-的三大特性之继承/index.html">
+<meta property="og:title" content="Python中的文件操作">
+<meta property="og:url" content="http://www.bingoxin.top/2018/08/14/Python中的文件操作/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="今天来为大家介绍一下继承~ 继承使代码可以复用，他是为多态做铺垫的">
+<meta property="og:description" content="读写缓冲区具体实现步骤？ 文件指针？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E7%BB%A7%E6%89%BF/%E7%BB%A7%E6%89%BF%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E5%85%B3%E7%B3%BB.PNG">
-<meta property="og:updated_time" content="2018-12-26T11:18:00.702Z">
+<meta property="og:updated_time" content="2018-12-03T11:54:07.499Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++的三大特性之继承">
-<meta name="twitter:description" content="今天来为大家介绍一下继承~ 继承使代码可以复用，他是为多态做铺垫的">
-<meta name="twitter:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E7%BB%A7%E6%89%BF/%E7%BB%A7%E6%89%BF%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E5%85%B3%E7%B3%BB.PNG">
+<meta name="twitter:title" content="Python中的文件操作">
+<meta name="twitter:description" content="读写缓冲区具体实现步骤？ 文件指针？">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -60,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>C++的三大特性之继承 | bingoxin&#39;s blog</title>
+<title>Python中的文件操作 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-C-的三大特性之继承" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Python中的文件操作" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/27/C-的三大特性之继承/" class="article-date">
-      <time datetime="2018-06-27T04:09:48.000Z" itemprop="datePublished">2018-06-27</time>
+      <a href="/2018/08/14/Python中的文件操作/" class="article-date">
+      <time datetime="2018-08-14T11:52:56.000Z" itemprop="datePublished">2018-08-14</time>
 </a>
 
 
@@ -282,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      C++的三大特性之继承
+      Python中的文件操作
     </h1>
   
 
@@ -294,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -304,33 +302,122 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>今天来为大家介绍一下继承~</p>
-<p>继承使代码可以复用，他是为多态做铺垫的 </p>
+        <p>读写缓冲区具体实现步骤？</p>
+<p>文件指针？</p>
 <a id="more"></a>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="继承的格式"><a href="#继承的格式" class="headerlink" title="继承的格式"></a>继承的格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class 派生类名称：继承权限 基类名称</span><br></pre></td></tr></table></figure>
-<h3 id="继承的权限"><a href="#继承的权限" class="headerlink" title="继承的权限"></a>继承的权限</h3><p>继承的权限有public、protected、private</p>
-<p>在这里还要提一下访问权限，有public、protected、private三种</p>
-<p>由于基类中成员访问权限不同，以及派生类派生方式不同，会使派生类的访问权限发生变化</p>
-<p>关系如下表所示：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E7%BB%A7%E6%89%BF/%E7%BB%A7%E6%89%BF%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E5%85%B3%E7%B3%BB.PNG" height="300" width="500"><br></div>
+<h3 id="读写缓冲区"><a href="#读写缓冲区" class="headerlink" title="读写缓冲区"></a>读写缓冲区</h3><pre><code>f=open(&quot;文件名&quot;,&quot;w&quot;,&quot;开辟缓冲区字节数&quot;)
 
-<p>在派生类派生的过程中，需要注意一下几点：</p>
-<blockquote>
-<p>基类private成员不能在派生类中被访问</p>
-</blockquote>
-<blockquote>
-<p>基类protected成员在类外不能被访问，但在派生类中可以</p>
-</blockquote>
-<blockquote>
-<p>父类对象对子类对象也适用</p>
-</blockquote>
-<h3 id="派生类对象模型的构建与销毁"><a href="#派生类对象模型的构建与销毁" class="headerlink" title="派生类对象模型的构建与销毁"></a>派生类对象模型的构建与销毁</h3><p>派生类对象构建时，会先调用派生类成员，再调用基类对象成员</p>
-<p>派生类对象销毁时，会先销毁派生类成员，再销毁基类对象成员</p>
-<p>关于继承体系，要注意：基类对象和派生类对象不在同一作用域</p>
-<p>若基类和派生类中有相同名称的成员，优先访问派生类中的该名称成员</p>
-<p>继承分为普通继承和虚拟继承</p>
-<font color="blue" size="3">首先你可以讲述一下多态的概念</font>
+flush()
 
+f.close()
+</code></pre><p>读写缓冲区具体实现步骤： </p>
+<blockquote>
+<p>flush刷新缓冲区</p>
+</blockquote>
+<blockquote>
+<p>关闭文件写入</p>
+</blockquote>
+<blockquote>
+<p>缓冲区满，则刷新缓冲区，将内容写入文件</p>
+</blockquote>
+<h3 id="文件指针"><a href="#文件指针" class="headerlink" title="文件指针"></a>文件指针</h3><p><strong>seek</strong></p>
+<p>seek将文件指针移动到从文件开头、结尾或当前位置算起的字节处。共接受两个参数，第一个参数表示偏移量，第二个参数是偏移量的起始位置：0表示从文件开始处，1表示从当前位置，2表示从文件结尾</p>
+<p><strong>tell</strong></p>
+<p>获取当前文件指针指向的位置，返回当前位置到文件开头的偏移量</p>
+<h3 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h3><pre><code>with open(&quot;test.txt&quot;) as f
+
+    print &apos;&apos;.join(f.readlines())
+</code></pre><h3 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h3><p><strong>基于一个简单的文本构造大文本</strong></p>
+<pre><code>#!/usr/bin/python
+
+#coding utf-8
+
+&apos;&apos;&apos;
+
+根据内容输入文件，构造一个大文本
+
+input.txt output.txt
+
+&apos;&apos;&apos;
+
+import sys
+
+#获取命令行参数
+
+#获取到内容输入文件的路径
+
+input_file_path=sys.argv[1]
+
+#输出文件的路径
+
+output_file_path=sys.argv[2]
+
+#获取构造文本的大小
+
+output_size =int(sys.argv[3])*1024*1024
+
+#打开内容输入文件
+
+input_file=open(input_file_path,&quot;r&quot;)
+
+#读取全部内容到input_data []
+
+input_data=input_file.readlines()
+
+#打开内容输出文件
+
+output_file=open(output_file_path,&quot;a+&quot;)
+
+#行数计数器
+
+count=0
+
+#当前文件大小
+
+while true:
+
+    if totol_size &gt; output_size:
+        break;   
+    output_file.write(input_data[index % len(input_data)])
+    totl_size += len(input_data[index % len(input_data)])
+    index+=1
+</code></pre><p>ghjk</p>
+<pre><code>#构造一个内容读取函数
+
+def Printscreen(f):
+
+#行数计数器
+
+line_num=0
+
+for line in f:
+
+print line
+
+if line_num&gt;25
+
+break
+
+line_num+=1
+
+path = sys.argv[1]
+
+f=open(path,&quot;r&quot;)
+
+while True:
+
+os.system(&quot;clear&quot;)
+
+Printscreen(f)
+
+command=input(&quot;:&quot;)
+
+if(command == q)
+
+break
+</code></pre><h3 id="打印文件名"><a href="#打印文件名" class="headerlink" title="打印文件名"></a>打印文件名</h3><p>import os</p>
+<p>print os.path.basename(“文件路径”)</p>
+<h3 id="打印文件目录"><a href="#打印文件目录" class="headerlink" title="打印文件目录"></a>打印文件目录</h3><p>print os.path.dirname(“文件路径”)</p>
 <p>欢迎交流~</p>
 
       
@@ -340,13 +427,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/14/Python中的文件操作/">Python中的文件操作</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-27, 12:09:48</p>
-        <p><span>最后更新:</span>2018-12-26, 19:18:00</p>
+        <p><span>发布时间:</span>2018-08-14, 19:52:56</p>
+        <p><span>最后更新:</span>2018-12-03, 19:54:07</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/27/C-的三大特性之继承/" title="C++的三大特性之继承">http://www.bingoxin.top/2018/06/27/C-的三大特性之继承/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/27/C-的三大特性之继承/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/14/Python中的文件操作/" title="Python中的文件操作">http://www.bingoxin.top/2018/08/14/Python中的文件操作/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/14/Python中的文件操作/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -359,15 +446,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/07/01/C-的三大特性之多态/">
-                    C++的三大特性之多态
+                <a href="/2018/08/28/STL的底层与应用/">
+                    STL的底层与应用
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/17/动态内存开辟/">
-                    动态内存开辟
+                <a href="/2018/08/12/Linux常用指令/">
+                    Linux常用指令
                 </a>
             </div>
         
@@ -379,7 +466,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#继承的格式"><span class="toc-number">1.1.</span> <span class="toc-text">继承的格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承的权限"><span class="toc-number">1.2.</span> <span class="toc-text">继承的权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#派生类对象模型的构建与销毁"><span class="toc-number">1.3.</span> <span class="toc-text">派生类对象模型的构建与销毁</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#读写缓冲区"><span class="toc-number">1.</span> <span class="toc-text">读写缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件指针"><span class="toc-number">2.</span> <span class="toc-text">文件指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#with语句"><span class="toc-number">3.</span> <span class="toc-text">with语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实例"><span class="toc-number">4.</span> <span class="toc-text">代码实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打印文件名"><span class="toc-number">5.</span> <span class="toc-text">打印文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打印文件目录"><span class="toc-number">6.</span> <span class="toc-text">打印文件目录</span></a></li></ol>
         
     </div>
     <style>
@@ -415,7 +502,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"C++的三大特性之继承　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Python中的文件操作　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -452,7 +539,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/01/C-的三大特性之多态/" title="上一篇: C++的三大特性之多态">
+            <a href="/2018/08/28/STL的底层与应用/" title="上一篇: STL的底层与应用">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -460,7 +547,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/17/动态内存开辟/" title="下一篇: 动态内存开辟">
+            <a href="/2018/08/12/Linux常用指令/" title="下一篇: Linux常用指令">
                 <i class="fa fa-angle-right"></i>
             </a>
         
