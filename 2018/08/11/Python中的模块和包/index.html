@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。 也算是感受到了C++的一点点魅力~">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="为什么要有命名空间？ 往下看吧~">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面向对象or面向过程">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/05/面向对象or面向过程/index.html">
+<meta property="og:title" content="Python中的模块和包">
+<meta property="og:url" content="http://www.bingoxin.top/2018/08/11/Python中的模块和包/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。 也算是感受到了C++的一点点魅力~">
+<meta property="og:description" content="为什么要有命名空间？ 往下看吧~">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-26T11:18:53.672Z">
+<meta property="og:updated_time" content="2018-12-08T11:49:29.131Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面向对象or面向过程">
-<meta name="twitter:description" content="刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。 也算是感受到了C++的一点点魅力~">
+<meta name="twitter:title" content="Python中的模块和包">
+<meta name="twitter:description" content="为什么要有命名空间？ 往下看吧~">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>面向对象or面向过程 | bingoxin&#39;s blog</title>
+<title>Python中的模块和包 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-面向对象or面向过程" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Python中的模块和包" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/05/面向对象or面向过程/" class="article-date">
-      <time datetime="2018-06-05T03:58:54.000Z" itemprop="datePublished">2018-06-05</time>
+      <a href="/2018/08/11/Python中的模块和包/" class="article-date">
+      <time datetime="2018-08-11T11:48:03.000Z" itemprop="datePublished">2018-08-11</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      面向对象or面向过程
+      Python中的模块和包
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,20 +302,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。</p>
-<p>也算是感受到了C++的一点点魅力~</p>
+        <p>为什么要有命名空间？</p>
+<p>往下看吧~</p>
 <a id="more"></a>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="面向过程？面向对象？"><a href="#面向过程？面向对象？" class="headerlink" title="面向过程？面向对象？"></a>面向过程？面向对象？</h3><p>C语言是面向过程的，而JAVA和C++是面向对象的。</p>
-<blockquote>
-<p>艾兰·库伯在《软件创新之路》中提到：</p>
-</blockquote>
-<blockquote>
-<p>“面向过程和面向对象的区别并不像人们想象得那么大，面向对象的大部分思想在面向过程中也能体现,</p>
-</blockquote>
-<blockquote>
-<p>但面向过程最大的问题在于系统的膨胀，面向对象将无法应付，最终导致系统的崩溃。”</p>
-</blockquote>
-<h3 id="面向过程和面向对象的区别大概有如下几个方面："><a href="#面向过程和面向对象的区别大概有如下几个方面：" class="headerlink" title="面向过程和面向对象的区别大概有如下几个方面："></a>面向过程和面向对象的区别大概有如下几个方面：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.面向过程重用的是函数，而面对对象重用的是类（即将数据和处理数据的过程及函数封装在一起的实体）。</span><br><span class="line"> </span><br><span class="line">2.面向过程程序设计方法的实质上是从计算机处理问题的观点来进行程序设计工作：输入--运算--输出；</span><br><span class="line"> </span><br><span class="line">面向对象程序设计方法需要使用结构化的程序来设计。</span><br><span class="line"></span><br><span class="line">3. 面向过程程序设计是一种自上而下的程序设计方法，从程序的一部分入手，一点一点地构建出整个程序；</span><br><span class="line"> </span><br><span class="line">面向对象程序设计是以一数据为中心，类作为表现数据的工具，成为划分程序的基本单位。</span><br></pre></td></tr></table></figure>
+<p>sys.path.append(“文件所在路径”)</p>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>解决名字冲突问题</p>
+<h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><p>顺序：先引入Python标准库、Python第三方库 </p>
+<h3 id="import-from"><a href="#import-from" class="headerlink" title="import-from"></a>import-from</h3><p>from 模块名 import 方法</p>
+<p>导入模块中的某一方法</p>
+<p>from 模块名 import*</p>
+<p>会导入模块中所有的方法，不可以导入模块中私有化变量，会提示未定义</p>
+<h3 id="import-as"><a href="#import-as" class="headerlink" title="import as"></a>import as</h3><p>该语句的功能是为模块起一个别名</p>
+<h3 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h3><p><strong>name</strong>是系统变量</p>
+<p>当模块被直接使用时，<strong>name</strong>=<strong>main</strong></p>
+<p>当模块被当做模块使用时，<strong>name</strong>=文件名去掉.py</p>
+<h3 id="reload"><a href="#reload" class="headerlink" title="reload"></a>reload</h3><p>重新加载模块</p>
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><p>把多个模块放在同一个目录下，该目录下要有<strong>init</strong>.py文件，只有有该文件，该目录才会被确认是包目录</p>
+<p>zip文件也会被当做是包</p>
 <p>欢迎交流~</p>
 
       
@@ -325,13 +328,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/11/Python中的模块和包/">Python中的模块和包</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-05, 11:58:54</p>
-        <p><span>最后更新:</span>2018-12-26, 19:18:53</p>
+        <p><span>发布时间:</span>2018-08-11, 19:48:03</p>
+        <p><span>最后更新:</span>2018-12-08, 19:49:29</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/05/面向对象or面向过程/" title="面向对象or面向过程">http://www.bingoxin.top/2018/06/05/面向对象or面向过程/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/05/面向对象or面向过程/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/11/Python中的模块和包/" title="Python中的模块和包">http://www.bingoxin.top/2018/08/11/Python中的模块和包/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/11/Python中的模块和包/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -344,15 +347,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/06/C-的三大特性之封装/">
-                    C++的三大特性之封装
+                <a href="/2018/08/28/STL的底层与应用/">
+                    STL的底层与应用
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/05/叩开C-的大门/">
-                    叩开C++的大门
+                <a href="/2018/08/11/Python-异常/">
+                    Python-异常
                 </a>
             </div>
         
@@ -364,7 +367,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文："><span class="toc-number">1.</span> <span class="toc-text">正文：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#面向过程？面向对象？"><span class="toc-number">1.1.</span> <span class="toc-text">面向过程？面向对象？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向过程和面向对象的区别大概有如下几个方面："><span class="toc-number">1.2.</span> <span class="toc-text">面向过程和面向对象的区别大概有如下几个方面：</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#命名空间"><span class="toc-number">1.</span> <span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import"><span class="toc-number">2.</span> <span class="toc-text">import</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-from"><span class="toc-number">3.</span> <span class="toc-text">import-from</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-as"><span class="toc-number">4.</span> <span class="toc-text">import as</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统变量"><span class="toc-number">5.</span> <span class="toc-text">系统变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reload"><span class="toc-number">6.</span> <span class="toc-text">reload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包"><span class="toc-number">7.</span> <span class="toc-text">包</span></a></li></ol>
         
     </div>
     <style>
@@ -400,7 +403,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"面向对象or面向过程　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Python中的模块和包　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,7 +440,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/06/C-的三大特性之封装/" title="上一篇: C++的三大特性之封装">
+            <a href="/2018/08/28/STL的底层与应用/" title="上一篇: STL的底层与应用">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -445,7 +448,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/05/叩开C-的大门/" title="下一篇: 叩开C++的大门">
+            <a href="/2018/08/11/Python-异常/" title="下一篇: Python-异常">
                 <i class="fa fa-angle-right"></i>
             </a>
         

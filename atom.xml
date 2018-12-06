@@ -178,6 +178,27 @@
   </entry>
   
   <entry>
+    <title>Python中的模块和包</title>
+    <link href="http://www.bingoxin.top/2018/08/11/Python%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97%E5%92%8C%E5%8C%85/"/>
+    <id>http://www.bingoxin.top/2018/08/11/Python中的模块和包/</id>
+    <published>2018-08-11T11:48:03.000Z</published>
+    <updated>2018-12-08T11:49:29.131Z</updated>
+    
+    <content type="html"><![CDATA[<p>为什么要有命名空间？</p><p>往下看吧~</p><a id="more"></a><p>sys.path.append(“文件所在路径”)</p><h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>解决名字冲突问题</p><h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><p>顺序：先引入Python标准库、Python第三方库 </p><h3 id="import-from"><a href="#import-from" class="headerlink" title="import-from"></a>import-from</h3><p>from 模块名 import 方法</p><p>导入模块中的某一方法</p><p>from 模块名 import*</p><p>会导入模块中所有的方法，不可以导入模块中私有化变量，会提示未定义</p><h3 id="import-as"><a href="#import-as" class="headerlink" title="import as"></a>import as</h3><p>该语句的功能是为模块起一个别名</p><h3 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h3><p><strong>name</strong>是系统变量</p><p>当模块被直接使用时，<strong>name</strong>=<strong>main</strong></p><p>当模块被当做模块使用时，<strong>name</strong>=文件名去掉.py</p><h3 id="reload"><a href="#reload" class="headerlink" title="reload"></a>reload</h3><p>重新加载模块</p><h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><p>把多个模块放在同一个目录下，该目录下要有<strong>init</strong>.py文件，只有有该文件，该目录才会被确认是包目录</p><p>zip文件也会被当做是包</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为什么要有命名空间？&lt;/p&gt;
+&lt;p&gt;往下看吧~&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.bingoxin.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python-异常</title>
     <link href="http://www.bingoxin.top/2018/08/11/Python-%E5%BC%82%E5%B8%B8/"/>
     <id>http://www.bingoxin.top/2018/08/11/Python-异常/</id>
@@ -430,35 +451,6 @@
     
       &lt;p&gt;今天来为大家介绍一下继承~&lt;/p&gt;
 &lt;p&gt;继承使代码可以复用，他是为多态做铺垫的 &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态内存开辟</title>
-    <link href="http://www.bingoxin.top/2018/06/17/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/"/>
-    <id>http://www.bingoxin.top/2018/06/17/动态内存开辟/</id>
-    <published>2018-06-17T04:03:54.000Z</published>
-    <updated>2018-12-26T11:18:23.259Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="C语言中实现方式"><a href="#C语言中实现方式" class="headerlink" title="C语言中实现方式"></a>C语言中实现方式</h3><p>使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉 </p><h3 id="比较malloc-calloc-realloc"><a href="#比较malloc-calloc-realloc" class="headerlink" title="比较malloc/calloc/realloc"></a>比较malloc/calloc/realloc</h3><p><strong>相同点</strong></p><p>三者都是在堆上申请空间：</p><blockquote><p>若申请成功-&gt;返回申请的空间的首地址</p></blockquote><blockquote><p>若申请失败-&gt;返回空指针</p></blockquote><p>三者的申请空间的释放都是使用free()进行操作</p><a id="more"></a><p><strong>不同点</strong></p><blockquote><p>malloc:在堆上开辟指定字节数的空间</p></blockquote><blockquote><p>calloc:开辟空间会被0初始化</p></blockquote><blockquote><p>realloc:把原来开辟的空间缩小或扩大</p></blockquote><blockquote><p>——–&gt;缩小空间—&gt;返回原空间的地址，但空间变小<br>​<br>——–&gt;扩大空间—&gt;比较原空间连续的可用空间大小与原空间空间大小之和与申请空间的大小</p><p>——————-&gt;大于—&gt;返回空间首地址</p><p>——————-&gt;小于—&gt;重新开辟空间</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void* malloc(字节数)</span><br><span class="line">void* calloc(元素个数，元素大小)</span><br><span class="line">void* realloc(void* p,字节数)</span><br></pre></td></tr></table></figure><h3 id="malloc实现原理"><a href="#malloc实现原理" class="headerlink" title="malloc实现原理"></a>malloc实现原理</h3><p>在开辟空间时，除了所需的空间之外，还会在所需空间前开辟一个结构体，后面又追加了4个字节，防止越界</p><p><strong>结构体</strong>—共32个字节</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#define nNoManLandSize 4</span><br><span class="line">typedef struct _CrtMemBlockHeader</span><br><span class="line">&#123;</span><br><span class="line">struct _CrtMMemBlockHeader * pBlockHeaderNext;</span><br><span class="line">struct _CrtMMemBlockHeader * pBlockHeaderPrev;//双向链表</span><br><span class="line">char * szFileName;</span><br><span class="line">int nLine;</span><br><span class="line">size_t nDataSize;</span><br><span class="line">int nBlockUse;</span><br><span class="line">long lRequest;</span><br><span class="line">unsigned char gap[nNoManLandSize];</span><br><span class="line">&#125;_CrtMenBlockHeader;</span><br></pre></td></tr></table></figure><h3 id="alloca"><a href="#alloca" class="headerlink" title="_alloca"></a>_alloca</h3><p>_alloca是在栈上申请空间的，用户不需要管理，由编译器自动维护。一旦出了使用_alloca的函数，所申请的空间会自动被收回去，不需要显式释放。</p><h3 id="常见的内存泄漏"><a href="#常见的内存泄漏" class="headerlink" title="常见的内存泄漏"></a>常见的内存泄漏</h3><ul><li>内存申请了忘记释放</li><li>指向新空间的两个指针p1、p2，若p1 = p2，这时p1、p2指向同一块空间，若free(p1);free(p2),会使同一块空间被释放两次。原来p2指向的内存块，会丢失，导致内存泄漏。</li><li>使用的空间大于开辟的空间，会将防止越界的四个字节占用，在释放内存时，会出问题</li><li>释放时传入的地址与申请时的地方不同</li></ul><h1 id="C-中申请空间"><a href="#C-中申请空间" class="headerlink" title="C++中申请空间"></a>C++中申请空间</h1><h3 id="关键字new和delete"><a href="#关键字new和delete" class="headerlink" title="关键字new和delete"></a>关键字new和delete</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int* p = new int;</span><br><span class="line">int* p1 = new int(5);</span><br><span class="line">int* p2 = new int[10];</span><br><span class="line"></span><br><span class="line">delete p;</span><br><span class="line">delete p1;</span><br><span class="line">delete[] p2;//释放连续空间</span><br></pre></td></tr></table></figure><ul><li>用new申请出的空间，不需要判空，p2申请的空间时连续的(数组的形式)</li><li>用delete删除连续空间时，需使用释放p2的形式</li><li>delete和new可以进行重载</li><li>new申请的空间，是一个完整的对象</li></ul><p><strong>delete[]和new[]要成对使用，delete和new要成对使用</strong></p><p>接下来看一段代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">Test()</span><br><span class="line">&#123;</span><br><span class="line">cout &lt;&lt; &quot;Test():&quot; &lt;&lt; this &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">~Test()</span><br><span class="line">&#123;</span><br><span class="line">cout &lt;&lt; &quot;~Test():&quot; &lt;&lt; this &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">Test* p1 = (Test*)malloc(sizeof(Test));</span><br><span class="line">Test* p2 = new Test;</span><br><span class="line">Test* p3 = new Test[10];</span><br><span class="line"></span><br><span class="line">free(p1);</span><br><span class="line">delete p2;</span><br><span class="line">delete[] p3;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>运行结果如下：</p><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/%E6%8D%95%E8%8E%B7.PNG" height="400" width="350"><br></div><p>由此我们可以看出:</p><ul><li>new出一个对象会调用类的构造函数，delete一个对象会调用类的析构函数</li><li>malloc不会调用类的构造函数，free不会调用类的析构函数</li><li>对于p3空间的申请与销毁，p3申请并开辟了10个Test对象的空间，则调用了十次构造函数，销毁时也就调用了10次析构函数</li></ul><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;C语言中实现方式&quot;&gt;&lt;a href=&quot;#C语言中实现方式&quot; class=&quot;headerlink&quot; title=&quot;C语言中实现方式&quot;&gt;&lt;/a&gt;C语言中实现方式&lt;/h3&gt;&lt;p&gt;使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉 &lt;/p&gt;
-&lt;h3 id=&quot;比较malloc-calloc-realloc&quot;&gt;&lt;a href=&quot;#比较malloc-calloc-realloc&quot; class=&quot;headerlink&quot; title=&quot;比较malloc/calloc/realloc&quot;&gt;&lt;/a&gt;比较malloc/calloc/realloc&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;相同点&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;三者都是在堆上申请空间：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;若申请成功-&amp;gt;返回申请的空间的首地址&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;若申请失败-&amp;gt;返回空指针&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;三者的申请空间的释放都是使用free()进行操作&lt;/p&gt;
     
     </summary>
     
