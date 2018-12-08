@@ -178,6 +178,26 @@
   </entry>
   
   <entry>
+    <title>Python-异常</title>
+    <link href="http://www.bingoxin.top/2018/08/11/Python-%E5%BC%82%E5%B8%B8/"/>
+    <id>http://www.bingoxin.top/2018/08/11/Python-异常/</id>
+    <published>2018-08-11T11:46:28.000Z</published>
+    <updated>2018-12-11T11:47:18.118Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是Python为我们设计的异常处理机制</p><a id="more"></a><h3 id="轻松地捕获和处理异常"><a href="#轻松地捕获和处理异常" class="headerlink" title="轻松地捕获和处理异常"></a>轻松地捕获和处理异常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    print &quot;123&quot; + 4</span><br><span class="line">#捕获异常，加入处理机制</span><br><span class="line">except :</span><br><span class="line">    print 异常已处理</span><br></pre></td></tr></table></figure><p>若要知道该种类型异常是什么，可以通过以下方式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    print &quot;123&quot; + 4</span><br><span class="line">#捕获异常，加入处理机制</span><br><span class="line">except Exception, e:</span><br><span class="line">    print e</span><br><span class="line">    print 异常已处理</span><br></pre></td></tr></table></figure><h3 id="捕获类型异常"><a href="#捕获类型异常" class="headerlink" title="捕获类型异常"></a>捕获类型异常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    f=open(&quot;test.txt&quot;,&quot;r&quot;)</span><br><span class="line">#捕获异常，加入处理机制</span><br><span class="line">except TypeError,e:</span><br><span class="line">    print 异常已处理</span><br></pre></td></tr></table></figure><p>若不存在test.txt文件，则会出现IO异常，而不是Type异常，这样的话，如果我们只是捕获Type异常，代码是会终止的</p><p>dir(<strong>builtins</strong>)<br>Python</p><h3 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    print &quot;line&quot;</span><br><span class="line">    print &quot;123&quot;+4</span><br><span class="line">except:</span><br><span class="line">    print &quot;出现异常&quot;</span><br><span class="line">finally:</span><br><span class="line">    print &quot;无论如何都会被执行的代码&quot;</span><br></pre></td></tr></table></figure><p>finally关键字下的代码行，无论是否出现异常都会执行</p><h3 id="自己定义异常"><a href="#自己定义异常" class="headerlink" title="自己定义异常"></a>自己定义异常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def Div(x,y):</span><br><span class="line">    if y==0:</span><br><span class="line">        raise Exception(&quot;除数不能为0&quot;)#抛出自己设计的异常</span><br><span class="line">    else:</span><br><span class="line">        print x/y</span><br><span class="line">try:</span><br><span class="line">    print Div(10,0)</span><br><span class="line">except Exception,e:</span><br><span class="line">    print e</span><br><span class="line">    print type(e)</span><br></pre></td></tr></table></figure><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是Python为我们设计的异常处理机制&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.bingoxin.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>列表与字典的深度学习</title>
     <link href="http://www.bingoxin.top/2018/08/08/%E5%88%97%E8%A1%A8%E4%B8%8E%E5%AD%97%E5%85%B8%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     <id>http://www.bingoxin.top/2018/08/08/列表与字典的深度学习/</id>
@@ -439,31 +459,6 @@
 &lt;p&gt;若申请失败-&amp;gt;返回空指针&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;三者的申请空间的释放都是使用free()进行操作&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++中类的实例化对象</title>
-    <link href="http://www.bingoxin.top/2018/06/10/C-%E4%B8%AD%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://www.bingoxin.top/2018/06/10/C-中类的实例化对象/</id>
-    <published>2018-06-10T04:02:19.000Z</published>
-    <updated>2018-12-26T11:18:34.501Z</updated>
-    
-    <content type="html"><![CDATA[<p>C语言使用函数对内容进行封装的，而C++是用类进行封装的</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>类的关键字是class，而类的作用域也不同 </p><h3 id="类作用域"><a href="#类作用域" class="headerlink" title="类作用域"></a>类作用域</h3><p> 1.全局域</p><p> 2.局部域</p><p> 3.类域</p><p> 4.名字空间域</p><a id="more"></a><h3 id="类的实例化"><a href="#类的实例化" class="headerlink" title="类的实例化"></a>类的实例化</h3><p>类的实例化就是用类类型创建对象的过程 </p><p>类在创建实例化对象时，类本身并不被分配空间</p><p>类对象包括类里的成员变量</p><p>若计算类的大小，只需计算成员变量大小之和，但要注意内存对齐</p><p>空类大小为一个字节，为区分不同对象</p><h3 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h3><p>对象模型指的是对象中各个成员在内存中的布局方式 </p><p>注意：对象大小只包括成员变量，不包括方法</p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;C语言使用函数对内容进行封装的，而C++是用类进行封装的&lt;/p&gt;
-&lt;h2 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h2&gt;&lt;p&gt;类的关键字是class，而类的作用域也不同 &lt;/p&gt;
-&lt;h3 id=&quot;类作用域&quot;&gt;&lt;a href=&quot;#类作用域&quot; class=&quot;headerlink&quot; title=&quot;类作用域&quot;&gt;&lt;/a&gt;类作用域&lt;/h3&gt;&lt;p&gt; 1.全局域&lt;/p&gt;
-&lt;p&gt; 2.局部域&lt;/p&gt;
-&lt;p&gt; 3.类域&lt;/p&gt;
-&lt;p&gt; 4.名字空间域&lt;/p&gt;
     
     </summary>
     
