@@ -884,13 +884,6 @@ a {
   -moz-background-size: 103%;
   background-size: 103%;
 }
-#header .header-nav .social .GitHub {
-  background: url("//cdn.bootcss.com/logos/0.2.0/github-octocat.svg") no-repeat #fff;
-  -webkit-background-size: 90%;
-  -moz-background-size: 90%;
-  background-size: 90%;
-  background-position: 50% 100%;
-}
 #header .header-nav .social .CodePen {
   background: url("//cdn.bootcss.com/logos/0.2.0/codepen-icon.svg") no-repeat #000;
   -webkit-background-size: 70%;
@@ -993,6 +986,12 @@ a {
 }
 #header .header-nav .social ._500px::before {
   content: '\f26e';
+}
+#header .header-nav .social .GitHub {
+  background: 75;
+}
+#header .header-nav .social .GitHub::before {
+  content: '\#000';
 }
 .duoshuo {
   padding: 0 40px;
