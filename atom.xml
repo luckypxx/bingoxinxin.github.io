@@ -178,6 +178,33 @@
   </entry>
   
   <entry>
+    <title>列表与字典的深度学习</title>
+    <link href="http://www.bingoxin.top/2018/08/08/%E5%88%97%E8%A1%A8%E4%B8%8E%E5%AD%97%E5%85%B8%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://www.bingoxin.top/2018/08/08/列表与字典的深度学习/</id>
+    <published>2018-08-08T11:42:08.000Z</published>
+    <updated>2018-12-11T11:44:53.645Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="列表切片操作法进阶"><a href="#列表切片操作法进阶" class="headerlink" title="列表切片操作法进阶"></a>列表切片操作法进阶</h3><p>[start,stop,step]</p><blockquote><p>当step&lt;0时，为倒序 </p></blockquote><blockquote><p>当step&gt;0时，为顺序</p></blockquote><p>想知道更多就点开吧~</p><a id="more"></a><h3 id="枚举函数"><a href="#枚举函数" class="headerlink" title="枚举函数"></a>枚举函数</h3><p>枚举出序列所有下标及其对应的元素</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enumerate()</span><br></pre></td></tr></table></figure><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><strong>原生字符串(r)</strong></p><p>原生字符串是没有转义字符的</p><p><strong>unicode</strong></p><p>是一种编码形式</p><p><strong>if语句</strong></p><p>if不只是局限于判断长度为1的字符串，而是可以判断任意一目标字符串的子字符串</p><h3 id="repr"><a href="#repr" class="headerlink" title="repr"></a>repr</h3><p>可以将整型、浮点类型转化为字符串</p><p>repr精度更高，转化成字符串相当于给解释器看有没有引号</p><h3 id="list的各类操作方法"><a href="#list的各类操作方法" class="headerlink" title="list的各类操作方法"></a>list的各类操作方法</h3><p><strong>append</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.append(&quot;追加字符串或列表&quot;)</span><br><span class="line"> </span><br><span class="line"># 在列表后追加内容，会生成新的列表</span><br></pre></td></tr></table></figure><p><strong>extend</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1.extend(list2)</span><br><span class="line"></span><br><span class="line"># 两个列表拼接，不会生成新的列表</span><br></pre></td></tr></table></figure><p><strong>remove</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1(5)</span><br><span class="line"></span><br><span class="line"># 删除指定位置的元素</span><br></pre></td></tr></table></figure><h3 id="列表的深拷贝和浅拷贝"><a href="#列表的深拷贝和浅拷贝" class="headerlink" title="列表的深拷贝和浅拷贝"></a>列表的深拷贝和浅拷贝</h3><blockquote><p>若采取直接赋值的方式，两个会变量会引用同一个对象，一个改变，另一个也会发生改变</p></blockquote><blockquote><p>在使用函数工厂时，只是生成了目标列表的一部分内容的列表，id不同</p></blockquote><blockquote><p>除非特殊声明，否则，所有行为都是浅拷贝</p></blockquote><blockquote><p>在拷贝列表时，简单元素会采取深拷贝的方式，复杂元素会采取浅拷贝的方式</p></blockquote><p>在这里就要提一下深拷贝的函数：</p><p><strong>deepcopy</strong></p><p>在使用该函数时，需调用copy模块</p><p>采用深拷贝，无论是简单元素还是复杂元素都会新建</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy.deepcopy()</span><br></pre></td></tr></table></figure><h3 id="判断两个字典是否相同"><a href="#判断两个字典是否相同" class="headerlink" title="判断两个字典是否相同"></a>判断两个字典是否相同</h3><p>由于字典比较复杂，所以在判断两个字典是否相同时，系统会按照长度、key和value的顺序对两字典进行比较</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;列表切片操作法进阶&quot;&gt;&lt;a href=&quot;#列表切片操作法进阶&quot; class=&quot;headerlink&quot; title=&quot;列表切片操作法进阶&quot;&gt;&lt;/a&gt;列表切片操作法进阶&lt;/h3&gt;&lt;p&gt;[start,stop,step]&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当step&amp;lt;0时，为倒序 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当step&amp;gt;0时，为顺序&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;想知道更多就点开吧~&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.bingoxin.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>git常遇问题</title>
     <link href="http://www.bingoxin.top/2018/08/07/git%E5%B8%B8%E9%81%87%E9%97%AE%E9%A2%98/"/>
     <id>http://www.bingoxin.top/2018/08/07/git常遇问题/</id>
@@ -437,28 +464,6 @@
 &lt;p&gt; 2.局部域&lt;/p&gt;
 &lt;p&gt; 3.类域&lt;/p&gt;
 &lt;p&gt; 4.名字空间域&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++的三大特性之封装</title>
-    <link href="http://www.bingoxin.top/2018/06/06/C-%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%B0%81%E8%A3%85/"/>
-    <id>http://www.bingoxin.top/2018/06/06/C-的三大特性之封装/</id>
-    <published>2018-06-06T04:00:28.000Z</published>
-    <updated>2018-12-26T11:18:44.703Z</updated>
-    
-    <content type="html"><![CDATA[<p>面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？</p><p>C++的三大特性是封装、继承和多态</p><p>接下来我将分三次来讲解关于这三大特性的知识</p><a id="more"></a><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="封装的概念"><a href="#封装的概念" class="headerlink" title="封装的概念"></a>封装的概念</h4><p>隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。</p><p>函数是一种封装方式，在C++中更多地是用类进行封装。 </p><h4 id="访问限定符"><a href="#访问限定符" class="headerlink" title="访问限定符"></a>访问限定符</h4><p>提到封装，不得不说一下访问限定符</p><p>从该访问限定符开始，到下一个访问限定符的位置，为该访问限定符的限定范围。</p><p>访问限定符有三种：public(公有)、protected(保护)、private(私有)</p><p>公有即在类外可以访问变量</p><p>保护和私有不可以在类外访问变量，若只是单纯的限定变量访问权限，二者没什么区别，</p><p>但在继承中，作用会有所不同，欲了解可戳<a href="http://www.bingoxin.top/2018/06/%E7%BB%A7%E6%89%BF/">C++的三大特性之继承</a></p><p>访问限定符只是在编译阶段有用，当数据映射到内存后，没有任何访问限定符的区别</p><p>类的默认访问权限为私有，而结构体的默认访问权限为公有(因为结构体兼容C)。</p><h4 id="在类外如何访问私有成员变量"><a href="#在类外如何访问私有成员变量" class="headerlink" title="在类外如何访问私有成员变量"></a>在类外如何访问私有成员变量</h4><p>在类外可以通过函数、指针、引用访问私有成员变量，也可以通过共有函数给私有成员变量赋值。</p><p>请戳链接，可直接看代码<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F.cpp" target="_blank" rel="noopener">在类外如何访问私有成员变量</a></p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？&lt;/p&gt;
-&lt;p&gt;C++的三大特性是封装、继承和多态&lt;/p&gt;
-&lt;p&gt;接下来我将分三次来讲解关于这三大特性的知识&lt;/p&gt;
     
     </summary>
     
