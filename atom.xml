@@ -89,20 +89,6 @@
   </entry>
   
   <entry>
-    <title>三范式</title>
-    <link href="http://www.bingoxin.top/2019/01/03/%E4%B8%89%E8%8C%83%E5%BC%8F/"/>
-    <id>http://www.bingoxin.top/2019/01/03/三范式/</id>
-    <published>2019-01-03T05:28:47.000Z</published>
-    <updated>2019-01-03T05:28:47.847Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>网络基础概念理解</title>
     <link href="http://www.bingoxin.top/2018/12/25/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3/"/>
     <id>http://www.bingoxin.top/2018/12/25/网络基础概念理解/</id>
@@ -188,6 +174,30 @@
     
     
       <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python基本语句</title>
+    <link href="http://www.bingoxin.top/2018/08/04/Python%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5/"/>
+    <id>http://www.bingoxin.top/2018/08/04/Python基本语句/</id>
+    <published>2018-08-04T11:21:39.000Z</published>
+    <updated>2019-01-12T11:23:15.155Z</updated>
+    
+    <content type="html"><![CDATA[<p>在了解了一下Python入门知识之后，接下来来学习一下Python的一些基础语法吧~</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="语句折行"><a href="#语句折行" class="headerlink" title="语句折行"></a>语句折行</h3><p>在编写代码时，我们会遇到语句过长的情况，这时我们要注意，代码一定要怎么简洁怎么写 </p><p> a.若该语句被小括号、中括号或大括号包起来，可直接换行书写</p><p> b.若没有括号，则需使用\来换行</p><p> c.双引号和单引号字符串都不可换行，但三引号字符串可以直接换行</p><p> d.可以把多个语句写在一行，但是最好不要这样做</p><h3 id="变量交换"><a href="#变量交换" class="headerlink" title="变量交换"></a>变量交换</h3><p>在C/C++中，若要交换两个变量的内容，需要借助一个中间变量</p><p>而在python中，可以直接进行交换</p><p>例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=1</span><br><span class="line"></span><br><span class="line">y=2</span><br><span class="line"></span><br><span class="line">x,y=y,x</span><br></pre></td></tr></table></figure><p>即可交换两个变量，是不是很方便呢？</p><p>bool类型中的true和false的值也可以交换，那么真就是假，假就是真了，但不建议交换<br>​     </p><h3 id="作用域和生命周期"><a href="#作用域和生命周期" class="headerlink" title="作用域和生命周期"></a>作用域和生命周期</h3><p>在python中，def、class、lamda会改变变量作用域</p><p>用 globals() 查看当前环境内的全局变量</p><p>用 locals() 查看当前代码块的局部变量</p><h3 id="方法私有化"><a href="#方法私有化" class="headerlink" title="方法私有化"></a>方法私有化</h3><p>在python中，在方法名前加下划线表示私有化</p><p>但这只是程序员约定俗成的一种方式，并不是真正意义上的私有化</p><p>因此在python中没有真正的私有化</p><h3 id="我们在定义方法时需要注意："><a href="#我们在定义方法时需要注意：" class="headerlink" title="我们在定义方法时需要注意："></a>我们在定义方法时需要注意：</h3><p>a.方法名前加下划线表示私有，无法使用from 模块名 improt *导入</p><p>b.方法名前后各加一个下划线表示系统变量</p><p>c.方法名前后各加两个下划线表示系统变量</p><h3 id="文档字符串"><a href="#文档字符串" class="headerlink" title="文档字符串"></a>文档字符串</h3><p>#可以用来注释一行内容</p><p>如果我们需要注释多行内容，可以在类或函数之前加上’’’注释内容’’’来表示，这被成为文档字符串</p><font color="blue" size="3">doc属性：</font><p>每个对象都有doc属性，用 函数名.<strong>doc</strong> 即可看到使用’’’  ‘’’标注的帮助文档的内容</p><p>使用 help() 也有该作用</p><p>不只是函数或类可以添加帮助文档，模块也可以</p><font color="red" size="3">注意：</font>自己添加的帮助文档，必须放在函数或类的前面，否则无法访问<br><br>### None<br><br>在python中有一种特殊的对象，叫做None，类型为NoneType<br><br>### 对象比较<br><br>对象之间进行比较有三种：对象值的比较、对象身份的比较和对象类型的比较<br><br><font color="blue" size="3">对象值的比较</font><p>所有内建对象都可以用比较操作符进行比较，比较对象的类型必须是相同的</p><p>比较运算符的结果是true和false</p><p>比较运算符有==、!=、&lt;=、&gt;=、&lt;、&gt;</p><font color="blue" size="3">对象身份的比较</font><p>变量名只是对象的一个引用，那么多个变量名就可以引用同一个对象</p><p>可以通过 id() 获得变量引用的对象的id，同时也就可以对多个对象的身份进行比较</p><p>若得到的id值相同，则说明两个变量指向同一个对象</p><p>python还提供了 is、is not 两个关键字，用于比较两个变量名是否指向同一个对象</p><font color="blue" size="3">对象类型的比较</font><p>对于比较两个变量的类型是否相同，可以使用内建函数 type()</p><p>当然啦~类型比较也有比较两个变量的内建函数—isinstance()</p><h3 id="整数的位运算"><a href="#整数的位运算" class="headerlink" title="整数的位运算"></a>整数的位运算</h3><p>整数的位运算有&lt;&lt;、&gt;&gt;、&amp;、^、~</p><p>这些运算符看起来比较陌生的应该是~</p><p>~的功能是按位取反</p><h3 id="内置函数与内置模块"><a href="#内置函数与内置模块" class="headerlink" title="内置函数与内置模块"></a>内置函数与内置模块</h3><font color="blue" size="3">内置函数</font><p>只是一些基本内置函数的功能介绍</p><p> a.abs:求一个整型的绝对值</p><p> b.divmod：同时计算一个表达式的商和余数，返回值是一个元组</p><p> c.str：将数字转换成字符串</p><p> d.round：对浮点数进行四舍五入，共有两个参数，操作数和要保留的小数点后的位数</p><font color="blue" size="3">内置模块</font><p>内置模块主要介绍三种：</p><p> a.整型进制转换：oct()、hex()，参数为整型，返回值是对应字面值得字符串，将十进制转换成八进制和十六进制</p><p> b.math、cmath模块：提供一些方便的数学运算函数，math是常规数学，cmath是复数数学</p><p> c.随机数random模块：参数有两个，确定生成数的范围</p><h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><p>在python中，没有 ：？这样的三目表达式</p><p>取而代之的是</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b if a &lt; b else a</span><br></pre></td></tr></table></figure><p>该语句的功能是：判断a是否小于b，若a小于b，则将b指向a的对象，否则a不变</p><h3 id="和循环搭配使用的else"><a href="#和循环搭配使用的else" class="headerlink" title="和循环搭配使用的else"></a>和循环搭配使用的else</h3><p>else不止可以和if一起使用，还可以和for循环、while循环搭配使用</p><p>在与循环搭配时，else语句的功能是：在循环条件不满足时会执行else语句，若break跳出循环，则不执行else的内容</p><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p> a.函数的参数列表不需要写参数类型</p><p> b.函数1中还可以定义函数2，但函数2的作用域只是函数2中</p><p> c.定义函数时，可以给函数指定默认参数，在调用函数时，若不显式的指定参数，就会使用默认参数</p><p> d.对于多个默认参数的函数，可以按照顺序给函数的某几个参数进行传参</p><p>对于d，若只是给指定位置的参数传参我们又该怎么解决呢？</p><font color="blue" size="3">关键字传参</font><p>对于几个默认参数传参，我们可以通过指定关键字来说明给哪个参数传参</p><font color="blue" size="3">参数组</font><p>若将元组或字典当做参数，就可以实现“可变长参数”</p><p>在参数名前加一个*，之后的内容是一个元组</p><p>在参数名前加两个*,之后的内容表示一个字典</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在了解了一下Python入门知识之后，接下来来学习一下Python的一些基础语法吧~&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h2&gt;&lt;h3 id=&quot;语句折行&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.bingoxin.top/tags/Python/"/>
     
   </entry>
   
