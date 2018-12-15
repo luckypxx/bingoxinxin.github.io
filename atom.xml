@@ -178,6 +178,28 @@
   </entry>
   
   <entry>
+    <title>数据库---数据类型</title>
+    <link href="http://www.bingoxin.top/2018/08/20/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://www.bingoxin.top/2018/08/20/数据库-数据类型/</id>
+    <published>2018-08-20T11:57:42.000Z</published>
+    <updated>2018-12-15T11:58:53.114Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先我们需要明白一点：<strong>不同的码制一个字符是由不同个数字节组成的</strong></p><p>utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节</p><p>GBK   一个字符两个字节 </p><a id="more"></a><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><blockquote><p>char()、varchar()括号内是字符数</p></blockquote><blockquote><p>char()最大为256个<strong>字符</strong>—&gt;数据固定时使用—&gt;效率高</p></blockquote><blockquote><p>varchar是可变长度字符串，最多能放65535个<strong>字节</strong>—&gt;数据长度有变化时使用—&gt;效率低</p></blockquote><blockquote><p>—&gt;有1~2个字节用于存储存放数据的长度，实际上只有65532个字节存放数据</p></blockquote><h3 id="日期和时间类型"><a href="#日期和时间类型" class="headerlink" title="日期和时间类型"></a>日期和时间类型</h3><blockquote><p>datatime:日期+时间—&gt;‘yyyy-mm-dd HH:ii:ss’–&gt;</p></blockquote><blockquote><p>data:日期</p></blockquote><blockquote><p>timestamp:记录表中的最后更改时间</p></blockquote><p>current_timestamp：当前时间距1970-01-01 00:00:01差多少秒</p><h3 id="enum-枚举-和set-集合"><a href="#enum-枚举-和set-集合" class="headerlink" title="enum(枚举)和set(集合)"></a>enum(枚举)和set(集合)</h3><blockquote><p>enum:单选—&gt;数据库会自动将每个选项当做数字1,2,3,4…—&gt;用数字效率更高—&gt;最多存储65535个选项</p></blockquote><blockquote><p>set:多选—&gt;由于多个选项中用’选项1,选项2’表示，则须注意选项之间不要出现英文的逗号—&gt;数据库会自动将每个选项当做数字1,2,4,8…<br>—&gt;最多存储64个选项</p></blockquote><pre><code>select * from 数据库名 where find_in_set (&apos;其中选项&apos;,表名)</code></pre><h3 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h3><p>保证数据的合法性</p><ul><li>null/not null</li></ul><p>可以插入新的一条数据时，可以不为该属性赋值</p><ul><li>default</li></ul><p>默认值，用户可以选择性的使用默认值</p><ul><li>comment</li></ul><p>列描述，相当于注释</p><pre><code>create table t (a int comment &apos;注释&apos;);show create table t \G //查看列描述</code></pre><ul><li>zerofill</li></ul><p>零填充，将数据格式化，将无效位置零</p><ul><li>primary key</li></ul><p>主键，用来约束该字段里面的数据，<strong>不能重复，不能为空</strong>，一张表中最多只能有一个主键，主键所在列通常为整型类型</p><blockquote><p>复合主键:将某几个列构成一个主键</p></blockquote><pre><code>create table t (id int, course int ,score int,primary key(id,course));</code></pre><blockquote><p>追加主键:</p></blockquote><pre><code>alter table t add primary key (id);</code></pre><blockquote><p>删除主键:每个表只有一个主键，因此删除时不需要指定，若删除主键不会改变列not null性质</p></blockquote><pre><code>alter table t drop primary key;</code></pre><ul><li>auto_increment</li></ul><blockquote><p>自增长,当对应的字段不给值时，会自动的被系统触发，系统会从当前字段中已经有的最大值+1操作，得到新的不同的值，该字段只增不减。通常与主键搭配使用，作为逻辑主键。一张表中最多只能有一个自增长</p></blockquote><pre><code>create table t (id int primary key auto_increment,name char(13));</code></pre><ul><li>unique key</li></ul><blockquote><p>唯一键:可以使多个字段拥有唯一性，唯一键允许为空</p></blockquote><pre><code>create table t (id int primary key auto_increment comment &apos;编号&apos;,num in not null unique comment &apos;学号&apos;)</code></pre><ul><li>forigen key</li></ul><blockquote><p>外键:将主表和从表关联起来，外键约束主要定义在从表上，主表则必须是有主键约束或unique约束。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先我们需要明白一点：&lt;strong&gt;不同的码制一个字符是由不同个数字节组成的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节&lt;/p&gt;
+&lt;p&gt;GBK   一个字符两个字节 &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="http://www.bingoxin.top/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python之面向对象</title>
     <link href="http://www.bingoxin.top/2018/08/18/Python%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     <id>http://www.bingoxin.top/2018/08/18/Python之面向对象/</id>
@@ -452,26 +474,6 @@
     
     
       <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测试用例的撰写</title>
-    <link href="http://www.bingoxin.top/2018/07/10/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%9A%84%E6%92%B0%E5%86%99/"/>
-    <id>http://www.bingoxin.top/2018/07/10/测试用例的撰写/</id>
-    <published>2018-07-10T11:02:59.000Z</published>
-    <updated>2018-12-26T11:17:32.345Z</updated>
-    
-    <content type="html"><![CDATA[<p>欲了解如何描述有效bug、bug的级别与生命周期和测试用例的设计方法，请看正文 </p><a id="more"></a><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>很多初学者都认为，测试工程师就是用来找bug的，这样说只能答对一半</p><p>想知道另一半请戳<a href="http://www.bingoxin.top/2018/07/%E5%85%B3%E4%BA%8E%E6%B5%8B%E8%AF%95/">关于测试–概念篇</a></p><h3 id="那究竟如何描述有效的bug呢？"><a href="#那究竟如何描述有效的bug呢？" class="headerlink" title="那究竟如何描述有效的bug呢？"></a>那究竟如何描述有效的bug呢？</h3><p>当且仅当规格说明书存在并且正确，程序与需求规格说明书之间的不匹配才是bug。</p><h3 id="什么是有效的bug呢？"><a href="#什么是有效的bug呢？" class="headerlink" title="什么是有效的bug呢？"></a>什么是有效的bug呢？</h3><p>作为一个测试工程师，我们不能把任何一个bug都看成是有效的</p><p>而在我们发现有效的bug时，应该从以下几个方面进行描述</p><blockquote><p>发现问题的版本<br>问题触发的环境<br>错误重现的步骤<br>预期执行的描述<br>错误行为的描述<br>不把多个bug放在一起<br>其他</p></blockquote><p>一个好的测试，是可以检查出来bug，并可以告诉开发应该如何改正的</p><p>这就需要经验的积累啦！！！</p><p>bug的种类不同，这也就出现了</p><h3 id="bug的级别划分"><a href="#bug的级别划分" class="headerlink" title="bug的级别划分"></a>bug的级别划分</h3><p>根据公司的要求，对bug级别的认定也就不同，不过bug大概分为以下几类：</p><blockquote><p>1.崩溃：像电脑崩溃、死机、死循环、数据丢失等</p></blockquote><blockquote><p>2.严重：功能部分丢失等</p></blockquote><blockquote><p>3.一般：功能没有完全实现等</p></blockquote><blockquote><p>4.次要：错别字、界面格式不规范等</p></blockquote><p>在与开发沟通bug时，一定要注意言辞</p><p>对待一些bug，我们更多地是要站在用户的角度上去想</p><h3 id="bug的生命周期"><a href="#bug的生命周期" class="headerlink" title="bug的生命周期"></a>bug的生命周期</h3><div align="center"><br>    <img src="\images\posts\测试用例\bug的生命周期.PNG" height="300" width="500"><br></div><p>敲重点啦！！！</p><h3 id="测试用例设计方法"><a href="#测试用例设计方法" class="headerlink" title="测试用例设计方法"></a>测试用例设计方法</h3><p>先来说一下什么是测试用例吧~</p><p>测试用例就是对需求进行验证，所以这就说明需求也不一定是对的。</p><p> 1.等价类</p><p>例：设置密码必须为6~8为数字或字母<br>​<br>那么在测试输入设定密码位数时，6~8位为一类(有效类)，其他位数的密码为一类(无效类)。<br>​<br> 2.边界值</p><p>例：还是第一种设计方法的题目，6位和8位是符合需求规格说明书(有效类)的边界值，5位和9位位不符合(无效类)的边界值。<br>​<br>输入5位密码、6位密码、8位密码、9位密码都为测试密码是否符合的边界值，输入5位密码、6位密码、8位密码、9位密码都为测试密码是否符合的边界值<br>​<br>用于测试输入和输出的关系，是等价类的一种补充方法</p><p> 3.基于需求</p><p>任何测试用例都是依据需求规格说明书而设计的<br>​<br> 4.因果图</p><p>依据需求规格说明书确定输入与输出的关系，能直观地表明程序输入条件和输出动作之间的相互关系。<br>​<br><strong>因果图的使用：</strong><br>​<br>（1）分析所有可能的输入和输出<br>​<br>（2）找出输入和输出的关系  </p><p>（3）画出因果图<br>​<br>（4）画出判定表<br>​<br>（5）把判定表对应一个测试用例<br> 5.正交列表</p><p>在输入输出太多的情况下，因果图无法满足，正交列表不失为一种好的解决方法<br>​<br>在正交列表中，每一列中各数字出现的次数一样多，且任何两列所构成的各有序数对出现的次数都一样多<br>​<br>因果：变量                        水平：变量的取值<br>​<br>行数：试证次数，用N表示           因素数：正交表中列的个数，用C表示<br>​<br>水平数：任何单个因素能够取得的值得最大个数，正交表中的包含的值为从0到“水平数-1”或1到水平数<br>​<br>正交表的设计步骤如下：<br>​<br>(1)确定因素<br>​<br>(2)每个因素都有哪几个水平，即变量有哪几个取值<br>​<br>(3)选择一个合适的正交表<br>​<br>(4)把变量的值映射到表中<br>​<br>(5)把每一行的各因素水平的组合作为一个测试用例<br>​<br>(6)加上你认为可疑且没有在表中出现的用例组合<br>​<br> 6.场景设计法</p><p>用业务流把各个孤立的功能点串起来，事件触发时的情景便形成了场景而同一事件不同的触发顺序和处理结果形成时间流。<br>​<br> 7.错误推测法</p><p>一般经验丰富的测试工程师善用此方式<br>​<br>每个公司都会对测试进行评价，分为同行评审、用户检查和项目组评审三种。</p><p>在讲述各测试用例的设计方法时，并未举太多的例子<br>​<br>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;欲了解如何描述有效bug、bug的级别与生命周期和测试用例的设计方法，请看正文 &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="测试" scheme="http://www.bingoxin.top/tags/%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   

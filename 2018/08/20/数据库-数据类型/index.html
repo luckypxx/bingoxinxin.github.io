@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="叩开C++的大门">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/05/叩开C-的大门/index.html">
+<meta property="og:title" content="数据库---数据类型">
+<meta property="og:url" content="http://www.bingoxin.top/2018/08/20/数据库-数据类型/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
+<meta property="og:description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-26T11:19:32.927Z">
+<meta property="og:updated_time" content="2018-12-15T11:58:53.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="叩开C++的大门">
-<meta name="twitter:description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
+<meta name="twitter:title" content="数据库---数据类型">
+<meta name="twitter:description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>叩开C++的大门 | bingoxin&#39;s blog</title>
+<title>数据库---数据类型 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-叩开C-的大门" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-数据库-数据类型" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/05/叩开C-的大门/" class="article-date">
-      <time datetime="2018-06-05T03:57:30.000Z" itemprop="datePublished">2018-06-05</time>
+      <a href="/2018/08/20/数据库-数据类型/" class="article-date">
+      <time datetime="2018-08-20T11:57:42.000Z" itemprop="datePublished">2018-08-20</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      叩开C++的大门
+      数据库---数据类型
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,45 +302,94 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="缺省函数"><a href="#缺省函数" class="headerlink" title="缺省函数"></a>缺省函数</h4><p>如果非要把缺省函数比作一个事物，它更像是一个备胎。</p>
-<p>如果函数传参，就会将传过来的值赋值给形参</p>
-<p>如果没有传参，则就会将缺省值传递给函数</p>
+        <p>首先我们需要明白一点：<strong>不同的码制一个字符是由不同个数字节组成的</strong></p>
+<p>utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节</p>
+<p>GBK   一个字符两个字节 </p>
 <a id="more"></a>
-<p>关于缺省参数要注意以下几点：</p>
-<blockquote>
-<p>a.带缺省值的参数必须放在参数列表的最后面<br>b.缺省参数不能同时在函数声明和定义中出现，只能二者去一<br>c.缺省值必须是常量或者是全局变量<br>d.C语言不支持</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><blockquote>
+<p>char()、varchar()括号内是字符数</p>
 </blockquote>
-<h4 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h4><p>函数重载，即在同一作用域里，声明几个功能相同的函数，形参列表不同或返回值类型不同(参数列表中，参数个数和顺序相同)，即可构成函数重载</p>
-<p>若只是返回值类型不同，不可构成函数重载，在这里也要注意：返回值不属于函数，参数属于函数</p>
-<p>在C语言中，不会构成函数重载，只是由于C语言和C++的编译风格不同</p>
-<p>在C语言中，编译完成后会在函数名前加上“_”，</p>
-<p>在C++中，编译完成后会被修饰成由函数名，函数参数列表和返回值构成的一串特定的字符串，用于区分函数名相同的各个函数</p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用，就相当于为一个变量取一个别名</p>
-<p> int a=10;<br> int&amp; ra=a;<br>这就是引用的用法，ra和a的地址相同，变量存放的内容也相同</p>
-<p>引用站在应用层，编译器不为其开辟空间</p>
-<p>在使用引用时要注意：</p>
 <blockquote>
-<p>a.引用在定义时必须有初始化<br>b.一个变量可以有多个引用<br>c.引用一旦引用一个实体，再不能引用其他实体</p>
+<p>char()最大为256个<strong>字符</strong>—&gt;数据固定时使用—&gt;效率高</p>
 </blockquote>
-<p>若初始变量被const修饰，其引用在定义时也要被const修饰，而初始变量就相当于常数</p>
-<p>接下来再来说一下数组引用的代码格式：</p>
-<p> int (&amp;array)[3]={0}; //注意符号优先级</p>
-<p>引用可以作为函数的参数和返回值</p>
-<p>在函数传参时，从底层来看，传引用和传指针效率相差不多</p>
-<p>但是引用和指针还是有区别的，如下：</p>
 <blockquote>
-<p>引用在定义时必须初始化，而指针没有要求<br>指针可以为空，而引用不可以<br>引用一旦有所指向就不能更改，而指针指向一个变量后，还可以更改指向另一个类型相同的变量<br>在sizeof中含义不同：引用的结果为引用类型的大小，但指针始终为4(在Win10，vs2013的环境下)<br>引用自加改变的是变量的大小，指针自加改变的是指针的指向<br>有多级指针，没有多级引用<br>指针需要手动寻址，引用可以通过编译器寻址<br>使用引用更为安全</p>
+<p>varchar是可变长度字符串，最多能放65535个<strong>字节</strong>—&gt;数据长度有变化时使用—&gt;效率低</p>
 </blockquote>
-<p>那么引用相当于void* const类型的指针(可以改变其内容，不可改变其指向)</p>
-<h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><p>命名空间可以将标识符本地化，避免命名冲突或名字污染</p>
-<p>首先我们先来了解一下命名空间的定义方式：</p>
-<p> namespace N</p>
-<p>关于命名空间和作用域，不得不再多说几句： </p>
 <blockquote>
-<p>a.若一个命名空间为N，“N::”表示其空间作用域，“::”为作用限定符<br>b.相同作用域定义的命名空间名称可以相同，编译器会自动将其合成<br>c.命名空间可以嵌套(“NN1::”)</p>
+<p>—&gt;有1~2个字节用于存储存放数据的长度，实际上只有65532个字节存放数据</p>
 </blockquote>
-<p>仅仅学了这几个概念，就觉得C++功能的实现比C语言简单许多</p>
-<p>终于敲开C++的大门啦！</p>
+<h3 id="日期和时间类型"><a href="#日期和时间类型" class="headerlink" title="日期和时间类型"></a>日期和时间类型</h3><blockquote>
+<p>datatime:日期+时间—&gt;‘yyyy-mm-dd HH:ii:ss’–&gt;</p>
+</blockquote>
+<blockquote>
+<p>data:日期</p>
+</blockquote>
+<blockquote>
+<p>timestamp:记录表中的最后更改时间</p>
+</blockquote>
+<p>current_timestamp：当前时间距1970-01-01 00:00:01差多少秒</p>
+<h3 id="enum-枚举-和set-集合"><a href="#enum-枚举-和set-集合" class="headerlink" title="enum(枚举)和set(集合)"></a>enum(枚举)和set(集合)</h3><blockquote>
+<p>enum:单选—&gt;数据库会自动将每个选项当做数字1,2,3,4…—&gt;用数字效率更高—&gt;最多存储65535个选项</p>
+</blockquote>
+<blockquote>
+<p>set:多选—&gt;由于多个选项中用’选项1,选项2’表示，则须注意选项之间不要出现英文的逗号—&gt;数据库会自动将每个选项当做数字1,2,4,8…<br>—&gt;最多存储64个选项</p>
+</blockquote>
+<pre><code>select * from 数据库名 where find_in_set (&apos;其中选项&apos;,表名)
+</code></pre><h3 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h3><p>保证数据的合法性</p>
+<ul>
+<li>null/not null</li>
+</ul>
+<p>可以插入新的一条数据时，可以不为该属性赋值</p>
+<ul>
+<li>default</li>
+</ul>
+<p>默认值，用户可以选择性的使用默认值</p>
+<ul>
+<li>comment</li>
+</ul>
+<p>列描述，相当于注释</p>
+<pre><code>create table t (a int comment &apos;注释&apos;);
+show create table t \G //查看列描述
+</code></pre><ul>
+<li>zerofill</li>
+</ul>
+<p>零填充，将数据格式化，将无效位置零</p>
+<ul>
+<li>primary key</li>
+</ul>
+<p>主键，用来约束该字段里面的数据，<strong>不能重复，不能为空</strong>，一张表中最多只能有一个主键，主键所在列通常为整型类型</p>
+<blockquote>
+<p>复合主键:将某几个列构成一个主键</p>
+</blockquote>
+<pre><code>create table t (id int, course int ,score int,primary key(id,course));
+</code></pre><blockquote>
+<p>追加主键:</p>
+</blockquote>
+<pre><code>alter table t add primary key (id);
+</code></pre><blockquote>
+<p>删除主键:每个表只有一个主键，因此删除时不需要指定，若删除主键不会改变列not null性质</p>
+</blockquote>
+<pre><code>alter table t drop primary key;
+</code></pre><ul>
+<li>auto_increment</li>
+</ul>
+<blockquote>
+<p>自增长,当对应的字段不给值时，会自动的被系统触发，系统会从当前字段中已经有的最大值+1操作，得到新的不同的值，该字段只增不减。通常与主键搭配使用，作为逻辑主键。一张表中最多只能有一个自增长</p>
+</blockquote>
+<pre><code>create table t (id int primary key auto_increment,name char(13));
+</code></pre><ul>
+<li>unique key</li>
+</ul>
+<blockquote>
+<p>唯一键:可以使多个字段拥有唯一性，唯一键允许为空</p>
+</blockquote>
+<pre><code>create table t (id int primary key auto_increment comment &apos;编号&apos;,num in not null unique comment &apos;学号&apos;)
+</code></pre><ul>
+<li>forigen key</li>
+</ul>
+<blockquote>
+<p>外键:将主表和从表关联起来，外键约束主要定义在从表上，主表则必须是有主键约束或unique约束。</p>
+</blockquote>
 
       
     </div>
@@ -349,13 +398,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/20/数据库-数据类型/">数据库---数据类型</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-05, 11:57:30</p>
-        <p><span>最后更新:</span>2018-12-26, 19:19:32</p>
+        <p><span>发布时间:</span>2018-08-20, 19:57:42</p>
+        <p><span>最后更新:</span>2018-12-15, 19:58:53</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/05/叩开C-的大门/" title="叩开C++的大门">http://www.bingoxin.top/2018/06/05/叩开C-的大门/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/05/叩开C-的大门/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/20/数据库-数据类型/" title="数据库---数据类型">http://www.bingoxin.top/2018/08/20/数据库-数据类型/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/20/数据库-数据类型/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -368,15 +417,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/05/面向对象or面向过程/">
-                    面向对象or面向过程
+                <a href="/2018/08/28/STL的底层与应用/">
+                    STL的底层与应用
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/05/函数调用约定/">
-                    函数调用约定
+                <a href="/2018/08/18/Python之面向对象/">
+                    Python之面向对象
                 </a>
             </div>
         
@@ -388,9 +437,9 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#缺省函数"><span class="toc-number">1.</span> <span class="toc-text">缺省函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数重载"><span class="toc-number">2.</span> <span class="toc-text">函数重载</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#引用"><span class="toc-number"></span> <span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名空间"><span class="toc-number">1.</span> <span class="toc-text">命名空间</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串类型"><span class="toc-number">1.0.1.</span> <span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日期和时间类型"><span class="toc-number">1.0.2.</span> <span class="toc-text">日期和时间类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#enum-枚举-和set-集合"><span class="toc-number">1.0.3.</span> <span class="toc-text">enum(枚举)和set(集合)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表的约束"><span class="toc-number">1.0.4.</span> <span class="toc-text">表的约束</span></a></li></ol></li></ol>
         
-    </li></div>
+    </div>
     <style>
         .left-col .switch-btn,
         .left-col .switch-area {
@@ -424,7 +473,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"叩开C++的大门　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"数据库---数据类型　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -461,7 +510,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/05/面向对象or面向过程/" title="上一篇: 面向对象or面向过程">
+            <a href="/2018/08/28/STL的底层与应用/" title="上一篇: STL的底层与应用">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -469,7 +518,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/05/函数调用约定/" title="下一篇: 函数调用约定">
+            <a href="/2018/08/18/Python之面向对象/" title="下一篇: Python之面向对象">
                 <i class="fa fa-angle-right"></i>
             </a>
         
