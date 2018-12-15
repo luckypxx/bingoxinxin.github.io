@@ -178,6 +178,30 @@
   </entry>
   
   <entry>
+    <title>Python之面向对象</title>
+    <link href="http://www.bingoxin.top/2018/08/18/Python%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://www.bingoxin.top/2018/08/18/Python之面向对象/</id>
+    <published>2018-08-18T11:56:00.000Z</published>
+    <updated>2018-12-02T11:56:49.446Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p>抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模</p><h3 id="对象的三要素"><a href="#对象的三要素" class="headerlink" title="对象的三要素"></a>对象的三要素</h3><p>id、type、value</p><h3 id="对象的三大特性"><a href="#对象的三大特性" class="headerlink" title="对象的三大特性"></a>对象的三大特性</h3><p>封装、继承、多态 </p><h3 id="封装和接口"><a href="#封装和接口" class="headerlink" title="封装和接口"></a>封装和接口</h3><p><strong>封装</strong></p><p>封装是对数据和信息进行隐藏，对象的使用者只能通过接口来访问或修改对象的数据</p><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>所有的类都继承于根类(object)</p><p><strong>根类</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Animal(object):</span><br><span class="line"></span><br><span class="line">#静态变量</span><br><span class="line"></span><br><span class="line">    x=0 </span><br><span class="line"></span><br><span class="line">#非静态成员方法</span><br><span class="line"></span><br><span class="line">def Print(self):</span><br><span class="line"></span><br><span class="line">print &quot;print&quot; </span><br><span class="line"></span><br><span class="line">#非静态变量</span><br><span class="line"></span><br><span class="line">def __init__(self):</span><br><span class="line"></span><br><span class="line">self.Name=&quot;name&quot;</span><br><span class="line"></span><br><span class="line">self.Age=10</span><br><span class="line"></span><br><span class="line">#静态成员方法</span><br><span class="line"></span><br><span class="line">@staticmethod</span><br><span class="line"></span><br><span class="line">def Print1()</span><br><span class="line"></span><br><span class="line">print &quot;print1&quot;</span><br><span class="line"></span><br><span class="line">print Animal.x</span><br><span class="line"></span><br><span class="line">#类的实例化</span><br><span class="line"></span><br><span class="line">A=Animal()</span><br><span class="line"></span><br><span class="line">print A.Name,A.Age</span><br></pre></td></tr></table></figure><p>​    </p><p>根类中有静态变量、非静态成员方法，非静态变量、静态成员方法</p><p>非静态变量和方法要有self关键字</p><h3 id="继承-1"><a href="#继承-1" class="headerlink" title="继承"></a>继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Dog(Animal)</span><br></pre></td></tr></table></figure><p>Dog继承自Animal</p><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>子类可以进行自由扩展，对调用封闭</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;抽象&quot;&gt;&lt;a href=&quot;#抽象&quot; class=&quot;headerlink&quot; title=&quot;抽象&quot;&gt;&lt;/a&gt;抽象&lt;/h3&gt;&lt;p&gt;抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模&lt;/p&gt;
+&lt;h3 id=&quot;对象的三要素&quot;&gt;&lt;a href=&quot;#对象的三要素&quot; cl
+      
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.bingoxin.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python中的文件操作</title>
     <link href="http://www.bingoxin.top/2018/08/14/Python%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
     <id>http://www.bingoxin.top/2018/08/14/Python中的文件操作/</id>
@@ -443,28 +467,6 @@
     <summary type="html">
     
       &lt;p&gt;欲了解如何描述有效bug、bug的级别与生命周期和测试用例的设计方法，请看正文 &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="测试" scheme="http://www.bingoxin.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于测试</title>
-    <link href="http://www.bingoxin.top/2018/07/05/%E5%85%B3%E4%BA%8E%E6%B5%8B%E8%AF%95/"/>
-    <id>http://www.bingoxin.top/2018/07/05/关于测试/</id>
-    <published>2018-07-05T04:13:46.000Z</published>
-    <updated>2018-12-26T11:17:45.597Z</updated>
-    
-    <content type="html"><![CDATA[<p>软件开发，包括分析、计划、设计、编码、测试、维护六个过程。 </p><p>软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面）</p><p>接下来，请收下这篇————测试概念篇</p><a id="more"></a><h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h3><blockquote><p>目的：验证软件有或没有问题</p></blockquote><blockquote><p>原则：以客户为中心，遵循软件测试的规范、流程、标准和要求。</p></blockquote><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><blockquote><p>需求，即满足用户期望或正式规定的文档的条件或权能。</p></blockquote><blockquote><p>其包括软件需求和用户需求两种。</p></blockquote><h3 id="测试与调试的问题"><a href="#测试与调试的问题" class="headerlink" title="测试与调试的问题"></a>测试与调试的问题</h3><blockquote><p><strong>目的不同：</strong>测试的目的是发现问题，调试的目的是发现并解决问题</p><p><strong>参与角色不同：</strong>测试由开发人员和测试人员来完成，调试由开发人员来完成</p><p><strong>执行的阶段不同：</strong>测试贯穿整个软件开发生命周期，测试一般在开发阶段</p></blockquote><h3 id="总是碰到的bug"><a href="#总是碰到的bug" class="headerlink" title="总是碰到的bug"></a>总是碰到的bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当且仅当规格说明是存在的并且正确，程序与规格说明之间的不匹配是bug。</span><br></pre></td></tr></table></figure><h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><p>为了实施测试而向被测试的系统提供的一组集合。（包括<font color="red" size="3">测试环境、操作步骤、测试数据、预期结果等</font>）</p><h4 id="在写测试用例的时候，一个功能点可能对应n条测试用例。"><a href="#在写测试用例的时候，一个功能点可能对应n条测试用例。" class="headerlink" title="在写测试用例的时候，一个功能点可能对应n条测试用例。"></a>在写测试用例的时候，一个功能点可能对应n条测试用例。</h4><font color="red" size="3">关于测试用例要注意以下问题：</font><blockquote><p>1.不知道是否较全面的测试了所有功能</p></blockquote><blockquote><p>2.测试的覆盖率，无法衡量</p></blockquote><blockquote><p>3.对新版本的重复测试很难实施</p></blockquote><blockquote><p>4.存在大量冗余测试影响测试效率</p></blockquote><h4 id="举个栗子："><a href="#举个栗子：" class="headerlink" title="举个栗子："></a>举个栗子：</h4><p>假设一个功能点写一条测试用例，1.0版本需要测试100个功能点，请问需要写多少条测试用例？</p><p>若软件升级为1.1版本，在原有的基础上增加了2个功能点，请问需要写多少条测试用例？</p><p>答案：100条、2条</p><h3 id="开发模型"><a href="#开发模型" class="headerlink" title="开发模型"></a>开发模型</h3><p>开发模型大概包括四种：</p><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/开发类型.PNG" height="300" width="500"><br></div><blockquote><p>瀑布类型适用于需求稳定的项目，主要用于开发过的项目</p></blockquote><blockquote><p>螺旋项目强调风险，但是比较耗费时间</p></blockquote><blockquote><p>增量迭代其实是两种，增量是将代码逐步叠加到完整，而迭代是写出一个大概轮廓，然后将轮廓细化。</p></blockquote><p>  我们通常将这两种看作一类</p><blockquote><p>敏捷具有注重人与人的沟通、对文档要求低、客户参与度高等特点。</p></blockquote><p>  敏捷是软件公司最受欢迎的开发模型</p><p>所以接下来，我来为大家更加详细的介绍一下<font color="black" size="3">敏捷</font></p><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/敏捷.PNG" height="300" width="500"><br></div><p>product owner<br>是类似于产品经理的一个职务（简称PO）</p><p>主要工作职责是整理用户故事，定义其商业价值并对其进行排序</p><p>scrum master<br>敏捷教练（简称sm）</p><p>主要工作职责是召开会议，协调项目，为研发团队服务</p><p>team<br>研发团队</p><p>PO，sm都属于team，但是两个有比较特殊一点</p><p>而在敏捷开发模式中，对于测试而言，会有两个挑战：</p><p>轻文档和快速迭代</p><h3 id="软件测试模型（V型和W型）"><a href="#软件测试模型（V型和W型）" class="headerlink" title="软件测试模型（V型和W型）"></a>软件测试模型（V型和W型）</h3><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/V型测试模型.PNG" height="300" width="500"><br></div><p>我们可以发现V型测试模型忽略了软件测试的重要性</p><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/W型测试模型.PNG" height="300" width="500"><br></div><p>W型测试模型与V型模型相比，虽然有所改进，但整体仍为串行结构，不能满足需求的变更</p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;软件开发，包括分析、计划、设计、编码、测试、维护六个过程。 &lt;/p&gt;
-&lt;p&gt;软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面）&lt;/p&gt;
-&lt;p&gt;接下来，请收下这篇————测试概念篇&lt;/p&gt;
     
     </summary>
     

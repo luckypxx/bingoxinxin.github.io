@@ -124,6 +124,23 @@
     </entry>
     
     <entry>
+      <title>Python之面向对象</title>
+      <link href="/2018/08/18/Python%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+      <url>/2018/08/18/Python%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+      
+        <content type="html"><![CDATA[<h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p>抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模</p><h3 id="对象的三要素"><a href="#对象的三要素" class="headerlink" title="对象的三要素"></a>对象的三要素</h3><p>id、type、value</p><h3 id="对象的三大特性"><a href="#对象的三大特性" class="headerlink" title="对象的三大特性"></a>对象的三大特性</h3><p>封装、继承、多态 </p><h3 id="封装和接口"><a href="#封装和接口" class="headerlink" title="封装和接口"></a>封装和接口</h3><p><strong>封装</strong></p><p>封装是对数据和信息进行隐藏，对象的使用者只能通过接口来访问或修改对象的数据</p><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>所有的类都继承于根类(object)</p><p><strong>根类</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Animal(object):</span><br><span class="line"></span><br><span class="line">#静态变量</span><br><span class="line"></span><br><span class="line">    x=0 </span><br><span class="line"></span><br><span class="line">#非静态成员方法</span><br><span class="line"></span><br><span class="line">def Print(self):</span><br><span class="line"></span><br><span class="line">print &quot;print&quot; </span><br><span class="line"></span><br><span class="line">#非静态变量</span><br><span class="line"></span><br><span class="line">def __init__(self):</span><br><span class="line"></span><br><span class="line">self.Name=&quot;name&quot;</span><br><span class="line"></span><br><span class="line">self.Age=10</span><br><span class="line"></span><br><span class="line">#静态成员方法</span><br><span class="line"></span><br><span class="line">@staticmethod</span><br><span class="line"></span><br><span class="line">def Print1()</span><br><span class="line"></span><br><span class="line">print &quot;print1&quot;</span><br><span class="line"></span><br><span class="line">print Animal.x</span><br><span class="line"></span><br><span class="line">#类的实例化</span><br><span class="line"></span><br><span class="line">A=Animal()</span><br><span class="line"></span><br><span class="line">print A.Name,A.Age</span><br></pre></td></tr></table></figure><p>​    </p><p>根类中有静态变量、非静态成员方法，非静态变量、静态成员方法</p><p>非静态变量和方法要有self关键字</p><h3 id="继承-1"><a href="#继承-1" class="headerlink" title="继承"></a>继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Dog(Animal)</span><br></pre></td></tr></table></figure><p>Dog继承自Animal</p><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>子类可以进行自由扩展，对调用封闭</p><p>欢迎交流~</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Python中的文件操作</title>
       <link href="/2018/08/14/Python%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
       <url>/2018/08/14/Python%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>

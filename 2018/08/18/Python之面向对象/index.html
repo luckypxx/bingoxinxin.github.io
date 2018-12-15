@@ -15,20 +15,18 @@
 
 
 
-<meta name="description" content="C语言中实现方式使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉  比较malloc/calloc/realloc相同点 三者都是在堆上申请空间：  若申请成功-&amp;gt;返回申请的空间的首地址   若申请失败-&amp;gt;返回空指针  三者的申请空间的释放都是使用free()进行操作">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="抽象抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模 对象的三要素id、type、value 对象的三大特性封装、继承、多态  封装和接口封装 封装是对数据和信息进行隐藏，对象的使用者只能通过接口来访问或修改对象的数据 继承所有的类都继承于根类(object) 根类 1234567891011121314151617181920212223242526272829303132333435">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态内存开辟">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/17/动态内存开辟/index.html">
+<meta property="og:title" content="Python之面向对象">
+<meta property="og:url" content="http://www.bingoxin.top/2018/08/18/Python之面向对象/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="C语言中实现方式使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉  比较malloc/calloc/realloc相同点 三者都是在堆上申请空间：  若申请成功-&amp;gt;返回申请的空间的首地址   若申请失败-&amp;gt;返回空指针  三者的申请空间的释放都是使用free()进行操作">
+<meta property="og:description" content="抽象抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模 对象的三要素id、type、value 对象的三大特性封装、继承、多态  封装和接口封装 封装是对数据和信息进行隐藏，对象的使用者只能通过接口来访问或修改对象的数据 继承所有的类都继承于根类(object) 根类 1234567891011121314151617181920212223242526272829303132333435">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/%E6%8D%95%E8%8E%B7.PNG">
-<meta property="og:updated_time" content="2018-12-26T11:18:23.259Z">
+<meta property="og:updated_time" content="2018-12-02T11:56:49.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态内存开辟">
-<meta name="twitter:description" content="C语言中实现方式使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉  比较malloc/calloc/realloc相同点 三者都是在堆上申请空间：  若申请成功-&amp;gt;返回申请的空间的首地址   若申请失败-&amp;gt;返回空指针  三者的申请空间的释放都是使用free()进行操作">
-<meta name="twitter:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/%E6%8D%95%E8%8E%B7.PNG">
+<meta name="twitter:title" content="Python之面向对象">
+<meta name="twitter:description" content="抽象抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模 对象的三要素id、type、value 对象的三大特性封装、继承、多态  封装和接口封装 封装是对数据和信息进行隐藏，对象的使用者只能通过接口来访问或修改对象的数据 继承所有的类都继承于根类(object) 根类 1234567891011121314151617181920212223242526272829303132333435">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -60,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>动态内存开辟 | bingoxin&#39;s blog</title>
+<title>Python之面向对象 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-动态内存开辟" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Python之面向对象" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/17/动态内存开辟/" class="article-date">
-      <time datetime="2018-06-17T04:03:54.000Z" itemprop="datePublished">2018-06-17</time>
+      <a href="/2018/08/18/Python之面向对象/" class="article-date">
+      <time datetime="2018-08-18T11:56:00.000Z" itemprop="datePublished">2018-08-18</time>
 </a>
 
 
@@ -282,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      动态内存开辟
+      Python之面向对象
     </h1>
   
 
@@ -294,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -304,62 +302,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="C语言中实现方式"><a href="#C语言中实现方式" class="headerlink" title="C语言中实现方式"></a>C语言中实现方式</h3><p>使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉 </p>
-<h3 id="比较malloc-calloc-realloc"><a href="#比较malloc-calloc-realloc" class="headerlink" title="比较malloc/calloc/realloc"></a>比较malloc/calloc/realloc</h3><p><strong>相同点</strong></p>
-<p>三者都是在堆上申请空间：</p>
-<blockquote>
-<p>若申请成功-&gt;返回申请的空间的首地址</p>
-</blockquote>
-<blockquote>
-<p>若申请失败-&gt;返回空指针</p>
-</blockquote>
-<p>三者的申请空间的释放都是使用free()进行操作</p>
-<a id="more"></a>
-<p><strong>不同点</strong></p>
-<blockquote>
-<p>malloc:在堆上开辟指定字节数的空间</p>
-</blockquote>
-<blockquote>
-<p>calloc:开辟空间会被0初始化</p>
-</blockquote>
-<blockquote>
-<p>realloc:把原来开辟的空间缩小或扩大</p>
-</blockquote>
-<blockquote>
-<p>——–&gt;缩小空间—&gt;返回原空间的地址，但空间变小<br>​<br>——–&gt;扩大空间—&gt;比较原空间连续的可用空间大小与原空间空间大小之和与申请空间的大小</p>
-<p>——————-&gt;大于—&gt;返回空间首地址</p>
-<p>——————-&gt;小于—&gt;重新开辟空间</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void* malloc(字节数)</span><br><span class="line">void* calloc(元素个数，元素大小)</span><br><span class="line">void* realloc(void* p,字节数)</span><br></pre></td></tr></table></figure>
-<h3 id="malloc实现原理"><a href="#malloc实现原理" class="headerlink" title="malloc实现原理"></a>malloc实现原理</h3><p>在开辟空间时，除了所需的空间之外，还会在所需空间前开辟一个结构体，后面又追加了4个字节，防止越界</p>
-<p><strong>结构体</strong>—共32个字节</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#define nNoManLandSize 4</span><br><span class="line">typedef struct _CrtMemBlockHeader</span><br><span class="line">&#123;</span><br><span class="line">	struct _CrtMMemBlockHeader * pBlockHeaderNext;</span><br><span class="line">	struct _CrtMMemBlockHeader * pBlockHeaderPrev;//双向链表</span><br><span class="line">	char * szFileName;</span><br><span class="line">	int nLine;</span><br><span class="line">	size_t nDataSize;</span><br><span class="line">	int nBlockUse;</span><br><span class="line">	long lRequest;</span><br><span class="line">	unsigned char gap[nNoManLandSize];</span><br><span class="line">&#125;_CrtMenBlockHeader;</span><br></pre></td></tr></table></figure>
-<h3 id="alloca"><a href="#alloca" class="headerlink" title="_alloca"></a>_alloca</h3><p>_alloca是在栈上申请空间的，用户不需要管理，由编译器自动维护。一旦出了使用_alloca的函数，所申请的空间会自动被收回去，不需要显式释放。</p>
-<h3 id="常见的内存泄漏"><a href="#常见的内存泄漏" class="headerlink" title="常见的内存泄漏"></a>常见的内存泄漏</h3><ul>
-<li>内存申请了忘记释放</li>
-<li>指向新空间的两个指针p1、p2，若p1 = p2，这时p1、p2指向同一块空间，若free(p1);free(p2),会使同一块空间被释放两次。原来p2指向的内存块，会丢失，导致内存泄漏。</li>
-<li>使用的空间大于开辟的空间，会将防止越界的四个字节占用，在释放内存时，会出问题</li>
-<li>释放时传入的地址与申请时的地方不同</li>
-</ul>
-<h1 id="C-中申请空间"><a href="#C-中申请空间" class="headerlink" title="C++中申请空间"></a>C++中申请空间</h1><h3 id="关键字new和delete"><a href="#关键字new和delete" class="headerlink" title="关键字new和delete"></a>关键字new和delete</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int* p = new int;</span><br><span class="line">int* p1 = new int(5);</span><br><span class="line">int* p2 = new int[10];</span><br><span class="line"></span><br><span class="line">delete p;</span><br><span class="line">delete p1;</span><br><span class="line">delete[] p2;//释放连续空间</span><br></pre></td></tr></table></figure>
-<ul>
-<li>用new申请出的空间，不需要判空，p2申请的空间时连续的(数组的形式)</li>
-<li>用delete删除连续空间时，需使用释放p2的形式</li>
-<li>delete和new可以进行重载</li>
-<li>new申请的空间，是一个完整的对象</li>
-</ul>
-<p><strong>delete[]和new[]要成对使用，delete和new要成对使用</strong></p>
-<p>接下来看一段代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	Test()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;Test():&quot; &lt;&lt; this &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	~Test()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;~Test():&quot; &lt;&lt; this &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	Test* p1 = (Test*)malloc(sizeof(Test));</span><br><span class="line">	Test* p2 = new Test;</span><br><span class="line">	Test* p3 = new Test[10];</span><br><span class="line">	</span><br><span class="line">	free(p1);</span><br><span class="line">	delete p2;</span><br><span class="line">	delete[] p3;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/%E6%8D%95%E8%8E%B7.PNG" height="400" width="350"><br></div>
-
-<p>由此我们可以看出:</p>
-<ul>
-<li>new出一个对象会调用类的构造函数，delete一个对象会调用类的析构函数</li>
-<li>malloc不会调用类的构造函数，free不会调用类的析构函数</li>
-<li>对于p3空间的申请与销毁，p3申请并开辟了10个Test对象的空间，则调用了十次构造函数，销毁时也就调用了10次析构函数</li>
-</ul>
+        <h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p>抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模</p>
+<h3 id="对象的三要素"><a href="#对象的三要素" class="headerlink" title="对象的三要素"></a>对象的三要素</h3><p>id、type、value</p>
+<h3 id="对象的三大特性"><a href="#对象的三大特性" class="headerlink" title="对象的三大特性"></a>对象的三大特性</h3><p>封装、继承、多态 </p>
+<h3 id="封装和接口"><a href="#封装和接口" class="headerlink" title="封装和接口"></a>封装和接口</h3><p><strong>封装</strong></p>
+<p>封装是对数据和信息进行隐藏，对象的使用者只能通过接口来访问或修改对象的数据</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>所有的类都继承于根类(object)</p>
+<p><strong>根类</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Animal(object):</span><br><span class="line"></span><br><span class="line">	#静态变量</span><br><span class="line"></span><br><span class="line">    x=0 </span><br><span class="line"></span><br><span class="line">	#非静态成员方法</span><br><span class="line"></span><br><span class="line">	def Print(self):</span><br><span class="line"></span><br><span class="line">		print &quot;print&quot; </span><br><span class="line"></span><br><span class="line">	#非静态变量</span><br><span class="line"></span><br><span class="line">	def __init__(self):</span><br><span class="line"></span><br><span class="line">		self.Name=&quot;name&quot;</span><br><span class="line"></span><br><span class="line">		self.Age=10</span><br><span class="line">	</span><br><span class="line">	#静态成员方法</span><br><span class="line"></span><br><span class="line">	@staticmethod</span><br><span class="line"></span><br><span class="line">	def Print1()</span><br><span class="line"></span><br><span class="line">		print &quot;print1&quot;</span><br><span class="line"></span><br><span class="line">print Animal.x</span><br><span class="line"></span><br><span class="line">#类的实例化</span><br><span class="line"></span><br><span class="line">A=Animal()</span><br><span class="line"></span><br><span class="line">print A.Name,A.Age</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>根类中有静态变量、非静态成员方法，非静态变量、静态成员方法</p>
+<p>非静态变量和方法要有self关键字</p>
+<h3 id="继承-1"><a href="#继承-1" class="headerlink" title="继承"></a>继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Dog(Animal)</span><br></pre></td></tr></table></figure>
+<p>Dog继承自Animal</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>子类可以进行自由扩展，对调用封闭</p>
 <p>欢迎交流~</p>
 
       
@@ -369,13 +325,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/17/动态内存开辟/">动态内存开辟</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/18/Python之面向对象/">Python之面向对象</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-17, 12:03:54</p>
-        <p><span>最后更新:</span>2018-12-26, 19:18:23</p>
+        <p><span>发布时间:</span>2018-08-18, 19:56:00</p>
+        <p><span>最后更新:</span>2018-12-02, 19:56:49</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/17/动态内存开辟/" title="动态内存开辟">http://www.bingoxin.top/2018/06/17/动态内存开辟/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/17/动态内存开辟/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/18/Python之面向对象/" title="Python之面向对象">http://www.bingoxin.top/2018/08/18/Python之面向对象/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/18/Python之面向对象/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -388,15 +344,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/27/C-的三大特性之继承/">
-                    C++的三大特性之继承
+                <a href="/2018/08/28/STL的底层与应用/">
+                    STL的底层与应用
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/10/C-中类的实例化对象/">
-                    C++中类的实例化对象
+                <a href="/2018/08/14/Python中的文件操作/">
+                    Python中的文件操作
                 </a>
             </div>
         
@@ -408,9 +364,9 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C语言中实现方式"><span class="toc-number">1.</span> <span class="toc-text">C语言中实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较malloc-calloc-realloc"><span class="toc-number">2.</span> <span class="toc-text">比较malloc/calloc/realloc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#malloc实现原理"><span class="toc-number">3.</span> <span class="toc-text">malloc实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alloca"><span class="toc-number">4.</span> <span class="toc-text">_alloca</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的内存泄漏"><span class="toc-number">5.</span> <span class="toc-text">常见的内存泄漏</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#C-中申请空间"><span class="toc-number"></span> <span class="toc-text">C++中申请空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字new和delete"><span class="toc-number">1.</span> <span class="toc-text">关键字new和delete</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象"><span class="toc-number">1.</span> <span class="toc-text">抽象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的三要素"><span class="toc-number">2.</span> <span class="toc-text">对象的三要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的三大特性"><span class="toc-number">3.</span> <span class="toc-text">对象的三大特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装和接口"><span class="toc-number">4.</span> <span class="toc-text">封装和接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承"><span class="toc-number">5.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承-1"><span class="toc-number">6.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多态"><span class="toc-number">7.</span> <span class="toc-text">多态</span></a></li></ol>
         
-    </li></div>
+    </div>
     <style>
         .left-col .switch-btn,
         .left-col .switch-area {
@@ -444,7 +400,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"动态内存开辟　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Python之面向对象　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -481,7 +437,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/27/C-的三大特性之继承/" title="上一篇: C++的三大特性之继承">
+            <a href="/2018/08/28/STL的底层与应用/" title="上一篇: STL的底层与应用">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -489,7 +445,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/10/C-中类的实例化对象/" title="下一篇: C++中类的实例化对象">
+            <a href="/2018/08/14/Python中的文件操作/" title="下一篇: Python中的文件操作">
                 <i class="fa fa-angle-right"></i>
             </a>
         
