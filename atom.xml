@@ -157,6 +157,33 @@
   </entry>
   
   <entry>
+    <title>Linux中的权限</title>
+    <link href="http://www.bingoxin.top/2018/09/03/Linux%E4%B8%AD%E7%9A%84%E6%9D%83%E9%99%90/"/>
+    <id>http://www.bingoxin.top/2018/09/03/Linux中的权限/</id>
+    <published>2018-09-03T11:59:51.000Z</published>
+    <updated>2018-12-15T12:00:47.033Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Linux下的用户"><a href="#Linux下的用户" class="headerlink" title="Linux下的用户"></a>Linux下的用户</h3><ul><li>超级用户—#</li></ul><p>可以在Linux系统下做任何事情</p><ul><li>普通用户—$</li></ul><p>在Linux下做有限的事情</p><a id="more"></a><h3 id="用户切换命令—su"><a href="#用户切换命令—su" class="headerlink" title="用户切换命令—su"></a>用户切换命令—su</h3><ul><li><code>su (root)</code></li></ul><p>由普通用户切换到root用户</p><ul><li><code>su user</code></li></ul><p>由root用户切换到普通用户</p><h3 id="文件类型区分"><a href="#文件类型区分" class="headerlink" title="文件类型区分"></a>文件类型区分</h3><p>在Windows下，文件类型的区分是由文件的后缀决定的，而在Linux下文件的后缀并不起决定性作用</p><p>输入<code>ll</code>，可以得到文件的属性，而第一列就是文件的类型</p><ul><li><p>以-开头为普通文件</p></li><li><p>以d开头为目录文件</p></li><li><p>以p开头为管道文件</p></li><li><p>以l开头为链接文件</p></li></ul><h3 id="Linux权限管理"><a href="#Linux权限管理" class="headerlink" title="Linux权限管理"></a>Linux权限管理</h3><ul><li>文件访问者</li></ul><blockquote><p>a.u—文件和目录的拥有者</p><p>b.g—文件和目录的所有者所在组的用户</p><p>c.o—其他用户</p></blockquote><p>输入<code>ll</code>命令后，除了第一列，其他九列三列为一组，代表拥有者、所属组和other的权限</p><blockquote><p>r–读</p><p>w–写</p><p>x–执行</p></blockquote><p>将权限看做一列，第三列是文件的拥有者，第四列是文件的所属组</p><ul><li>权限修改</li></ul><p><strong>单个权限修改</strong></p><p><code>chmod 访问者 +/- 权限 文件名</code>将文件的访问者某访问权限增加或取消</p><p><strong>多个权限修改</strong></p><p><code>chmod 访问者1 +/- 权限,访问者2 +/- 权限 文件名</code>将文件的多个访问者某访问权限增加或取消</p><p>或者将用二进制来表示访问者的权限，权限共有r/w/x，则r—4，w—2，x—1</p><p>例如：</p><p><code>chmod 777 文件名</code>给所有的访问者赋予所有权限</p><ul><li>修改文件的拥有者和所属组</li></ul><p><code>chown 访问者 文件名</code>将文件的拥有者或所属组进行修改，将普通用户转换为root用户时，需在命令前加sudo关键字</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Linux下的用户&quot;&gt;&lt;a href=&quot;#Linux下的用户&quot; class=&quot;headerlink&quot; title=&quot;Linux下的用户&quot;&gt;&lt;/a&gt;Linux下的用户&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;超级用户—#&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以在Linux系统下做任何事情&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;普通用户—$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在Linux下做有限的事情&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.bingoxin.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>STL的底层与应用</title>
     <link href="http://www.bingoxin.top/2018/08/28/STL%E7%9A%84%E5%BA%95%E5%B1%82%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
     <id>http://www.bingoxin.top/2018/08/28/STL的底层与应用/</id>
@@ -448,27 +475,6 @@
     
       &lt;p&gt;在学习C语言的过程中，我们会遇到不同类型变量的转换 &lt;/p&gt;
 &lt;p&gt;在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？
-    
-    </summary>
-    
-    
-      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>类与结构体</title>
-    <link href="http://www.bingoxin.top/2018/07/25/%E7%B1%BB%E4%B8%8E%E7%BB%93%E6%9E%84%E4%BD%93/"/>
-    <id>http://www.bingoxin.top/2018/07/25/类与结构体/</id>
-    <published>2018-07-25T11:06:21.000Z</published>
-    <updated>2018-12-26T11:08:18.342Z</updated>
-    
-    <content type="html"><![CDATA[<p>在学习C语言的时候，我们就已经接触到了结构体，接触到C++我们有学习到了有关于类的知识 </p><p>接下来，让我们来搞懂这些吧~<a id="more"></a></p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="C语言和C-中的结构体有什么区别"><a href="#C语言和C-中的结构体有什么区别" class="headerlink" title="C语言和C++中的结构体有什么区别"></a>C语言和C++中的结构体有什么区别</h3><p>1.C语言中的结构体不能定义函数，而C++中的结构体不只可以有函数，还可以有虚函数</p><p>2.C语言中的内部成员的访问权限只有public，而C++中的内部成员变量的访问权限有public、protected、private三种</p><p>3.C语言的结构体是不可以继承的，而C++中的结构体可以继承自结构体或类</p><h3 id="C-中类与结构体有什么区别"><a href="#C-中类与结构体有什么区别" class="headerlink" title="C++中类与结构体有什么区别"></a>C++中类与结构体有什么区别</h3><p>1.为了兼容C，结构体内部成员变量的默认访问权限是public，而类的默认访问权限是private</p><p>2.结构体的默认继承权限是public，类的默认继承权限是private</p><p>理论上结构体可以做到的类都可以做到，类能做到的结构体不一定能做到</p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在学习C语言的时候，我们就已经接触到了结构体，接触到C++我们有学习到了有关于类的知识 &lt;/p&gt;
-&lt;p&gt;接下来，让我们来搞懂这些吧~
     
     </summary>
     

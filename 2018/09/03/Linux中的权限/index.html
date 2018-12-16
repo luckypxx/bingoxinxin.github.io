@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="ls  罗列出当前目录下的文件 -a 列出隐藏文件（.test）  ll  罗列出当前目录下所有文件的属性  cd  进入或退出路径 . 表示当前路径 ..表示上级路径  pwd  打印当前位置的路径  mv  将一个文件移动到指定位置  cp  将一个文件赋值到指定位置  cat  打印出文档的内容  tac  倒着打印出文档的内容  more  打印出可以输出到当前屏幕文档内容，用回车键下翻">
+<meta name="description" content="Linux下的用户 超级用户—#  可以在Linux系统下做任何事情  普通用户—$  在Linux下做有限的事情">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux常用指令">
-<meta property="og:url" content="http://www.bingoxin.top/2018/08/12/Linux常用指令/index.html">
+<meta property="og:title" content="Linux中的权限">
+<meta property="og:url" content="http://www.bingoxin.top/2018/09/03/Linux中的权限/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="ls  罗列出当前目录下的文件 -a 列出隐藏文件（.test）  ll  罗列出当前目录下所有文件的属性  cd  进入或退出路径 . 表示当前路径 ..表示上级路径  pwd  打印当前位置的路径  mv  将一个文件移动到指定位置  cp  将一个文件赋值到指定位置  cat  打印出文档的内容  tac  倒着打印出文档的内容  more  打印出可以输出到当前屏幕文档内容，用回车键下翻">
+<meta property="og:description" content="Linux下的用户 超级用户—#  可以在Linux系统下做任何事情  普通用户—$  在Linux下做有限的事情">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-06T11:51:43.397Z">
+<meta property="og:updated_time" content="2018-12-15T12:00:47.033Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux常用指令">
-<meta name="twitter:description" content="ls  罗列出当前目录下的文件 -a 列出隐藏文件（.test）  ll  罗列出当前目录下所有文件的属性  cd  进入或退出路径 . 表示当前路径 ..表示上级路径  pwd  打印当前位置的路径  mv  将一个文件移动到指定位置  cp  将一个文件赋值到指定位置  cat  打印出文档的内容  tac  倒着打印出文档的内容  more  打印出可以输出到当前屏幕文档内容，用回车键下翻">
+<meta name="twitter:title" content="Linux中的权限">
+<meta name="twitter:description" content="Linux下的用户 超级用户—#  可以在Linux系统下做任何事情  普通用户—$  在Linux下做有限的事情">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Linux常用指令 | bingoxin&#39;s blog</title>
+<title>Linux中的权限 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-Linux常用指令" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Linux中的权限" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/12/Linux常用指令/" class="article-date">
-      <time datetime="2018-08-12T11:50:35.000Z" itemprop="datePublished">2018-08-12</time>
+      <a href="/2018/09/03/Linux中的权限/" class="article-date">
+      <time datetime="2018-09-03T11:59:51.000Z" itemprop="datePublished">2018-09-03</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Linux常用指令
+      Linux中的权限
     </h1>
   
 
@@ -302,96 +302,64 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ul>
-<li>ls</li>
+        <h3 id="Linux下的用户"><a href="#Linux下的用户" class="headerlink" title="Linux下的用户"></a>Linux下的用户</h3><ul>
+<li>超级用户—#</li>
 </ul>
-<p>罗列出当前目录下的文件</p>
-<p>-a 列出隐藏文件（.test）</p>
+<p>可以在Linux系统下做任何事情</p>
 <ul>
-<li>ll</li>
+<li>普通用户—$</li>
 </ul>
-<p>罗列出当前目录下所有文件的属性</p>
+<p>在Linux下做有限的事情</p>
+<a id="more"></a>
+<h3 id="用户切换命令—su"><a href="#用户切换命令—su" class="headerlink" title="用户切换命令—su"></a>用户切换命令—su</h3><ul>
+<li><code>su (root)</code></li>
+</ul>
+<p>由普通用户切换到root用户</p>
 <ul>
-<li>cd</li>
+<li><code>su user</code></li>
 </ul>
-<p>进入或退出路径</p>
-<p>. 表示当前路径</p>
-<p>..表示上级路径</p>
+<p>由root用户切换到普通用户</p>
+<h3 id="文件类型区分"><a href="#文件类型区分" class="headerlink" title="文件类型区分"></a>文件类型区分</h3><p>在Windows下，文件类型的区分是由文件的后缀决定的，而在Linux下文件的后缀并不起决定性作用</p>
+<p>输入<code>ll</code>，可以得到文件的属性，而第一列就是文件的类型</p>
 <ul>
-<li>pwd</li>
+<li><p>以-开头为普通文件</p>
+</li>
+<li><p>以d开头为目录文件</p>
+</li>
+<li><p>以p开头为管道文件</p>
+</li>
+<li><p>以l开头为链接文件</p>
+</li>
 </ul>
-<p>打印当前位置的路径</p>
+<h3 id="Linux权限管理"><a href="#Linux权限管理" class="headerlink" title="Linux权限管理"></a>Linux权限管理</h3><ul>
+<li>文件访问者</li>
+</ul>
+<blockquote>
+<p>a.u—文件和目录的拥有者</p>
+<p>b.g—文件和目录的所有者所在组的用户</p>
+<p>c.o—其他用户</p>
+</blockquote>
+<p>输入<code>ll</code>命令后，除了第一列，其他九列三列为一组，代表拥有者、所属组和other的权限</p>
+<blockquote>
+<p>r–读</p>
+<p>w–写</p>
+<p>x–执行</p>
+</blockquote>
+<p>将权限看做一列，第三列是文件的拥有者，第四列是文件的所属组</p>
 <ul>
-<li>mv</li>
+<li>权限修改</li>
 </ul>
-<p>将一个文件移动到指定位置</p>
+<p><strong>单个权限修改</strong></p>
+<p><code>chmod 访问者 +/- 权限 文件名</code>将文件的访问者某访问权限增加或取消</p>
+<p><strong>多个权限修改</strong></p>
+<p><code>chmod 访问者1 +/- 权限,访问者2 +/- 权限 文件名</code>将文件的多个访问者某访问权限增加或取消</p>
+<p>或者将用二进制来表示访问者的权限，权限共有r/w/x，则r—4，w—2，x—1</p>
+<p>例如：</p>
+<p><code>chmod 777 文件名</code>给所有的访问者赋予所有权限</p>
 <ul>
-<li>cp</li>
+<li>修改文件的拥有者和所属组</li>
 </ul>
-<p>将一个文件赋值到指定位置</p>
-<ul>
-<li>cat</li>
-</ul>
-<p>打印出文档的内容</p>
-<ul>
-<li>tac</li>
-</ul>
-<p>倒着打印出文档的内容</p>
-<ul>
-<li>more</li>
-</ul>
-<p>打印出可以输出到当前屏幕文档内容，用回车键下翻，q键退出</p>
-<ul>
-<li>less</li>
-</ul>
-<p>打印出可以输出到当前屏幕文档内容，用上下键上下翻，q键退出</p>
-<ul>
-<li>grep</li>
-</ul>
-<p>有筛选功能，可以用来查找含有关键字的内容</p>
-<p><code>grep &#39;关键字&#39; 路径</code></p>
-<ul>
-<li>head</li>
-</ul>
-<p>打印出文档前指定行数的内容</p>
-<ul>
-<li>tail</li>
-</ul>
-<p>打印出文档后指定行数的内容</p>
-<ul>
-<li>whoami</li>
-</ul>
-<p>打印出当前使用者姓名</p>
-<ul>
-<li>ps aux</li>
-</ul>
-<p>打印所有的进程</p>
-<ul>
-<li>top</li>
-</ul>
-<p>查看进程相关信息，相当于Windows下的任务管理器</p>
-<ul>
-<li>find</li>
-</ul>
-<p><code>find ~/bit-code/ -name test.c</code>查找在目标路径下文件名为test.c的文件</p>
-<ul>
-<li>halt</li>
-</ul>
-<p>关机命令，shutdown也可以</p>
-<ul>
-<li>echo</li>
-</ul>
-<p><code>echo &quot;内容&quot;</code>将指定内容打印出来</p>
-<p><code>echo &quot;内容&quot; &gt; 文件名</code>将内容写进指定文件里   ”&gt;“为输出重定项</p>
-<p><code>echo &quot;内容&quot;&gt;&gt;文件名</code>将指定内容追加进指定文件里   “&gt;&gt;”追加重定项</p>
-<ul>
-<li>|</li>
-</ul>
-<p>管道，用来连接两条命令，将左侧命令的输出作为右侧命令的输入</p>
-<ul>
-<li>file</li>
-</ul>
-<p>查看文件类型</p>
+<p><code>chown 访问者 文件名</code>将文件的拥有者或所属组进行修改，将普通用户转换为root用户时，需在命令前加sudo关键字</p>
 <p>欢迎交流~</p>
 
       
@@ -401,13 +369,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/12/Linux常用指令/">Linux常用指令</a></p>
+        <p><span>本文标题:</span><a href="/2018/09/03/Linux中的权限/">Linux中的权限</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-08-12, 19:50:35</p>
-        <p><span>最后更新:</span>2018-12-06, 19:51:43</p>
+        <p><span>发布时间:</span>2018-09-03, 19:59:51</p>
+        <p><span>最后更新:</span>2018-12-15, 20:00:47</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/12/Linux常用指令/" title="Linux常用指令">http://www.bingoxin.top/2018/08/12/Linux常用指令/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/12/Linux常用指令/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/03/Linux中的权限/" title="Linux中的权限">http://www.bingoxin.top/2018/09/03/Linux中的权限/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/09/03/Linux中的权限/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -420,15 +388,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/14/Python中的文件操作/">
-                    Python中的文件操作
+                <a href="/2018/12/20/JDBC/">
+                    JDBC
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/11/Python中的模块和包/">
-                    Python中的模块和包
+                <a href="/2018/08/28/STL的底层与应用/">
+                    STL的底层与应用
                 </a>
             </div>
         
@@ -440,7 +408,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux下的用户"><span class="toc-number">1.</span> <span class="toc-text">Linux下的用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户切换命令—su"><span class="toc-number">2.</span> <span class="toc-text">用户切换命令—su</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件类型区分"><span class="toc-number">3.</span> <span class="toc-text">文件类型区分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux权限管理"><span class="toc-number">4.</span> <span class="toc-text">Linux权限管理</span></a></li></ol>
         
     </div>
     <style>
@@ -476,7 +444,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Linux常用指令　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Linux中的权限　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -513,7 +481,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/14/Python中的文件操作/" title="上一篇: Python中的文件操作">
+            <a href="/2018/12/20/JDBC/" title="上一篇: JDBC">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -521,7 +489,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/11/Python中的模块和包/" title="下一篇: Python中的模块和包">
+            <a href="/2018/08/28/STL的底层与应用/" title="下一篇: STL的底层与应用">
                 <i class="fa fa-angle-right"></i>
             </a>
         
