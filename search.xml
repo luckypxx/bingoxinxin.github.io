@@ -107,6 +107,23 @@
     </entry>
     
     <entry>
+      <title>Linux中的开发工具</title>
+      <link href="/2018/09/06/Linux%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+      <url>/2018/09/06/Linux%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</url>
+      
+        <content type="html"><![CDATA[<p>使用Linux，免不了和开发工具打交道，开发工具都有哪些呢？</p><a id="more"></a><h3 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h3><p>说起文本编辑器，大家首先想到的应该就是vim了，毕竟只要打开一个文本都需要的它</p><p>你的vim可能什么特殊功能都没有</p><p>接下来看一下有关于vim的配置吧~</p><h4 id="首先输入命令"><a href="#首先输入命令" class="headerlink" title="首先输入命令"></a>首先输入命令</h4><pre><code>su  </code></pre><p>这时需要输入密码，将权限切换到root权限</p><h4 id="输入以下指令"><a href="#输入以下指令" class="headerlink" title="输入以下指令"></a>输入以下指令</h4><pre><code>cd ~cd /etcvim vimrc</code></pre><p>进入到vimrc的文本编辑</p><h4 id="在最后一行加入"><a href="#在最后一行加入" class="headerlink" title="在最后一行加入"></a>在最后一行加入</h4><pre><code>set nuset tabstop=4set cursorline</code></pre><p>即可更改vim的配置，三条语句的作用一次是</p><blockquote><p>在左侧添加行号</p></blockquote><blockquote><p>tab键的空格数，赋值为4，即一个tab键等于4个空格</p></blockquote><blockquote><p>标识当前行</p></blockquote><p>在Linux下，还有Emacs、Sublime Text、Lime、Atom等</p><h3 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h3><p>Linux中常见的编译器就是gcc</p><p>gcc是C语言编译器</p><blockquote><p>-c 只编译子程序</p><p>-o 产生目标文件</p><p>-g 附加调试信息</p></blockquote><p>例如，<strong>test.c的编译过程</strong></p><p>gcc -E test.c   预处理  会生成临时文件test.i</p><p>gcc -S test.i -o test.s  生成汇编代码  会生成临时文件test.s</p><p>gcc -c test.s -o test.o  生成二进制文件  会生成临时文件test.o</p><p>gcc -o test test.o  进行链接操作  会生成可执行文件test</p><h3 id="调试器"><a href="#调试器" class="headerlink" title="调试器"></a>调试器</h3><p>GDB是一个调试程序的调试器</p><p>GDB可以调试C、C++等</p><h3 id="make与makefile"><a href="#make与makefile" class="headerlink" title="make与makefile"></a>make与makefile</h3><p>我们在编译一个C文件后，会产生一个a.out文件，这是一个可执行的二进制文件，若要执行文件，使用./a.out即可</p><p>注意：make不是编译器</p><h4 id="make与makefile的区别："><a href="#make与makefile的区别：" class="headerlink" title="make与makefile的区别："></a>make与makefile的区别：</h4><p>make是一条命令，makefile是一个文件</p><h4 id="makefile的编写"><a href="#makefile的编写" class="headerlink" title="makefile的编写"></a>makefile的编写</h4><p>在讲makefile的撰写之前，先来解释两个名词—依赖关系、依赖方法</p><p><strong>依赖关系</strong>可以看做是两个文件确定之间的关系</p><p><strong>依赖方法</strong>可以看做是两个文件的关系实现的过程</p><ul><li>makefile中放依赖方法和依赖关系</li><li>makefile中可以只有依赖方法</li><li>makefile中依赖方法要以Tab键开头</li></ul><p>例如：</p><pre><code>test:test.c    gcc -o test test.c.THONY:clean clean:    rm -f test</code></pre><p>test:test.c  是依赖关系</p><p>gcc -o test test.c   是依赖方法</p><p>.THONY clean  中的clean是一个伪目标，凡是伪目标，都是总是被执行的；而非伪目标只有被修改时才能编译。</p><p>那么如何确定文件是否是被修改呢？</p><p>当然是看文件最后一次被修改的时间啦~</p><h4 id="make的使用"><a href="#make的使用" class="headerlink" title="make的使用"></a>make的使用</h4><p>每次修改完要编译的文件后，使用 make 命令，如上述makefile：会产生一个test文件，若要执行test.c，只需使用 ./test 即可执行。</p><p>若要执行伪目标，使用 make clean 命令即可</p><h3 id="yum工具—软件包管理器"><a href="#yum工具—软件包管理器" class="headerlink" title="yum工具—软件包管理器"></a>yum工具—软件包管理器</h3><p>yum是一种可以安装软件的工具</p><p>在linux环境下，安装有以下两种：</p><blockquote><p>源码安装：在网上会下载一些程序的源码，编译后就得到了可执行程序(使用make、make install命令)</p></blockquote><blockquote><p>软件包安装：有的人把软件编译好，做成软件包(就像Windows下的应用)</p></blockquote><p>在这里提一下，<strong>软件包和软件包管理器的关系就像APP和应用商店的关系</strong></p><p><strong>yum的使用</strong></p><ul><li><p>yum需要联网状态才能正常工作</p></li><li><p>安装或卸载程序需要sudo命令来权限提升</p><p>sudo yum 文件名//文件安装</p><p>sudo yum remove 文件名 //文件卸载</p></li><li><p>yum list可以罗列出所有的软件包，可以用grep筛选</p></li></ul><p>欢迎交流~</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Linux中的权限</title>
       <link href="/2018/09/03/Linux%E4%B8%AD%E7%9A%84%E6%9D%83%E9%99%90/"/>
       <url>/2018/09/03/Linux%E4%B8%AD%E7%9A%84%E6%9D%83%E9%99%90/</url>
