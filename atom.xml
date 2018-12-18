@@ -186,6 +186,26 @@
   </entry>
   
   <entry>
+    <title>线程</title>
+    <link href="http://www.bingoxin.top/2018/09/17/%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://www.bingoxin.top/2018/09/17/线程/</id>
+    <published>2018-09-17T12:04:43.000Z</published>
+    <updated>2018-12-18T12:05:38.373Z</updated>
+    
+    <content type="html"><![CDATA[<p>当多个PCB指向同一块虚拟地址空间时，这些PCB的资源是共享的，而该PCB被称为一个线程。但是对于CPU来说，是没有办法判断一个PCB是一个进程还是线程。每个PCB都是小于等于一个进程的，则将Linux中的一个进程是一个轻量级进程，这也就可以看出：在Linux下，没有真正意义的线程，线程使用进程模拟出来的。</p><a id="more"></a><p>由以上描述可以发现，在Linux下，进程是承担分配系统资源的基本单位，是由一个执行流、虚拟地址空间、页表和映射关系组成的。线程是调度的基本单位，由多个执行流、一个虚拟地址空间、页表和映射关系组成的。那么在Linux中，就没有进程和线程的区别，则线程称为轻量级进程。</p><h3 id="线程的优点"><a href="#线程的优点" class="headerlink" title="线程的优点"></a>线程的优点</h3><blockquote><p>1.创建一个线程要比创建一个进程的代价小的多</p><p>2.与进程相比线程切换的工作量要小的多</p><p>3.线程占用的资源比较小</p><p>4.线程可以并行</p></blockquote><h3 id="线程的缺点"><a href="#线程的缺点" class="headerlink" title="线程的缺点"></a>线程的缺点</h3><blockquote><p>1.性能缺失</p><p>2.健壮性降低</p><p>3.缺乏访问控制</p><p>4.编程难度提高</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当多个PCB指向同一块虚拟地址空间时，这些PCB的资源是共享的，而该PCB被称为一个线程。但是对于CPU来说，是没有办法判断一个PCB是一个进程还是线程。每个PCB都是小于等于一个进程的，则将Linux中的一个进程是一个轻量级进程，这也就可以看出：在Linux下，没有真正意义的线程，线程使用进程模拟出来的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.bingoxin.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux中的开发工具</title>
     <link href="http://www.bingoxin.top/2018/09/06/Linux%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     <id>http://www.bingoxin.top/2018/09/06/Linux中的开发工具/</id>
@@ -456,33 +476,6 @@
     <summary type="html">
     
       &lt;p&gt;在了解了一下Python入门知识之后，接下来来学习一下Python的一些基础语法吧~&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://www.bingoxin.top/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python基础小知识</title>
-    <link href="http://www.bingoxin.top/2018/08/01/Python%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
-    <id>http://www.bingoxin.top/2018/08/01/Python基础小知识/</id>
-    <published>2018-08-01T11:07:17.000Z</published>
-    <updated>2018-12-26T11:16:56.856Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近开始学习Python，以前只是听说过Python是一种脚本语言，没有进行过多的了解 </p><p>Python拥有强大的类库，支持面向过程、面向对象、函数式编程多种编程风格</p><p>通过今天的学习了解到，Python是一种脚本解释语言，像C、C++都属于编译语言</p><p>我们都了解，C/C++在编译过程中，会生成中间产物—.obj文件等，而Python不会</p><p>Python程序的执行时读一行执行一行，所以程序执行的比较慢</p><p>这也就使得Python不可以做开发底层、移动端开发和游戏</p><p>Python的脚本文件是.py，为了提高其执行效率，执行过的程序会生成.pyc文件</p><p>在执行程序时，若检测到有.pyc文件，会优先选择.pyc文件执行<a id="more"></a></p><h3 id="编程须知"><a href="#编程须知" class="headerlink" title="编程须知"></a>编程须知</h3><p>一般写程序，用Linux系统自带的编辑器</p><p>输入命令 Python 即可知道当前系统下Python的版本，这也就进入了Python的解释器</p><p>我们可以把解释器当做是一个基本的计算器，其也可以执行符合Python语法的语句</p><pre><code>例如：输入：1+2输出：3输入：print &apos;hello world&apos;输出：hello world</code></pre><p>按ctrl+d，即可退出解释器</p><p>wim test.py  创建test.py文件，进行编辑</p><p>编辑完成后，按Esc切换到命令模式，然后输入  :wq   回车就自动保存完成了</p><p>输入命令 python test.py 执行代码</p><font color="blue" size="3">两条重要指令</font><pre><code>#!/usr/bin/python有了这条指令，若要执行.py文件，就可以使用 ./test.py 命令#coding:utf-8该指令是一条声明指令，使得文件中可以编辑汉字</code></pre><p>在C/C++中，注释有2种形式：// 和 /**/</p><p>Python中的注释方法是在语句前加一个#</p><h3 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h3><p>根据对变量的赋值确定变量类型，若改变类型，需要强转</p><p>因此在定义变量时，不需要写变量类型</p><h3 id="赋值方式"><a href="#赋值方式" class="headerlink" title="赋值方式"></a>赋值方式</h3><p>赋值方式有三种：</p><p>a.链式赋值：</p><pre><code>a=b=c=1</code></pre><p>b.增量赋值</p><pre><code>a=20*b</code></pre><p>c.多元赋值</p><pre><code>x,y=1,2</code></pre><p>若同一变量多次赋值，以最后一次赋值为准</p><h3 id="变量名规范"><a href="#变量名规范" class="headerlink" title="变量名规范"></a>变量名规范</h3><p>变量名规范和C/C++相同，变量名首字可以是字母下划线不可以是数字</p><p>由多个单词组成的变量名，比较美观的命名形式：</p><p>a.两个单词之间用下划线相连   person_name</p><p>b.小驼峰—除第一个单词，其他单词首字母用大写形式   personName</p><p>c.大驼峰—每个单词的首字母用大写形式   PersonName</p><h3 id="打印变量类型"><a href="#打印变量类型" class="headerlink" title="打印变量类型"></a>打印变量类型</h3><p>type(变量名)</p><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>Python中有整型、浮点型和字符串类型，没有字符类型。</p><p>Python中对数字大小没有限制，内存有多大，数字就可以有多大</p><p>还多了一种复数类型  比如打印一个复数： print 10+2j</p><font color="blue" size="3">字符串：</font><p>声明字符串可以用，‘’、””、”‘’”</p><p>打印一个含有引号的字符串，在C/C++中，需要使用到转义字符，而在Python中不需要</p><p>字符串的操作：</p><p>a.+代表字符串拼接</p><pre><code>print &quot;abc&quot;+&quot;def&quot;运行结果：abcdef</code></pre><p>b.*代表字符串重复</p><pre><code>print &quot;abc&quot;*3运行结果：abcabcabc</code></pre><font color="blue" size="3">下标取值法</font><p>取指定位置的元素，即一个字符串的单独元素</p><p>字符串无法改变一个位置的变量，只能重新定义一个字符串</p><p>在Python中没有字符类型，只有字符串类型</p><font color="blue" size="3">切片操作法</font><p>用str[:]==&gt;构成前闭后开区间</p><p>默认从0开始，在字符串长度结束</p><p>填写负数时，代表len-n</p><p>字符串格式化：</p><p>举个栗子：</p><pre><code>str2=&quot;num is %d&quot; % 10运行结果：num is 10</code></pre><p>%d代表要初始化的类型以及标注了初始化的位置</p><p>把要输出的内容和初始化的数值用%隔开<br>​     </p><h3 id="len"><a href="#len" class="headerlink" title="len()"></a>len()</h3><p>判断字符串长度</p><h3 id="布尔类型-bool"><a href="#布尔类型-bool" class="headerlink" title="布尔类型(bool)"></a>布尔类型(bool)</h3><p>这和我们接触到的c++里的相同，true代表真的，在运行时被当做1，false代表假的，在运行时被当做0</p><h3 id="获取用户输入的函数"><a href="#获取用户输入的函数" class="headerlink" title="获取用户输入的函数"></a>获取用户输入的函数</h3><p>获取用户输入的函数名raw_input()，返回值为str类型</p><p>例如：</p><pre><code>str1=raw_input(&quot;请输入：&quot;)</code></pre><p>当该语句运行时，屏幕会打印括号里的字符串，并等待用户输入</p><h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><p>在我们之前学过的+、-、*、/、%的基础上，没有++和–</p><p>**代表乘方：</p><pre><code>print 2**3</code></pre><p>运行结果为：8</p><p>除法有三种：</p><p>a.传统除法   即2/1</p><p>b.精确除法</p><p>输入from <strong>future</strong> import division指令</p><p>此后所有的除法都按照精确除法求值</p><p>c.地板除(//)   即将结果向下取整</p><p>例如：</p><pre><code>a=1b=2print 1//2</code></pre><p>运行结果为：0</p><h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><p>有&gt;、&lt;、&gt;=、&lt;=、==、!=</p><p>与之前我们接触过的比较运算符不同的是</p><p>与或非：与是and  或是or  非是not</p><h3 id="列表、元组、字典"><a href="#列表、元组、字典" class="headerlink" title="列表、元组、字典"></a>列表、元组、字典</h3><font color="blue" size="3">列表</font><br>list[]<br><br>列表可以下标取值、对象可变、可切片操作，为前闭后开区间<br><br>定义一个列表：list=[1,0.5,”123”,[1,2]]<br><br>从这个列表中，我们可以知道，列表中放的数据可以是不同类型的<br><br>使用 type(list)  可以得到其类型 list<br><br><font color="blue" size="3">元组</font><br>tuple()<br><br>元组对象不可变，可下标访问<br><br>定义方式为：tuple=(1,2,3,4)<br><br><font color="blue" size="3">字典</font><br>dict{}<br><br>字典是以键值对的方式保存数据，可改变对象<br><br>可以通过key得到或赋值value<br><br>若赋值一个新的key，会自动添加新的键值对<br><br>### 引用<br><br>定义几个变量为相同值，可以<br><br>     a=b=c=1<br><br>这在C/C++中也是可以这样赋值，但会开辟三个空间存放数字1<br><br>而在Python中，对象有三要素：id、type、value<br><br>id是一个对象的唯一标识符，type是对象的类型，value是对象的值<br><br>所以在Python中，该语句执行后，a、b、c三个变量会引用这同一个对象，即在同一对象贴上标签<br><br>可通过 id(对象) 来判断其唯一标识符<br><br>### 代码块及缩进<br><br>在C/C++中，我们是以{}来划分代码块的，在Python中我们是以缩进相同来区分代码<br><br>例如：<br><br>     if 1&lt;2:<br><br>         print ‘yes’<br><br>     print ‘no’<br><br>由此我们可知print ‘yes’与if 1&lt;2：是一个代码块<br><br>### range(start,stop,step)<br><br>该函数的功能是：从start到stop间隔是step构成的前闭后开的区间，start的默认值为0，step默认为1<br><br>### 语句折行<br><br>在编写代码时，我们会遇到语句过长的情况，这时我们要注意，代码一定要怎么简洁怎么写<br><br> a.若该语句被小括号、中括号或大括号包起来，可直接换行书写<br><br> b.若没有括号，则需使用\来换行<br><br> c.双引号和单引号字符串都不可换行，但三引号字符串可以直接换行<br><br> d.可以把多个语句写在一行，但是最好不要这样做<br><br>### 变量交换<br><br>在C/C++中，若要交换两个变量的内容，需要借助一个中间变量<br><br>而在python中，可以直接进行交换<br><br>例如：<br><br>     x=1<br><br>     y=2<br><br>     x,y=y,x<br><br>即可交换两个变量，是不是很方便呢？<br><br>bool类型中的true和false的值也可以交换，那么真就是假，假就是真了，但不建议交换<br>​<br>### 作用域和生命周期<br><br>在python中，def、class、lamda会改变变量作用域<br><br>用 globals() 查看当前环境内的全局变量<br><br>用 locals() 查看当前代码块的局部变量<br><br>### 方法私有化<br><br>在python中，在方法名前加下划线表示私有化<br><br>但这只是程序员约定俗成的一种方式，并不是真正意义上的私有化<br><br>因此在python中没有真正的私有化<br><br>### 我们在定义方法时需要注意：<br><br>a.方法名前加下划线表示私有，无法使用from 模块名 improt *导入<br><br>b.方法名前后各加一个下划线表示系统变量<br><br>c.方法名前后各加两个下划线表示系统变量<br><br>### 文档字符串<br><br>#可以用来注释一行内容<br><br>如果我们需要注释多行内容，可以在类或函数之前加上’’’注释内容’’’来表示，这被成为文档字符串<br><br><font color="blue" size="3">doc属性：</font><p>每个对象都有doc属性，用 函数名.<strong>doc</strong> 即可看到使用’’’  ‘’’标注的帮助文档的内容</p><p>使用 help() 也有该作用</p><p>不只是函数或类可以添加帮助文档，模块也可以</p><font color="red" size="3">注意：</font>自己添加的帮助文档，必须放在函数或类的前面，否则无法访问<br><br>### None<br><br>在python中有一种特殊的对象，叫做None，类型为NoneType<br><br>### 对象比较<br><br>对象之间进行比较有三种：对象值的比较、对象身份的比较和对象类型的比较<br><br><font color="blue" size="3">对象值的比较</font><p>所有内建对象都可以用比较操作符进行比较，比较对象的类型必须是相同的</p><p>比较运算符的结果是true和false</p><p>比较运算符有==、!=、&lt;=、&gt;=、&lt;、&gt;</p><font color="blue" size="3">对象身份的比较</font><p>变量名只是对象的一个引用，那么多个变量名就可以引用同一个对象</p><p>可以通过 id() 获得变量引用的对象的id，同时也就可以对多个对象的身份进行比较</p><p>若得到的id值相同，则说明两个变量指向同一个对象</p><p>python还提供了 is、is not 两个关键字，用于比较两个变量名是否指向同一个对象</p><font color="blue" size="3">对象类型的比较</font><p>对于比较两个变量的类型是否相同，可以使用内建函数 type()</p><p>当然啦~类型比较也有比较两个变量的内建函数—isinstance()</p><h3 id="整数的位运算"><a href="#整数的位运算" class="headerlink" title="整数的位运算"></a>整数的位运算</h3><p>整数的位运算有&lt;&lt;、&gt;&gt;、&amp;、^、~</p><p>这些运算符看起来比较陌生的应该是~</p><p>~的功能是按位取反</p><h3 id="内置函数与内置模块"><a href="#内置函数与内置模块" class="headerlink" title="内置函数与内置模块"></a>内置函数与内置模块</h3><font color="blue" size="3">内置函数</font><p>只是一些基本内置函数的功能介绍</p><p> a.abs:求一个整型的绝对值</p><p> b.divmod：同时计算一个表达式的商和余数，返回值是一个元组</p><p> c.str：将数字转换成字符串</p><p> d.round：对浮点数进行四舍五入，共有两个参数，操作数和要保留的小数点后的位数</p><font color="blue" size="3">内置模块</font><p>内置模块主要介绍三种：</p><p> a.整型进制转换：oct()、hex()，参数为整型，返回值是对应字面值得字符串，将十进制转换成八进制和十六进制</p><p> b.math、cmath模块：提供一些方便的数学运算函数，math是常规数学，cmath是复数数学</p><p> c.随机数random模块：参数有两个，确定生成数的范围</p><h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><p>在python中，没有 ：？这样的三目表达式</p><p>取而代之的是</p><pre><code>a = b if a &lt; b else a</code></pre><p>该语句的功能是：判断a是否小于b，若a小于b，则将b指向a的对象，否则a不变</p><h3 id="和循环搭配使用的else"><a href="#和循环搭配使用的else" class="headerlink" title="和循环搭配使用的else"></a>和循环搭配使用的else</h3><p>else不止可以和if一起使用，还可以和for循环、while循环搭配使用</p><p>在与循环搭配时，else语句的功能是：在循环条件不满足时会执行else语句，若break跳出循环，则不执行else的内容</p><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p> a.函数的参数列表不需要写参数类型</p><p> b.函数1中还可以定义函数2，但函数2的作用域只是函数2中</p><p> c.定义函数时，可以给函数指定默认参数，在调用函数时，若不显式的指定参数，就会使用默认参数</p><p> d.对于多个默认参数的函数，可以按照顺序给函数的某几个参数进行传参</p><p>对于d，若只是给指定位置的参数传参我们又该怎么解决呢？</p><font color="blue" size="3">关键字传参</font><p>对于几个默认参数传参，我们可以通过指定关键字来说明给哪个参数传参</p><font color="blue" size="3">参数组</font><p>若将元组或字典当做参数，就可以实现“可变长参数”</p><p>在参数名前加一个*，之后的内容是一个元组</p><p>在参数名前加两个*,之后的内容表示一个字典</p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近开始学习Python，以前只是听说过Python是一种脚本语言，没有进行过多的了解 &lt;/p&gt;
-&lt;p&gt;Python拥有强大的类库，支持面向过程、面向对象、函数式编程多种编程风格&lt;/p&gt;
-&lt;p&gt;通过今天的学习了解到，Python是一种脚本解释语言，像C、C++都属于编译语言&lt;/p&gt;
-&lt;p&gt;我们都了解，C/C++在编译过程中，会生成中间产物—.obj文件等，而Python不会&lt;/p&gt;
-&lt;p&gt;Python程序的执行时读一行执行一行，所以程序执行的比较慢&lt;/p&gt;
-&lt;p&gt;这也就使得Python不可以做开发底层、移动端开发和游戏&lt;/p&gt;
-&lt;p&gt;Python的脚本文件是.py，为了提高其执行效率，执行过的程序会生成.pyc文件&lt;/p&gt;
-&lt;p&gt;在执行程序时，若检测到有.pyc文件，会优先选择.pyc文件执行
     
     </summary>
     

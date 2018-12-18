@@ -124,6 +124,23 @@
     </entry>
     
     <entry>
+      <title>线程</title>
+      <link href="/2018/09/17/%E7%BA%BF%E7%A8%8B/"/>
+      <url>/2018/09/17/%E7%BA%BF%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p>当多个PCB指向同一块虚拟地址空间时，这些PCB的资源是共享的，而该PCB被称为一个线程。但是对于CPU来说，是没有办法判断一个PCB是一个进程还是线程。每个PCB都是小于等于一个进程的，则将Linux中的一个进程是一个轻量级进程，这也就可以看出：在Linux下，没有真正意义的线程，线程使用进程模拟出来的。</p><a id="more"></a><p>由以上描述可以发现，在Linux下，进程是承担分配系统资源的基本单位，是由一个执行流、虚拟地址空间、页表和映射关系组成的。线程是调度的基本单位，由多个执行流、一个虚拟地址空间、页表和映射关系组成的。那么在Linux中，就没有进程和线程的区别，则线程称为轻量级进程。</p><h3 id="线程的优点"><a href="#线程的优点" class="headerlink" title="线程的优点"></a>线程的优点</h3><blockquote><p>1.创建一个线程要比创建一个进程的代价小的多</p><p>2.与进程相比线程切换的工作量要小的多</p><p>3.线程占用的资源比较小</p><p>4.线程可以并行</p></blockquote><h3 id="线程的缺点"><a href="#线程的缺点" class="headerlink" title="线程的缺点"></a>线程的缺点</h3><blockquote><p>1.性能缺失</p><p>2.健壮性降低</p><p>3.缺乏访问控制</p><p>4.编程难度提高</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Linux中的开发工具</title>
       <link href="/2018/09/06/Linux%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
       <url>/2018/09/06/Linux%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</url>

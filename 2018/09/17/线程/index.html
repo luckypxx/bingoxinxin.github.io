@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="列表切片操作法进阶[start,stop,step]  当step&amp;lt;0时，为倒序    当step&amp;gt;0时，为顺序  想知道更多就点开吧~">
-<meta name="keywords" content="Python">
+<meta name="description" content="当多个PCB指向同一块虚拟地址空间时，这些PCB的资源是共享的，而该PCB被称为一个线程。但是对于CPU来说，是没有办法判断一个PCB是一个进程还是线程。每个PCB都是小于等于一个进程的，则将Linux中的一个进程是一个轻量级进程，这也就可以看出：在Linux下，没有真正意义的线程，线程使用进程模拟出来的。">
+<meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="列表与字典的深度学习">
-<meta property="og:url" content="http://www.bingoxin.top/2018/08/08/列表与字典的深度学习/index.html">
+<meta property="og:title" content="线程">
+<meta property="og:url" content="http://www.bingoxin.top/2018/09/17/线程/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="列表切片操作法进阶[start,stop,step]  当step&amp;lt;0时，为倒序    当step&amp;gt;0时，为顺序  想知道更多就点开吧~">
+<meta property="og:description" content="当多个PCB指向同一块虚拟地址空间时，这些PCB的资源是共享的，而该PCB被称为一个线程。但是对于CPU来说，是没有办法判断一个PCB是一个进程还是线程。每个PCB都是小于等于一个进程的，则将Linux中的一个进程是一个轻量级进程，这也就可以看出：在Linux下，没有真正意义的线程，线程使用进程模拟出来的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-11T11:44:53.645Z">
+<meta property="og:updated_time" content="2018-12-18T12:05:38.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="列表与字典的深度学习">
-<meta name="twitter:description" content="列表切片操作法进阶[start,stop,step]  当step&amp;lt;0时，为倒序    当step&amp;gt;0时，为顺序  想知道更多就点开吧~">
+<meta name="twitter:title" content="线程">
+<meta name="twitter:description" content="当多个PCB指向同一块虚拟地址空间时，这些PCB的资源是共享的，而该PCB被称为一个线程。但是对于CPU来说，是没有办法判断一个PCB是一个进程还是线程。每个PCB都是小于等于一个进程的，则将Linux中的一个进程是一个轻量级进程，这也就可以看出：在Linux下，没有真正意义的线程，线程使用进程模拟出来的。">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>列表与字典的深度学习 | bingoxin&#39;s blog</title>
+<title>线程 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-列表与字典的深度学习" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-线程" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/08/列表与字典的深度学习/" class="article-date">
-      <time datetime="2018-08-08T11:42:08.000Z" itemprop="datePublished">2018-08-08</time>
+      <a href="/2018/09/17/线程/" class="article-date">
+      <time datetime="2018-09-17T12:04:43.000Z" itemprop="datePublished">2018-09-17</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      列表与字典的深度学习
+      线程
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,50 +302,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="列表切片操作法进阶"><a href="#列表切片操作法进阶" class="headerlink" title="列表切片操作法进阶"></a>列表切片操作法进阶</h3><p>[start,stop,step]</p>
-<blockquote>
-<p>当step&lt;0时，为倒序 </p>
-</blockquote>
-<blockquote>
-<p>当step&gt;0时，为顺序</p>
-</blockquote>
-<p>想知道更多就点开吧~</p>
+        <p>当多个PCB指向同一块虚拟地址空间时，这些PCB的资源是共享的，而该PCB被称为一个线程。但是对于CPU来说，是没有办法判断一个PCB是一个进程还是线程。每个PCB都是小于等于一个进程的，则将Linux中的一个进程是一个轻量级进程，这也就可以看出：在Linux下，没有真正意义的线程，线程使用进程模拟出来的。</p>
 <a id="more"></a>
-<h3 id="枚举函数"><a href="#枚举函数" class="headerlink" title="枚举函数"></a>枚举函数</h3><p>枚举出序列所有下标及其对应的元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enumerate()</span><br></pre></td></tr></table></figure>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><strong>原生字符串(r)</strong></p>
-<p>原生字符串是没有转义字符的</p>
-<p><strong>unicode</strong></p>
-<p>是一种编码形式</p>
-<p><strong>if语句</strong></p>
-<p>if不只是局限于判断长度为1的字符串，而是可以判断任意一目标字符串的子字符串</p>
-<h3 id="repr"><a href="#repr" class="headerlink" title="repr"></a>repr</h3><p>可以将整型、浮点类型转化为字符串</p>
-<p>repr精度更高，转化成字符串相当于给解释器看有没有引号</p>
-<h3 id="list的各类操作方法"><a href="#list的各类操作方法" class="headerlink" title="list的各类操作方法"></a>list的各类操作方法</h3><p><strong>append</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.append(&quot;追加字符串或列表&quot;)</span><br><span class="line"> </span><br><span class="line"># 在列表后追加内容，会生成新的列表</span><br></pre></td></tr></table></figure>
-<p><strong>extend</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1.extend(list2)</span><br><span class="line"></span><br><span class="line"># 两个列表拼接，不会生成新的列表</span><br></pre></td></tr></table></figure>
-<p><strong>remove</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1(5)</span><br><span class="line"></span><br><span class="line"># 删除指定位置的元素</span><br></pre></td></tr></table></figure>
-<h3 id="列表的深拷贝和浅拷贝"><a href="#列表的深拷贝和浅拷贝" class="headerlink" title="列表的深拷贝和浅拷贝"></a>列表的深拷贝和浅拷贝</h3><blockquote>
-<p>若采取直接赋值的方式，两个会变量会引用同一个对象，一个改变，另一个也会发生改变</p>
+<p>由以上描述可以发现，在Linux下，进程是承担分配系统资源的基本单位，是由一个执行流、虚拟地址空间、页表和映射关系组成的。线程是调度的基本单位，由多个执行流、一个虚拟地址空间、页表和映射关系组成的。那么在Linux中，就没有进程和线程的区别，则线程称为轻量级进程。</p>
+<h3 id="线程的优点"><a href="#线程的优点" class="headerlink" title="线程的优点"></a>线程的优点</h3><blockquote>
+<p>1.创建一个线程要比创建一个进程的代价小的多</p>
+<p>2.与进程相比线程切换的工作量要小的多</p>
+<p>3.线程占用的资源比较小</p>
+<p>4.线程可以并行</p>
 </blockquote>
-<blockquote>
-<p>在使用函数工厂时，只是生成了目标列表的一部分内容的列表，id不同</p>
+<h3 id="线程的缺点"><a href="#线程的缺点" class="headerlink" title="线程的缺点"></a>线程的缺点</h3><blockquote>
+<p>1.性能缺失</p>
+<p>2.健壮性降低</p>
+<p>3.缺乏访问控制</p>
+<p>4.编程难度提高</p>
 </blockquote>
-<blockquote>
-<p>除非特殊声明，否则，所有行为都是浅拷贝</p>
-</blockquote>
-<blockquote>
-<p>在拷贝列表时，简单元素会采取深拷贝的方式，复杂元素会采取浅拷贝的方式</p>
-</blockquote>
-<p>在这里就要提一下深拷贝的函数：</p>
-<p><strong>deepcopy</strong></p>
-<p>在使用该函数时，需调用copy模块</p>
-<p>采用深拷贝，无论是简单元素还是复杂元素都会新建</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy.deepcopy()</span><br></pre></td></tr></table></figure>
-<h3 id="判断两个字典是否相同"><a href="#判断两个字典是否相同" class="headerlink" title="判断两个字典是否相同"></a>判断两个字典是否相同</h3><p>由于字典比较复杂，所以在判断两个字典是否相同时，系统会按照长度、key和value的顺序对两字典进行比较</p>
-<p>欢迎交流~</p>
 
       
     </div>
@@ -354,13 +325,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/08/列表与字典的深度学习/">列表与字典的深度学习</a></p>
+        <p><span>本文标题:</span><a href="/2018/09/17/线程/">线程</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-08-08, 19:42:08</p>
-        <p><span>最后更新:</span>2018-12-11, 19:44:53</p>
+        <p><span>发布时间:</span>2018-09-17, 20:04:43</p>
+        <p><span>最后更新:</span>2018-12-18, 20:05:38</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/08/列表与字典的深度学习/" title="列表与字典的深度学习">http://www.bingoxin.top/2018/08/08/列表与字典的深度学习/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/08/列表与字典的深度学习/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/17/线程/" title="线程">http://www.bingoxin.top/2018/09/17/线程/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/09/17/线程/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -373,15 +344,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/11/Python-异常/">
-                    Python-异常
+                <a href="/2018/12/16/进程/">
+                    进程
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/07/git常遇问题/">
-                    git常遇问题
+                <a href="/2018/09/06/Linux中的开发工具/">
+                    Linux中的开发工具
                 </a>
             </div>
         
@@ -393,7 +364,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#列表切片操作法进阶"><span class="toc-number">1.</span> <span class="toc-text">列表切片操作法进阶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#枚举函数"><span class="toc-number">2.</span> <span class="toc-text">枚举函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串"><span class="toc-number">3.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#repr"><span class="toc-number">4.</span> <span class="toc-text">repr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list的各类操作方法"><span class="toc-number">5.</span> <span class="toc-text">list的各类操作方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表的深拷贝和浅拷贝"><span class="toc-number">6.</span> <span class="toc-text">列表的深拷贝和浅拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断两个字典是否相同"><span class="toc-number">7.</span> <span class="toc-text">判断两个字典是否相同</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#线程的优点"><span class="toc-number">1.</span> <span class="toc-text">线程的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程的缺点"><span class="toc-number">2.</span> <span class="toc-text">线程的缺点</span></a></li></ol>
         
     </div>
     <style>
@@ -429,7 +400,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"列表与字典的深度学习　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"线程　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -466,7 +437,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/11/Python-异常/" title="上一篇: Python-异常">
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -474,7 +445,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/07/git常遇问题/" title="下一篇: git常遇问题">
+            <a href="/2018/09/06/Linux中的开发工具/" title="下一篇: Linux中的开发工具">
                 <i class="fa fa-angle-right"></i>
             </a>
         
