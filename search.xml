@@ -124,6 +124,23 @@
     </entry>
     
     <entry>
+      <title>初识Java</title>
+      <link href="/2018/09/20/%E5%88%9D%E8%AF%86Java/"/>
+      <url>/2018/09/20/%E5%88%9D%E8%AF%86Java/</url>
+      
+        <content type="html"><![CDATA[<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>首先说一下Java的源文件</p><p>Java源文件的格式是：文件名.java，以此来保存原始java代码</p><p>Java是一种半解释半编译语言</p><p><strong>编译过程：</strong></p><p>输入命令javac 要编译的源文件，生成.class 文件（二进制文件），来给JVM阅读的，启动JVM小虚拟机</p><p>若源文件中有汉字，编译命令需使用：</p><pre><code>javac -encoding UTF-8 文件名.java</code></pre><p><strong>解释过程：</strong></p><p>输入命令：java 主类名</p><p>若要给主类中默认参数赋值，在解释过程中使用</p><pre><code>java 主类名 参数1 参数2 ... </code></pre><a id="more"></a><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><blockquote><p>a.单行注释：//</p><p>b.多行注释: /<em> </em>/</p><p>c.文档注释：/*<em> </em>/ (用于方法与类之上描述其作用)</p></blockquote><h3 id="标识符、类与常量的命名"><a href="#标识符、类与常量的命名" class="headerlink" title="标识符、类与常量的命名"></a>标识符、类与常量的命名</h3><ul><li>标识符命名</li></ul><blockquote><p>a.java指定的标识符由字母、字符和_组成，不能用数字开头，不能使用java中的关键字</p><p>b.标识符采用有意义的简单命名</p><p>c.对于变量和方法，标识符由多个单词组成，采用驼峰命名，即第一个单词的首字母小写，第二个之后的单词首字母大写。</p></blockquote><ul><li>类的命名</li></ul><p>类名以大写字母开头，如果类名由多个单词组成，则每个单词首字母大写。</p><p>Java源文件文件名必须与公共类(public class)的名称相同。</p><ul><li>常量命名</li></ul><p>全大写，多个单词以_连接</p><h3 id="数据类型划分"><a href="#数据类型划分" class="headerlink" title="数据类型划分"></a>数据类型划分</h3><ul><li>基本数据类型：(8大基本数据类型)</li></ul><p>数值型：</p><pre><code>整型：byte(-128~127)、short、int(-2^31~2^31-1)、long(-2^63~2^63-1)(默认值是0)浮点型：double、float(默认值是0.0)</code></pre><p>字符型：</p><pre><code>char(默认值是\u0000)</code></pre><p>布尔型：</p><p>表示真假用true和false</p><pre><code>boolean(默认值是false)</code></pre><ul><li><p>引用数据类型</p><p>数组、类、接口(默认值为null)</p></li></ul><p>数据类型使用：</p><blockquote><p>a.描述整数就用int，描述小数就用double</p><p>b.long一般用于描述日期、时间、内存或者文件大小</p><p>c.编码转换或者二进制流的操作使用byte</p><p>d.char一般用于描述中文(基本忽略)</p></blockquote><p>在java程序中，任何一个整型常量都是int类型</p><p>在java中声明一个long类型的常量，要在数字后加上L或l</p><h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>大数据类型与小数据类型做数据类型运算时，小的数据类型会自动转换成大的数据类型，无需强转</p><p>大的数据类型类型转为小的数据类型必须强转，可能会丢失内容</p><p>强转一定是从大的数据类型到小的数据类型</p><p><strong>byte与int类型转换：</strong></p><p>整型常量赋值给byte变量时，若常量值在byte类型保存范围内可以直接赋值无须强转；整型变量无论是否在byte类型的保存范围中，一律需要强转</p><p><strong>注意：</strong></p><p>小数默认类型为double类型，要声明float类型，需要在浮点数常量后加f或F</p><p>所有数据类型的默认值必须结合类来观察，主方法中不存在默认值</p><p>欢迎交流~</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>线程</title>
       <link href="/2018/09/17/%E7%BA%BF%E7%A8%8B/"/>
       <url>/2018/09/17/%E7%BA%BF%E7%A8%8B/</url>

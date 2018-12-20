@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。 也算是感受到了C++的一点点魅力~">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="正文首先说一下Java的源文件 Java源文件的格式是：文件名.java，以此来保存原始java代码 Java是一种半解释半编译语言 编译过程： 输入命令javac 要编译的源文件，生成.class 文件（二进制文件），来给JVM阅读的，启动JVM小虚拟机 若源文件中有汉字，编译命令需使用： javac -encoding UTF-8 文件名.java 解释过程： 输入命令：java 主类名 若要">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面向对象or面向过程">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/05/面向对象or面向过程/index.html">
+<meta property="og:title" content="初识Java">
+<meta property="og:url" content="http://www.bingoxin.top/2018/09/20/初识Java/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。 也算是感受到了C++的一点点魅力~">
+<meta property="og:description" content="正文首先说一下Java的源文件 Java源文件的格式是：文件名.java，以此来保存原始java代码 Java是一种半解释半编译语言 编译过程： 输入命令javac 要编译的源文件，生成.class 文件（二进制文件），来给JVM阅读的，启动JVM小虚拟机 若源文件中有汉字，编译命令需使用： javac -encoding UTF-8 文件名.java 解释过程： 输入命令：java 主类名 若要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-26T11:18:53.672Z">
+<meta property="og:updated_time" content="2018-12-20T12:07:12.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面向对象or面向过程">
-<meta name="twitter:description" content="刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。 也算是感受到了C++的一点点魅力~">
+<meta name="twitter:title" content="初识Java">
+<meta name="twitter:description" content="正文首先说一下Java的源文件 Java源文件的格式是：文件名.java，以此来保存原始java代码 Java是一种半解释半编译语言 编译过程： 输入命令javac 要编译的源文件，生成.class 文件（二进制文件），来给JVM阅读的，启动JVM小虚拟机 若源文件中有汉字，编译命令需使用： javac -encoding UTF-8 文件名.java 解释过程： 输入命令：java 主类名 若要">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>面向对象or面向过程 | bingoxin&#39;s blog</title>
+<title>初识Java | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-面向对象or面向过程" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-初识Java" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/05/面向对象or面向过程/" class="article-date">
-      <time datetime="2018-06-05T03:58:54.000Z" itemprop="datePublished">2018-06-05</time>
+      <a href="/2018/09/20/初识Java/" class="article-date">
+      <time datetime="2018-09-20T12:06:27.000Z" itemprop="datePublished">2018-09-20</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      面向对象or面向过程
+      初识Java
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,20 +302,73 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。</p>
-<p>也算是感受到了C++的一点点魅力~</p>
-<a id="more"></a>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="面向过程？面向对象？"><a href="#面向过程？面向对象？" class="headerlink" title="面向过程？面向对象？"></a>面向过程？面向对象？</h3><p>C语言是面向过程的，而JAVA和C++是面向对象的。</p>
-<blockquote>
-<p>艾兰·库伯在《软件创新之路》中提到：</p>
+        <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>首先说一下Java的源文件</p>
+<p>Java源文件的格式是：文件名.java，以此来保存原始java代码</p>
+<p>Java是一种半解释半编译语言</p>
+<p><strong>编译过程：</strong></p>
+<p>输入命令javac 要编译的源文件，生成.class 文件（二进制文件），来给JVM阅读的，启动JVM小虚拟机</p>
+<p>若源文件中有汉字，编译命令需使用：</p>
+<pre><code>javac -encoding UTF-8 文件名.java
+</code></pre><p><strong>解释过程：</strong></p>
+<p>输入命令：java 主类名</p>
+<p>若要给主类中默认参数赋值，在解释过程中使用</p>
+<pre><code>java 主类名 参数1 参数2 ... 
+</code></pre><a id="more"></a>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><blockquote>
+<p>a.单行注释：//</p>
+<p>b.多行注释: /<em> </em>/</p>
+<p>c.文档注释：/*<em> </em>/ (用于方法与类之上描述其作用)</p>
 </blockquote>
+<h3 id="标识符、类与常量的命名"><a href="#标识符、类与常量的命名" class="headerlink" title="标识符、类与常量的命名"></a>标识符、类与常量的命名</h3><ul>
+<li>标识符命名</li>
+</ul>
 <blockquote>
-<p>“面向过程和面向对象的区别并不像人们想象得那么大，面向对象的大部分思想在面向过程中也能体现,</p>
+<p>a.java指定的标识符由字母、字符和_组成，不能用数字开头，不能使用java中的关键字</p>
+<p>b.标识符采用有意义的简单命名</p>
+<p>c.对于变量和方法，标识符由多个单词组成，采用驼峰命名，即第一个单词的首字母小写，第二个之后的单词首字母大写。</p>
 </blockquote>
+<ul>
+<li>类的命名</li>
+</ul>
+<p>类名以大写字母开头，如果类名由多个单词组成，则每个单词首字母大写。</p>
+<p>Java源文件文件名必须与公共类(public class)的名称相同。</p>
+<ul>
+<li>常量命名</li>
+</ul>
+<p>全大写，多个单词以_连接</p>
+<h3 id="数据类型划分"><a href="#数据类型划分" class="headerlink" title="数据类型划分"></a>数据类型划分</h3><ul>
+<li>基本数据类型：(8大基本数据类型)</li>
+</ul>
+<p>数值型：</p>
+<pre><code>整型：byte(-128~127)、short、int(-2^31~2^31-1)、long(-2^63~2^63-1)(默认值是0)
+浮点型：double、float(默认值是0.0)
+</code></pre><p>字符型：</p>
+<pre><code>char(默认值是\u0000)
+</code></pre><p>布尔型：</p>
+<p>表示真假用true和false</p>
+<pre><code>boolean(默认值是false)
+</code></pre><ul>
+<li><p>引用数据类型</p>
+<p>数组、类、接口(默认值为null)</p>
+</li>
+</ul>
+<p>数据类型使用：</p>
 <blockquote>
-<p>但面向过程最大的问题在于系统的膨胀，面向对象将无法应付，最终导致系统的崩溃。”</p>
+<p>a.描述整数就用int，描述小数就用double</p>
+<p>b.long一般用于描述日期、时间、内存或者文件大小</p>
+<p>c.编码转换或者二进制流的操作使用byte</p>
+<p>d.char一般用于描述中文(基本忽略)</p>
 </blockquote>
-<h3 id="面向过程和面向对象的区别大概有如下几个方面："><a href="#面向过程和面向对象的区别大概有如下几个方面：" class="headerlink" title="面向过程和面向对象的区别大概有如下几个方面："></a>面向过程和面向对象的区别大概有如下几个方面：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.面向过程重用的是函数，而面对对象重用的是类（即将数据和处理数据的过程及函数封装在一起的实体）。</span><br><span class="line"> </span><br><span class="line">2.面向过程程序设计方法的实质上是从计算机处理问题的观点来进行程序设计工作：输入--运算--输出；</span><br><span class="line"> </span><br><span class="line">面向对象程序设计方法需要使用结构化的程序来设计。</span><br><span class="line"></span><br><span class="line">3. 面向过程程序设计是一种自上而下的程序设计方法，从程序的一部分入手，一点一点地构建出整个程序；</span><br><span class="line"> </span><br><span class="line">面向对象程序设计是以一数据为中心，类作为表现数据的工具，成为划分程序的基本单位。</span><br></pre></td></tr></table></figure>
+<p>在java程序中，任何一个整型常量都是int类型</p>
+<p>在java中声明一个long类型的常量，要在数字后加上L或l</p>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>大数据类型与小数据类型做数据类型运算时，小的数据类型会自动转换成大的数据类型，无需强转</p>
+<p>大的数据类型类型转为小的数据类型必须强转，可能会丢失内容</p>
+<p>强转一定是从大的数据类型到小的数据类型</p>
+<p><strong>byte与int类型转换：</strong></p>
+<p>整型常量赋值给byte变量时，若常量值在byte类型保存范围内可以直接赋值无须强转；整型变量无论是否在byte类型的保存范围中，一律需要强转</p>
+<p><strong>注意：</strong></p>
+<p>小数默认类型为double类型，要声明float类型，需要在浮点数常量后加f或F</p>
+<p>所有数据类型的默认值必须结合类来观察，主方法中不存在默认值</p>
 <p>欢迎交流~</p>
 
       
@@ -325,13 +378,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></p>
+        <p><span>本文标题:</span><a href="/2018/09/20/初识Java/">初识Java</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-05, 11:58:54</p>
-        <p><span>最后更新:</span>2018-12-26, 19:18:53</p>
+        <p><span>发布时间:</span>2018-09-20, 20:06:27</p>
+        <p><span>最后更新:</span>2018-12-20, 20:07:12</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/05/面向对象or面向过程/" title="面向对象or面向过程">http://www.bingoxin.top/2018/06/05/面向对象or面向过程/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/05/面向对象or面向过程/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/09/20/初识Java/" title="初识Java">http://www.bingoxin.top/2018/09/20/初识Java/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/09/20/初识Java/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -344,15 +397,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/06/C-的三大特性之封装/">
-                    C++的三大特性之封装
+                <a href="/2018/12/16/进程/">
+                    进程
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/05/叩开C-的大门/">
-                    叩开C++的大门
+                <a href="/2018/09/17/线程/">
+                    线程
                 </a>
             </div>
         
@@ -364,7 +417,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文："><span class="toc-number">1.</span> <span class="toc-text">正文：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#面向过程？面向对象？"><span class="toc-number">1.1.</span> <span class="toc-text">面向过程？面向对象？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向过程和面向对象的区别大概有如下几个方面："><span class="toc-number">1.2.</span> <span class="toc-text">面向过程和面向对象的区别大概有如下几个方面：</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">1.0.1.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标识符、类与常量的命名"><span class="toc-number">1.0.2.</span> <span class="toc-text">标识符、类与常量的命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型划分"><span class="toc-number">1.0.3.</span> <span class="toc-text">数据类型划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强制类型转换"><span class="toc-number">1.0.4.</span> <span class="toc-text">强制类型转换</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -400,7 +453,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"面向对象or面向过程　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"初识Java　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,7 +490,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/06/C-的三大特性之封装/" title="上一篇: C++的三大特性之封装">
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -445,7 +498,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/05/叩开C-的大门/" title="下一篇: 叩开C++的大门">
+            <a href="/2018/09/17/线程/" title="下一篇: 线程">
                 <i class="fa fa-angle-right"></i>
             </a>
         
