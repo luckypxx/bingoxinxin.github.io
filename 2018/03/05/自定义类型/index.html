@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="命运设下重重关卡，我依然潇洒">
-<meta name="keywords" content="程序媛">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://www.bingoxin.top/tags/index.html">
+<meta name="description" content="为什么存在内存对齐 1.平台原因：不是所有的硬件平台都能访问任意地址上的任意数据的；某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常   2.性能原因：数据结构(尤其是栈)应该尽可能地在自然边界上对齐–&amp;gt;若访问未对齐的内存，处理器需要做两次内存访问；而对齐的内存访问仅需要访问一次就可以拿到数据  结构体内存对齐规则Linux中，默认对齐数是4 Windows下的vs，默认对">
+<meta name="keywords" content="C&#x2F;C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义类型">
+<meta property="og:url" content="http://www.bingoxin.top/2018/03/05/自定义类型/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="命运设下重重关卡，我依然潇洒">
+<meta property="og:description" content="为什么存在内存对齐 1.平台原因：不是所有的硬件平台都能访问任意地址上的任意数据的；某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常   2.性能原因：数据结构(尤其是栈)应该尽可能地在自然边界上对齐–&amp;gt;若访问未对齐的内存，处理器需要做两次内存访问；而对齐的内存访问仅需要访问一次就可以拿到数据  结构体内存对齐规则Linux中，默认对齐数是4 Windows下的vs，默认对">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-08T16:18:15.905Z">
+<meta property="og:updated_time" content="2018-12-21T14:50:00.715Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="命运设下重重关卡，我依然潇洒">
+<meta name="twitter:title" content="自定义类型">
+<meta name="twitter:description" content="为什么存在内存对齐 1.平台原因：不是所有的硬件平台都能访问任意地址上的任意数据的；某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常   2.性能原因：数据结构(尤其是栈)应该尽可能地在自然边界上对齐–&amp;gt;若访问未对齐的内存，处理器需要做两次内存访问；而对齐的内存访问仅需要访问一次就可以拿到数据  结构体内存对齐规则Linux中，默认对齐数是4 Windows下的vs，默认对">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>tags | bingoxin&#39;s blog</title>
+<title>自定义类型 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -68,7 +68,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-自定义类型" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2018-12-08T16:18:15.000Z" itemprop="datePublished">2018-12-09</time>
+      <a href="/2018/03/05/自定义类型/" class="article-date">
+      <time datetime="2018-03-05T14:49:02.000Z" itemprop="datePublished">2018-03-05</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      自定义类型
     </h1>
   
 
@@ -291,6 +291,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -298,96 +302,120 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
+        <h3 id="为什么存在内存对齐"><a href="#为什么存在内存对齐" class="headerlink" title="为什么存在内存对齐"></a>为什么存在内存对齐</h3><blockquote>
+<p>1.<strong>平台原因：</strong>不是所有的硬件平台都能访问任意地址上的任意数据的；某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常</p>
+</blockquote>
+<blockquote>
+<p>2.<strong>性能原因：</strong>数据结构(尤其是栈)应该尽可能地在自然边界上对齐<br>–&gt;若访问未对齐的内存，处理器需要做两次内存访问；而对齐的内存访问仅需要访问一次就可以拿到数据</p>
+</blockquote>
+<h3 id="结构体内存对齐规则"><a href="#结构体内存对齐规则" class="headerlink" title="结构体内存对齐规则"></a>结构体内存对齐规则</h3><p>Linux中，默认对齐数是4</p>
+<p>Windows下的vs，默认对齐数是8</p>
+<blockquote>
+<p>1.第一个成员在与结构体变量偏移量为0的地址处</p>
+<p>2.其他成员变量要对齐到某个数字(对齐数)的整数倍的地址处—&gt;对齐数=编译器默认的一个对齐数与该成员大小的较小值</p>
+<p>3.结构体总大小为最大对齐数的整数倍</p>
+<p>4.如果嵌套了结构体的情况，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小就是所有最大对齐数的整数倍</p>
+</blockquote>
+<p>可以说，内存对齐是用时间来弥补空间</p>
+<h3 id="结构体传参"><a href="#结构体传参" class="headerlink" title="结构体传参"></a>结构体传参</h3><p>结构体传参时，考虑变量可能过大，不要传结构体变量，要传结构体指针</p>
+<h3 id="位段"><a href="#位段" class="headerlink" title="位段"></a>位段</h3><p>位段的声明和结构是类似的，有两个不同点：</p>
+<blockquote>
+<p>1.位段的成员必须是int、unsigned int 或 signed int</p>
+<p>2.位段的成员后边有一个冒号和一个数字</p>
+</blockquote>
+<p>位段成员后面的数字表示bit位，位段可以节省空间</p>
+<p><strong>开辟空间方式</strong></p>
+<p>由于位段里变量为int类型，因此在开辟空间时，一次开辟4个字节的空间，即32个bit位。</p>
+<p>需要注意的是：<strong>位段是不可以跨平台的、位段不存在对齐</strong></p>
+<h3 id="枚举-enum"><a href="#枚举-enum" class="headerlink" title="枚举(enum)"></a>枚举(enum)</h3><p>枚举，即一一列举</p>
+<p>枚举列举的是枚举常量，第一个常量为0，之后的常量大小依次+1</p>
+<p><strong>枚举的优点</strong></p>
+<ul>
+<li>增加代码的可读性和可维护性</li>
+<li>和#define定义的标识符比较，枚举有类型检查，更加严谨</li>
+<li>防止命名污染</li>
+<li>便于调试</li>
+<li>使用方便，一次可以定义多个常量</li>
+</ul>
+<h3 id="联合-共用体"><a href="#联合-共用体" class="headerlink" title="联合(共用体)"></a>联合(共用体)</h3><p>在共用体中定义的变量共用一块内存</p>
+<p><strong>空间计算</strong></p>
+<ul>
+<li>联合的大小至少是最大成员的大小</li>
+<li>当最大成员不是最大对齐数的整数倍的时候，就要对齐到最大对齐数的整数倍</li>
+</ul>
+<h3 id="大小端"><a href="#大小端" class="headerlink" title="大小端"></a>大小端</h3><p>小端：低字节放低地址处，高字节放高地址处</p>
+<p>大端：低字节放高地址，高字节放低地址</p>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>IP地址是由点分十进制的方式处理的</p>
+<p>IP地址实际是整型的十进制数字，将十进制数字的每个字节转化成转化成十进制，再用.连接，就是IP地址</p>
+<p>代码实现：<br>​    #include &lt;stdio.h&gt;<br>​    #include &lt;Windows.h&gt;<br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">union un</span><br><span class="line">&#123;</span><br><span class="line">	unsigned int num;</span><br><span class="line">	struct </span><br><span class="line">	&#123;</span><br><span class="line">		unsigned char a;</span><br><span class="line">		unsigned char b;</span><br><span class="line">		unsigned char c;</span><br><span class="line">		unsigned char d;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	union un myip;</span><br><span class="line">	myip.num = 716872929;</span><br><span class="line">	printf(&quot;%d.%d.%d.%d&quot;, myip.d, myip.c, myip.b, myip.a);</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>欢迎交流~~</p>
 
-
-    <!-- Tag Cloud Page -->
-    <hr>
-<br>
-
-
-<p class="count"></p>
-
-<div class="tags">
-    <a href="/tags/C-C/" style="font-size: 35px; color: #000">C/C++</a> <a href="/tags/C语言/" style="font-size: 16px; color: #808080">C语言</a> <a href="/tags/Java/" style="font-size: 16px; color: #808080">Java</a>
-</div>
-<style>
-    .category-list li{
-        display: inline-block;
-        margin: 0 1em .5em 0;
-        padding: 4px;
-        border: 1px solid lightgray;
-        font-size: 1.2rem;
-    }
-    .category-list a { color: gray; }
-    .category-list-item:hover a {
-        color: gray;
-        text-decoration: none;
-    }
-    .category-list-count {
-        margin-left: 2px;
-        font-size: .9rem;
-    }
-    .article-entry ul li:before{ display: none; }
-    .article-inner { text-align: center; }
-    .tags {
-        max-width: 42em;
-        margin: 2em auto;
-        margin-top: 0em;
-    }
-    .tags a {
-        margin-right: 1em;
-        line-height: 65px;
-        border-bottom: 1px solid gray;
-        white-space: nowrap;
-        transition: border-bottom .5s;
-    }
-    .tags a:hover {
-        border-bottom: 3px dotted gray;
-        text-decoration: none;
-    }
-    #count > span {
-        margin: auto .2em;
-        font-weight: bold;
-    }
-</style>
-
-<!-- Count tags and categories -->
-<p id="count">
-        已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-        共计<span><script>document.write($(".tags > a").length)</script></span>个标签
-</p>
-<script>
-    $('#count').appendTo('.count');
-</script>
-
-          
-        
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/03/05/自定义类型/">自定义类型</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
+        <p><span>发布时间:</span>2018-03-05, 22:49:02</p>
+        <p><span>最后更新:</span>2018-12-21, 22:50:00</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/05/自定义类型/" title="自定义类型">http://www.bingoxin.top/2018/03/05/自定义类型/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/03/05/自定义类型/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/21/Java中的类集/">
+                    Java中的类集
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/12/13/函数栈桢/">
+                    函数栈桢
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么存在内存对齐"><span class="toc-number">1.</span> <span class="toc-text">为什么存在内存对齐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构体内存对齐规则"><span class="toc-number">2.</span> <span class="toc-text">结构体内存对齐规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构体传参"><span class="toc-number">3.</span> <span class="toc-text">结构体传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位段"><span class="toc-number">4.</span> <span class="toc-text">位段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#枚举-enum"><span class="toc-number">5.</span> <span class="toc-text">枚举(enum)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#联合-共用体"><span class="toc-number">6.</span> <span class="toc-text">联合(共用体)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大小端"><span class="toc-number">7.</span> <span class="toc-text">大小端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP地址"><span class="toc-number">8.</span> <span class="toc-text">IP地址</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -405,7 +433,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"tags　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"自定义类型　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -437,6 +465,26 @@
 </section>
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/21/Java中的类集/" title="上一篇: Java中的类集">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/12/13/函数栈桢/" title="下一篇: 函数栈桢">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
 
 
 
