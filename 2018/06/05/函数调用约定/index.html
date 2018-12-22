@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="一个下凡搞技术的小仙女~">
-<meta name="keywords" content="程序媛">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://www.bingoxin.top/about/index.html">
+<meta name="description" content="在学习C语言的时候，总是碰到__cdecl，一直都只是知道他是一种函数调用约定， 今天来总结一下函数的调用约定~ 正文：函数调用约定当一个函数被调用时，函数的参数会被传递给调用的函数和返回值会被返回给调用函数。函数调用约定就是描述参数是怎么传递和由谁平衡堆栈的，当然还有返回值。​1.__cdecl​     123451.参数是从右向左传递的，也是从右向左放在堆栈中的2.堆栈平衡是由调用函数来执行">
+<meta name="keywords" content="C&#x2F;C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数调用约定">
+<meta property="og:url" content="http://www.bingoxin.top/2018/06/05/函数调用约定/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="一个下凡搞技术的小仙女~">
+<meta property="og:description" content="在学习C语言的时候，总是碰到__cdecl，一直都只是知道他是一种函数调用约定， 今天来总结一下函数的调用约定~ 正文：函数调用约定当一个函数被调用时，函数的参数会被传递给调用的函数和返回值会被返回给调用函数。函数调用约定就是描述参数是怎么传递和由谁平衡堆栈的，当然还有返回值。​1.__cdecl​     123451.参数是从右向左传递的，也是从右向左放在堆栈中的2.堆栈平衡是由调用函数来执行">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-08T16:23:01.144Z">
+<meta property="og:updated_time" content="2018-12-22T03:56:33.993Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="一个下凡搞技术的小仙女~">
+<meta name="twitter:title" content="函数调用约定">
+<meta name="twitter:description" content="在学习C语言的时候，总是碰到__cdecl，一直都只是知道他是一种函数调用约定， 今天来总结一下函数的调用约定~ 正文：函数调用约定当一个函数被调用时，函数的参数会被传递给调用的函数和返回值会被返回给调用函数。函数调用约定就是描述参数是怎么传递和由谁平衡堆栈的，当然还有返回值。​1.__cdecl​     123451.参数是从右向左传递的，也是从右向左放在堆栈中的2.堆栈平衡是由调用函数来执行">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>about | bingoxin&#39;s blog</title>
+<title>函数调用约定 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -68,7 +68,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-函数调用约定" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/about/index.html" class="article-date">
-      <time datetime="2018-12-08T16:18:29.000Z" itemprop="datePublished">2018-12-09</time>
+      <a href="/2018/06/05/函数调用约定/" class="article-date">
+      <time datetime="2018-06-05T03:55:09.000Z" itemprop="datePublished">2018-06-05</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      函数调用约定
     </h1>
   
 
@@ -291,6 +291,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -298,26 +302,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
-
-
-          
-        <p>一个下凡搞技术的小仙女~</p>
+        <p>在学习C语言的时候，总是碰到__cdecl，一直都只是知道他是一种函数调用约定，</p>
+<p>今天来总结一下函数的调用约定~</p>
+<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="函数调用约定"><a href="#函数调用约定" class="headerlink" title="函数调用约定"></a>函数调用约定</h3><p>当一个函数被调用时，函数的参数会被传递给调用的函数和返回值会被返回给调用函数。函数调用约定就是描述参数是怎么传递和由谁平衡堆栈的，当然还有返回值。<br>​<br>1.<font color="red" size="3">__cdecl</font><br>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.参数是从右向左传递的，也是从右向左放在堆栈中的</span><br><span class="line"></span><br><span class="line">2.堆栈平衡是由调用函数来执行的</span><br><span class="line"></span><br><span class="line">3.函数的前面会加一个前缀_(_Test)</span><br></pre></td></tr></table></figure>
+<p>2.<font color="red" size="3">__stdcall</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.参数是从右向左传递的，也是从右向左放在堆栈中的</span><br><span class="line"></span><br><span class="line">2.堆栈平衡是由被调用函数来执行的</span><br><span class="line"></span><br><span class="line">3.在函数名前加下划线修饰，在函数名的后面由@来修饰并、加上栈需要的字节数的空间(_Test@8)</span><br></pre></td></tr></table></figure>
+<p>3.<font color="red" size="3">__fastcall</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.参数放在寄存器中，而不是栈中</span><br><span class="line"></span><br><span class="line">2.最左边的两个不大于4个字节的参数分别放在ecx和edx寄存器。当寄存器用完的时候，其余参数仍然从右往左的顺序压栈。</span><br></pre></td></tr></table></figure>
+<p>4.<font color="red" size="3">__thiscall</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.C++成员函数的默认调用约定，用于限制成员函数</span><br><span class="line"></span><br><span class="line">2.参数从右向左被推入堆栈</span><br><span class="line"></span><br><span class="line">3.通过ecx寄存器来传递this指针，将其传递到X86结构上，而不是堆栈上</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -325,10 +319,65 @@
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/06/05/函数调用约定/">函数调用约定</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
+        <p><span>发布时间:</span>2018-06-05, 11:55:09</p>
+        <p><span>最后更新:</span>2018-12-22, 11:56:33</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/05/函数调用约定/" title="函数调用约定">http://www.bingoxin.top/2018/06/05/函数调用约定/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/05/函数调用约定/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/21/Java中的类集/">
+                    Java中的类集
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/06/03/数据库基本操作/">
+                    数据库基本操作
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文："><span class="toc-number">1.</span> <span class="toc-text">正文：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数调用约定"><span class="toc-number">1.1.</span> <span class="toc-text">函数调用约定</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -346,7 +395,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"about　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"函数调用约定　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -378,6 +427,26 @@
 </section>
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/21/Java中的类集/" title="上一篇: Java中的类集">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/06/03/数据库基本操作/" title="下一篇: 数据库基本操作">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
 
 
 
