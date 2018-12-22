@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="bingoxin">
+
+
+
+<meta name="description" content="static方法（类方法）与对象实例化无关，通过类名直接调用，常见于工具方法  a.静态方法不能访问类中的普通属性 静态方法和对象实例化无关，普通属性在堆上保存   b.静态方法可以访问类中的静态属性 c.普通方法可以访问类中静态属性 d.普通方法可以访问类中普通属性  用static修饰类   static只能修饰内部类，不能修饰外部类">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中的继承与多态">
+<meta property="og:url" content="http://www.bingoxin.top/2018/10/12/Java中的继承与多态/index.html">
+<meta property="og:site_name" content="bingoxin&#39;s blog">
+<meta property="og:description" content="static方法（类方法）与对象实例化无关，通过类名直接调用，常见于工具方法  a.静态方法不能访问类中的普通属性 静态方法和对象实例化无关，普通属性在堆上保存   b.静态方法可以访问类中的静态属性 c.普通方法可以访问类中静态属性 d.普通方法可以访问类中普通属性  用static修饰类   static只能修饰内部类，不能修饰外部类">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-22T12:10:35.310Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中的继承与多态">
+<meta name="twitter:description" content="static方法（类方法）与对象实例化无关，通过类名直接调用，常见于工具方法  a.静态方法不能访问类中的普通属性 静态方法和对象实例化无关，普通属性在堆上保存   b.静态方法可以访问类中的静态属性 c.普通方法可以访问类中静态属性 d.普通方法可以访问类中普通属性  用static修饰类   static只能修饰内部类，不能修饰外部类">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="bingoxin&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Java中的继承与多态 | bingoxin&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">bingoxin</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.wonderheng.top">wonderheng&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一个下凡搞技术的小仙女~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">bingoxin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">bingoxin</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-Java中的继承与多态" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/12/Java中的继承与多态/" class="article-date">
+      <time datetime="2018-10-12T12:09:49.000Z" itemprop="datePublished">2018-10-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java中的继承与多态
+    </h1>
+  
+
+              
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="static方法（类方法）"><a href="#static方法（类方法）" class="headerlink" title="static方法（类方法）"></a>static方法（类方法）</h3><p>与对象实例化无关，通过类名直接调用，常见于工具方法</p>
+<ul>
+<li>a.静态方法不能访问类中的普通属性<ul>
+<li>静态方法和对象实例化无关，普通属性在堆上保存</li>
+</ul>
+</li>
+<li>b.静态方法可以访问类中的静态属性</li>
+<li>c.普通方法可以访问类中静态属性</li>
+<li><p>d.普通方法可以访问类中普通属性</p>
+</li>
+<li><p>用static修饰类</p>
+</li>
+</ul>
+<p>static只能修饰内部类，不能修饰外部类</p>
+<a id="more"></a>
+<p>可以通过下面的程序进行测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> num1 ;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> num2;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print1</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"普通成员函数调用普通属性"</span> + num1);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print2</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"普通成员函数调用静态属性"</span> + num2);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"静态成员函数调用普通属性"</span> + num1);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"静态成员函数调用静态属性"</span> + num2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>定义：使用{}定义的一段代码</p>
+<p>根据代码块出现的位置以及关键字不同，分为以下四类代码块：</p>
+<ul>
+<li>a.普通代码块</li>
+<li>b.构造块</li>
+<li>c.静态代码块</li>
+<li>d.同步代码块（和多线程同步有关）</li>
+</ul>
+<p><strong>普通代码块</strong></p>
+<p>定义在方法中的代码块</p>
+<p><strong>构造块</strong></p>
+<p>定义在类中的代码块（不加任何修饰符）</p>
+<p>当有对象产生时，构造块优先于构造方法执行，产生几个对象，就调用几次构造块</p>
+<p><strong>作用：</strong>在构造方法执行之前进行一些初始化操作</p>
+<p><strong>静态代码块</strong></p>
+<p>定义：在类中使用static关键字定义的代码块</p>
+<p>根据定义，可分为以下两类：</p>
+<ul>
+<li>a.非主类的静态代码块</li>
+<li>b.主类中的静态代码块</li>
+</ul>
+<p><strong>非主类的静态代码块</strong></p>
+<p>静态代码块在<strong>类加载时</strong>被调用，优先于构造块，不管产生多少实例化对象，只会被调用一次</p>
+<p><strong>主类中的静态代码块</strong></p>
+<p>主类中的静态代码块优先于主方法执行</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>概念：无须重写原有类代码的基础上，就拥有原有类所有属性与方法，对原有类进行功能上的扩展</p>
+<p>关键字：extends</p>
+<p>继承强调可重复性</p>
+<p>子类（派生类）</p>
+<p>父类（基类，超类）</p>
+<p> class 基类 extends 父类</p>
+<ul>
+<li>继承的限制</li>
+</ul>
+<blockquote>
+<p>a.子类实例化前先调用父类构造方法产生父类对象后，再调用子类构造</p>
+<p>b.java只有单继承没有多继承</p>
+<p>c.在进行继承的时候，子类会继承父类所有结构（包含私有属性、构造方法、普通方法）</p>
+</blockquote>
+<ul>
+<li>显式继承（用public、default声明）</li>
+</ul>
+<p>可以直接调用：父类中所有非私有操作</p>
+<ul>
+<li>隐式继承（用private声明）</li>
+</ul>
+<p>必须通过其他形式调用-&gt;getter与setter，不能直接调用，父类中的所有私有操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">	</span><br><span class="line">	Person()&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Person::Person()"</span>+age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Person(<span class="keyword">int</span> _age)&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Person::Person(int _age)"</span>+age);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> String name;</span><br><span class="line">	Teacher()&#123;</span><br><span class="line">		System.out.println(<span class="string">"Teacher::Teacher()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Teacher(String _name)&#123;</span><br><span class="line">		System.out.println(<span class="string">"Teacher::Teacher(String)"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方法覆写-override"><a href="#方法覆写-override" class="headerlink" title="方法覆写-override"></a>方法覆写-override</h3><p>覆写概念：发生在有继承关系的类之中，子类定义了与父类完全相同的方法（返回值、参数列表、方法名全相同），被覆写的方法不能拥有比父类更为严格的访问控制权限，且隐式继承的方法无法被覆写</p>
+<p><strong>判断当前方法调用的是哪个类的方法：</strong></p>
+<blockquote>
+<p>a.当前使用的对象是通过哪个类new的</p>
+<p>b.调用方法是否被子类所覆写，若被覆写，则调用的一定是子类所覆写后的方法</p>
+</blockquote>
+<ul>
+<li>访问权限</li>
+</ul>
+<blockquote>
+<p>private：私有访问</p>
+<p>default：包访问权限</p>
+<p>public：公有访问权限</p>
+</blockquote>
+<p><strong>方法重写例程如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">	</span><br><span class="line">	Person()&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Person::Person()"</span>+age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Person(<span class="keyword">int</span> _age)&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Person::Person(int _age)"</span>+age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(age);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> String name;</span><br><span class="line">	Teacher()&#123;</span><br><span class="line">		System.out.println(<span class="string">"Teacher::Teacher()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Teacher(String _name)&#123;</span><br><span class="line">		System.out.println(<span class="string">"Teacher::Teacher(String)"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.getInfo();</span><br><span class="line">		System.out.println(name+age);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方法重载与方法重写"><a href="#方法重载与方法重写" class="headerlink" title="方法重载与方法重写"></a>方法重载与方法重写</h3><ul>
+<li>概念上</li>
+</ul>
+<p>重载是指在同一个类中，方法名相同且参数列表中参数个数和参数类型不同，与返回值无关</p>
+<p>覆写是指在继承关系的类中，子类定义了与父类完全相同的方法（返回值类型、方法名、参数列表都相同），子类中被覆写的方法不能拥有比父类更严格的访问控制权限，且隐式继承的方法无法覆写</p>
+<ul>
+<li>范围上</li>
+</ul>
+<p>重载发生在同一个类中，重写发生在继承关系中</p>
+<ul>
+<li>权限要求</li>
+</ul>
+<p>重载没有权限要求，重写中权限不能是private且子类权限不能比父类权限更严格</p>
+<h3 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h3><ul>
+<li>super表示调用父类方法</li>
+</ul>
+<blockquote>
+<p>a. 调用父类构造方法super（参数列表）</p>
+<p>子类中调用父类无参构造时，super()可写可不写。</p>
+<p>子类中调用父类有参构造时，super（参数列表）必须要写，告知编译器调用的是哪个父类有参构造</p>
+<p>super与this在构造方法中不能同时存在，即子类不存在构造方法的互相调用</p>
+<p>b. super调用父类普通方法</p>
+<p>super.方法名（参数列表），super调用的一定是被覆写的方法</p>
+</blockquote>
+<ul>
+<li>super表示调用父类属性</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">	</span><br><span class="line">	Person()&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Person::Person()"</span>+age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Person(<span class="keyword">int</span> _age)&#123;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"Person::Person(int _age)"</span>+age);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(age);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> String name;</span><br><span class="line">	Teacher()&#123;</span><br><span class="line">        <span class="keyword">super</span>.age = <span class="number">12</span>;<span class="comment">//super调用父类属性</span></span><br><span class="line">		System.out.println(<span class="string">"Teacher::Teacher()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Teacher(String _name)&#123;</span><br><span class="line">		<span class="keyword">super</span>(<span class="number">12</span>);<span class="comment">//super调用父类有参构造函数</span></span><br><span class="line">		System.out.println(<span class="string">"Teacher::Teacher(String)"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.getInfo();<span class="comment">//super调用父类普通函数</span></span><br><span class="line">		System.out.println(name+age);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><ul>
+<li>修饰类</li>
+</ul>
+<p>当一个类用final关键字定义后，表示该类不允许被继承。</p>
+<p>同时，该类中的所有<strong>方法</strong>都会被隐式加上final关键字（不包括成员变量）</p>
+<p>string类以及8大数据类型的包装类都是final类—保护性</p>
+<ul>
+<li>修饰方法</li>
+</ul>
+<p>当一个方法被final关键字定义后，表示该方法不允许被<strong>覆写</strong></p>
+<p>final方法常用于模板方法—保护性</p>
+<ul>
+<li>final修饰属性</li>
+</ul>
+<p>当属性被final修饰后，表示该<strong>属性值不可变</strong>。并且该属性要在<strong>声明时初始化</strong></p>
+<p><strong>被final修饰的变量初始化方法</strong></p>
+<blockquote>
+<p>在声明时初始化</p>
+<p>在构造函数里初始化</p>
+<p>在代码块初始化</p>
+</blockquote>
+<p><strong>final修饰基本数据类型变量</strong></p>
+<p>类中常量一般使用final+static，描述<strong>全局常量</strong></p>
+<p>全局常量命名规范：多个单词全大写，且单词间以_分隔</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MY_NUM = <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>final修饰引用数据类型变量</strong></p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
+<li>概念</li>
+</ul>
+<p>同一个类实例化的相同方法在不同情形下有不同的表现形式</p>
+<ul>
+<li>向上转型—用于参数统一化</li>
+</ul>
+<p>父类 父类引用 = new 子类();</p>
+<p>Person per = new Student();</p>
+<ul>
+<li>向下转型—需要强制类型转换—父类引用需要调用子类扩充方法时</li>
+</ul>
+<p>子类 子类引用 = （子类）父类实例</p>
+<p>Student stu = (Student) new Person();</p>
+<p>要发生向下转型，必须先发生向上转型（ClassCastException—&gt;运行时异常，发生在两个不能强转的类之间）</p>
+<ul>
+<li>instanceof类</li>
+</ul>
+<p>引用instanceof类：表示该引用能否指向该类实例 返回boolean</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">per instanceof Student</span><br></pre></td></tr></table></figure>
+<p>欢迎交流~</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/10/12/Java中的继承与多态/">Java中的继承与多态</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
+        <p><span>发布时间:</span>2018-10-12, 20:09:49</p>
+        <p><span>最后更新:</span>2018-12-22, 20:10:35</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/10/12/Java中的继承与多态/" title="Java中的继承与多态">http://www.bingoxin.top/2018/10/12/Java中的继承与多态/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/10/12/Java中的继承与多态/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/16/进程/">
+                    进程
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/10/09/求1-2-3-n/">
+                    求1+2+3+...+n
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#static方法（类方法）"><span class="toc-number">1.</span> <span class="toc-text">static方法（类方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码块"><span class="toc-number">2.</span> <span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承"><span class="toc-number">3.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法覆写-override"><span class="toc-number">4.</span> <span class="toc-text">方法覆写-override</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法重载与方法重写"><span class="toc-number">5.</span> <span class="toc-text">方法重载与方法重写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#super关键字"><span class="toc-number">6.</span> <span class="toc-text">super关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final关键字"><span class="toc-number">7.</span> <span class="toc-text">final关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多态"><span class="toc-number">8.</span> <span class="toc-text">多态</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Java中的继承与多态　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: 'false',
+        verify: 'false',
+        app_id: "InyV1RI83uI1tCHGmOOx3SYM-gzGzoHsz",
+        app_key: "Sh9QoPKMPDw7kdbkMuqqNRYg",
+        placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/10/09/求1-2-3-n/" title="下一篇: 求1+2+3+...+n">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/04/聊天室项目/">聊天室项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/深浅拷贝/">深浅拷贝</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/20/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/16/进程/">进程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/12/Java中的继承与多态/">Java中的继承与多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/求1-2-3-n/">求1+2+3+...+n</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/20/初识Java/">初识Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/17/线程/">线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/Linux中的开发工具/">Linux中的开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/Linux中的权限/">Linux中的权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/数据库-数据类型/">数据库---数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/Python之面向对象/">Python之面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/14/Python中的文件操作/">Python中的文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/Linux常用指令/">Linux常用指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/Python中的模块和包/">Python中的模块和包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/Python-异常/">Python-异常</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/列表与字典的深度学习/">列表与字典的深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/07/git常遇问题/">git常遇问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/Python基本语句/">Python基本语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/Python基础小知识/">Python基础小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/禅道的安装/">禅道的安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/25/类与结构体/">类与结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/10/测试用例的撰写/">测试用例的撰写</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 bingoxin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </div>
+</body>
+</html>
