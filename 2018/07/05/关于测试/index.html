@@ -15,18 +15,23 @@
 
 
 
-<meta name="description" content="面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？ C++的三大特性是封装、继承和多态 接下来我将分三次来讲解关于这三大特性的知识 正文封装的概念隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。 函数是一种封装方式，在C++中更多地是用类进行封装。  访问限定符提到封装，不得不说一下访问限定符 从该访问限定符开始，到下一个访问限定符的位置">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="软件开发，包括分析、计划、设计、编码、测试、维护六个过程。  软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面） 接下来，请收下这篇————测试概念篇 正文：软件测试 目的：验证软件有或没有问题   原则：以客户为中心，遵循软件测试的规范、流程、标准和要求。  需求 需求，即满足用户期望或正式规定的文档的条件或权能。   其包括软件需求和用户需求两种。  测">
+<meta name="keywords" content="测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++的三大特性之封装">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/06/C-的三大特性之封装/index.html">
+<meta property="og:title" content="关于测试">
+<meta property="og:url" content="http://www.bingoxin.top/2018/07/05/关于测试/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？ C++的三大特性是封装、继承和多态 接下来我将分三次来讲解关于这三大特性的知识 正文封装的概念隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。 函数是一种封装方式，在C++中更多地是用类进行封装。  访问限定符提到封装，不得不说一下访问限定符 从该访问限定符开始，到下一个访问限定符的位置">
+<meta property="og:description" content="软件开发，包括分析、计划、设计、编码、测试、维护六个过程。  软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面） 接下来，请收下这篇————测试概念篇 正文：软件测试 目的：验证软件有或没有问题   原则：以客户为中心，遵循软件测试的规范、流程、标准和要求。  需求 需求，即满足用户期望或正式规定的文档的条件或权能。   其包括软件需求和用户需求两种。  测">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-22T04:01:16.205Z">
+<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/开发类型.PNG">
+<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/敏捷.PNG">
+<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/V型测试模型.PNG">
+<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/W型测试模型.PNG">
+<meta property="og:updated_time" content="2018-12-22T04:17:47.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++的三大特性之封装">
-<meta name="twitter:description" content="面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？ C++的三大特性是封装、继承和多态 接下来我将分三次来讲解关于这三大特性的知识 正文封装的概念隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。 函数是一种封装方式，在C++中更多地是用类进行封装。  访问限定符提到封装，不得不说一下访问限定符 从该访问限定符开始，到下一个访问限定符的位置">
+<meta name="twitter:title" content="关于测试">
+<meta name="twitter:description" content="软件开发，包括分析、计划、设计、编码、测试、维护六个过程。  软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面） 接下来，请收下这篇————测试概念篇 正文：软件测试 目的：验证软件有或没有问题   原则：以客户为中心，遵循软件测试的规范、流程、标准和要求。  需求 需求，即满足用户期望或正式规定的文档的条件或权能。   其包括软件需求和用户需求两种。  测">
+<meta name="twitter:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/开发类型.PNG">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>C++的三大特性之封装 | bingoxin&#39;s blog</title>
+<title>关于测试 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +266,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-C-的三大特性之封装" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-关于测试" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/06/C-的三大特性之封装/" class="article-date">
-      <time datetime="2018-06-06T04:00:28.000Z" itemprop="datePublished">2018-06-06</time>
+      <a href="/2018/07/05/关于测试/" class="article-date">
+      <time datetime="2018-07-05T04:13:46.000Z" itemprop="datePublished">2018-07-05</time>
 </a>
 
 
@@ -280,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      C++的三大特性之封装
+      关于测试
     </h1>
   
 
@@ -292,7 +297,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试/">测试</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,21 +307,79 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？</p>
-<p>C++的三大特性是封装、继承和多态</p>
-<p>接下来我将分三次来讲解关于这三大特性的知识</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="封装的概念"><a href="#封装的概念" class="headerlink" title="封装的概念"></a>封装的概念</h4><p>隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。</p>
-<p>函数是一种封装方式，在C++中更多地是用类进行封装。 </p>
-<h4 id="访问限定符"><a href="#访问限定符" class="headerlink" title="访问限定符"></a>访问限定符</h4><p>提到封装，不得不说一下访问限定符</p>
-<p>从该访问限定符开始，到下一个访问限定符的位置，为该访问限定符的限定范围。</p>
-<p>访问限定符有三种：public(公有)、protected(保护)、private(私有)</p>
-<p>公有即在类外可以访问变量</p>
-<p>保护和私有不可以在类外访问变量，若只是单纯的限定变量访问权限，二者没什么区别，</p>
-<p>但在继承中，作用会有所不同，欲了解可戳<a href="http://www.bingoxin.top/2018/06/%E7%BB%A7%E6%89%BF/">C++的三大特性之继承</a></p>
-<p>访问限定符只是在编译阶段有用，当数据映射到内存后，没有任何访问限定符的区别</p>
-<p>类的默认访问权限为私有，而结构体的默认访问权限为公有(因为结构体兼容C)。</p>
-<h4 id="在类外如何访问私有成员变量"><a href="#在类外如何访问私有成员变量" class="headerlink" title="在类外如何访问私有成员变量"></a>在类外如何访问私有成员变量</h4><p>在类外可以通过函数、指针、引用访问私有成员变量，也可以通过共有函数给私有成员变量赋值。</p>
-<p>请戳链接，可直接看代码<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F.cpp" target="_blank" rel="noopener">在类外如何访问私有成员变量</a></p>
+        <p>软件开发，包括分析、计划、设计、编码、测试、维护六个过程。 </p>
+<p>软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面）</p>
+<p>接下来，请收下这篇————测试概念篇</p>
+<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h3><blockquote>
+<p>目的：验证软件有或没有问题</p>
+</blockquote>
+<blockquote>
+<p>原则：以客户为中心，遵循软件测试的规范、流程、标准和要求。</p>
+</blockquote>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><blockquote>
+<p>需求，即满足用户期望或正式规定的文档的条件或权能。</p>
+</blockquote>
+<blockquote>
+<p>其包括软件需求和用户需求两种。</p>
+</blockquote>
+<h3 id="测试与调试的问题"><a href="#测试与调试的问题" class="headerlink" title="测试与调试的问题"></a>测试与调试的问题</h3><blockquote>
+<p><strong>目的不同：</strong>测试的目的是发现问题，调试的目的是发现并解决问题</p>
+<p><strong>参与角色不同：</strong>测试由开发人员和测试人员来完成，调试由开发人员来完成</p>
+<p><strong>执行的阶段不同：</strong>测试贯穿整个软件开发生命周期，测试一般在开发阶段</p>
+</blockquote>
+<h3 id="总是碰到的bug"><a href="#总是碰到的bug" class="headerlink" title="总是碰到的bug"></a>总是碰到的bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当且仅当规格说明是存在的并且正确，程序与规格说明之间的不匹配是bug。</span><br></pre></td></tr></table></figure>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><p>为了实施测试而向被测试的系统提供的一组集合。（包括<font color="red" size="3">测试环境、操作步骤、测试数据、预期结果等</font>）</p>
+<h4 id="在写测试用例的时候，一个功能点可能对应n条测试用例。"><a href="#在写测试用例的时候，一个功能点可能对应n条测试用例。" class="headerlink" title="在写测试用例的时候，一个功能点可能对应n条测试用例。"></a>在写测试用例的时候，一个功能点可能对应n条测试用例。</h4><font color="red" size="3">关于测试用例要注意以下问题：</font>
+
+<blockquote>
+<p>1.不知道是否较全面的测试了所有功能</p>
+</blockquote>
+<blockquote>
+<p>2.测试的覆盖率，无法衡量</p>
+</blockquote>
+<blockquote>
+<p>3.对新版本的重复测试很难实施</p>
+</blockquote>
+<blockquote>
+<p>4.存在大量冗余测试影响测试效率</p>
+</blockquote>
+<h4 id="举个栗子："><a href="#举个栗子：" class="headerlink" title="举个栗子："></a>举个栗子：</h4><p>假设一个功能点写一条测试用例，1.0版本需要测试100个功能点，请问需要写多少条测试用例？</p>
+<p>若软件升级为1.1版本，在原有的基础上增加了2个功能点，请问需要写多少条测试用例？</p>
+<p>答案：100条、2条</p>
+<h3 id="开发模型"><a href="#开发模型" class="headerlink" title="开发模型"></a>开发模型</h3><p>开发模型大概包括四种：</p>
+<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/开发类型.PNG" height="300" width="500"><br></div>
+
+<blockquote>
+<p>瀑布类型适用于需求稳定的项目，主要用于开发过的项目</p>
+</blockquote>
+<blockquote>
+<p>螺旋项目强调风险，但是比较耗费时间</p>
+</blockquote>
+<blockquote>
+<p>增量迭代其实是两种，增量是将代码逐步叠加到完整，而迭代是写出一个大概轮廓，然后将轮廓细化。</p>
+</blockquote>
+<p>  我们通常将这两种看作一类</p>
+<blockquote>
+<p>敏捷具有注重人与人的沟通、对文档要求低、客户参与度高等特点。</p>
+</blockquote>
+<p>  敏捷是软件公司最受欢迎的开发模型</p>
+<p>所以接下来，我来为大家更加详细的介绍一下<font color="black" size="3">敏捷</font></p>
+<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/敏捷.PNG" height="300" width="500"><br></div>
+
+<p>product owner<br>是类似于产品经理的一个职务（简称PO）</p>
+<p>主要工作职责是整理用户故事，定义其商业价值并对其进行排序</p>
+<p>scrum master<br>敏捷教练（简称sm）</p>
+<p>主要工作职责是召开会议，协调项目，为研发团队服务</p>
+<p>team<br>研发团队</p>
+<p>PO，sm都属于team，但是两个有比较特殊一点</p>
+<p>而在敏捷开发模式中，对于测试而言，会有两个挑战：</p>
+<p>轻文档和快速迭代</p>
+<h3 id="软件测试模型（V型和W型）"><a href="#软件测试模型（V型和W型）" class="headerlink" title="软件测试模型（V型和W型）"></a>软件测试模型（V型和W型）</h3><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/V型测试模型.PNG" height="300" width="500"><br></div>
+
+<p>我们可以发现V型测试模型忽略了软件测试的重要性</p>
+<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/W型测试模型.PNG" height="300" width="500"><br></div>
+
+<p>W型测试模型与V型模型相比，虽然有所改进，但整体仍为串行结构，不能满足需求的变更</p>
 <p>欢迎交流~</p>
 
       
@@ -326,13 +389,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/05/关于测试/">关于测试</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-06, 12:00:28</p>
-        <p><span>最后更新:</span>2018-12-22, 12:01:16</p>
+        <p><span>发布时间:</span>2018-07-05, 12:13:46</p>
+        <p><span>最后更新:</span>2018-12-22, 12:17:47</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/06/C-的三大特性之封装/" title="C++的三大特性之封装">http://www.bingoxin.top/2018/06/06/C-的三大特性之封装/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/06/C-的三大特性之封装/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/05/关于测试/" title="关于测试">http://www.bingoxin.top/2018/07/05/关于测试/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/07/05/关于测试/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -345,15 +408,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/10/C-中类的实例化对象/">
-                    C++中类的实例化对象
+                <a href="/2018/12/21/Java中的类集/">
+                    Java中的类集
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/05/面向对象or面向过程/">
-                    面向对象or面向过程
+                <a href="/2018/07/01/C-的三大特性之多态/">
+                    C++的三大特性之多态
                 </a>
             </div>
         
@@ -365,7 +428,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#封装的概念"><span class="toc-number">1.0.1.</span> <span class="toc-text">封装的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问限定符"><span class="toc-number">1.0.2.</span> <span class="toc-text">访问限定符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在类外如何访问私有成员变量"><span class="toc-number">1.0.3.</span> <span class="toc-text">在类外如何访问私有成员变量</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文："><span class="toc-number">1.</span> <span class="toc-text">正文：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件测试"><span class="toc-number">1.1.</span> <span class="toc-text">软件测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">1.2.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试与调试的问题"><span class="toc-number">1.3.</span> <span class="toc-text">测试与调试的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总是碰到的bug"><span class="toc-number">1.4.</span> <span class="toc-text">总是碰到的bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试用例"><span class="toc-number">1.5.</span> <span class="toc-text">测试用例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在写测试用例的时候，一个功能点可能对应n条测试用例。"><span class="toc-number">1.5.1.</span> <span class="toc-text">在写测试用例的时候，一个功能点可能对应n条测试用例。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#举个栗子："><span class="toc-number">1.5.2.</span> <span class="toc-text">举个栗子：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发模型"><span class="toc-number">1.6.</span> <span class="toc-text">开发模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件测试模型（V型和W型）"><span class="toc-number">1.7.</span> <span class="toc-text">软件测试模型（V型和W型）</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -401,7 +464,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"C++的三大特性之封装　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"关于测试　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -438,7 +501,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/10/C-中类的实例化对象/" title="上一篇: C++中类的实例化对象">
+            <a href="/2018/12/21/Java中的类集/" title="上一篇: Java中的类集">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -446,7 +509,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/05/面向对象or面向过程/" title="下一篇: 面向对象or面向过程">
+            <a href="/2018/07/01/C-的三大特性之多态/" title="下一篇: C++的三大特性之多态">
                 <i class="fa fa-angle-right"></i>
             </a>
         

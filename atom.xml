@@ -38,6 +38,82 @@
   </entry>
   
   <entry>
+    <title>关于测试</title>
+    <link href="http://www.bingoxin.top/2018/07/05/%E5%85%B3%E4%BA%8E%E6%B5%8B%E8%AF%95/"/>
+    <id>http://www.bingoxin.top/2018/07/05/关于测试/</id>
+    <published>2018-07-05T04:13:46.000Z</published>
+    <updated>2018-12-22T04:17:47.646Z</updated>
+    
+    <content type="html"><![CDATA[<p>软件开发，包括分析、计划、设计、编码、测试、维护六个过程。 </p><p>软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面）</p><p>接下来，请收下这篇————测试概念篇</p><h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h3><blockquote><p>目的：验证软件有或没有问题</p></blockquote><blockquote><p>原则：以客户为中心，遵循软件测试的规范、流程、标准和要求。</p></blockquote><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><blockquote><p>需求，即满足用户期望或正式规定的文档的条件或权能。</p></blockquote><blockquote><p>其包括软件需求和用户需求两种。</p></blockquote><h3 id="测试与调试的问题"><a href="#测试与调试的问题" class="headerlink" title="测试与调试的问题"></a>测试与调试的问题</h3><blockquote><p><strong>目的不同：</strong>测试的目的是发现问题，调试的目的是发现并解决问题</p><p><strong>参与角色不同：</strong>测试由开发人员和测试人员来完成，调试由开发人员来完成</p><p><strong>执行的阶段不同：</strong>测试贯穿整个软件开发生命周期，测试一般在开发阶段</p></blockquote><h3 id="总是碰到的bug"><a href="#总是碰到的bug" class="headerlink" title="总是碰到的bug"></a>总是碰到的bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当且仅当规格说明是存在的并且正确，程序与规格说明之间的不匹配是bug。</span><br></pre></td></tr></table></figure><h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><p>为了实施测试而向被测试的系统提供的一组集合。（包括<font color="red" size="3">测试环境、操作步骤、测试数据、预期结果等</font>）</p><h4 id="在写测试用例的时候，一个功能点可能对应n条测试用例。"><a href="#在写测试用例的时候，一个功能点可能对应n条测试用例。" class="headerlink" title="在写测试用例的时候，一个功能点可能对应n条测试用例。"></a>在写测试用例的时候，一个功能点可能对应n条测试用例。</h4><font color="red" size="3">关于测试用例要注意以下问题：</font><blockquote><p>1.不知道是否较全面的测试了所有功能</p></blockquote><blockquote><p>2.测试的覆盖率，无法衡量</p></blockquote><blockquote><p>3.对新版本的重复测试很难实施</p></blockquote><blockquote><p>4.存在大量冗余测试影响测试效率</p></blockquote><h4 id="举个栗子："><a href="#举个栗子：" class="headerlink" title="举个栗子："></a>举个栗子：</h4><p>假设一个功能点写一条测试用例，1.0版本需要测试100个功能点，请问需要写多少条测试用例？</p><p>若软件升级为1.1版本，在原有的基础上增加了2个功能点，请问需要写多少条测试用例？</p><p>答案：100条、2条</p><h3 id="开发模型"><a href="#开发模型" class="headerlink" title="开发模型"></a>开发模型</h3><p>开发模型大概包括四种：</p><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/开发类型.PNG" height="300" width="500"><br></div><blockquote><p>瀑布类型适用于需求稳定的项目，主要用于开发过的项目</p></blockquote><blockquote><p>螺旋项目强调风险，但是比较耗费时间</p></blockquote><blockquote><p>增量迭代其实是两种，增量是将代码逐步叠加到完整，而迭代是写出一个大概轮廓，然后将轮廓细化。</p></blockquote><p>  我们通常将这两种看作一类</p><blockquote><p>敏捷具有注重人与人的沟通、对文档要求低、客户参与度高等特点。</p></blockquote><p>  敏捷是软件公司最受欢迎的开发模型</p><p>所以接下来，我来为大家更加详细的介绍一下<font color="black" size="3">敏捷</font></p><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/敏捷.PNG" height="300" width="500"><br></div><p>product owner<br>是类似于产品经理的一个职务（简称PO）</p><p>主要工作职责是整理用户故事，定义其商业价值并对其进行排序</p><p>scrum master<br>敏捷教练（简称sm）</p><p>主要工作职责是召开会议，协调项目，为研发团队服务</p><p>team<br>研发团队</p><p>PO，sm都属于team，但是两个有比较特殊一点</p><p>而在敏捷开发模式中，对于测试而言，会有两个挑战：</p><p>轻文档和快速迭代</p><h3 id="软件测试模型（V型和W型）"><a href="#软件测试模型（V型和W型）" class="headerlink" title="软件测试模型（V型和W型）"></a>软件测试模型（V型和W型）</h3><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/V型测试模型.PNG" height="300" width="500"><br></div><p>我们可以发现V型测试模型忽略了软件测试的重要性</p><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/W型测试模型.PNG" height="300" width="500"><br></div><p>W型测试模型与V型模型相比，虽然有所改进，但整体仍为串行结构，不能满足需求的变更</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;软件开发，包括分析、计划、设计、编码、测试、维护六个过程。 &lt;/p&gt;
+&lt;p&gt;软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面）&lt;/p&gt;
+&lt;p&gt;接下来，请收下这篇————测试概念篇&lt;/p&gt;
+&lt;h2 id=&quot;正文：&quot;&gt;&lt;a href=&quot;#
+      
+    
+    </summary>
+    
+    
+      <category term="测试" scheme="http://www.bingoxin.top/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++的三大特性之多态</title>
+    <link href="http://www.bingoxin.top/2018/07/01/C-%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%A4%9A%E6%80%81/"/>
+    <id>http://www.bingoxin.top/2018/07/01/C-的三大特性之多态/</id>
+    <published>2018-07-01T04:12:26.000Z</published>
+    <updated>2018-12-22T04:13:09.440Z</updated>
+    
+    <content type="html"><![CDATA[<p>若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容</p><p>接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！ </p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><font color="blue" size="3">首先你可以讲述一下多态的概念</font><p>多态，即事物表现出的多种形态</p><p>然后你可以举个栗子~</p><p>就像是一个演员，他可以演好人，也可以演坏人。</p><p>接下来，可以说一下<font color="blue" size="3">多态的种类</font></p><p>多态分为静态多态和动态多态两种</p><h3 id="静态多态（函数重载、泛型编程）"><a href="#静态多态（函数重载、泛型编程）" class="headerlink" title="静态多态（函数重载、泛型编程）"></a>静态多态（函数重载、泛型编程）</h3><p>静态多态是编译器在编译期间完成的，根据实参类型调用函数，若实参类型与形参都不同，则系统会报错</p><p>关于函数重载的实现，可戳</p><h3 id="动态多态：（虚函数）"><a href="#动态多态：（虚函数）" class="headerlink" title="动态多态：（虚函数）"></a>动态多态：（虚函数）</h3><p>动态多态是在程序运行时完成的</p><p>讲到这里你可以讲一下<font color="blue" size="3">动态多态的实现条件</font></p><p>其需要满足两个条件：</p><blockquote><p>1.基类中必须包含虚函数，并且派生类中要对基类中的该虚函数进行重写</p></blockquote><blockquote><p>2.通过基类对象的指针或引用来调用虚函数</p></blockquote><p>关于动态多态的实现，可戳<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A4%9A%E6%80%81.cpp" target="_blank" rel="noopener">动态多态例程</a></p><p>在上面讲述动态多态的实现条件时，提到了<font color="blue" size="3">重写</font>的概念</p><h3 id="重写的实现条件"><a href="#重写的实现条件" class="headerlink" title="重写的实现条件"></a>重写的实现条件</h3><blockquote><p>1.基类中被重写的函数必须为虚函数</p></blockquote><blockquote><p>2.基类和派生类中虚函数的原型必须保持一致（即函数名，函数返回类型，函数参数列表完全相同）</p></blockquote><p>基类中将被重写的虚函数和派生类中与其对应的虚函数的访问限定符可以不同</p><font color="red" size="3">两个例外：</font><p>a.析构函数</p><p>b.协变：基类（派生类）虚函数返回基类（派生类）指针或引用</p><p>关于多态实现的原理，请戳</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容&lt;/p&gt;
+&lt;p&gt;接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！ &lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title
+      
+    
+    </summary>
+    
+    
+      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++的三大特性之继承</title>
+    <link href="http://www.bingoxin.top/2018/06/27/C-%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E7%BB%A7%E6%89%BF/"/>
+    <id>http://www.bingoxin.top/2018/06/27/C-的三大特性之继承/</id>
+    <published>2018-06-27T04:09:48.000Z</published>
+    <updated>2018-12-22T04:11:42.615Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天来为大家介绍一下继承~</p><p>继承使代码可以复用，他是为多态做铺垫的 </p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="继承的格式"><a href="#继承的格式" class="headerlink" title="继承的格式"></a>继承的格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class 派生类名称：继承权限 基类名称</span><br></pre></td></tr></table></figure><h3 id="继承的权限"><a href="#继承的权限" class="headerlink" title="继承的权限"></a>继承的权限</h3><p>继承的权限有public、protected、private</p><p>在这里还要提一下访问权限，有public、protected、private三种</p><p>由于基类中成员访问权限不同，以及派生类派生方式不同，会使派生类的访问权限发生变化</p><p>关系如下表所示：</p><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E7%BB%A7%E6%89%BF/%E7%BB%A7%E6%89%BF%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E5%85%B3%E7%B3%BB.PNG" height="300" width="500"><br></div><p>在派生类派生的过程中，需要注意一下几点：</p><blockquote><p>基类private成员不能在派生类中被访问</p></blockquote><blockquote><p>基类protected成员在类外不能被访问，但在派生类中可以</p></blockquote><blockquote><p>父类对象对子类对象也适用</p></blockquote><h3 id="派生类对象模型的构建与销毁"><a href="#派生类对象模型的构建与销毁" class="headerlink" title="派生类对象模型的构建与销毁"></a>派生类对象模型的构建与销毁</h3><p>派生类对象构建时，会先调用派生类成员，再调用基类对象成员</p><p>派生类对象销毁时，会先销毁派生类成员，再销毁基类对象成员</p><p>关于继承体系，要注意：基类对象和派生类对象不在同一作用域</p><p>若基类和派生类中有相同名称的成员，优先访问派生类中的该名称成员</p><p>继承分为普通继承和虚拟继承</p><font color="blue" size="3">首先你可以讲述一下多态的概念</font><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天来为大家介绍一下继承~&lt;/p&gt;
+&lt;p&gt;继承使代码可以复用，他是为多态做铺垫的 &lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h2&gt;&lt;h3 id=&quot;继承的格式&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>动态内存开辟</title>
     <link href="http://www.bingoxin.top/2018/06/17/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/"/>
     <id>http://www.bingoxin.top/2018/06/17/动态内存开辟/</id>

@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？ C++的三大特性是封装、继承和多态 接下来我将分三次来讲解关于这三大特性的知识 正文封装的概念隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。 函数是一种封装方式，在C++中更多地是用类进行封装。  访问限定符提到封装，不得不说一下访问限定符 从该访问限定符开始，到下一个访问限定符的位置">
+<meta name="description" content="若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容 接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！  正文首先你可以讲述一下多态的概念  多态，即事物表现出的多种形态 然后你可以举个栗子~ 就像是一个演员，他可以演好人，也可以演坏人。 接下来，可以说一下多态的种类 多态分为静态多态和动态多态两种 静态多态（函数重载、泛型编程）静态多态是编译器在编译">
 <meta name="keywords" content="C&#x2F;C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++的三大特性之封装">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/06/C-的三大特性之封装/index.html">
+<meta property="og:title" content="C++的三大特性之多态">
+<meta property="og:url" content="http://www.bingoxin.top/2018/07/01/C-的三大特性之多态/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？ C++的三大特性是封装、继承和多态 接下来我将分三次来讲解关于这三大特性的知识 正文封装的概念隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。 函数是一种封装方式，在C++中更多地是用类进行封装。  访问限定符提到封装，不得不说一下访问限定符 从该访问限定符开始，到下一个访问限定符的位置">
+<meta property="og:description" content="若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容 接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！  正文首先你可以讲述一下多态的概念  多态，即事物表现出的多种形态 然后你可以举个栗子~ 就像是一个演员，他可以演好人，也可以演坏人。 接下来，可以说一下多态的种类 多态分为静态多态和动态多态两种 静态多态（函数重载、泛型编程）静态多态是编译器在编译">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-22T04:01:16.205Z">
+<meta property="og:updated_time" content="2018-12-22T04:13:09.440Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++的三大特性之封装">
-<meta name="twitter:description" content="面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？ C++的三大特性是封装、继承和多态 接下来我将分三次来讲解关于这三大特性的知识 正文封装的概念隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。 函数是一种封装方式，在C++中更多地是用类进行封装。  访问限定符提到封装，不得不说一下访问限定符 从该访问限定符开始，到下一个访问限定符的位置">
+<meta name="twitter:title" content="C++的三大特性之多态">
+<meta name="twitter:description" content="若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容 接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！  正文首先你可以讲述一下多态的概念  多态，即事物表现出的多种形态 然后你可以举个栗子~ 就像是一个演员，他可以演好人，也可以演坏人。 接下来，可以说一下多态的种类 多态分为静态多态和动态多态两种 静态多态（函数重载、泛型编程）静态多态是编译器在编译">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>C++的三大特性之封装 | bingoxin&#39;s blog</title>
+<title>C++的三大特性之多态 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-C-的三大特性之封装" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-C-的三大特性之多态" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/06/C-的三大特性之封装/" class="article-date">
-      <time datetime="2018-06-06T04:00:28.000Z" itemprop="datePublished">2018-06-06</time>
+      <a href="/2018/07/01/C-的三大特性之多态/" class="article-date">
+      <time datetime="2018-07-01T04:12:26.000Z" itemprop="datePublished">2018-07-01</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      C++的三大特性之封装
+      C++的三大特性之多态
     </h1>
   
 
@@ -302,21 +302,40 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？</p>
-<p>C++的三大特性是封装、继承和多态</p>
-<p>接下来我将分三次来讲解关于这三大特性的知识</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="封装的概念"><a href="#封装的概念" class="headerlink" title="封装的概念"></a>封装的概念</h4><p>隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。</p>
-<p>函数是一种封装方式，在C++中更多地是用类进行封装。 </p>
-<h4 id="访问限定符"><a href="#访问限定符" class="headerlink" title="访问限定符"></a>访问限定符</h4><p>提到封装，不得不说一下访问限定符</p>
-<p>从该访问限定符开始，到下一个访问限定符的位置，为该访问限定符的限定范围。</p>
-<p>访问限定符有三种：public(公有)、protected(保护)、private(私有)</p>
-<p>公有即在类外可以访问变量</p>
-<p>保护和私有不可以在类外访问变量，若只是单纯的限定变量访问权限，二者没什么区别，</p>
-<p>但在继承中，作用会有所不同，欲了解可戳<a href="http://www.bingoxin.top/2018/06/%E7%BB%A7%E6%89%BF/">C++的三大特性之继承</a></p>
-<p>访问限定符只是在编译阶段有用，当数据映射到内存后，没有任何访问限定符的区别</p>
-<p>类的默认访问权限为私有，而结构体的默认访问权限为公有(因为结构体兼容C)。</p>
-<h4 id="在类外如何访问私有成员变量"><a href="#在类外如何访问私有成员变量" class="headerlink" title="在类外如何访问私有成员变量"></a>在类外如何访问私有成员变量</h4><p>在类外可以通过函数、指针、引用访问私有成员变量，也可以通过共有函数给私有成员变量赋值。</p>
-<p>请戳链接，可直接看代码<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F.cpp" target="_blank" rel="noopener">在类外如何访问私有成员变量</a></p>
+        <p>若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容</p>
+<p>接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！ </p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><font color="blue" size="3">首先你可以讲述一下多态的概念</font>
+
+<p>多态，即事物表现出的多种形态</p>
+<p>然后你可以举个栗子~</p>
+<p>就像是一个演员，他可以演好人，也可以演坏人。</p>
+<p>接下来，可以说一下<font color="blue" size="3">多态的种类</font></p>
+<p>多态分为静态多态和动态多态两种</p>
+<h3 id="静态多态（函数重载、泛型编程）"><a href="#静态多态（函数重载、泛型编程）" class="headerlink" title="静态多态（函数重载、泛型编程）"></a>静态多态（函数重载、泛型编程）</h3><p>静态多态是编译器在编译期间完成的，根据实参类型调用函数，若实参类型与形参都不同，则系统会报错</p>
+<p>关于函数重载的实现，可戳</p>
+<h3 id="动态多态：（虚函数）"><a href="#动态多态：（虚函数）" class="headerlink" title="动态多态：（虚函数）"></a>动态多态：（虚函数）</h3><p>动态多态是在程序运行时完成的</p>
+<p>讲到这里你可以讲一下<font color="blue" size="3">动态多态的实现条件</font></p>
+<p>其需要满足两个条件：</p>
+<blockquote>
+<p>1.基类中必须包含虚函数，并且派生类中要对基类中的该虚函数进行重写</p>
+</blockquote>
+<blockquote>
+<p>2.通过基类对象的指针或引用来调用虚函数</p>
+</blockquote>
+<p>关于动态多态的实现，可戳<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A4%9A%E6%80%81.cpp" target="_blank" rel="noopener">动态多态例程</a></p>
+<p>在上面讲述动态多态的实现条件时，提到了<font color="blue" size="3">重写</font>的概念</p>
+<h3 id="重写的实现条件"><a href="#重写的实现条件" class="headerlink" title="重写的实现条件"></a>重写的实现条件</h3><blockquote>
+<p>1.基类中被重写的函数必须为虚函数</p>
+</blockquote>
+<blockquote>
+<p>2.基类和派生类中虚函数的原型必须保持一致（即函数名，函数返回类型，函数参数列表完全相同）</p>
+</blockquote>
+<p>基类中将被重写的虚函数和派生类中与其对应的虚函数的访问限定符可以不同</p>
+<font color="red" size="3">两个例外：</font>
+
+<p>a.析构函数</p>
+<p>b.协变：基类（派生类）虚函数返回基类（派生类）指针或引用</p>
+<p>关于多态实现的原理，请戳</p>
 <p>欢迎交流~</p>
 
       
@@ -326,13 +345,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-06, 12:00:28</p>
-        <p><span>最后更新:</span>2018-12-22, 12:01:16</p>
+        <p><span>发布时间:</span>2018-07-01, 12:12:26</p>
+        <p><span>最后更新:</span>2018-12-22, 12:13:09</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/06/C-的三大特性之封装/" title="C++的三大特性之封装">http://www.bingoxin.top/2018/06/06/C-的三大特性之封装/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/06/C-的三大特性之封装/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/01/C-的三大特性之多态/" title="C++的三大特性之多态">http://www.bingoxin.top/2018/07/01/C-的三大特性之多态/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/07/01/C-的三大特性之多态/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -345,15 +364,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/10/C-中类的实例化对象/">
-                    C++中类的实例化对象
+                <a href="/2018/07/05/关于测试/">
+                    关于测试
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/05/面向对象or面向过程/">
-                    面向对象or面向过程
+                <a href="/2018/06/27/C-的三大特性之继承/">
+                    C++的三大特性之继承
                 </a>
             </div>
         
@@ -365,7 +384,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#封装的概念"><span class="toc-number">1.0.1.</span> <span class="toc-text">封装的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问限定符"><span class="toc-number">1.0.2.</span> <span class="toc-text">访问限定符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在类外如何访问私有成员变量"><span class="toc-number">1.0.3.</span> <span class="toc-text">在类外如何访问私有成员变量</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态多态（函数重载、泛型编程）"><span class="toc-number">1.1.</span> <span class="toc-text">静态多态（函数重载、泛型编程）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态多态：（虚函数）"><span class="toc-number">1.2.</span> <span class="toc-text">动态多态：（虚函数）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重写的实现条件"><span class="toc-number">1.3.</span> <span class="toc-text">重写的实现条件</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -401,7 +420,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"C++的三大特性之封装　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"C++的三大特性之多态　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -438,7 +457,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/10/C-中类的实例化对象/" title="上一篇: C++中类的实例化对象">
+            <a href="/2018/07/05/关于测试/" title="上一篇: 关于测试">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -446,7 +465,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/05/面向对象or面向过程/" title="下一篇: 面向对象or面向过程">
+            <a href="/2018/06/27/C-的三大特性之继承/" title="下一篇: C++的三大特性之继承">
                 <i class="fa fa-angle-right"></i>
             </a>
         
