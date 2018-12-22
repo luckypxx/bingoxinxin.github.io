@@ -267,6 +267,62 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-面向对象or面向过程" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/22/面向对象or面向过程/" class="article-date">
+      <time datetime="2018-12-22T03:58:54.000Z" itemprop="datePublished">2018-12-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/22/面向对象or面向过程/">面向对象or面向过程</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Java中的类集" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -316,6 +372,107 @@
         <p class="article-more-link">
           <a href="/2018/12/21/Java中的类集/#more">阅读全文 >></a>
         </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-叩开C-的大门" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/05/叩开C-的大门/" class="article-date">
+      <time datetime="2018-06-05T03:57:30.000Z" itemprop="datePublished">2018-06-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="缺省函数"><a href="#缺省函数" class="headerlink" title="缺省函数"></a>缺省函数</h4><p>如果非要把缺省函数比作一个事物，它更像是一个备胎。</p>
+<p>如果函数传参，就会将传过来的值赋值给形参</p>
+<p>如果没有传参，则就会将缺省值传递给函数</p>
+<p>关于缺省参数要注意以下几点：</p>
+<blockquote>
+<p>a.带缺省值的参数必须放在参数列表的最后面<br>b.缺省参数不能同时在函数声明和定义中出现，只能二者去一<br>c.缺省值必须是常量或者是全局变量<br>d.C语言不支持</p>
+</blockquote>
+<p>####函数重载</p>
+<p>函数重载，即在同一作用域里，声明几个功能相同的函数，形参列表不同或返回值类型不同(参数列表中，参数个数和顺序相同)，即可构成函数重载</p>
+<p>若只是返回值类型不同，不可构成函数重载，在这里也要注意：返回值不属于函数，参数属于函数</p>
+<p>在C语言中，不会构成函数重载，只是由于C语言和C++的编译风格不同</p>
+<p>在C语言中，编译完成后会在函数名前加上“_”，</p>
+<p>在C++中，编译完成后会被修饰成由函数名，函数参数列表和返回值构成的一串特定的字符串，用于区分函数名相同的各个函数</p>
+<p>####引用</p>
+<p>引用，就相当于为一个变量取一个别名</p>
+<p> int a=10;<br> int&amp; ra=a;<br>这就是引用的用法，ra和a的地址相同，变量存放的内容也相同</p>
+<p>引用站在应用层，编译器不为其开辟空间</p>
+<p>在使用引用时要注意：</p>
+<blockquote>
+<p>a.引用在定义时必须有初始化<br>b.一个变量可以有多个引用<br>c.引用一旦引用一个实体，再不能引用其他实体</p>
+</blockquote>
+<p>若初始变量被const修饰，其引用在定义时也要被const修饰，而初始变量就相当于常数</p>
+<p>接下来再来说一下数组引用的代码格式：</p>
+<p> int (&amp;array)[3]={0}; //注意符号优先级</p>
+<p>引用可以作为函数的参数和返回值</p>
+<p>在函数传参时，从底层来看，传引用和传指针效率相差不多</p>
+<p>但是引用和指针还是有区别的，如下：</p>
+<blockquote>
+<p>引用在定义时必须初始化，而指针没有要求<br>指针可以为空，而引用不可以<br>引用一旦有所指向就不能更改，而指针指向一个变量后，还可以更改指向另一个类型相同的变量<br>在sizeof中含义不同：引用的结果为引用类型的大小，但指针始终为4(在Win10，vs2013的环境下)<br>引用自加改变的是变量的大小，指针自加改变的是指针的指向<br>有多级指针，没有多级引用<br>指针需要手动寻址，引用可以通过编译器寻址<br>使用引用更为安全</p>
+</blockquote>
+<p>那么引用相当于void* const类型的指针(可以改变其内容，不可改变其指向)</p>
+<p>####命名空间</p>
+<p>命名空间可以将标识符本地化，避免命名冲突或名字污染</p>
+<p>首先我们先来了解一下命名空间的定义方式：</p>
+<p> namespace N</p>
+<p>关于命名空间和作用域，不得不再多说几句： </p>
+<blockquote>
+<p>a.若一个命名空间为N，“N::”表示其空间作用域，“::”为作用限定符<br>b.相同作用域定义的命名空间名称可以相同，编译器会自动将其合成<br>c.命名空间可以嵌套(“NN1::”)</p>
+</blockquote>
+<p>仅仅学了这几个概念，就觉得C++功能的实现比C语言简单许多</p>
+<p>终于敲开C++的大门啦！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>

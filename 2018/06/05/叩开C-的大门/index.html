@@ -15,22 +15,18 @@
 
 
 
-<meta name="description" content="在笔试和面试中，常常会出现关于数据结构中的单链表的考题，今天就来说一下关于判断两个无头结点的单链表是否相交的代码 正文：无头结点的单链表自身分为两种情况，带环和不带环， l1,l2分别代表两条链表， 用真值表来表示，1表示带环，0表示不带环 l1 0 0 1 1l2 0 1 0 1 首先我们来讨论一下较为简单的不带环的情况：       如图所示，共有两种情况，即相交和不相交。 相交分为三种情况（">
-<meta name="keywords" content="面试题分析">
+<meta name="description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数 关于缺省参数要注意以下几点：  a.带缺省值的参数必须放在参数列表的最后面b.缺省参数不能同时在函数声明和定义中出现，只能二者去一c.缺省值必须是常量或者是全局变量d.C语言不支持  ####函数重载 函数重载，即在同一作用域里，声明几个功能相同的函数，形参">
+<meta name="keywords" content="C&#x2F;C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="判断两个无头结点的单链表是否相交">
-<meta property="og:url" content="http://www.bingoxin.top/2018/04/01/判断两个无头结点的单链表是否相交/index.html">
+<meta property="og:title" content="叩开C++的大门">
+<meta property="og:url" content="http://www.bingoxin.top/2018/06/05/叩开C-的大门/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="在笔试和面试中，常常会出现关于数据结构中的单链表的考题，今天就来说一下关于判断两个无头结点的单链表是否相交的代码 正文：无头结点的单链表自身分为两种情况，带环和不带环， l1,l2分别代表两条链表， 用真值表来表示，1表示带环，0表示不带环 l1 0 0 1 1l2 0 1 0 1 首先我们来讨论一下较为简单的不带环的情况：       如图所示，共有两种情况，即相交和不相交。 相交分为三种情况（">
+<meta property="og:description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数 关于缺省参数要注意以下几点：  a.带缺省值的参数必须放在参数列表的最后面b.缺省参数不能同时在函数声明和定义中出现，只能二者去一c.缺省值必须是常量或者是全局变量d.C语言不支持  ####函数重载 函数重载，即在同一作用域里，声明几个功能相同的函数，形参">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List1.gif">
-<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List2.gif">
-<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List3.gif">
-<meta property="og:updated_time" content="2018-12-22T03:49:06.071Z">
+<meta property="og:updated_time" content="2018-12-22T03:58:20.514Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="判断两个无头结点的单链表是否相交">
-<meta name="twitter:description" content="在笔试和面试中，常常会出现关于数据结构中的单链表的考题，今天就来说一下关于判断两个无头结点的单链表是否相交的代码 正文：无头结点的单链表自身分为两种情况，带环和不带环， l1,l2分别代表两条链表， 用真值表来表示，1表示带环，0表示不带环 l1 0 0 1 1l2 0 1 0 1 首先我们来讨论一下较为简单的不带环的情况：       如图所示，共有两种情况，即相交和不相交。 相交分为三种情况（">
-<meta name="twitter:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List1.gif">
+<meta name="twitter:title" content="叩开C++的大门">
+<meta name="twitter:description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数 关于缺省参数要注意以下几点：  a.带缺省值的参数必须放在参数列表的最后面b.缺省参数不能同时在函数声明和定义中出现，只能二者去一c.缺省值必须是常量或者是全局变量d.C语言不支持  ####函数重载 函数重载，即在同一作用域里，声明几个功能相同的函数，形参">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -62,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>判断两个无头结点的单链表是否相交 | bingoxin&#39;s blog</title>
+<title>叩开C++的大门 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -265,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-判断两个无头结点的单链表是否相交" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-叩开C-的大门" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/01/判断两个无头结点的单链表是否相交/" class="article-date">
-      <time datetime="2018-04-01T14:51:08.000Z" itemprop="datePublished">2018-04-01</time>
+      <a href="/2018/06/05/叩开C-的大门/" class="article-date">
+      <time datetime="2018-06-05T03:57:30.000Z" itemprop="datePublished">2018-06-05</time>
 </a>
 
 
@@ -284,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      判断两个无头结点的单链表是否相交
+      叩开C++的大门
     </h1>
   
 
@@ -296,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题分析/">面试题分析</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -306,45 +302,47 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在笔试和面试中，常常会出现关于数据结构中的单链表的考题，<br>今天就来说一下关于判断两个无头结点的单链表是否相交的代码</p>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><p>无头结点的单链表自身分为两种情况，带环和不带环，</p>
-<p>l1,l2分别代表两条链表，</p>
-<p>用真值表来表示，1表示带环，0表示不带环</p>
-<p>l1 0 0 1 1<br>l2 0 1 0 1</p>
-<p>首先我们来讨论一下较为简单的不带环的情况：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List1.gif" height="300" width="500"><br></div>
-
-<p>如图所示，共有两种情况，即相交和不相交。</p>
-<p>相交分为三种情况（可以视为一条链表的尾部分别和另一条链表的不同部分相交）：即头部、中间和尾部。</p>
-<p>由图我们可以看出，若两条链表相交，他们的尾结点一定相同。</p>
-<p>这可以作为我们判断两结点是否相交的判断点。</p>
-<p>代码实现如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 判断两个单链表是否相交---链表不带环 </span><br><span class="line">int IsCrossWithoutCircle(PNode pHead1, PNode pHead2)//pHead1代表链表1，pHead2代表链表2</span><br><span class="line">&#123;</span><br><span class="line">	PNode pTail1 = pHead1;//定义链表1的尾结点，并让其指向链表1的头结点</span><br><span class="line">	PNode pTail2 = pHead2;//定义链表2的尾结点，并让其指向链表2的头结点</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//两链表只要有一个为空即不相交</span><br><span class="line">	if (NULL == pTail1 || NULL == pTail2)</span><br><span class="line">	&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	//遍历链表1，找到尾结点</span><br><span class="line">	while (pTail1-&gt;_pNext)</span><br><span class="line">	&#123;</span><br><span class="line">		pTail1 = pTail1-&gt;_pNext;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//遍历链表2，找到尾结点</span><br><span class="line">	while (pTail2-&gt;_pNext)</span><br><span class="line">	&#123;</span><br><span class="line">		pTail2 = pTail2-&gt;_pNext;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//判断两条链表的尾结点是否相等</span><br><span class="line">	if (pTail1 == pTail2)</span><br><span class="line">	&#123;</span><br><span class="line">		return 1;//相等即相交，返回1</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;//不相等即不相交，返回0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>构建的两条链表如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//构建两条链表</span><br><span class="line">	PNode pHead1;</span><br><span class="line">	PNode pHead2;</span><br><span class="line"></span><br><span class="line">	SListInit(&amp;pHead1);//链表初始化</span><br><span class="line">	SListPushBack(&amp;pHead1, 1);//链表尾插</span><br><span class="line">	SListPushBack(&amp;pHead1, 2);</span><br><span class="line">	SListPushBack(&amp;pHead1, 3);</span><br><span class="line">	</span><br><span class="line">	SListInit(&amp;pHead2);</span><br><span class="line">	SListPushBack(&amp;pHead2, 1);</span><br><span class="line">	SListPushBack(&amp;pHead2, 2);</span><br><span class="line">	SListPushBack(&amp;pHead2, 3);</span><br><span class="line"></span><br><span class="line">	while (pHead1-&gt;_pNext)</span><br><span class="line">	&#123;</span><br><span class="line">		pHead1 = pHead1-&gt;_pNext;</span><br><span class="line">	&#125;</span><br><span class="line">	pHead1-&gt;_pNext = pHead2;</span><br></pre></td></tr></table></figure>
-<p>该种情况为相交的第三种情况，测试结果如下:</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List2.gif" height="300" width="500"><br></div>
-
-<p>输出1，则其相交，其他情况不再一一描述。</p>
-<p>带环的情况也比较多，不过经过分析也不会那么复杂。</p>
-<p>接下来我们来画图进行分析</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List3.gif" height="300" width="500"><br></div>
-
-<p>在画图过程中，我们可以发现：不会出现其中一条链表带环，且两条链表相交的情况。<br>由图我们可以得知，两个带环的链表相交分为，环内相交和环外相交两种。</p>
-<p>在判断两链表是否相交的过程中，我们还需要实现判断链表是否带环，</p>
-<p>判断链表是否带环：</p>
-<p>1、定义两个指针，一个一次走两个结点（pFast），一个一次走一个结点(pSlow)</p>
-<p>2、若有环，pFast会与pSlow相遇，此时返回两指针的地址；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">若无环，如果pFast==NULL，即可证明其无环，返回空指针</span><br></pre></td></tr></table></figure>
-<p>代码实现如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">PNode IsListwithCircle(PNode pHead)</span><br><span class="line">&#123;</span><br><span class="line">		PNode pFast = pHead;</span><br><span class="line">	PNode pSlow = pHead;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	if (NULL == pHead)</span><br><span class="line">	&#123;</span><br><span class="line">		return NULL;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	while (pFast-&gt;_pNext)</span><br><span class="line">	&#123;</span><br><span class="line">		pFast = pFast-&gt;_pNext-&gt;_pNext;</span><br><span class="line">		pSlow = pSlow-&gt;_pNext;</span><br><span class="line">		if (pFast == pSlow)</span><br><span class="line">			return pFast;</span><br><span class="line">	&#125;</span><br><span class="line">	return NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接着判断两个链表是否相交：</p>
-<p>大概思路就是：让两个链表的相遇点一个保持不动，一个往后走（每次走一步），若两个相遇点相遇，即可说明两条链表相交。</p>
-<p>代码实现如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">int IsCrossWithCircle(PNode pHead1, PNode pHead2)</span><br><span class="line">&#123;</span><br><span class="line">	PNode pMeetNode1 = NULL;</span><br><span class="line">	PNode pMeetNode2 = NULL;</span><br><span class="line">	PNode pCur = NULL;</span><br><span class="line">	</span><br><span class="line">	if (NULL == pHead1 || NULL == pHead2)</span><br><span class="line">	&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	pMeetNode1 = IsListwithCircle(pHead1);</span><br><span class="line">	pMeetNode2 = IsListwithCircle(pHead2);</span><br><span class="line">	pCur = pMeetNode1;</span><br><span class="line">	</span><br><span class="line">	//其中一个链表带环或两条链表均不带环</span><br><span class="line">	if (NULL == pMeetNode1 || NULL == pMeetNode2)</span><br><span class="line">		return 0;</span><br><span class="line"></span><br><span class="line">	//两条链表均带环</span><br><span class="line">	while (pMeetNode1 != pMeetNode2)</span><br><span class="line">	&#123;</span><br><span class="line">		pCur = pCur-&gt;_pNext;</span><br><span class="line">		if (pCur == pMeetNode1)</span><br><span class="line">			return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关于测试结果就不在展示了</p>
-<h2 id="寄语"><a href="#寄语" class="headerlink" title="寄语"></a>寄语</h2><p>　　判断两条链表是否相交经常会出现在面试题中，如果把图画出来写程序会更有思路。</p>
-<p>欢迎交流~</p>
+        <h4 id="缺省函数"><a href="#缺省函数" class="headerlink" title="缺省函数"></a>缺省函数</h4><p>如果非要把缺省函数比作一个事物，它更像是一个备胎。</p>
+<p>如果函数传参，就会将传过来的值赋值给形参</p>
+<p>如果没有传参，则就会将缺省值传递给函数</p>
+<p>关于缺省参数要注意以下几点：</p>
+<blockquote>
+<p>a.带缺省值的参数必须放在参数列表的最后面<br>b.缺省参数不能同时在函数声明和定义中出现，只能二者去一<br>c.缺省值必须是常量或者是全局变量<br>d.C语言不支持</p>
+</blockquote>
+<p>####函数重载</p>
+<p>函数重载，即在同一作用域里，声明几个功能相同的函数，形参列表不同或返回值类型不同(参数列表中，参数个数和顺序相同)，即可构成函数重载</p>
+<p>若只是返回值类型不同，不可构成函数重载，在这里也要注意：返回值不属于函数，参数属于函数</p>
+<p>在C语言中，不会构成函数重载，只是由于C语言和C++的编译风格不同</p>
+<p>在C语言中，编译完成后会在函数名前加上“_”，</p>
+<p>在C++中，编译完成后会被修饰成由函数名，函数参数列表和返回值构成的一串特定的字符串，用于区分函数名相同的各个函数</p>
+<p>####引用</p>
+<p>引用，就相当于为一个变量取一个别名</p>
+<p> int a=10;<br> int&amp; ra=a;<br>这就是引用的用法，ra和a的地址相同，变量存放的内容也相同</p>
+<p>引用站在应用层，编译器不为其开辟空间</p>
+<p>在使用引用时要注意：</p>
+<blockquote>
+<p>a.引用在定义时必须有初始化<br>b.一个变量可以有多个引用<br>c.引用一旦引用一个实体，再不能引用其他实体</p>
+</blockquote>
+<p>若初始变量被const修饰，其引用在定义时也要被const修饰，而初始变量就相当于常数</p>
+<p>接下来再来说一下数组引用的代码格式：</p>
+<p> int (&amp;array)[3]={0}; //注意符号优先级</p>
+<p>引用可以作为函数的参数和返回值</p>
+<p>在函数传参时，从底层来看，传引用和传指针效率相差不多</p>
+<p>但是引用和指针还是有区别的，如下：</p>
+<blockquote>
+<p>引用在定义时必须初始化，而指针没有要求<br>指针可以为空，而引用不可以<br>引用一旦有所指向就不能更改，而指针指向一个变量后，还可以更改指向另一个类型相同的变量<br>在sizeof中含义不同：引用的结果为引用类型的大小，但指针始终为4(在Win10，vs2013的环境下)<br>引用自加改变的是变量的大小，指针自加改变的是指针的指向<br>有多级指针，没有多级引用<br>指针需要手动寻址，引用可以通过编译器寻址<br>使用引用更为安全</p>
+</blockquote>
+<p>那么引用相当于void* const类型的指针(可以改变其内容，不可改变其指向)</p>
+<p>####命名空间</p>
+<p>命名空间可以将标识符本地化，避免命名冲突或名字污染</p>
+<p>首先我们先来了解一下命名空间的定义方式：</p>
+<p> namespace N</p>
+<p>关于命名空间和作用域，不得不再多说几句： </p>
+<blockquote>
+<p>a.若一个命名空间为N，“N::”表示其空间作用域，“::”为作用限定符<br>b.相同作用域定义的命名空间名称可以相同，编译器会自动将其合成<br>c.命名空间可以嵌套(“NN1::”)</p>
+</blockquote>
+<p>仅仅学了这几个概念，就觉得C++功能的实现比C语言简单许多</p>
+<p>终于敲开C++的大门啦！</p>
 
       
     </div>
@@ -353,13 +351,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></p>
+        <p><span>本文标题:</span><a href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-04-01, 22:51:08</p>
-        <p><span>最后更新:</span>2018-12-22, 11:49:06</p>
+        <p><span>发布时间:</span>2018-06-05, 11:57:30</p>
+        <p><span>最后更新:</span>2018-12-22, 11:58:20</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/04/01/判断两个无头结点的单链表是否相交/" title="判断两个无头结点的单链表是否相交">http://www.bingoxin.top/2018/04/01/判断两个无头结点的单链表是否相交/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/04/01/判断两个无头结点的单链表是否相交/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/05/叩开C-的大门/" title="叩开C++的大门">http://www.bingoxin.top/2018/06/05/叩开C-的大门/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/05/叩开C-的大门/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -372,15 +370,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/03/数据库基本操作/">
-                    数据库基本操作
+                <a href="/2018/12/21/Java中的类集/">
+                    Java中的类集
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/03/05/自定义类型/">
-                    自定义类型
+                <a href="/2018/06/05/函数调用约定/">
+                    函数调用约定
                 </a>
             </div>
         
@@ -392,7 +390,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文："><span class="toc-number">1.</span> <span class="toc-text">正文：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#寄语"><span class="toc-number">2.</span> <span class="toc-text">寄语</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#缺省函数"><span class="toc-number">1.</span> <span class="toc-text">缺省函数</span></a></li></ol>
         
     </div>
     <style>
@@ -428,7 +426,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"判断两个无头结点的单链表是否相交　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"叩开C++的大门　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -465,7 +463,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/03/数据库基本操作/" title="上一篇: 数据库基本操作">
+            <a href="/2018/12/21/Java中的类集/" title="上一篇: Java中的类集">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -473,7 +471,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/03/05/自定义类型/" title="下一篇: 自定义类型">
+            <a href="/2018/06/05/函数调用约定/" title="下一篇: 函数调用约定">
                 <i class="fa fa-angle-right"></i>
             </a>
         
