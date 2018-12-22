@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="bingoxin&#39;s blog">
 <meta property="og:description" content="在做面试题的时候，我遇到了这样一道题： 12345678910111213141516#include &amp;lt;stdio.h&amp;gt;void fun()&amp;#123;	int tmp=10;	int* p=(int*)(*(&amp;amp;tmp+1));	*(p-1)=20;&amp;#125;int main()&amp;#123;	int a=0;	fun();	printf(&amp;quot;%d&amp;quot;,a);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.bingoxin.top/images/posts/函数栈桢/捕获5.PNG">
-<meta property="og:updated_time" content="2018-12-21T14:39:19.051Z">
+<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%87%BD%E6%95%B0%E6%A0%88%E6%A1%A2/%E6%8D%95%E8%8E%B75.PNG">
+<meta property="og:updated_time" content="2018-12-21T15:07:49.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数栈桢">
 <meta name="twitter:description" content="在做面试题的时候，我遇到了这样一道题： 12345678910111213141516#include &amp;lt;stdio.h&amp;gt;void fun()&amp;#123;	int tmp=10;	int* p=(int*)(*(&amp;amp;tmp+1));	*(p-1)=20;&amp;#125;int main()&amp;#123;	int a=0;	fun();	printf(&amp;quot;%d&amp;quot;,a);">
-<meta name="twitter:image" content="http://www.bingoxin.top/images/posts/函数栈桢/捕获5.PNG">
+<meta name="twitter:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%87%BD%E6%95%B0%E6%A0%88%E6%A1%A2/%E6%8D%95%E8%8E%B75.PNG">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -192,7 +192,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li></ul>
                     </div>
                 </section>
                 
@@ -319,7 +319,8 @@
 <p>接下来，我将以下面的代码为例，来讲解函数调用过程</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int Add(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	int z = 0;</span><br><span class="line">	z = x + y;</span><br><span class="line">	return z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a = 10;</span><br><span class="line">	int b = 20;</span><br><span class="line">	int ret = 0;</span><br><span class="line">	ret = Add(a,b);</span><br><span class="line">	printf(&quot;%d&quot;,ret);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><h2 id="调用mainCRTStart"><a href="#调用mainCRTStart" class="headerlink" title="调用mainCRTStart()"></a>调用mainCRTStart()</h2><p>以调用mainCRTStart()来调用main函数，此时ebp在栈底，esp在栈顶。</p>
-<h2 id="用汇编代码来看"><a href="#用汇编代码来看" class="headerlink" title="用汇编代码来看"></a>用汇编代码来看</h2><div align="center"><br>    <img src="\images\posts\函数栈桢\捕获5.PNG" height="500" width="500"><br></div>
+<h2 id="用汇编代码来看"><a href="#用汇编代码来看" class="headerlink" title="用汇编代码来看"></a>用汇编代码来看</h2><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%87%BD%E6%95%B0%E6%A0%88%E6%A1%A2/%E6%8D%95%E8%8E%B75.PNG" height="500" width="500"><br></div>
+
 
 <p>注意：函数栈桢图中的序号与步骤号对应，汇编代码前的红色数字与步骤号也是对应的，一个步骤可能执行多条语句</p>
 <p><strong>第一步</strong></p>
@@ -400,7 +401,7 @@
         <p><span>本文标题:</span><a href="/2017/12/13/函数栈桢/">函数栈桢</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
         <p><span>发布时间:</span>2017-12-13, 22:36:59</p>
-        <p><span>最后更新:</span>2018-12-21, 22:39:19</p>
+        <p><span>最后更新:</span>2018-12-21, 23:07:49</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/12/13/函数栈桢/" title="函数栈桢">http://www.bingoxin.top/2017/12/13/函数栈桢/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2017/12/13/函数栈桢/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -523,7 +524,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
 
 
 
