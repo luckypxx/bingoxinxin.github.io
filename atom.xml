@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.bingoxin.top/"/>
-  <updated>2018-12-22T03:58:54.693Z</updated>
+  <updated>2018-12-22T04:02:19.157Z</updated>
   <id>http://www.bingoxin.top/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>面向对象or面向过程</title>
-    <link href="http://www.bingoxin.top/2018/12/22/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1or%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/"/>
-    <id>http://www.bingoxin.top/2018/12/22/面向对象or面向过程/</id>
-    <published>2018-12-22T03:58:54.000Z</published>
-    <updated>2018-12-22T03:58:54.693Z</updated>
+    <title>C++中类的实例化对象</title>
+    <link href="http://www.bingoxin.top/2018/12/22/C-%E4%B8%AD%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://www.bingoxin.top/2018/12/22/C-中类的实例化对象/</id>
+    <published>2018-12-22T04:02:19.000Z</published>
+    <updated>2018-12-22T04:02:19.157Z</updated>
     
     <summary type="html">
     
@@ -48,6 +48,57 @@
     
     
       <category term="Java" scheme="http://www.bingoxin.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++的三大特性之封装</title>
+    <link href="http://www.bingoxin.top/2018/06/06/C-%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E5%B0%81%E8%A3%85/"/>
+    <id>http://www.bingoxin.top/2018/06/06/C-的三大特性之封装/</id>
+    <published>2018-06-06T04:00:28.000Z</published>
+    <updated>2018-12-22T04:01:16.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？</p><p>C++的三大特性是封装、继承和多态</p><p>接下来我将分三次来讲解关于这三大特性的知识</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="封装的概念"><a href="#封装的概念" class="headerlink" title="封装的概念"></a>封装的概念</h4><p>隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。</p><p>函数是一种封装方式，在C++中更多地是用类进行封装。 </p><h4 id="访问限定符"><a href="#访问限定符" class="headerlink" title="访问限定符"></a>访问限定符</h4><p>提到封装，不得不说一下访问限定符</p><p>从该访问限定符开始，到下一个访问限定符的位置，为该访问限定符的限定范围。</p><p>访问限定符有三种：public(公有)、protected(保护)、private(私有)</p><p>公有即在类外可以访问变量</p><p>保护和私有不可以在类外访问变量，若只是单纯的限定变量访问权限，二者没什么区别，</p><p>但在继承中，作用会有所不同，欲了解可戳<a href="http://www.bingoxin.top/2018/06/%E7%BB%A7%E6%89%BF/">C++的三大特性之继承</a></p><p>访问限定符只是在编译阶段有用，当数据映射到内存后，没有任何访问限定符的区别</p><p>类的默认访问权限为私有，而结构体的默认访问权限为公有(因为结构体兼容C)。</p><h4 id="在类外如何访问私有成员变量"><a href="#在类外如何访问私有成员变量" class="headerlink" title="在类外如何访问私有成员变量"></a>在类外如何访问私有成员变量</h4><p>在类外可以通过函数、指针、引用访问私有成员变量，也可以通过共有函数给私有成员变量赋值。</p><p>请戳链接，可直接看代码<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F.cpp" target="_blank" rel="noopener">在类外如何访问私有成员变量</a></p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？&lt;/p&gt;
+&lt;p&gt;C++的三大特性是封装、继承和多态&lt;/p&gt;
+&lt;p&gt;接下来我将分三次来讲解关于这三大特性的知识&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面向对象or面向过程</title>
+    <link href="http://www.bingoxin.top/2018/06/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1or%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/"/>
+    <id>http://www.bingoxin.top/2018/06/05/面向对象or面向过程/</id>
+    <published>2018-06-05T03:58:54.000Z</published>
+    <updated>2018-12-22T03:59:43.783Z</updated>
+    
+    <content type="html"><![CDATA[<p>刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。</p><p>也算是感受到了C++的一点点魅力~</p><h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="面向过程？面向对象？"><a href="#面向过程？面向对象？" class="headerlink" title="面向过程？面向对象？"></a>面向过程？面向对象？</h3><p>C语言是面向过程的，而JAVA和C++是面向对象的。</p><blockquote><p>艾兰·库伯在《软件创新之路》中提到：</p></blockquote><blockquote><p>“面向过程和面向对象的区别并不像人们想象得那么大，面向对象的大部分思想在面向过程中也能体现,</p></blockquote><blockquote><p>但面向过程最大的问题在于系统的膨胀，面向对象将无法应付，最终导致系统的崩溃。”</p></blockquote><h3 id="面向过程和面向对象的区别大概有如下几个方面："><a href="#面向过程和面向对象的区别大概有如下几个方面：" class="headerlink" title="面向过程和面向对象的区别大概有如下几个方面："></a>面向过程和面向对象的区别大概有如下几个方面：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.面向过程重用的是函数，而面对对象重用的是类（即将数据和处理数据的过程及函数封装在一起的实体）。</span><br><span class="line"> </span><br><span class="line">2.面向过程程序设计方法的实质上是从计算机处理问题的观点来进行程序设计工作：输入--运算--输出；</span><br><span class="line"> </span><br><span class="line">面向对象程序设计方法需要使用结构化的程序来设计。</span><br><span class="line"></span><br><span class="line">3. 面向过程程序设计是一种自上而下的程序设计方法，从程序的一部分入手，一点一点地构建出整个程序；</span><br><span class="line"> </span><br><span class="line">面向对象程序设计是以一数据为中心，类作为表现数据的工具，成为划分程序的基本单位。</span><br></pre></td></tr></table></figure><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。&lt;/p&gt;
+&lt;p&gt;也算是感受到了C++的一点点魅力~&lt;/p&gt;
+&lt;h2 id=&quot;正文：&quot;&gt;&lt;a href=&quot;#正文：&quot; class=&quot;headerlink&quot; title=&quot;正文：&quot;&gt;&lt;/a&gt;正文：&lt;/h2&gt;&lt;h
+      
+    
+    </summary>
+    
+    
+      <category term="C/C++" scheme="http://www.bingoxin.top/tags/C-C/"/>
     
   </entry>
   
