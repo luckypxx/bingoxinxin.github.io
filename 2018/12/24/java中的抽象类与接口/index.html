@@ -15,20 +15,18 @@
 
 
 
-<meta name="description" content="C语言中实现方式使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉  比较malloc/calloc/realloc相同点 三者都是在堆上申请空间：  若申请成功-&amp;gt;返回申请的空间的首地址   若申请失败-&amp;gt;返回空指针  三者的申请空间的释放都是使用free()进行操作">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="抽象类的定义抽象类只是比普通类多了一些抽象方法  抽象方法  只声明而未实现的方法（没有方法体），抽象方法必须使用abstract关键字类定义。并且抽象方法所在的类也一定要使用abstract来定义">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态内存开辟">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/17/动态内存开辟/index.html">
+<meta property="og:title" content="Java中的抽象类与接口">
+<meta property="og:url" content="http://www.bingoxin.top/2018/12/24/java中的抽象类与接口/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="C语言中实现方式使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉  比较malloc/calloc/realloc相同点 三者都是在堆上申请空间：  若申请成功-&amp;gt;返回申请的空间的首地址   若申请失败-&amp;gt;返回空指针  三者的申请空间的释放都是使用free()进行操作">
+<meta property="og:description" content="抽象类的定义抽象类只是比普通类多了一些抽象方法  抽象方法  只声明而未实现的方法（没有方法体），抽象方法必须使用abstract关键字类定义。并且抽象方法所在的类也一定要使用abstract来定义">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/%E6%8D%95%E8%8E%B7.PNG">
-<meta property="og:updated_time" content="2018-12-26T11:18:23.259Z">
+<meta property="og:updated_time" content="2018-12-24T12:14:11.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态内存开辟">
-<meta name="twitter:description" content="C语言中实现方式使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉  比较malloc/calloc/realloc相同点 三者都是在堆上申请空间：  若申请成功-&amp;gt;返回申请的空间的首地址   若申请失败-&amp;gt;返回空指针  三者的申请空间的释放都是使用free()进行操作">
-<meta name="twitter:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/%E6%8D%95%E8%8E%B7.PNG">
+<meta name="twitter:title" content="Java中的抽象类与接口">
+<meta name="twitter:description" content="抽象类的定义抽象类只是比普通类多了一些抽象方法  抽象方法  只声明而未实现的方法（没有方法体），抽象方法必须使用abstract关键字类定义。并且抽象方法所在的类也一定要使用abstract来定义">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -60,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>动态内存开辟 | bingoxin&#39;s blog</title>
+<title>Java中的抽象类与接口 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-动态内存开辟" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java中的抽象类与接口" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/17/动态内存开辟/" class="article-date">
-      <time datetime="2018-06-17T04:03:54.000Z" itemprop="datePublished">2018-06-17</time>
+      <a href="/2018/12/24/java中的抽象类与接口/" class="article-date">
+      <time datetime="2018-12-24T12:13:33.000Z" itemprop="datePublished">2018-12-24</time>
 </a>
 
 
@@ -282,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      动态内存开辟
+      Java中的抽象类与接口
     </h1>
   
 
@@ -294,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -304,62 +302,60 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="C语言中实现方式"><a href="#C语言中实现方式" class="headerlink" title="C语言中实现方式"></a>C语言中实现方式</h3><p>使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉 </p>
-<h3 id="比较malloc-calloc-realloc"><a href="#比较malloc-calloc-realloc" class="headerlink" title="比较malloc/calloc/realloc"></a>比较malloc/calloc/realloc</h3><p><strong>相同点</strong></p>
-<p>三者都是在堆上申请空间：</p>
-<blockquote>
-<p>若申请成功-&gt;返回申请的空间的首地址</p>
-</blockquote>
-<blockquote>
-<p>若申请失败-&gt;返回空指针</p>
-</blockquote>
-<p>三者的申请空间的释放都是使用free()进行操作</p>
+        <h3 id="抽象类的定义"><a href="#抽象类的定义" class="headerlink" title="抽象类的定义"></a>抽象类的定义</h3><p>抽象类只是比普通类多了一些抽象方法</p>
+<ul>
+<li>抽象方法</li>
+</ul>
+<p>只声明而未实现的方法（没有方法体），抽象方法必须使用abstract关键字类定义。并且抽象方法所在的类也一定要使用abstract来定义</p>
 <a id="more"></a>
-<p><strong>不同点</strong></p>
-<blockquote>
-<p>malloc:在堆上开辟指定字节数的空间</p>
-</blockquote>
-<blockquote>
-<p>calloc:开辟空间会被0初始化</p>
-</blockquote>
-<blockquote>
-<p>realloc:把原来开辟的空间缩小或扩大</p>
-</blockquote>
-<blockquote>
-<p>——–&gt;缩小空间—&gt;返回原空间的地址，但空间变小<br>​<br>——–&gt;扩大空间—&gt;比较原空间连续的可用空间大小与原空间空间大小之和与申请空间的大小</p>
-<p>——————-&gt;大于—&gt;返回空间首地址</p>
-<p>——————-&gt;小于—&gt;重新开辟空间</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void* malloc(字节数)</span><br><span class="line">void* calloc(元素个数，元素大小)</span><br><span class="line">void* realloc(void* p,字节数)</span><br></pre></td></tr></table></figure>
-<h3 id="malloc实现原理"><a href="#malloc实现原理" class="headerlink" title="malloc实现原理"></a>malloc实现原理</h3><p>在开辟空间时，除了所需的空间之外，还会在所需空间前开辟一个结构体，后面又追加了4个字节，防止越界</p>
-<p><strong>结构体</strong>—共32个字节</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#define nNoManLandSize 4</span><br><span class="line">typedef struct _CrtMemBlockHeader</span><br><span class="line">&#123;</span><br><span class="line">	struct _CrtMMemBlockHeader * pBlockHeaderNext;</span><br><span class="line">	struct _CrtMMemBlockHeader * pBlockHeaderPrev;//双向链表</span><br><span class="line">	char * szFileName;</span><br><span class="line">	int nLine;</span><br><span class="line">	size_t nDataSize;</span><br><span class="line">	int nBlockUse;</span><br><span class="line">	long lRequest;</span><br><span class="line">	unsigned char gap[nNoManLandSize];</span><br><span class="line">&#125;_CrtMenBlockHeader;</span><br></pre></td></tr></table></figure>
-<h3 id="alloca"><a href="#alloca" class="headerlink" title="_alloca"></a>_alloca</h3><p>_alloca是在栈上申请空间的，用户不需要管理，由编译器自动维护。一旦出了使用_alloca的函数，所申请的空间会自动被收回去，不需要显式释放。</p>
-<h3 id="常见的内存泄漏"><a href="#常见的内存泄漏" class="headerlink" title="常见的内存泄漏"></a>常见的内存泄漏</h3><ul>
-<li>内存申请了忘记释放</li>
-<li>指向新空间的两个指针p1、p2，若p1 = p2，这时p1、p2指向同一块空间，若free(p1);free(p2),会使同一块空间被释放两次。原来p2指向的内存块，会丢失，导致内存泄漏。</li>
-<li>使用的空间大于开辟的空间，会将防止越界的四个字节占用，在释放内存时，会出问题</li>
-<li>释放时传入的地址与申请时的地方不同</li>
-</ul>
-<h1 id="C-中申请空间"><a href="#C-中申请空间" class="headerlink" title="C++中申请空间"></a>C++中申请空间</h1><h3 id="关键字new和delete"><a href="#关键字new和delete" class="headerlink" title="关键字new和delete"></a>关键字new和delete</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int* p = new int;</span><br><span class="line">int* p1 = new int(5);</span><br><span class="line">int* p2 = new int[10];</span><br><span class="line"></span><br><span class="line">delete p;</span><br><span class="line">delete p1;</span><br><span class="line">delete[] p2;//释放连续空间</span><br></pre></td></tr></table></figure>
 <ul>
-<li>用new申请出的空间，不需要判空，p2申请的空间时连续的(数组的形式)</li>
-<li>用delete删除连续空间时，需使用释放p2的形式</li>
-<li>delete和new可以进行重载</li>
-<li>new申请的空间，是一个完整的对象</li>
+<li>抽象类使用原则</li>
 </ul>
-<p><strong>delete[]和new[]要成对使用，delete和new要成对使用</strong></p>
-<p>接下来看一段代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	Test()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;Test():&quot; &lt;&lt; this &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	~Test()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;~Test():&quot; &lt;&lt; this &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	Test* p1 = (Test*)malloc(sizeof(Test));</span><br><span class="line">	Test* p2 = new Test;</span><br><span class="line">	Test* p3 = new Test[10];</span><br><span class="line">	</span><br><span class="line">	free(p1);</span><br><span class="line">	delete p2;</span><br><span class="line">	delete[] p3;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/%E6%8D%95%E8%8E%B7.PNG" height="400" width="350"><br></div>
-
-<p>由此我们可以看出:</p>
+<blockquote>
+<p>a.所有抽象类必须有子类（final与abstract不能同时使用）</p>
+<p>b.抽象类的子类必须覆写抽象类的所有抽象方法（private与abstract不能同时使用）</p>
+<p>c.抽象类无法直接创建实例化对象，需要通过子类向上转型为其实例化</p>
+</blockquote>
 <ul>
-<li>new出一个对象会调用类的构造函数，delete一个对象会调用类的析构函数</li>
-<li>malloc不会调用类的构造函数，free不会调用类的析构函数</li>
-<li>对于p3空间的申请与销毁，p3申请并开辟了10个Test对象的空间，则调用了十次构造函数，销毁时也就调用了10次析构函数</li>
+<li>抽象类相关约定</li>
 </ul>
+<blockquote>
+<p>a.抽象类一定存在构造方法，子类也一定遵循对象实例化流程。先调用父类构造再调用子类构造</p>
+<p>b.抽象类可以没有任何抽象方法，但此时仍然不能直接创建实例化对象</p>
+<p>c.private与abstract不能同时使用</p>
+<p>d.final与abstract不能同时使用</p>
+<p>e.关于内部抽象类：子类只需要覆写外部抽象类中的直接抽象方法即可。内部抽象类的抽象方法可不覆写，若要覆写内部类的抽象方法，需在子类中写一个内部类来继承父类中的内部类，再对父类内部类进行覆写</p>
+</blockquote>
+<h3 id="模板设计模式"><a href="#模板设计模式" class="headerlink" title="模板设计模式"></a>模板设计模式</h3><ul>
+<li>设计模式</li>
+</ul>
+<p>解耦，引入一个第三方来解耦（高内聚，低耦合）</p>
+<ul>
+<li>开闭原则（OCP）</li>
+</ul>
+<p>一个软件实体如类、模块或函数应该对扩展开放，对修改关闭</p>
+<ul>
+<li>模板设计模式—基于抽象类</li>
+</ul>
+<p>在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模板设计模式可以使得子类在不改变算法的前提下，重新定义算法中的某些步骤</p>
+<p>请看下面的程序：</p>
+<p>制作一杯茶和制作一杯咖啡从步骤上来看是很像的</p>
+<p><strong>制作一杯茶</strong></p>
+<blockquote>
+<p>1.烧开水</p>
+<p>2.把茶包浸泡在水中</p>
+<p>3.把茶水导入杯子里</p>
+<p>4.加入柠檬</p>
+</blockquote>
+<p><strong>制作一杯咖啡</strong></p>
+<blockquote>
+<p>1.烧开水</p>
+<p>2.冲泡咖啡</p>
+<p>3.把咖啡导入杯子里</p>
+<p>4.加入牛奶和糖</p>
+</blockquote>
+<p>我们可以发现制作两种饮品时第一步和第三步是相同的，茶和咖啡可以统称为咖啡因饮品。因此可以定义一个基类成员方法包括以上四种，这四种可以统称为准备饮品，则定义一个方法依次调用四个步骤为准备饮品。让咖啡喝茶继承基类，并对第二步和第四步进行覆写。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner; <span class="comment">//导入输入类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CaffeineBeverage</span></span>&#123;</span><br><span class="line">    <span class="comment">//准备饮料</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">prepareRecipe</span><span class="params">()</span></span>&#123;</span><br><span class="line">        boilWater();<span class="comment">//烧开水</span></span><br><span class="line">        brew();</span><br><span class="line">        pourInCup();</span><br><span class="line">        <span class="keyword">if</span>(customerWantsCondiments())&#123;</span><br><span class="line">            addCondiments();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">boilWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"正在烧水"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">pourInCup</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"把饮料倒进杯子里"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">customerWantsCondiments</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String []args)</span></span>&#123;</span><br><span class="line">        CaffeineBeverage caff = <span class="keyword">new</span> Coffee();</span><br><span class="line">        caff.prepareRecipe();</span><br><span class="line">        CaffeineBeverage caff1 = <span class="keyword">new</span> Tea();</span><br><span class="line">        caff1.prepareRecipe();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coffee</span> <span class="keyword">extends</span> <span class="title">CaffeineBeverage</span></span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span></span>&#123;</span><br><span class="line">         System.out.println(<span class="string">"冲泡咖啡"</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span></span>&#123;</span><br><span class="line">         System.out.println(<span class="string">"加入牛奶和糖"</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">customerWantsCondiments</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"是否要加东西？y/n"</span>);</span><br><span class="line">        String answer = <span class="keyword">null</span>;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        answer = scanner.nextLine();</span><br><span class="line">        <span class="keyword">if</span>(answer.equals(<span class="string">"y"</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tea</span> <span class="keyword">extends</span> <span class="title">CaffeineBeverage</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"浸泡茶包"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"加入柠檬"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>欢迎交流~</p>
 
       
@@ -369,13 +365,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/17/动态内存开辟/">动态内存开辟</a></p>
+        <p><span>本文标题:</span><a href="/2018/12/24/java中的抽象类与接口/">Java中的抽象类与接口</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-17, 12:03:54</p>
-        <p><span>最后更新:</span>2018-12-26, 19:18:23</p>
+        <p><span>发布时间:</span>2018-12-24, 20:13:33</p>
+        <p><span>最后更新:</span>2018-12-24, 20:14:11</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/17/动态内存开辟/" title="动态内存开辟">http://www.bingoxin.top/2018/06/17/动态内存开辟/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/17/动态内存开辟/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/24/java中的抽象类与接口/" title="Java中的抽象类与接口">http://www.bingoxin.top/2018/12/24/java中的抽象类与接口/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/12/24/java中的抽象类与接口/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -388,15 +384,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/27/C-的三大特性之继承/">
-                    C++的三大特性之继承
+                <a href="/2018/12/25/网络基础概念理解/">
+                    网络基础概念理解
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/10/C-中类的实例化对象/">
-                    C++中类的实例化对象
+                <a href="/2018/12/21/Java中的类集/">
+                    Java中的类集
                 </a>
             </div>
         
@@ -408,9 +404,9 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C语言中实现方式"><span class="toc-number">1.</span> <span class="toc-text">C语言中实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较malloc-calloc-realloc"><span class="toc-number">2.</span> <span class="toc-text">比较malloc/calloc/realloc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#malloc实现原理"><span class="toc-number">3.</span> <span class="toc-text">malloc实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alloca"><span class="toc-number">4.</span> <span class="toc-text">_alloca</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的内存泄漏"><span class="toc-number">5.</span> <span class="toc-text">常见的内存泄漏</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#C-中申请空间"><span class="toc-number"></span> <span class="toc-text">C++中申请空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字new和delete"><span class="toc-number">1.</span> <span class="toc-text">关键字new和delete</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象类的定义"><span class="toc-number">1.</span> <span class="toc-text">抽象类的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模板设计模式"><span class="toc-number">2.</span> <span class="toc-text">模板设计模式</span></a></li></ol>
         
-    </li></div>
+    </div>
     <style>
         .left-col .switch-btn,
         .left-col .switch-area {
@@ -444,7 +440,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"动态内存开辟　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java中的抽象类与接口　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -481,7 +477,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/27/C-的三大特性之继承/" title="上一篇: C++的三大特性之继承">
+            <a href="/2018/12/25/网络基础概念理解/" title="上一篇: 网络基础概念理解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -489,7 +485,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/10/C-中类的实例化对象/" title="下一篇: C++中类的实例化对象">
+            <a href="/2018/12/21/Java中的类集/" title="下一篇: Java中的类集">
                 <i class="fa fa-angle-right"></i>
             </a>
         
