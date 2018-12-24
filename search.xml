@@ -124,6 +124,23 @@
     </entry>
     
     <entry>
+      <title>Java中的内部类</title>
+      <link href="/2018/10/19/Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/"/>
+      <url>/2018/10/19/Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/</url>
+      
+        <content type="html"><![CDATA[<ul><li>定义</li></ul><p>在一个类中进行其他类结构的嵌套</p><ul><li>内部类的优点</li></ul><blockquote><p>a.内部类可以访问外部类定义的所有数据</p><p>b.内部类可以实现Java的单继承局限</p><p>c.内部类可以对同一包中的其他类隐藏起来，仅供外部类使用—封装</p></blockquote><a id="more"></a><ul><li>内部类缺点</li></ul><p>结构复杂</p><ul><li>内部类与外部类的关系</li></ul><blockquote><p>a.对于非静态内部类而言，内部类的创建需要依赖外部类的实例化对象，在没有外部类对象之前是无法创建内部类的。</p><p>b.内部类是一个相对独立的个体，与外部类不是<code>is-a</code>关系</p><p>c.内部类可以直接访问外部类元素（包括私有域），但是外部类不可以直接访问内部类元素，需要通过内部类的引用间接访问</p></blockquote><ul><li>创建内部类语法（在外部类之外）</li></ul><p><strong>创建非静态内部类：</strong></p><p>外部类.内部类 内部类引用 = new 外部类().new 内部类();</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Outter.Inner in = <span class="keyword">new</span> Outter().new Inner();</span><br></pre></td></tr></table></figure><p><strong>创建静态内部类：</strong></p><p>外部类.内部类 内部类引用 = new 外部类.内部类（）；</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Outter.Inner in = <span class="keyword">new</span> Outter.Inner();<span class="comment">//静态类与对象无关</span></span><br></pre></td></tr></table></figure><ul><li>内部类的分类</li></ul><p><strong>非静态成员内部类</strong>—成员方法</p><blockquote><p>成员内部类不能存在任何static变量或方法，可以访问外部类的静态域</p><p>成员内部类需要依附外部类new Outter(). new Inner();</p><p>内部类可以使用private封装，表示私有内部类，该内部类仅供外部类使用(HaspMap中的Entry内部类，ArrayList中的Node内部类)</p></blockquote><p><strong>静态内部类</strong>–静态方法</p><blockquote><p>静态内部类的创建不需要外部类，可以直接创建</p><p>静态内部类不可以访问外部类的任何非static域</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outter</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> num;</span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span> String name = <span class="string">"test"</span>;</span><br><span class="line">Inner()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Outter()&#123;</span><br><span class="line">System.out.println(<span class="string">"Outter的构造函数"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">Outter.Inner in = <span class="keyword">new</span> Outter.Inner();<span class="comment">//创建内部类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>方法内部类</strong>—类比成员内部类</p><blockquote><p>a.方法内部类不能使用任何访问权限修饰符 public、private、protected均不允许使用</p><p>b.方法内部类对外（方法外）完全隐藏，除了该方法可以访问他之外，其余地方均不能访问</p><p>c.方法内部类要想声明方法形参，该形参必须使用final声明（JDK8变为隐式final声明）</p></blockquote><p><strong>匿名内部类</strong>—方法内部类的特殊版本</p><blockquote><p>a.匿名内部类必须继承一个抽象类或者实现一个接口</p><p>b.匿名内部类没有构造方法，因为他没有类名</p></blockquote><p>欢迎交流~</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Java中的继承与多态</title>
       <link href="/2018/10/12/Java%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81/"/>
       <url>/2018/10/12/Java%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81/</url>

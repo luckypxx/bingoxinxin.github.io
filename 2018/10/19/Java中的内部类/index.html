@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="在git使用时，需要将本地修改的代码提交到远程库时，push时却出现以下错误  12345678To ssh://git@localhost:*/user/project.git! [rejected]        master -&amp;gt; master (fetch first)error: failed to push some refs to &amp;apos;ssh://git@localho">
-<meta name="keywords" content="git">
+<meta name="description" content="定义  在一个类中进行其他类结构的嵌套  内部类的优点   a.内部类可以访问外部类定义的所有数据 b.内部类可以实现Java的单继承局限 c.内部类可以对同一包中的其他类隐藏起来，仅供外部类使用—封装">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git常遇问题">
-<meta property="og:url" content="http://www.bingoxin.top/2018/08/07/git常遇问题/index.html">
+<meta property="og:title" content="Java中的内部类">
+<meta property="og:url" content="http://www.bingoxin.top/2018/10/19/Java中的内部类/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="在git使用时，需要将本地修改的代码提交到远程库时，push时却出现以下错误  12345678To ssh://git@localhost:*/user/project.git! [rejected]        master -&amp;gt; master (fetch first)error: failed to push some refs to &amp;apos;ssh://git@localho">
+<meta property="og:description" content="定义  在一个类中进行其他类结构的嵌套  内部类的优点   a.内部类可以访问外部类定义的所有数据 b.内部类可以实现Java的单继承局限 c.内部类可以对同一包中的其他类隐藏起来，仅供外部类使用—封装">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-12T11:26:45.723Z">
+<meta property="og:updated_time" content="2018-12-22T12:12:45.931Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git常遇问题">
-<meta name="twitter:description" content="在git使用时，需要将本地修改的代码提交到远程库时，push时却出现以下错误  12345678To ssh://git@localhost:*/user/project.git! [rejected]        master -&amp;gt; master (fetch first)error: failed to push some refs to &amp;apos;ssh://git@localho">
+<meta name="twitter:title" content="Java中的内部类">
+<meta name="twitter:description" content="定义  在一个类中进行其他类结构的嵌套  内部类的优点   a.内部类可以访问外部类定义的所有数据 b.内部类可以实现Java的单继承局限 c.内部类可以对同一包中的其他类隐藏起来，仅供外部类使用—封装">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>git常遇问题 | bingoxin&#39;s blog</title>
+<title>Java中的内部类 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-git常遇问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java中的内部类" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/07/git常遇问题/" class="article-date">
-      <time datetime="2018-08-07T11:25:06.000Z" itemprop="datePublished">2018-08-07</time>
+      <a href="/2018/10/19/Java中的内部类/" class="article-date">
+      <time datetime="2018-10-19T12:11:54.000Z" itemprop="datePublished">2018-10-19</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      git常遇问题
+      Java中的内部类
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,17 +302,66 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在git使用时，需要将本地修改的代码提交到远程库时，push时却出现以下错误 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">To ssh://git@localhost:*/user/project.git</span><br><span class="line">! [rejected]        master -&gt; master (fetch first)</span><br><span class="line">error: failed to push some refs to &apos;ssh://git@localhost:*/user/project.git&apos;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</span><br><span class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure>
+        <ul>
+<li>定义</li>
+</ul>
+<p>在一个类中进行其他类结构的嵌套</p>
+<ul>
+<li>内部类的优点</li>
+</ul>
+<blockquote>
+<p>a.内部类可以访问外部类定义的所有数据</p>
+<p>b.内部类可以实现Java的单继承局限</p>
+<p>c.内部类可以对同一包中的其他类隐藏起来，仅供外部类使用—封装</p>
+</blockquote>
 <a id="more"></a>
-<font color="blue" size="3">查看git status出现以下提示：</font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is ahead of &apos;origin/master&apos; by 2 commits.</span><br><span class="line">(use &quot;git push&quot; to publish your local commits)</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure>
-<p>这是为什么呢？<br>原因是，在你关联本地库和远程库以后，两者的文件是一致的，之后，你修改了本地库的文件，同时远程库的文件也被你修改了。</p>
-<p>当两者都有修改的时候，由push方（这里是本地库）来先做远程库和本地库的合并之后，再提交本地库的修改到远程库。</p>
-<p>因此需要在commit和push之间，做pull操作，即按以下步骤提交修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br><span class="line">git commit -m &apos;change&apos;</span><br><span class="line">git pull</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<p>输出的log中没有error或hint，提交成功啦~恭喜（ps：其实当出现错误时，输出的log中都已经告诉大家解决方案啦~）</p>
+<ul>
+<li>内部类缺点</li>
+</ul>
+<p>结构复杂</p>
+<ul>
+<li>内部类与外部类的关系</li>
+</ul>
+<blockquote>
+<p>a.对于非静态内部类而言，内部类的创建需要依赖外部类的实例化对象，在没有外部类对象之前是无法创建内部类的。</p>
+<p>b.内部类是一个相对独立的个体，与外部类不是<code>is-a</code>关系</p>
+<p>c.内部类可以直接访问外部类元素（包括私有域），但是外部类不可以直接访问内部类元素，需要通过内部类的引用间接访问</p>
+</blockquote>
+<ul>
+<li>创建内部类语法（在外部类之外）</li>
+</ul>
+<p><strong>创建非静态内部类：</strong></p>
+<p>外部类.内部类 内部类引用 = new 外部类().new 内部类();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Outter.Inner in = <span class="keyword">new</span> Outter().new Inner();</span><br></pre></td></tr></table></figure>
+<p><strong>创建静态内部类：</strong></p>
+<p>外部类.内部类 内部类引用 = new 外部类.内部类（）；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Outter.Inner in = <span class="keyword">new</span> Outter.Inner();<span class="comment">//静态类与对象无关</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>内部类的分类</li>
+</ul>
+<p><strong>非静态成员内部类</strong>—成员方法</p>
+<blockquote>
+<p>成员内部类不能存在任何static变量或方法，可以访问外部类的静态域</p>
+<p>成员内部类需要依附外部类new Outter(). new Inner();</p>
+<p>内部类可以使用private封装，表示私有内部类，该内部类仅供外部类使用(HaspMap中的Entry内部类，ArrayList中的Node内部类)</p>
+</blockquote>
+<p><strong>静态内部类</strong>–静态方法</p>
+<blockquote>
+<p>静态内部类的创建不需要外部类，可以直接创建</p>
+<p>静态内部类不可以访问外部类的任何非static域</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outter</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> num;</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">		<span class="keyword">public</span> String name = <span class="string">"test"</span>;</span><br><span class="line">		Inner()&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Outter()&#123;</span><br><span class="line">		System.out.println(<span class="string">"Outter的构造函数"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Outter.Inner in = <span class="keyword">new</span> Outter.Inner();<span class="comment">//创建内部类</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法内部类</strong>—类比成员内部类</p>
+<blockquote>
+<p>a.方法内部类不能使用任何访问权限修饰符 public、private、protected均不允许使用</p>
+<p>b.方法内部类对外（方法外）完全隐藏，除了该方法可以访问他之外，其余地方均不能访问</p>
+<p>c.方法内部类要想声明方法形参，该形参必须使用final声明（JDK8变为隐式final声明）</p>
+</blockquote>
+<p><strong>匿名内部类</strong>—方法内部类的特殊版本</p>
+<blockquote>
+<p>a.匿名内部类必须继承一个抽象类或者实现一个接口</p>
+<p>b.匿名内部类没有构造方法，因为他没有类名</p>
+</blockquote>
 <p>欢迎交流~</p>
 
       
@@ -322,13 +371,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/07/git常遇问题/">git常遇问题</a></p>
+        <p><span>本文标题:</span><a href="/2018/10/19/Java中的内部类/">Java中的内部类</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-08-07, 19:25:06</p>
-        <p><span>最后更新:</span>2018-12-12, 19:26:45</p>
+        <p><span>发布时间:</span>2018-10-19, 20:11:54</p>
+        <p><span>最后更新:</span>2018-12-22, 20:12:45</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/07/git常遇问题/" title="git常遇问题">http://www.bingoxin.top/2018/08/07/git常遇问题/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/07/git常遇问题/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/10/19/Java中的内部类/" title="Java中的内部类">http://www.bingoxin.top/2018/10/19/Java中的内部类/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/10/19/Java中的内部类/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -341,15 +390,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/08/列表与字典的深度学习/">
-                    列表与字典的深度学习
+                <a href="/2018/12/16/进程/">
+                    进程
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/04/Python基本语句/">
-                    Python基本语句
+                <a href="/2018/10/12/Java中的继承与多态/">
+                    Java中的继承与多态
                 </a>
             </div>
         
@@ -397,7 +446,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"git常遇问题　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java中的内部类　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -434,7 +483,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/08/列表与字典的深度学习/" title="上一篇: 列表与字典的深度学习">
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -442,7 +491,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/04/Python基本语句/" title="下一篇: Python基本语句">
+            <a href="/2018/10/12/Java中的继承与多态/" title="下一篇: Java中的继承与多态">
                 <i class="fa fa-angle-right"></i>
             </a>
         
