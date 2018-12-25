@@ -141,6 +141,23 @@
     </entry>
     
     <entry>
+      <title>Java中接口定义与应用</title>
+      <link href="/2018/10/24/Java%E4%B8%AD%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
+      <url>/2018/10/24/Java%E4%B8%AD%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%BA%94%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h3 id="接口的定义及使用"><a href="#接口的定义及使用" class="headerlink" title="接口的定义及使用"></a>接口的定义及使用</h3><ul><li>接口优先原则</li></ul><p>在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口</p><ul><li>接口的概念</li></ul><p>接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口</p><a id="more"></a><ul><li>接口命名规则</li></ul><p>使用I开头</p><ul><li>接口的继承</li></ul><p>子类要想使用接口，<code>implements</code>实现接口，一个子类可以同时实现多个父接口（避免单继承局限）</p><ul><li>子类命名规范</li></ul><p>接口名为IMyInterFace，子类实现此接口命名为MyInterFaceImpl</p><p>父接口间的相互转换：前提是两个父接口拥有共同的实现子类</p><ul><li>接口使用限制</li></ul><p>接口中只允许public权限（不管是方法还是常量，即便不写修饰权限也是public）</p><ul><li>阿里编码规约</li></ul><p>接口中不要出现任何修饰符号，public也不要加</p><ul><li>子类接口与继承</li></ul><p>当子类既需要接口又需要继承抽象类时，请先使用extends继承一个抽象类，而后使用implements实现多个接口</p><ul><li>抽象类与接口</li></ul><p>一个抽象类可以使用implements实现多个接口，接口不能继承抽象类</p><ul><li>接口的继承</li></ul><p>一个抽象类可以使用implements实现多个接口，接口不能继承抽象类</p><ul><li>接口的应用</li></ul><blockquote><p>a.定义操作标准</p><p>b.表示能力</p><p>c.分布式开发之中暴露远程服务方法</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Java中的内部类</title>
       <link href="/2018/10/19/Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/"/>
       <url>/2018/10/19/Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/</url>
