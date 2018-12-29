@@ -210,6 +210,34 @@
   </entry>
   
   <entry>
+    <title>Java中的三大设计模式</title>
+    <link href="http://www.bingoxin.top/2018/10/28/Java%E4%B8%AD%E7%9A%84%E4%B8%89%E5%A4%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://www.bingoxin.top/2018/10/28/Java中的三大设计模式/</id>
+    <published>2018-10-28T12:19:22.000Z</published>
+    <updated>2018-12-29T12:19:59.870Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>将客户端的new操作解耦到第三方（工厂类）</p><h4 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h4><ul><li>特点</li></ul><blockquote><p>a.拥有具体的产品类</p><p>b.多个具体产品类</p><p>c.一个工厂—&gt;new操作在此工厂中进行，客户端通过工厂类获取具体实例</p></blockquote><a id="more"></a><h4 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h4><ul><li>概念</li></ul><p>定义一个用来创建对象的接口，让子类决定实例化哪一个类</p><p>针对每个产品（产品族）提供一个共产类，客户端需要判断使用哪个工厂</p><ul><li>特点</li></ul><p>横向扩展方便</p><blockquote><p>a.一个抽象产品类</p><p>b.多个具体产品类</p><p>c.一个针对产品类的抽象工厂</p><p>d.多个具体工厂（每个产品家族拥有自己的工厂）</p></blockquote><h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul><li>特点</li></ul><p>两个子类共同实现同一个接口，其中一个子类负责真实业务实现，另一个子类完成辅助真实业务主题的操作</p><h3 id="开发时注意："><a href="#开发时注意：" class="headerlink" title="开发时注意："></a>开发时注意：</h3><p>1.接口是Java的核心，慢慢会学到接口更多的使用与设计</p><p>2.开发之中优先考虑接口，以避免单继承局限</p><p>3.抽象类是模板，有层次感；接口更关心行为与混合</p><h3 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h3><ul><li>特点</li></ul><p>一个类只允许产生一个实例化对象</p><blockquote><p>构造方法私有化</p><p>在类内部实现对象的实例化</p><p>使用getter方法创建对象</p></blockquote><p><strong>饿汉式单例：</strong>先new为敬</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleEx</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingleEx singleEx = <span class="keyword">new</span> SingleEx();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingleEx</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleEx <span class="title">getSingleEx</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"getSingle"</span>);</span><br><span class="line">        <span class="keyword">return</span> singleEx;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SingleEx singleEx =SingleEx.getSingleEx();</span><br><span class="line">        System.out.println(singleEx);</span><br><span class="line">        SingleEx singleEx1 =SingleEx.getSingleEx();</span><br><span class="line">        System.out.println(singleEx1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>懒汉式单例：</strong>用时再new</p><p>只是实例化时机与饿汉式不同，懒汉式单例存在线程安全问题（双重加锁单例模式）</p><h3 id="多例模式"><a href="#多例模式" class="headerlink" title="多例模式"></a>多例模式</h3><p>多例模式只是比单例模式多了一些内部实例化对象而已</p><p>无论是单例还是多例：</p><p>a.构造方法私有化</p><p>b.类内部提供静态方法返回有限个数对象</p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;工厂模式&quot;&gt;&lt;a href=&quot;#工厂模式&quot; class=&quot;headerlink&quot; title=&quot;工厂模式&quot;&gt;&lt;/a&gt;工厂模式&lt;/h3&gt;&lt;p&gt;将客户端的new操作解耦到第三方（工厂类）&lt;/p&gt;
+&lt;h4 id=&quot;简单工厂&quot;&gt;&lt;a href=&quot;#简单工厂&quot; class=&quot;headerlink&quot; title=&quot;简单工厂&quot;&gt;&lt;/a&gt;简单工厂&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;特点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;a.拥有具体的产品类&lt;/p&gt;
+&lt;p&gt;b.多个具体产品类&lt;/p&gt;
+&lt;p&gt;c.一个工厂—&amp;gt;new操作在此工厂中进行，客户端通过工厂类获取具体实例&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://www.bingoxin.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java中的String类</title>
     <link href="http://www.bingoxin.top/2018/10/27/Java%E4%B8%AD%E7%9A%84String%E7%B1%BB/"/>
     <id>http://www.bingoxin.top/2018/10/27/Java中的String类/</id>
@@ -485,30 +513,6 @@
     
     
       <category term="MySQL" scheme="http://www.bingoxin.top/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python之面向对象</title>
-    <link href="http://www.bingoxin.top/2018/08/18/Python%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://www.bingoxin.top/2018/08/18/Python之面向对象/</id>
-    <published>2018-08-18T11:56:00.000Z</published>
-    <updated>2018-12-02T11:56:49.446Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p>抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模</p><h3 id="对象的三要素"><a href="#对象的三要素" class="headerlink" title="对象的三要素"></a>对象的三要素</h3><p>id、type、value</p><h3 id="对象的三大特性"><a href="#对象的三大特性" class="headerlink" title="对象的三大特性"></a>对象的三大特性</h3><p>封装、继承、多态 </p><h3 id="封装和接口"><a href="#封装和接口" class="headerlink" title="封装和接口"></a>封装和接口</h3><p><strong>封装</strong></p><p>封装是对数据和信息进行隐藏，对象的使用者只能通过接口来访问或修改对象的数据</p><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>所有的类都继承于根类(object)</p><p><strong>根类</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Animal(object):</span><br><span class="line"></span><br><span class="line">#静态变量</span><br><span class="line"></span><br><span class="line">    x=0 </span><br><span class="line"></span><br><span class="line">#非静态成员方法</span><br><span class="line"></span><br><span class="line">def Print(self):</span><br><span class="line"></span><br><span class="line">print &quot;print&quot; </span><br><span class="line"></span><br><span class="line">#非静态变量</span><br><span class="line"></span><br><span class="line">def __init__(self):</span><br><span class="line"></span><br><span class="line">self.Name=&quot;name&quot;</span><br><span class="line"></span><br><span class="line">self.Age=10</span><br><span class="line"></span><br><span class="line">#静态成员方法</span><br><span class="line"></span><br><span class="line">@staticmethod</span><br><span class="line"></span><br><span class="line">def Print1()</span><br><span class="line"></span><br><span class="line">print &quot;print1&quot;</span><br><span class="line"></span><br><span class="line">print Animal.x</span><br><span class="line"></span><br><span class="line">#类的实例化</span><br><span class="line"></span><br><span class="line">A=Animal()</span><br><span class="line"></span><br><span class="line">print A.Name,A.Age</span><br></pre></td></tr></table></figure><p>​    </p><p>根类中有静态变量、非静态成员方法，非静态变量、静态成员方法</p><p>非静态变量和方法要有self关键字</p><h3 id="继承-1"><a href="#继承-1" class="headerlink" title="继承"></a>继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Dog(Animal)</span><br></pre></td></tr></table></figure><p>Dog继承自Animal</p><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>子类可以进行自由扩展，对调用封闭</p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;抽象&quot;&gt;&lt;a href=&quot;#抽象&quot; class=&quot;headerlink&quot; title=&quot;抽象&quot;&gt;&lt;/a&gt;抽象&lt;/h3&gt;&lt;p&gt;抽象是指对现实世界问题和实体的本质表现，行为，特征进行建模&lt;/p&gt;
-&lt;h3 id=&quot;对象的三要素&quot;&gt;&lt;a href=&quot;#对象的三要素&quot; cl
-      
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://www.bingoxin.top/tags/Python/"/>
     
   </entry>
   

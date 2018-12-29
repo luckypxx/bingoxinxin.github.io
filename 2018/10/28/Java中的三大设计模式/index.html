@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="在学习C语言的过程中，我们会遇到不同类型变量的转换  在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="工厂模式将客户端的new操作解耦到第三方（工厂类） 简单工厂 特点   a.拥有具体的产品类 b.多个具体产品类 c.一个工厂—&amp;gt;new操作在此工厂中进行，客户端通过工厂类获取具体实例">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++中的强制类型转换">
-<meta property="og:url" content="http://www.bingoxin.top/2018/07/26/C-中的强制类型转换/index.html">
+<meta property="og:title" content="Java中的三大设计模式">
+<meta property="og:url" content="http://www.bingoxin.top/2018/10/28/Java中的三大设计模式/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="在学习C语言的过程中，我们会遇到不同类型变量的转换  在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？">
+<meta property="og:description" content="工厂模式将客户端的new操作解耦到第三方（工厂类） 简单工厂 特点   a.拥有具体的产品类 b.多个具体产品类 c.一个工厂—&amp;gt;new操作在此工厂中进行，客户端通过工厂类获取具体实例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-26T11:05:00.511Z">
+<meta property="og:updated_time" content="2018-12-29T12:19:59.870Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++中的强制类型转换">
-<meta name="twitter:description" content="在学习C语言的过程中，我们会遇到不同类型变量的转换  在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？">
+<meta name="twitter:title" content="Java中的三大设计模式">
+<meta name="twitter:description" content="工厂模式将客户端的new操作解耦到第三方（工厂类） 简单工厂 特点   a.拥有具体的产品类 b.多个具体产品类 c.一个工厂—&amp;gt;new操作在此工厂中进行，客户端通过工厂类获取具体实例">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>C++中的强制类型转换 | bingoxin&#39;s blog</title>
+<title>Java中的三大设计模式 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-C-中的强制类型转换" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java中的三大设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/26/C-中的强制类型转换/" class="article-date">
-      <time datetime="2018-07-26T11:03:31.000Z" itemprop="datePublished">2018-07-26</time>
+      <a href="/2018/10/28/Java中的三大设计模式/" class="article-date">
+      <time datetime="2018-10-28T12:19:22.000Z" itemprop="datePublished">2018-10-28</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      C++中的强制类型转换
+      Java中的三大设计模式
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,36 +302,56 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在学习C语言的过程中，我们会遇到不同类型变量的转换 </p>
-<p>在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？<a id="more"></a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>强制类型转换有两种：显式类型转换和隐式类型转换</p>
-<h4 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h4><p>一般应用在不同类型变量的赋值中</p>
-<pre><code>int a = 10;
-
-char b = &apos;0&apos;;
-
-b = a;
-</code></pre><p>不需要加关键字</p>
-<h4 id="显式类型转换"><a href="#显式类型转换" class="headerlink" title="显式类型转换"></a>显式类型转换</h4><p>可以应用在不同类型指针的转换中</p>
-<p>比如：</p>
-<pre><code>int a = 10;
-
-char* p = (char*)&amp;a;
-</code></pre><p>通过(转换后的类型)这种格式来完成转换</p>
-<p>C++中的强制类型转换有四种：static_cast、reinterepret_cast、const_cast、dynamic_cast</p>
-<h3 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h3><p>static_cast类似于隐式类型转换</p>
-<p>例：<br>    int a = 10;</p>
-<pre><code>char b = &apos;0&apos;;
-
-b = static_cast&lt;char&gt;(a);
-</code></pre><h3 id="reinterepret-cast"><a href="#reinterepret-cast" class="headerlink" title="reinterepret_cast"></a>reinterepret_cast</h3><p>reinterepret_cast就类似与显式类型转换</p>
-<p>例：</p>
-<pre><code>int a = 10;
-
-char* p;
-
-p = reinterpret_cast&lt;char*&gt;(&amp;a);
-</code></pre><p>​<br>欢迎交流~</p>
+        <h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>将客户端的new操作解耦到第三方（工厂类）</p>
+<h4 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h4><ul>
+<li>特点</li>
+</ul>
+<blockquote>
+<p>a.拥有具体的产品类</p>
+<p>b.多个具体产品类</p>
+<p>c.一个工厂—&gt;new操作在此工厂中进行，客户端通过工厂类获取具体实例</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h4><ul>
+<li>概念</li>
+</ul>
+<p>定义一个用来创建对象的接口，让子类决定实例化哪一个类</p>
+<p>针对每个产品（产品族）提供一个共产类，客户端需要判断使用哪个工厂</p>
+<ul>
+<li>特点</li>
+</ul>
+<p>横向扩展方便</p>
+<blockquote>
+<p>a.一个抽象产品类</p>
+<p>b.多个具体产品类</p>
+<p>c.一个针对产品类的抽象工厂</p>
+<p>d.多个具体工厂（每个产品家族拥有自己的工厂）</p>
+</blockquote>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul>
+<li>特点</li>
+</ul>
+<p>两个子类共同实现同一个接口，其中一个子类负责真实业务实现，另一个子类完成辅助真实业务主题的操作</p>
+<h3 id="开发时注意："><a href="#开发时注意：" class="headerlink" title="开发时注意："></a>开发时注意：</h3><p>1.接口是Java的核心，慢慢会学到接口更多的使用与设计</p>
+<p>2.开发之中优先考虑接口，以避免单继承局限</p>
+<p>3.抽象类是模板，有层次感；接口更关心行为与混合</p>
+<h3 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h3><ul>
+<li>特点</li>
+</ul>
+<p>一个类只允许产生一个实例化对象</p>
+<blockquote>
+<p>构造方法私有化</p>
+<p>在类内部实现对象的实例化</p>
+<p>使用getter方法创建对象</p>
+</blockquote>
+<p><strong>饿汉式单例：</strong>先new为敬</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleEx</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingleEx singleEx = <span class="keyword">new</span> SingleEx();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingleEx</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleEx <span class="title">getSingleEx</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"getSingle"</span>);</span><br><span class="line">        <span class="keyword">return</span> singleEx;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SingleEx singleEx =SingleEx.getSingleEx();</span><br><span class="line">        System.out.println(singleEx);</span><br><span class="line">        SingleEx singleEx1 =SingleEx.getSingleEx();</span><br><span class="line">        System.out.println(singleEx1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>懒汉式单例：</strong>用时再new</p>
+<p>只是实例化时机与饿汉式不同，懒汉式单例存在线程安全问题（双重加锁单例模式）</p>
+<h3 id="多例模式"><a href="#多例模式" class="headerlink" title="多例模式"></a>多例模式</h3><p>多例模式只是比单例模式多了一些内部实例化对象而已</p>
+<p>无论是单例还是多例：</p>
+<p>a.构造方法私有化</p>
+<p>b.类内部提供静态方法返回有限个数对象</p>
+<p>欢迎交流~</p>
 
       
     </div>
@@ -340,13 +360,13 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></p>
+        <p><span>本文标题:</span><a href="/2018/10/28/Java中的三大设计模式/">Java中的三大设计模式</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-07-26, 19:03:31</p>
-        <p><span>最后更新:</span>2018-12-26, 19:05:00</p>
+        <p><span>发布时间:</span>2018-10-28, 20:19:22</p>
+        <p><span>最后更新:</span>2018-12-29, 20:19:59</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/26/C-中的强制类型转换/" title="C++中的强制类型转换">http://www.bingoxin.top/2018/07/26/C-中的强制类型转换/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/07/26/C-中的强制类型转换/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/10/28/Java中的三大设计模式/" title="Java中的三大设计模式">http://www.bingoxin.top/2018/10/28/Java中的三大设计模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/10/28/Java中的三大设计模式/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -359,15 +379,15 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/07/26/禅道的安装/">
-                    禅道的安装
+                <a href="/2018/12/16/进程/">
+                    进程
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/25/类与结构体/">
-                    类与结构体
+                <a href="/2018/10/27/Java中的String类/">
+                    Java中的String类
                 </a>
             </div>
         
@@ -379,7 +399,7 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式类型转换"><span class="toc-number">1.0.1.</span> <span class="toc-text">隐式类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显式类型转换"><span class="toc-number">1.0.2.</span> <span class="toc-text">显式类型转换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-cast"><span class="toc-number">1.1.</span> <span class="toc-text">static_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reinterepret-cast"><span class="toc-number">1.2.</span> <span class="toc-text">reinterepret_cast</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂模式"><span class="toc-number">1.</span> <span class="toc-text">工厂模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单工厂"><span class="toc-number">1.1.</span> <span class="toc-text">简单工厂</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#工厂方法模式"><span class="toc-number">1.2.</span> <span class="toc-text">工厂方法模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代理模式"><span class="toc-number">2.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发时注意："><span class="toc-number">3.</span> <span class="toc-text">开发时注意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单例"><span class="toc-number">4.</span> <span class="toc-text">单例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多例模式"><span class="toc-number">5.</span> <span class="toc-text">多例模式</span></a></li></ol>
         
     </div>
     <style>
@@ -415,7 +435,7 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"C++中的强制类型转换　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java中的三大设计模式　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -452,7 +472,7 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/26/禅道的安装/" title="上一篇: 禅道的安装">
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -460,7 +480,7 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/25/类与结构体/" title="下一篇: 类与结构体">
+            <a href="/2018/10/27/Java中的String类/" title="下一篇: Java中的String类">
                 <i class="fa fa-angle-right"></i>
             </a>
         
