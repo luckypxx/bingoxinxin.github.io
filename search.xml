@@ -141,6 +141,23 @@
     </entry>
     
     <entry>
+      <title>Java中的Object类</title>
+      <link href="/2018/10/30/Java%E4%B8%AD%E7%9A%84Object%E7%B1%BB/"/>
+      <url>/2018/10/30/Java%E4%B8%AD%E7%9A%84Object%E7%B1%BB/</url>
+      
+        <content type="html"><![CDATA[<p>Object类是JDK默认提供的一个类。Java中除了Object类，所有的类都存在继承关系，默认会继承Object父类</p><ul><li>toString()-取得对象信息</li></ul><p>系统输出默认调用对象的toString方法</p><p>Object类中的toString方法只是简单输出当前引用的类名称以及对象地址</p><p>如果想在类中取得本类属性信息，需要覆写toString();</p><p>String类对该方法进行覆写，若String类调用该方法会返回String类的内容</p><a id="more"></a><ul><li><p>对象比较—equals</p></li><li><p>接受引用数据类型</p></li></ul><p>Object可以接受所有引用数据类型：数组、类、接口</p><h3 id="包装类—使用Object接受一切数据"><a href="#包装类—使用Object接受一切数据" class="headerlink" title="包装类—使用Object接受一切数据"></a>包装类—使用Object接受一切数据</h3><ul><li>概念</li></ul><p>包装类就是将基本数据类型封装到类中</p><ul><li>包装类的分类</li></ul><p><strong>数值型包装类</strong>（Number的直接子类）：Byte、Double、Short、Long、Float、Integer</p><p>会发生类型转换异常—&gt;NumberFormatException</p><p><strong>对象型包装类</strong>（Object的直接子类）：Boolean、Character（char）</p><ul><li>装箱与拆箱</li></ul><p><strong>装箱：</strong>将基本数据类型变为包装类对象。利用每个包装类提供的构造方法实现。</p><p><strong>拆箱：</strong>将包装类中包装的基本数据类型取出。利用<code>xxValue()</code></p><p>Integer num的值在-128~127范围内赋值，Integer对象在常量池产生，会复用已有对象，这个区间外的所有数据都在堆上产生，不会复用已有对象</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">10</span>;</span><br><span class="line">Integer i2 = <span class="number">10</span>;</span><br><span class="line">i1 == i2 <span class="comment">//true</span></span><br><span class="line">Integer i3 = <span class="number">200</span>;</span><br><span class="line">Integer i4 = <span class="number">200</span>;</span><br><span class="line">i3 == i4 <span class="comment">//false</span></span><br></pre></td></tr></table></figure><ul><li>阿里编码规范</li></ul><p>a.强制要求所有POJO类（简单Java类，类中只有成员变量、构造方法、getter/setter方法）属性必须使用包装类</p><p>b.强制RPC方法返回值和参数必须使用包装类</p><p>c.推荐所有的局部变量使用基本类型</p><ul><li>包装类与字符串的转换</li></ul><p><strong>String变为基本数据类型</strong></p><p>包装类.<code>parsexxx</code>(str)</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer.parseInt(str);</span><br></pre></td></tr></table></figure><p>将字符串转换为布尔类型时：true—&gt;true</p><p>不是true—&gt;false</p><p><strong>基本数据类型-&gt;String</strong></p><p>a.””+基本数据类型</p><p>b.String类提供的静态方法valueOf（基本类型），不产生垃圾空间</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = String.valueOf(<span class="number">10</span>);</span><br></pre></td></tr></table></figure><p>欢迎交流~</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Java中的模块与包</title>
       <link href="/2018/10/29/Java%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/"/>
       <url>/2018/10/29/Java%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%8C%85/</url>
