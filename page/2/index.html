@@ -267,73 +267,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Java中的反射" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/02/Java中的反射/" class="article-date">
-      <time datetime="2018-12-02T12:40:53.000Z" itemprop="datePublished">2018-12-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/02/Java中的反射/">Java中的反射</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>反射指的是对象的反向处理，根据对象倒推类的组成</p>
-<h3 id="反射的核心类—class类"><a href="#反射的核心类—class类" class="headerlink" title="反射的核心类—class类"></a>反射的核心类—class类</h3><p>反射的核心类是专门描述其他类的组成</p>
-<p>Object类中取得对象的class对象，class对象是用来描述接口与类的组成的，由JVM在第一次加载类时产生，并且全局唯一。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/12/02/Java中的反射/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Java中的线程池" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -515,6 +448,83 @@
       
         <p class="article-more-link">
           <a href="/2018/11/16/乐观锁CAS操作---compare-Swap/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JavaSE之线程同步" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/12/JavaSE之线程同步/" class="article-date">
+      <time datetime="2018-11-12T12:30:09.000Z" itemprop="datePublished">2018-11-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/12/JavaSE之线程同步/">JavaSE之线程同步</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>同步问题：每一个线程对象轮番强占共享资源带来的问题</p>
+<ul>
+<li>同步处理</li>
+</ul>
+<p>使用内部关键字synchronized来处理同步问题，synchronized处理同步有两种方式：同步代码块、同步方法</p>
+<ul>
+<li>使用同步代码块</li>
+</ul>
+<p>设置一个锁定的对象，一般可以锁当前<strong>对象</strong>this，也可以锁一个类或任意对象</p>
+<ul>
+<li>同步方法</li>
+</ul>
+<p>在方法上添加synchronized关键字，表示此方法只有一个线程能进入。<strong>隐式锁对象，this</strong></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/11/12/JavaSE之线程同步/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
