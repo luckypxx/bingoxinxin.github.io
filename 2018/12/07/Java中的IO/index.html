@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="bingoxin">
+
+
+
+<meta name="description" content="用到IO时，需要使用Java开发的java.io。 BIO是阻塞式IO，基于抽象类">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中的IO">
+<meta property="og:url" content="http://www.bingoxin.top/2018/12/07/Java中的IO/index.html">
+<meta property="og:site_name" content="bingoxin&#39;s blog">
+<meta property="og:description" content="用到IO时，需要使用Java开发的java.io。 BIO是阻塞式IO，基于抽象类">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-08T12:43:08.026Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中的IO">
+<meta name="twitter:description" content="用到IO时，需要使用Java开发的java.io。 BIO是阻塞式IO，基于抽象类">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="bingoxin&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Java中的IO | bingoxin&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">bingoxin</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.wonderheng.top">wonderheng&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一个下凡搞技术的小仙女~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">bingoxin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">bingoxin</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-Java中的IO" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/07/Java中的IO/" class="article-date">
+      <time datetime="2018-12-07T12:42:10.000Z" itemprop="datePublished">2018-12-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java中的IO
+    </h1>
+  
+
+              
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>用到IO时，需要使用Java开发的java.io。</p>
+<p>BIO是阻塞式IO，基于抽象类</p>
+<a id="more"></a>
+<h3 id="核心掌握五个类"><a href="#核心掌握五个类" class="headerlink" title="核心掌握五个类"></a>核心掌握五个类</h3><p>这五个类包括：File、OutputStream、InputStream、Reader、Writer</p>
+<p>还要掌握一个接口：Serializable</p>
+<ul>
+<li>File文件操作类</li>
+</ul>
+<p>File类是唯一一个与文件本身操作（创建、删除、取得信息）有关的程序类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">File</span><span class="params">(String pathname)</span></span>;<span class="comment">//根据文件的绝对路径来产生file对象</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">File</span><span class="params">(URI uri)</span></span>;<span class="comment">//根据网络产生file对象</span></span><br></pre></td></tr></table></figure>
+<p><strong>常用操作方法：</strong></p>
+<ul>
+<li>创建新文件：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">createNewFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断文件是否存在:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exists</span><span class="params">()</span> </span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除文件：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>文件分隔符：File.separator</p>
+<p><strong>目录操作：</strong></p>
+<p>File不止可以描述文件，还可以描述文件夹</p>
+<ul>
+<li>取得父路径的File对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> File <span class="title">getParentFile</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>取得父路径的目录</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getParent</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建多级父路径（一次性创建多级不存在的父路径）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">mkdirs</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>取得文件信息：</strong></p>
+<ul>
+<li>判断File对象是否是文件</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFile</span><span class="params">()</span> </span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断File对象是否是文件夹</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isDirectory</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>取得文件大小—以字节为单位</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">length</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>取得上次修改时间—返回一个时间戳</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">lastModified</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>列出一个目录的全部组成</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> File[] listFiles();</span><br></pre></td></tr></table></figure>
+<p>小练习：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestIO</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"C:"</span>+File.separator+<span class="string">"Users"</span>+File.separator+</span><br><span class="line">                            <span class="string">"pxx"</span>+File.separator+<span class="string">"Desktop"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">            listAllFile(file);</span><br><span class="line">            <span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line">            System.out.println(<span class="string">"共花费"</span>+(end-start)+<span class="string">"毫秒"</span>);</span><br><span class="line">        &#125;).start();</span><br><span class="line">        System.out.println(<span class="string">"主线程完成"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">listAllFile</span><span class="params">(File file)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(file.exists() &amp;&amp; file.isFile())&#123;</span><br><span class="line">            System.out.println(file);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(file.exists() &amp;&amp; file.isDirectory())&#123;</span><br><span class="line">            File[] files = file.listFiles();</span><br><span class="line">            <span class="keyword">for</span>(File file1:files)&#123;</span><br><span class="line">                listAllFile(file1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="字节与字符流"><a href="#字节与字符流" class="headerlink" title="字节与字符流"></a>字节与字符流</h3><p>java.io包流分为两类：输入流与输出流</p>
+<ul>
+<li>字节（byte）流—可以处理文本文件、图像、音乐、视频等资源</li>
+</ul>
+<p>原生操作、无需转换</p>
+<p>InputStream、OutputStream</p>
+<ul>
+<li>字符（char）流—只用于处理文本</li>
+</ul>
+<p>经过处理后的操作</p>
+<p>Reader、Writer</p>
+<p><strong>字节输出流OutputStream：</strong></p>
+<p>1.取得终端对象</p>
+<p>2.根据终端对象取得输入输出流</p>
+<p>3.根据输入输出流，进行数据的读取与写入</p>
+<p>4.关闭流</p>
+<p>IO操作属于资源处理，所有的资源处理（IO操作、数据库操作、网络操作）</p>
+<p>在使用后一定要关闭</p>
+<ul>
+<li>强制刷新缓冲区</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">flush</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关闭输出流</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将字节数组内容全部输出</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span> b[])</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将字节数组中的部分内容输出—从偏移量为off开始的len个字节</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span> b[], <span class="keyword">int</span> off, <span class="keyword">int</span> len)</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出单个字符</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> b)</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+<p>使用OutputStream输出数据时，<strong>若指定的文件不存在，FileOutputStream会自动创建文件</strong>（不包含创建目录）</p>
+<p>默认是将文件内容覆盖，若要进行文件内容的追加，使用如下构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">FileOutputStream</span><span class="params">(String name, <span class="keyword">boolean</span> append)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>JDK1.7追加了AutoCloseable自动关闭接口，要使用此接口，必须使用try-catch代码块，推荐显式关闭</p>
+<p><strong>字节输入流—InputStream：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">InputStream</span> <span class="keyword">implements</span> <span class="title">Closeable</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将读取的内容放入字节数组中</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">byte</span> b[])</span> <span class="keyword">throws</span> IOException</span>;</span><br></pre></td></tr></table></figure>
+<p>返回值有三种情况：</p>
+<blockquote>
+<p>1.返回b.length:未读取数据&gt;存放的缓冲区大小，返回字节数组大小</p>
+<p>2.返回大于0的整数，此整数小于b.length</p>
+<p>未读取的数据&lt;存放的缓冲区大小，返回剩余数据大小</p>
+<p>3.返回-1</p>
+<p>此时数据已经读取完毕</p>
+</blockquote>
+<p><strong>文件复制练习：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> top.bingoxin.practice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestIO</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        String sourceFilePath = <span class="string">"C:\\Users\\pxx\\Desktop\\IMG_7708.JPG"</span>;</span><br><span class="line">        String destFilePath=<span class="string">"C:\\Users\\pxx\\Desktop\\IMG.JPG"</span>;</span><br><span class="line">        copyFile(sourceFilePath,destFilePath);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">(String sourceFilePath,String destFilePath)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        File sourceFile = <span class="keyword">new</span> File(sourceFilePath);</span><br><span class="line">        File destFile = <span class="keyword">new</span> File(destFilePath);</span><br><span class="line"></span><br><span class="line">        InputStream in = <span class="keyword">new</span> FileInputStream(sourceFile);</span><br><span class="line">        OutputStream out = <span class="keyword">new</span> FileOutputStream(destFilePath);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">while</span>((len = in.read(data)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            out.write(data,<span class="number">0</span>,len);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"已完成"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="内存流"><a href="#内存流" class="headerlink" title="内存流"></a>内存流</h3><p>内存流，顾名思义，其终端在内存</p>
+<h4 id="字节内存流"><a href="#字节内存流" class="headerlink" title="字节内存流"></a>字节内存流</h4><p>ByteArrayInputStream，ByteArrayOutputStream</p>
+<ul>
+<li>将指定的字节数组内容存放到内存中</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ByteArrayInputStream</span><span class="params">(<span class="keyword">byte</span> buf[])</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>内存输出流的构造方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ByteArrayOutputStream</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h4 id="字符内存流"><a href="#字符内存流" class="headerlink" title="字符内存流"></a>字符内存流</h4><p>CharArrayReader,CharArrayWriter</p>
+<h3 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h3><p>打印流是针对输出流的强化版本，采用装饰设计模式—基于抽象类</p>
+<ul>
+<li>装饰模式</li>
+</ul>
+<p><strong>特点：</strong></p>
+<p>核心依然是某个类（OutputStream提供的write（））的功能，但是为了得到更好的操作效果，让其支持的功能更多一些，使用装饰类（PrintStream）</p>
+<p><strong>优点：</strong></p>
+<p>很容易更换装饰类来达到不同的操作效果</p>
+<p><strong>缺点：</strong></p>
+<p>由于装饰设计的引入，造成结构复杂</p>
+<ul>
+<li>字节打印流</li>
+</ul>
+<p>PrintStream</p>
+<ul>
+<li>字符打印流</li>
+</ul>
+<p>PrintWriter</p>
+<h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><ul>
+<li>GBK、GB2312</li>
+</ul>
+<p>GBK包括简体中文和繁体中文，GB2312只包括简体中文</p>
+<ul>
+<li>UNICODE</li>
+</ul>
+<p>java提供的16进制编码，可以描述世界上任意一种语言，但是编码进制数太高，编码体积较大</p>
+<ul>
+<li>ISO-8859-1</li>
+</ul>
+<p>国际通用编码，不支持中文，浏览器默认编码</p>
+<ul>
+<li>UTF-8</li>
+</ul>
+<p>结合UNICODE与ISO-8859-1，最常使用的是UTF-8</p>
+<p><strong>乱码产生的原因（95%）：</strong>编解码不一致</p>
+<p><strong>乱码产生的原因（5%）：</strong>由于数据丢失造成的乱码</p>
+<h3 id="System类对IO的支持"><a href="#System类对IO的支持" class="headerlink" title="System类对IO的支持"></a>System类对IO的支持</h3><p>共有三种：</p>
+<blockquote>
+<p>1.标准输出—System.out</p>
+<p>2.标准输入—System.in</p>
+<p>3.错误输出—System.err</p>
+</blockquote>
+<ul>
+<li>系统输出</li>
+</ul>
+<p>系统提供的out（输出到显示器颜色为黑色）、err（输出到显示器颜色为红色）对象均是PrintStream的对象</p>
+<p>输出采用日志（Log）—格式化输出</p>
+<ul>
+<li>系统输入</li>
+</ul>
+<p>系统提供的System.in是InputStream的直接对象</p>
+<ul>
+<li>两种输入流</li>
+</ul>
+<p><strong>BufferedReader//BufferedInputStream:</strong></p>
+<p><code>readline()</code> 直接读取一行输入，默认以回车换行</p>
+<p><strong>java.util.Scanner:</strong></p>
+<p>支持正则表达式</p>
+<ul>
+<li>判断是否有指定类型的数据输入</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hasNextXX();<span class="comment">//Scanner类默认碰到空格、换行、Tab都是分隔符</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取指定数据类型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nextXX();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指定分隔符</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useDelimiter(<span class="string">"指定分隔符"</span>);<span class="comment">//无论如何定义分隔符，换行表示本次输入完毕</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/12/07/Java中的IO/">Java中的IO</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
+        <p><span>发布时间:</span>2018-12-07, 20:42:10</p>
+        <p><span>最后更新:</span>2019-01-08, 20:43:08</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/07/Java中的IO/" title="Java中的IO">http://www.bingoxin.top/2018/12/07/Java中的IO/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/12/07/Java中的IO/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/16/进程/">
+                    进程
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/12/02/Java中的反射/">
+                    Java中的反射
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心掌握五个类"><span class="toc-number">1.</span> <span class="toc-text">核心掌握五个类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字节与字符流"><span class="toc-number">2.</span> <span class="toc-text">字节与字符流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内存流"><span class="toc-number">3.</span> <span class="toc-text">内存流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字节内存流"><span class="toc-number">3.1.</span> <span class="toc-text">字节内存流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符内存流"><span class="toc-number">3.2.</span> <span class="toc-text">字符内存流</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打印流"><span class="toc-number">4.</span> <span class="toc-text">打印流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符编码"><span class="toc-number">5.</span> <span class="toc-text">字符编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#System类对IO的支持"><span class="toc-number">6.</span> <span class="toc-text">System类对IO的支持</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Java中的IO　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: 'false',
+        verify: 'false',
+        app_id: "InyV1RI83uI1tCHGmOOx3SYM-gzGzoHsz",
+        app_key: "Sh9QoPKMPDw7kdbkMuqqNRYg",
+        placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/12/02/Java中的反射/" title="下一篇: Java中的反射">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/JavaSE之线程同步/">JavaSE之线程同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/04/聊天室项目/">聊天室项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/深浅拷贝/">深浅拷贝</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/24/java中的抽象类与接口/">Java中的抽象类与接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/20/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/16/进程/">进程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/07/Java中的IO/">Java中的IO</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/Java中的反射/">Java中的反射</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/Java中的线程池/">Java中的线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/19/JavaSE之Lock体系/">JavaSE之Lock体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/乐观锁CAS操作---compare-Swap/">post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/11/JavaSE之多线程/">JavaSE之多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/JavaSE新特性/">JavaSE新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/Java中的泛型/">Java中的泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/30/Java中的Object类/">Java中的Object类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/29/Java中的模块与包/">Java中的模块与包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/28/Java中的三大设计模式/">Java中的三大设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/Java中的String类/">Java中的String类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/24/Java中接口定义与应用/">Java中接口定义与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/19/Java中的内部类/">Java中的内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/12/Java中的继承与多态/">Java中的继承与多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/求1-2-3-n/">求1+2+3+...+n</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/20/初识Java/">初识Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/17/线程/">线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/Linux中的开发工具/">Linux中的开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/Linux中的权限/">Linux中的权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/数据库-数据类型/">数据库---数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/Python之面向对象/">Python之面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/14/Python中的文件操作/">Python中的文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/Linux常用指令/">Linux常用指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/Python中的模块和包/">Python中的模块和包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/Python-异常/">Python-异常</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/列表与字典的深度学习/">列表与字典的深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/07/git常遇问题/">git常遇问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/Python基本语句/">Python基本语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/Python基础小知识/">Python基础小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/禅道的安装/">禅道的安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/25/类与结构体/">类与结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/10/测试用例的撰写/">测试用例的撰写</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2019 bingoxin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </div>
+</body>
+</html>
