@@ -267,80 +267,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Java中的泛型" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/01/05/Java中的泛型/" class="article-date">
-      <time datetime="2019-01-05T12:24:06.000Z" itemprop="datePublished">2019-01-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/05/Java中的泛型/">Java中的泛型</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h3><ul>
-<li>方法的可变参数</li>
-</ul>
-<p><strong>语法：</strong></p>
-<p>数据类型 … 可变参数名称</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ... data</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>a. 可变参数的本质是数组</p>
-<p>b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数</p>
-</blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/01/05/Java中的泛型/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-聊天室项目" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -924,11 +850,11 @@
 
 
   
-    <article id="post-Java中的Object类" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-JavaSE新特性" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/10/30/Java中的Object类/" class="article-date">
-      <time datetime="2018-10-30T12:22:43.000Z" itemprop="datePublished">2018-10-30</time>
+      <a href="/2018/11/05/JavaSE新特性/" class="article-date">
+      <time datetime="2018-11-05T12:25:43.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
 
 
@@ -943,7 +869,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/30/Java中的Object类/">Java中的Object类</a>
+      <a class="article-title" href="/2018/11/05/JavaSE新特性/">JavaSE新特性</a>
     </h1>
   
 
@@ -954,14 +880,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>Object类是JDK默认提供的一个类。Java中除了Object类，所有的类都存在继承关系，默认会继承Object父类</p>
+              <h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>定义一个表示基本颜色的类—多例模式</p>
 <ul>
-<li>toString()-取得对象信息</li>
+<li>语法</li>
 </ul>
-<p>系统输出默认调用对象的toString方法</p>
-<p>Object类中的toString方法只是简单输出当前引用的类名称以及对象地址</p>
-<p>如果想在类中取得本类属性信息，需要覆写toString();</p>
-<p>String类对该方法进行覆写，若String类调用该方法会返回String类的内容</p>
+<p>枚举使用enum关键字定义枚举，枚举就是一种多例模式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color&#123;</span><br><span class="line">    RED,BLUE,GREEN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Enum类</li>
+</ul>
+<p>JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类</p>
           
       
     </div>
@@ -977,7 +905,81 @@
 
       
         <p class="article-more-link">
-          <a href="/2018/10/30/Java中的Object类/#more">阅读全文 >></a>
+          <a href="/2018/11/05/JavaSE新特性/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java中的泛型" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/05/Java中的泛型/" class="article-date">
+      <time datetime="2018-11-05T12:24:06.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/05/Java中的泛型/">Java中的泛型</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h3><ul>
+<li>方法的可变参数</li>
+</ul>
+<p><strong>语法：</strong></p>
+<p>数据类型 … 可变参数名称</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ... data</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>a. 可变参数的本质是数组</p>
+<p>b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数</p>
+</blockquote>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/11/05/Java中的泛型/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -998,7 +1000,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

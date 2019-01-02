@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="枚举定义一个表示基本颜色的类—多例模式  语法  枚举使用enum关键字定义枚举，枚举就是一种多例模式 123enum Color&amp;#123;    RED,BLUE,GREEN;&amp;#125;  Enum类  JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="叩开C++的大门">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/05/叩开C-的大门/index.html">
+<meta property="og:title" content="JavaSE新特性">
+<meta property="og:url" content="http://www.bingoxin.top/2018/11/05/JavaSE新特性/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
+<meta property="og:description" content="枚举定义一个表示基本颜色的类—多例模式  语法  枚举使用enum关键字定义枚举，枚举就是一种多例模式 123enum Color&amp;#123;    RED,BLUE,GREEN;&amp;#125;  Enum类  JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-26T11:19:32.927Z">
+<meta property="og:updated_time" content="2019-01-06T12:27:10.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="叩开C++的大门">
-<meta name="twitter:description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
+<meta name="twitter:title" content="JavaSE新特性">
+<meta name="twitter:description" content="枚举定义一个表示基本颜色的类—多例模式  语法  枚举使用enum关键字定义枚举，枚举就是一种多例模式 123enum Color&amp;#123;    RED,BLUE,GREEN;&amp;#125;  Enum类  JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>叩开C++的大门 | bingoxin&#39;s blog</title>
+<title>JavaSE新特性 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-叩开C-的大门" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaSE新特性" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/05/叩开C-的大门/" class="article-date">
-      <time datetime="2018-06-05T03:57:30.000Z" itemprop="datePublished">2018-06-05</time>
+      <a href="/2018/11/05/JavaSE新特性/" class="article-date">
+      <time datetime="2018-11-05T12:25:43.000Z" itemprop="datePublished">2018-11-05</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      叩开C++的大门
+      JavaSE新特性
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,45 +302,59 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="缺省函数"><a href="#缺省函数" class="headerlink" title="缺省函数"></a>缺省函数</h4><p>如果非要把缺省函数比作一个事物，它更像是一个备胎。</p>
-<p>如果函数传参，就会将传过来的值赋值给形参</p>
-<p>如果没有传参，则就会将缺省值传递给函数</p>
+        <h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>定义一个表示基本颜色的类—多例模式</p>
+<ul>
+<li>语法</li>
+</ul>
+<p>枚举使用enum关键字定义枚举，枚举就是一种多例模式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color&#123;</span><br><span class="line">    RED,BLUE,GREEN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Enum类</li>
+</ul>
+<p>JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类</p>
 <a id="more"></a>
-<p>关于缺省参数要注意以下几点：</p>
-<blockquote>
-<p>a.带缺省值的参数必须放在参数列表的最后面<br>b.缺省参数不能同时在函数声明和定义中出现，只能二者去一<br>c.缺省值必须是常量或者是全局变量<br>d.C语言不支持</p>
-</blockquote>
-<h4 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h4><p>函数重载，即在同一作用域里，声明几个功能相同的函数，形参列表不同或返回值类型不同(参数列表中，参数个数和顺序相同)，即可构成函数重载</p>
-<p>若只是返回值类型不同，不可构成函数重载，在这里也要注意：返回值不属于函数，参数属于函数</p>
-<p>在C语言中，不会构成函数重载，只是由于C语言和C++的编译风格不同</p>
-<p>在C语言中，编译完成后会在函数名前加上“_”，</p>
-<p>在C++中，编译完成后会被修饰成由函数名，函数参数列表和返回值构成的一串特定的字符串，用于区分函数名相同的各个函数</p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用，就相当于为一个变量取一个别名</p>
-<p> int a=10;<br> int&amp; ra=a;<br>这就是引用的用法，ra和a的地址相同，变量存放的内容也相同</p>
-<p>引用站在应用层，编译器不为其开辟空间</p>
-<p>在使用引用时要注意：</p>
-<blockquote>
-<p>a.引用在定义时必须有初始化<br>b.一个变量可以有多个引用<br>c.引用一旦引用一个实体，再不能引用其他实体</p>
-</blockquote>
-<p>若初始变量被const修饰，其引用在定义时也要被const修饰，而初始变量就相当于常数</p>
-<p>接下来再来说一下数组引用的代码格式：</p>
-<p> int (&amp;array)[3]={0}; //注意符号优先级</p>
-<p>引用可以作为函数的参数和返回值</p>
-<p>在函数传参时，从底层来看，传引用和传指针效率相差不多</p>
-<p>但是引用和指针还是有区别的，如下：</p>
-<blockquote>
-<p>引用在定义时必须初始化，而指针没有要求<br>指针可以为空，而引用不可以<br>引用一旦有所指向就不能更改，而指针指向一个变量后，还可以更改指向另一个类型相同的变量<br>在sizeof中含义不同：引用的结果为引用类型的大小，但指针始终为4(在Win10，vs2013的环境下)<br>引用自加改变的是变量的大小，指针自加改变的是指针的指向<br>有多级指针，没有多级引用<br>指针需要手动寻址，引用可以通过编译器寻址<br>使用引用更为安全</p>
-</blockquote>
-<p>那么引用相当于void* const类型的指针(可以改变其内容，不可改变其指向)</p>
-<h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><p>命名空间可以将标识符本地化，避免命名冲突或名字污染</p>
-<p>首先我们先来了解一下命名空间的定义方式：</p>
-<p> namespace N</p>
-<p>关于命名空间和作用域，不得不再多说几句： </p>
-<blockquote>
-<p>a.若一个命名空间为N，“N::”表示其空间作用域，“::”为作用限定符<br>b.相同作用域定义的命名空间名称可以相同，编译器会自动将其合成<br>c.命名空间可以嵌套(“NN1::”)</p>
-</blockquote>
-<p>仅仅学了这几个概念，就觉得C++功能的实现比C语言简单许多</p>
-<p>终于敲开C++的大门啦！</p>
+<p><strong>属性：</strong></p>
+<p>取得枚举名字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">name</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<p>取得枚举编号</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">ordinal</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<p>取得所有枚举对象:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">枚举类.values():Enum[]</span><br></pre></td></tr></table></figure>
+<h4 id="enum与Enum的区别"><a href="#enum与Enum的区别" class="headerlink" title="enum与Enum的区别"></a>enum与Enum的区别</h4><p>enum是一个关键字，使用enum定义的枚举类本质上就相对于一个类继承了Enum这个抽象类</p>
+<h4 id="枚举中定义其他结构"><a href="#枚举中定义其他结构" class="headerlink" title="枚举中定义其他结构"></a>枚举中定义其他结构</h4><ul>
+<li>普通属性</li>
+<li>普通方法</li>
+<li>内部类</li>
+<li>实现接口：此时枚举中的每个对象都成为了接口对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IColor</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">color</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">enum</span> Color implements IColor&#123;</span><br><span class="line">    RED,BLUE,GREEN;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.title;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<font color="red"><strong>枚举对象必须放在首行声明</strong></font>
+
+<h3 id="注解—Annotation"><a href="#注解—Annotation" class="headerlink" title="注解—Annotation"></a>注解—Annotation</h3><ul>
+<li>JDK提供的三大内置注解</li>
+</ul>
+<p><strong>声明覆写---@Override</strong></p>
+<p>检查当前类中的覆写方法与父类定义的同名方法是否相同，如果有任何一个地方不同，编译报错</p>
+<p><strong>声明过期处理---@Deprecated</strong></p>
+<p>原有类或者方法在旧版本没有问题，但是在新版本不推荐使用，可以加上该关键字注解，明确表示不建议用户使用此类</p>
+<p><strong>@SuppressWarnings</strong></p>
+<p>当调用某些操作可能产生问题时，就会出现警告信息，警告信息并不是Exception</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"unused"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="JDK1-8新特性"><a href="#JDK1-8新特性" class="headerlink" title="JDK1.8新特性"></a>JDK1.8新特性</h3><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul>
+<li>可以使用default来定义普通方法，需要通过对象来调用</li>
+<li>可以使用static来定义静态方法，通过接口来调用</li>
+</ul>
+<h4 id="lambda表达式—函数式编程"><a href="#lambda表达式—函数式编程" class="headerlink" title="lambda表达式—函数式编程"></a>lambda表达式—函数式编程</h4><p>要想使用函数式编程有一个前提：接口必须只有一个方法。</p>
+<p>如果接口中存在两个以上的方法，无法使用函数式编程语法。</p>
+<p>如果现在某个接口就是为了函数式编程而生，@FunctionalInterface定义在接口上，检查此接口是否只存在一个方法。</p>
+<ul>
+<li>lambda表达式语法</li>
+</ul>
+<p>单行无返回值、单行有返回值:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">()-&gt;...方法代码;</span><br></pre></td></tr></table></figure>
+<p>多行有返回值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">()-&gt;&#123;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> 返回值语句;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>欢迎交流~</p>
 
       
     </div>
@@ -349,13 +363,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></p>
+        <p><span>本文标题:</span><a href="/2018/11/05/JavaSE新特性/">JavaSE新特性</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-05, 11:57:30</p>
-        <p><span>最后更新:</span>2018-12-26, 19:19:32</p>
+        <p><span>发布时间:</span>2018-11-05, 20:25:43</p>
+        <p><span>最后更新:</span>2019-01-06, 20:27:10</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/05/叩开C-的大门/" title="叩开C++的大门">http://www.bingoxin.top/2018/06/05/叩开C-的大门/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/05/叩开C-的大门/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/05/JavaSE新特性/" title="JavaSE新特性">http://www.bingoxin.top/2018/11/05/JavaSE新特性/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/11/05/JavaSE新特性/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -368,15 +382,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/05/面向对象or面向过程/">
-                    面向对象or面向过程
+                <a href="/2018/12/16/进程/">
+                    进程
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/05/函数调用约定/">
-                    函数调用约定
+                <a href="/2018/11/05/Java中的泛型/">
+                    Java中的泛型
                 </a>
             </div>
         
@@ -388,9 +402,9 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#缺省函数"><span class="toc-number">1.</span> <span class="toc-text">缺省函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数重载"><span class="toc-number">2.</span> <span class="toc-text">函数重载</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#引用"><span class="toc-number"></span> <span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名空间"><span class="toc-number">1.</span> <span class="toc-text">命名空间</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#枚举"><span class="toc-number">1.</span> <span class="toc-text">枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#enum与Enum的区别"><span class="toc-number">1.1.</span> <span class="toc-text">enum与Enum的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#枚举中定义其他结构"><span class="toc-number">1.2.</span> <span class="toc-text">枚举中定义其他结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解—Annotation"><span class="toc-number">2.</span> <span class="toc-text">注解—Annotation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-8新特性"><span class="toc-number">3.</span> <span class="toc-text">JDK1.8新特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#接口"><span class="toc-number">3.1.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lambda表达式—函数式编程"><span class="toc-number">3.2.</span> <span class="toc-text">lambda表达式—函数式编程</span></a></li></ol></li></ol>
         
-    </li></div>
+    </div>
     <style>
         .left-col .switch-btn,
         .left-col .switch-area {
@@ -424,7 +438,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"叩开C++的大门　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JavaSE新特性　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -461,7 +475,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/05/面向对象or面向过程/" title="上一篇: 面向对象or面向过程">
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -469,7 +483,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/05/函数调用约定/" title="下一篇: 函数调用约定">
+            <a href="/2018/11/05/Java中的泛型/" title="下一篇: Java中的泛型">
                 <i class="fa fa-angle-right"></i>
             </a>
         

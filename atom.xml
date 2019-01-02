@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.bingoxin.top/"/>
-  <updated>2019-01-05T12:24:56.392Z</updated>
+  <updated>2018-12-13T11:35:30.458Z</updated>
   <id>http://www.bingoxin.top/</id>
   
   <author>
@@ -15,35 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Java中的泛型</title>
-    <link href="http://www.bingoxin.top/2019/01/05/Java%E4%B8%AD%E7%9A%84%E6%B3%9B%E5%9E%8B/"/>
-    <id>http://www.bingoxin.top/2019/01/05/Java中的泛型/</id>
-    <published>2019-01-05T12:24:06.000Z</published>
-    <updated>2019-01-05T12:24:56.392Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h3><ul><li>方法的可变参数</li></ul><p><strong>语法：</strong></p><p>数据类型 … 可变参数名称</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ... data</span><br></pre></td></tr></table></figure><blockquote><p>a. 可变参数的本质是数组</p><p>b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数</p></blockquote><a id="more"></a><ul><li>foreach循环</li></ul><p>只用于数组、类集内容的取得，不能修改原数组、类集内容</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (数据类型 临时变量 : 数组名/类集名)</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> temp:data)</span><br></pre></td></tr></table></figure><ul><li>静态导入</li></ul><p>将一个类的所有静态域（包含静态属性、方法），全部导入到使用类中，此时调用属性和方法不再需要类名</p><h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h4><p>所谓的泛型指的是在定义类时，并不会设置类中的属性或方法的参数的具体类型，而是在类使用时再定义</p><p>安全性考虑，不再有类型转换异常</p><ul><li>语法</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    T t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>&lt;&gt;中的T被称为类型参数，用于指代任何类型</p><ul><li>出于规范起见，类型参数一般由单个的大写字母来表示：</li></ul><p>T：代表用在泛型类声明上，指代泛型类</p><p>E:一般用于属性</p><p>K、V：键值对</p><p>当泛型类中需要多个不同类型变量时，&lt;&gt;以，分隔声明不同大写字母即可</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;<span class="title">T</span>,<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line">    T t;</span><br><span class="line">    E x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>泛型的出现彻底解决了向下转型带来的ClassCastException问题</strong></p><p><strong>泛型只能用引用数据类型，基本类型使用包装类</strong></p><h4 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h4><ul><li>语法</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当泛型类与泛型方法共存时，泛型方法中的类型参数与泛型类的类型参数无关，泛型方法始终以自己的类型参数为准</p><p>规范起见，当泛型类与泛型方法共存时，请使用不同的类型参数来区分彼此</p><h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>解决泛型参数统一化问题</p><ul><li>？通配符</li></ul><p>作用于方法参数声明</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(MyClass&lt;?&gt; myClass)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>此时方法参数表示可以接收任意类型的MyClass对象</p><p>由于无法确定入参的类型，因此？通配符下的泛型参数，只能取得类中属性值，无法进行属性值的设置</p><ul><li>设置泛型上限</li></ul><p>用于泛型类声明：<code>T extends 类</code>，即T是这个类本身或其子类</p><p>方法参数：<code>？ extends 类</code></p><p>eg: <code>? extends Number :</code></p><p>表示方法入参只能接收Number以及其子类对象</p><p>方法参数设置泛型上限仍然取得类中属性值，而无法设置，因为设置父类值子类不一定能使用（父类不一定能发生向下转型变为子类）</p><ul><li>设置泛型下限—只能用于方法参数</li></ul><p><code>? super 类()</code>,这个类或这个类的父类</p><p>表示方法入参只能接收类以及其父类对象</p><p>方法参数设置泛型下限不仅可以取得类中属性值，还可以设置属性值。因为子类可以天然向上转型变为父类</p><h4 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h4><ul><li>子类实现接口时继续保留泛型</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InterfaceImpl&lt;T&gt; implements IInterface&lt;T&gt;&#123;&#125;</span><br></pre></td></tr></table></figure><ul><li>子类实现接口时就确定好类型</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InterfaceImpl implements IImterface&lt;String&gt;&#123;&#125;</span><br></pre></td></tr></table></figure><h4 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h4><p><strong>泛型信息仅存在代码编译阶段</strong>，进入JVM之前，与泛型相关的信息会被擦除掉，专业术语就叫做类型擦除</p><p>换句话说，泛型类与普通类在JVM中没有任何差别</p><p>泛型类进入JVM之前会进行类型擦除，泛型类的类型参数如果没有指定类型上限，则擦除成为Object类；如果类型参数指定类型上限，擦除为相应类型上限</p><p>\<t>—&gt; Object</t></p><p>\<t extends="" string=""> -&gt; String</t></p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;JDK1-5新特性&quot;&gt;&lt;a href=&quot;#JDK1-5新特性&quot; class=&quot;headerlink&quot; title=&quot;JDK1.5新特性&quot;&gt;&lt;/a&gt;JDK1.5新特性&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;方法的可变参数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;语法：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;数据类型 … 可变参数名称&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; ... data&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;a. 可变参数的本质是数组&lt;/p&gt;
-&lt;p&gt;b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="http://www.bingoxin.top/tags/Java/"/>
-    
-  </entry>
   
   <entry>
     <title>聊天室项目</title>
@@ -235,6 +206,64 @@
     
     
       <category term="操作系统" scheme="http://www.bingoxin.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaSE新特性</title>
+    <link href="http://www.bingoxin.top/2018/11/05/JavaSE%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <id>http://www.bingoxin.top/2018/11/05/JavaSE新特性/</id>
+    <published>2018-11-05T12:25:43.000Z</published>
+    <updated>2019-01-06T12:27:10.689Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>定义一个表示基本颜色的类—多例模式</p><ul><li>语法</li></ul><p>枚举使用enum关键字定义枚举，枚举就是一种多例模式</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color&#123;</span><br><span class="line">    RED,BLUE,GREEN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>Enum类</li></ul><p>JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类</p><a id="more"></a><p><strong>属性：</strong></p><p>取得枚举名字</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">name</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><p>取得枚举编号</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">ordinal</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><p>取得所有枚举对象:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">枚举类.values():Enum[]</span><br></pre></td></tr></table></figure><h4 id="enum与Enum的区别"><a href="#enum与Enum的区别" class="headerlink" title="enum与Enum的区别"></a>enum与Enum的区别</h4><p>enum是一个关键字，使用enum定义的枚举类本质上就相对于一个类继承了Enum这个抽象类</p><h4 id="枚举中定义其他结构"><a href="#枚举中定义其他结构" class="headerlink" title="枚举中定义其他结构"></a>枚举中定义其他结构</h4><ul><li>普通属性</li><li>普通方法</li><li>内部类</li><li>实现接口：此时枚举中的每个对象都成为了接口对象</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IColor</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">color</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">enum</span> Color implements IColor&#123;</span><br><span class="line">    RED,BLUE,GREEN;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.title;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><font color="red"><strong>枚举对象必须放在首行声明</strong></font><h3 id="注解—Annotation"><a href="#注解—Annotation" class="headerlink" title="注解—Annotation"></a>注解—Annotation</h3><ul><li>JDK提供的三大内置注解</li></ul><p><strong>声明覆写---@Override</strong></p><p>检查当前类中的覆写方法与父类定义的同名方法是否相同，如果有任何一个地方不同，编译报错</p><p><strong>声明过期处理---@Deprecated</strong></p><p>原有类或者方法在旧版本没有问题，但是在新版本不推荐使用，可以加上该关键字注解，明确表示不建议用户使用此类</p><p><strong>@SuppressWarnings</strong></p><p>当调用某些操作可能产生问题时，就会出现警告信息，警告信息并不是Exception</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"unused"</span>&#125;)</span><br></pre></td></tr></table></figure><h3 id="JDK1-8新特性"><a href="#JDK1-8新特性" class="headerlink" title="JDK1.8新特性"></a>JDK1.8新特性</h3><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul><li>可以使用default来定义普通方法，需要通过对象来调用</li><li>可以使用static来定义静态方法，通过接口来调用</li></ul><h4 id="lambda表达式—函数式编程"><a href="#lambda表达式—函数式编程" class="headerlink" title="lambda表达式—函数式编程"></a>lambda表达式—函数式编程</h4><p>要想使用函数式编程有一个前提：接口必须只有一个方法。</p><p>如果接口中存在两个以上的方法，无法使用函数式编程语法。</p><p>如果现在某个接口就是为了函数式编程而生，@FunctionalInterface定义在接口上，检查此接口是否只存在一个方法。</p><ul><li>lambda表达式语法</li></ul><p>单行无返回值、单行有返回值:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">()-&gt;...方法代码;</span><br></pre></td></tr></table></figure><p>多行有返回值：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">()-&gt;&#123;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> 返回值语句;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;枚举&quot;&gt;&lt;a href=&quot;#枚举&quot; class=&quot;headerlink&quot; title=&quot;枚举&quot;&gt;&lt;/a&gt;枚举&lt;/h3&gt;&lt;p&gt;定义一个表示基本颜色的类—多例模式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;语法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;枚举使用enum关键字定义枚举，枚举就是一种多例模式&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;enum&lt;/span&gt; Color&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    RED,BLUE,GREEN;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;Enum类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://www.bingoxin.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java中的泛型</title>
+    <link href="http://www.bingoxin.top/2018/11/05/Java%E4%B8%AD%E7%9A%84%E6%B3%9B%E5%9E%8B/"/>
+    <id>http://www.bingoxin.top/2018/11/05/Java中的泛型/</id>
+    <published>2018-11-05T12:24:06.000Z</published>
+    <updated>2019-01-06T12:27:25.145Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h3><ul><li>方法的可变参数</li></ul><p><strong>语法：</strong></p><p>数据类型 … 可变参数名称</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ... data</span><br></pre></td></tr></table></figure><blockquote><p>a. 可变参数的本质是数组</p><p>b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数</p></blockquote><a id="more"></a><ul><li>foreach循环</li></ul><p>只用于数组、类集内容的取得，不能修改原数组、类集内容</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (数据类型 临时变量 : 数组名/类集名)</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> temp:data)</span><br></pre></td></tr></table></figure><ul><li>静态导入</li></ul><p>将一个类的所有静态域（包含静态属性、方法），全部导入到使用类中，此时调用属性和方法不再需要类名</p><h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h4><p>所谓的泛型指的是在定义类时，并不会设置类中的属性或方法的参数的具体类型，而是在类使用时再定义</p><p>安全性考虑，不再有类型转换异常</p><ul><li>语法</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    T t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>&lt;&gt;中的T被称为类型参数，用于指代任何类型</p><ul><li>出于规范起见，类型参数一般由单个的大写字母来表示：</li></ul><p>T：代表用在泛型类声明上，指代泛型类</p><p>E:一般用于属性</p><p>K、V：键值对</p><p>当泛型类中需要多个不同类型变量时，&lt;&gt;以，分隔声明不同大写字母即可</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;<span class="title">T</span>,<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line">    T t;</span><br><span class="line">    E x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>泛型的出现彻底解决了向下转型带来的ClassCastException问题</strong></p><p><strong>泛型只能用引用数据类型，基本类型使用包装类</strong></p><h4 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h4><ul><li>语法</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当泛型类与泛型方法共存时，泛型方法中的类型参数与泛型类的类型参数无关，泛型方法始终以自己的类型参数为准</p><p>规范起见，当泛型类与泛型方法共存时，请使用不同的类型参数来区分彼此</p><h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>解决泛型参数统一化问题</p><ul><li>？通配符</li></ul><p>作用于方法参数声明</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(MyClass&lt;?&gt; myClass)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>此时方法参数表示可以接收任意类型的MyClass对象</p><p>由于无法确定入参的类型，因此？通配符下的泛型参数，只能取得类中属性值，无法进行属性值的设置</p><ul><li>设置泛型上限</li></ul><p>用于泛型类声明：<code>T extends 类</code>，即T是这个类本身或其子类</p><p>方法参数：<code>？ extends 类</code></p><p>eg: <code>? extends Number :</code></p><p>表示方法入参只能接收Number以及其子类对象</p><p>方法参数设置泛型上限仍然取得类中属性值，而无法设置，因为设置父类值子类不一定能使用（父类不一定能发生向下转型变为子类）</p><ul><li>设置泛型下限—只能用于方法参数</li></ul><p><code>? super 类()</code>,这个类或这个类的父类</p><p>表示方法入参只能接收类以及其父类对象</p><p>方法参数设置泛型下限不仅可以取得类中属性值，还可以设置属性值。因为子类可以天然向上转型变为父类</p><h4 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h4><ul><li>子类实现接口时继续保留泛型</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InterfaceImpl&lt;T&gt; implements IInterface&lt;T&gt;&#123;&#125;</span><br></pre></td></tr></table></figure><ul><li>子类实现接口时就确定好类型</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InterfaceImpl implements IImterface&lt;String&gt;&#123;&#125;</span><br></pre></td></tr></table></figure><h4 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h4><p><strong>泛型信息仅存在代码编译阶段</strong>，进入JVM之前，与泛型相关的信息会被擦除掉，专业术语就叫做类型擦除</p><p>换句话说，泛型类与普通类在JVM中没有任何差别</p><p>泛型类进入JVM之前会进行类型擦除，泛型类的类型参数如果没有指定类型上限，则擦除成为Object类；如果类型参数指定类型上限，擦除为相应类型上限</p><p>\<t>—&gt; Object</t></p><p>\<t extends="" string=""> -&gt; String</t></p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;JDK1-5新特性&quot;&gt;&lt;a href=&quot;#JDK1-5新特性&quot; class=&quot;headerlink&quot; title=&quot;JDK1.5新特性&quot;&gt;&lt;/a&gt;JDK1.5新特性&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;方法的可变参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;语法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数据类型 … 可变参数名称&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; ... data&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;a. 可变参数的本质是数组&lt;/p&gt;
+&lt;p&gt;b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://www.bingoxin.top/tags/Java/"/>
     
   </entry>
   
@@ -499,26 +528,6 @@
     <summary type="html">
     
       &lt;p&gt;当多个PCB指向同一块虚拟地址空间时，这些PCB的资源是共享的，而该PCB被称为一个线程。但是对于CPU来说，是没有办法判断一个PCB是一个进程还是线程。每个PCB都是小于等于一个进程的，则将Linux中的一个进程是一个轻量级进程，这也就可以看出：在Linux下，没有真正意义的线程，线程使用进程模拟出来的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="操作系统" scheme="http://www.bingoxin.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux中的开发工具</title>
-    <link href="http://www.bingoxin.top/2018/09/06/Linux%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    <id>http://www.bingoxin.top/2018/09/06/Linux中的开发工具/</id>
-    <published>2018-09-06T12:01:47.000Z</published>
-    <updated>2018-12-16T12:02:32.465Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用Linux，免不了和开发工具打交道，开发工具都有哪些呢？</p><a id="more"></a><h3 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h3><p>说起文本编辑器，大家首先想到的应该就是vim了，毕竟只要打开一个文本都需要的它</p><p>你的vim可能什么特殊功能都没有</p><p>接下来看一下有关于vim的配置吧~</p><h4 id="首先输入命令"><a href="#首先输入命令" class="headerlink" title="首先输入命令"></a>首先输入命令</h4><pre><code>su  </code></pre><p>这时需要输入密码，将权限切换到root权限</p><h4 id="输入以下指令"><a href="#输入以下指令" class="headerlink" title="输入以下指令"></a>输入以下指令</h4><pre><code>cd ~cd /etcvim vimrc</code></pre><p>进入到vimrc的文本编辑</p><h4 id="在最后一行加入"><a href="#在最后一行加入" class="headerlink" title="在最后一行加入"></a>在最后一行加入</h4><pre><code>set nuset tabstop=4set cursorline</code></pre><p>即可更改vim的配置，三条语句的作用一次是</p><blockquote><p>在左侧添加行号</p></blockquote><blockquote><p>tab键的空格数，赋值为4，即一个tab键等于4个空格</p></blockquote><blockquote><p>标识当前行</p></blockquote><p>在Linux下，还有Emacs、Sublime Text、Lime、Atom等</p><h3 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h3><p>Linux中常见的编译器就是gcc</p><p>gcc是C语言编译器</p><blockquote><p>-c 只编译子程序</p><p>-o 产生目标文件</p><p>-g 附加调试信息</p></blockquote><p>例如，<strong>test.c的编译过程</strong></p><p>gcc -E test.c   预处理  会生成临时文件test.i</p><p>gcc -S test.i -o test.s  生成汇编代码  会生成临时文件test.s</p><p>gcc -c test.s -o test.o  生成二进制文件  会生成临时文件test.o</p><p>gcc -o test test.o  进行链接操作  会生成可执行文件test</p><h3 id="调试器"><a href="#调试器" class="headerlink" title="调试器"></a>调试器</h3><p>GDB是一个调试程序的调试器</p><p>GDB可以调试C、C++等</p><h3 id="make与makefile"><a href="#make与makefile" class="headerlink" title="make与makefile"></a>make与makefile</h3><p>我们在编译一个C文件后，会产生一个a.out文件，这是一个可执行的二进制文件，若要执行文件，使用./a.out即可</p><p>注意：make不是编译器</p><h4 id="make与makefile的区别："><a href="#make与makefile的区别：" class="headerlink" title="make与makefile的区别："></a>make与makefile的区别：</h4><p>make是一条命令，makefile是一个文件</p><h4 id="makefile的编写"><a href="#makefile的编写" class="headerlink" title="makefile的编写"></a>makefile的编写</h4><p>在讲makefile的撰写之前，先来解释两个名词—依赖关系、依赖方法</p><p><strong>依赖关系</strong>可以看做是两个文件确定之间的关系</p><p><strong>依赖方法</strong>可以看做是两个文件的关系实现的过程</p><ul><li>makefile中放依赖方法和依赖关系</li><li>makefile中可以只有依赖方法</li><li>makefile中依赖方法要以Tab键开头</li></ul><p>例如：</p><pre><code>test:test.c    gcc -o test test.c.THONY:clean clean:    rm -f test</code></pre><p>test:test.c  是依赖关系</p><p>gcc -o test test.c   是依赖方法</p><p>.THONY clean  中的clean是一个伪目标，凡是伪目标，都是总是被执行的；而非伪目标只有被修改时才能编译。</p><p>那么如何确定文件是否是被修改呢？</p><p>当然是看文件最后一次被修改的时间啦~</p><h4 id="make的使用"><a href="#make的使用" class="headerlink" title="make的使用"></a>make的使用</h4><p>每次修改完要编译的文件后，使用 make 命令，如上述makefile：会产生一个test文件，若要执行test.c，只需使用 ./test 即可执行。</p><p>若要执行伪目标，使用 make clean 命令即可</p><h3 id="yum工具—软件包管理器"><a href="#yum工具—软件包管理器" class="headerlink" title="yum工具—软件包管理器"></a>yum工具—软件包管理器</h3><p>yum是一种可以安装软件的工具</p><p>在linux环境下，安装有以下两种：</p><blockquote><p>源码安装：在网上会下载一些程序的源码，编译后就得到了可执行程序(使用make、make install命令)</p></blockquote><blockquote><p>软件包安装：有的人把软件编译好，做成软件包(就像Windows下的应用)</p></blockquote><p>在这里提一下，<strong>软件包和软件包管理器的关系就像APP和应用商店的关系</strong></p><p><strong>yum的使用</strong></p><ul><li><p>yum需要联网状态才能正常工作</p></li><li><p>安装或卸载程序需要sudo命令来权限提升</p><p>sudo yum 文件名//文件安装</p><p>sudo yum remove 文件名 //文件卸载</p></li><li><p>yum list可以罗列出所有的软件包，可以用grep筛选</p></li></ul><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;使用Linux，免不了和开发工具打交道，开发工具都有哪些呢？&lt;/p&gt;
     
     </summary>
     
