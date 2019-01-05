@@ -194,7 +194,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
                     </div>
                 </section>
                 
@@ -267,6 +267,390 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-聊天室项目" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/04/聊天室项目/" class="article-date">
+      <time datetime="2019-01-04T07:27:52.000Z" itemprop="datePublished">2019-01-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/04/聊天室项目/">聊天室项目</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><p><strong>Scoket类</strong></p>
+<ul>
+<li>绑定指定域名、端口号的服务器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Socket</span><span class="params">(String host, <span class="keyword">int</span> port, InetAddress localAddr,<span class="keyword">int</span> localPort)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取客户端输入流，读取服务器发来的消息</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> InputStream <span class="title">getInputStream</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取客户端输出流，向服务器发送消息</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> OutputStream <span class="title">getOutputStream</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><h4 id="ServerSocket"><a href="#ServerSocket" class="headerlink" title="ServerSocket"></a>ServerSocket</h4><ul>
+<li>默认绑定本地IP：127.0.0.1，以及指定端口号</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ServerSocket</span><span class="params">(<span class="keyword">int</span> port)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>等待客户端连接，线程阻塞，当有客户连接时，返回客户端socket</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Socket <span class="title">accept</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>当服务器与客户端建立起连接后，通过输入输出流（客户端的Scoket）来通信</p>
+<ul>
+<li>获取服务器端输入流，读取客户端发来的消息</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> InputStream <span class="title">getInputStream</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取服务器端输出流，向客户端发送消息</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> OutputStream <span class="title">getOutputStream</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h4 id="简单版的单线程聊天"><a href="#简单版的单线程聊天" class="headerlink" title="简单版的单线程聊天"></a>简单版的单线程聊天</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JVM" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/03/JVM/" class="article-date">
+      <time datetime="2019-01-03T13:10:46.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/03/JVM/">JVM</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>虚拟机是通过软件模拟的具有完整硬件功能，运行在完全隔离环境中的计算机系统。</p>
+<p>使用最多的是VMWare和Virtual Box。</p>
+<p>JVM是通过软件<strong>模拟Java字节码指令集</strong>，JVM只保留了PC寄存器，而普遍的虚拟机有很多寄存器。</p>
+<p>做JVM的公司有很多家，从<strong>JDK1.3</strong>开始，HotSpot为默认JVM。</p>
+<p>JVM上<strong>不止可以运行Java的代码</strong></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/01/03/JVM/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-深浅拷贝" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/03/深浅拷贝/" class="article-date">
+      <time datetime="2019-01-03T10:37:30.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/03/深浅拷贝/">深浅拷贝</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h3><p>拷贝的执行函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">native</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>;</span><br></pre></td></tr></table></figure>
+<p>并不是所有的类都可以被拷贝，需实现<code>Cloneable</code>接口，并且在类中自定义<code>clone()</code>调用Object类提供的继承权限<code>clone()</code></p>
+<p>若不实现Cloneable接口，在调用<code>clone()</code>时，会抛出CloneNotSupportedException异常。</p>
+<h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><p>对于浅拷贝而言，拷贝出来的对象仍然保留原对象的所有引用。</p>
+<p>只要拷贝对象和原对象中引用的属性发生改变，其所有的该引用属性都会发生改变</p>
+<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><p>对于深拷贝而言，拷贝出来的对象会产生新的对象。</p>
+<p>对于拷贝的原对象和拷贝出来的对象来说，改变一个引用的属性，互不影响</p>
+<p>对象中包含的引用只是自定义引用</p>
+<h3 id="如何实现深拷贝"><a href="#如何实现深拷贝" class="headerlink" title="如何实现深拷贝"></a>如何实现深拷贝</h3><p>1.包含的其他类继续实现Cloneable接口，并且调用<code>clone()</code></p>
+<p>2*.实现序列化</p>
+<h4 id="调用clone"><a href="#调用clone" class="headerlink" title="调用clone()"></a>调用<code>clone()</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Baby</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Baby&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Baby <span class="title">clone</span> <span class="params">()</span></span>&#123;</span><br><span class="line">        Baby baby = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            baby =(Baby) <span class="keyword">super</span>.clone();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> baby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Baby</span><span class="params">(String name, Integer age)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Monkey</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> Integer age;</span><br><span class="line">    <span class="keyword">public</span> Baby baby;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Monkey</span><span class="params">(String name, Integer age, Baby baby)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.baby = baby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Monkey&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">", baby="</span> + baby +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Baby <span class="title">getBaby</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> baby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBaby</span><span class="params">(Baby baby)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.baby = baby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Monkey <span class="title">clone</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Monkey monkey = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            monkey = (Monkey) <span class="keyword">super</span>.clone();</span><br><span class="line">            monkey.baby = <span class="keyword">this</span>.baby.clone();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> monkey;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        Baby baby = <span class="keyword">new</span> Baby(<span class="string">"zxh"</span>,<span class="number">3</span>);</span><br><span class="line">        Monkey monkey = <span class="keyword">new</span> Monkey(<span class="string">"zh"</span>,<span class="number">88</span>,baby);</span><br><span class="line"></span><br><span class="line">        Monkey monkey1 = monkey.clone();</span><br><span class="line">        System.out.println(monkey1);</span><br><span class="line">		System.out.println(monkey.baby == monkey1.baby);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><ul>
+<li>概念</li>
+</ul>
+<p>将内存中保存的对象变为二进制流，进行输出或保存在文本中，即将对象变为二进制流。<br>若类要实现序列化，必须实现<code>Serializable</code>接口</p>
+<p>Serializable接口为标识接口，只有实现了Serializable接口的类，才具备对象序列化的功能。</p>
+<p>但要具体实现序列化和反序列化需要使用IO包中提供的两个处理类：ObjectOutputStream（序列化）、ObjectInputStream（反序列化）</p>
+<ul>
+<li>ObjectOutputStream（序列化）</li>
+</ul>
+<p>构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ObjectOutputStream</span><span class="params">(OutputStream out)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>将文件转化为二进制流输出到终端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writeObject(Object obj);</span><br></pre></td></tr></table></figure>
+<p>例程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Monkey</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Monkey</span><span class="params">(String name, Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Monkey&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"C:\\Users\\pxx\\Desktop"</span> + <span class="string">"\\1.txt"</span>);</span><br><span class="line">        Monkey monkey = <span class="keyword">new</span> Monkey(<span class="string">"zh"</span>,<span class="number">99</span>);</span><br><span class="line">        OutputStream outputStream = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">        ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(outputStream);</span><br><span class="line">        oos.writeObject(monkey);</span><br><span class="line">        oos.close();</span><br><span class="line">        outputStream.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>transient</code>关键字</p>
+<p>若希望类中的若干属性不被序列化，可以在属性前添加该关键字</p>
+</li>
+<li><p>ObjectInputStream(反序列化)</p>
+</li>
+</ul>
+<p>构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ObjectInputStream</span><span class="params">(InputStream in)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>将文件中的二进制流输入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readObject(Object obj);</span><br></pre></td></tr></table></figure>
+<h4 id="使用序列化实现深拷贝"><a href="#使用序列化实现深拷贝" class="headerlink" title="使用序列化实现深拷贝"></a>使用序列化实现深拷贝</h4><p>使用序列化进行深拷贝时，无须实现Cloneable接口，而需要实现Serializable接口</p>
+<p>用序列化实现上一例程的拷贝Monkey对象的功能，代码实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public Monkey ObjectClone()&#123;</span><br><span class="line"></span><br><span class="line">        OutputStream outputStream = new ByteOutputStream();</span><br><span class="line">        Monkey monkey = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            ObjectOutputStream oos = new ObjectOutputStream(outputStream);</span><br><span class="line"></span><br><span class="line">            oos.writeObject(this);</span><br><span class="line">            oos.close();</span><br><span class="line"></span><br><span class="line">            InputStream bis = new ByteInputStream(((ByteOutputStream) outputStream).getBytes(),((ByteOutputStream) outputStream).size());</span><br><span class="line">            ObjectInputStream ois = new ObjectInputStream(bis);</span><br><span class="line"></span><br><span class="line">            monkey = (Monkey) ois.readObject();</span><br><span class="line">            ois.close();</span><br><span class="line">            bis.close();</span><br><span class="line"></span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return monkey;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-三范式" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/03/三范式/" class="article-date">
+      <time datetime="2019-01-03T05:28:47.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/03/三范式/">三范式</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-网络基础概念理解" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/25/网络基础概念理解/" class="article-date">
+      <time datetime="2018-12-25T09:20:25.000Z" itemprop="datePublished">2018-12-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>总是听到身边的人说局域网，那么局域网到底是什么呢？</p>
+<p>如何将一个数据发送到另一台主机呢？</p>
+<p>操作系统是如何知道网卡中有数据发来呢？</p>
+<p>请接下这篇博客
+          
+      
+    </p></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/12/25/网络基础概念理解/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Java中的类集" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -333,11 +717,11 @@
 
 
   
-    <article id="post-关于测试" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-JDBC" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/05/关于测试/" class="article-date">
-      <time datetime="2018-07-05T04:13:46.000Z" itemprop="datePublished">2018-07-05</time>
+      <a href="/2018/12/20/JDBC/" class="article-date">
+      <time datetime="2018-12-20T06:20:21.000Z" itemprop="datePublished">2018-12-20</time>
 </a>
 
 
@@ -352,7 +736,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/关于测试/">关于测试</a>
+      <a class="article-title" href="/2018/12/20/JDBC/">JDBC</a>
     </h1>
   
 
@@ -363,81 +747,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>软件开发，包括分析、计划、设计、编码、测试、维护六个过程。 </p>
-<p>软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面）</p>
-<p>接下来，请收下这篇————测试概念篇</p>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h3><blockquote>
-<p>目的：验证软件有或没有问题</p>
-</blockquote>
-<blockquote>
-<p>原则：以客户为中心，遵循软件测试的规范、流程、标准和要求。</p>
-</blockquote>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><blockquote>
-<p>需求，即满足用户期望或正式规定的文档的条件或权能。</p>
-</blockquote>
-<blockquote>
-<p>其包括软件需求和用户需求两种。</p>
-</blockquote>
-<h3 id="测试与调试的问题"><a href="#测试与调试的问题" class="headerlink" title="测试与调试的问题"></a>测试与调试的问题</h3><blockquote>
-<p><strong>目的不同：</strong>测试的目的是发现问题，调试的目的是发现并解决问题</p>
-<p><strong>参与角色不同：</strong>测试由开发人员和测试人员来完成，调试由开发人员来完成</p>
-<p><strong>执行的阶段不同：</strong>测试贯穿整个软件开发生命周期，测试一般在开发阶段</p>
-</blockquote>
-<h3 id="总是碰到的bug"><a href="#总是碰到的bug" class="headerlink" title="总是碰到的bug"></a>总是碰到的bug</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当且仅当规格说明是存在的并且正确，程序与规格说明之间的不匹配是bug。</span><br></pre></td></tr></table></figure>
-<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><p>为了实施测试而向被测试的系统提供的一组集合。（包括<font color="red" size="3">测试环境、操作步骤、测试数据、预期结果等</font>）</p>
-<h4 id="在写测试用例的时候，一个功能点可能对应n条测试用例。"><a href="#在写测试用例的时候，一个功能点可能对应n条测试用例。" class="headerlink" title="在写测试用例的时候，一个功能点可能对应n条测试用例。"></a>在写测试用例的时候，一个功能点可能对应n条测试用例。</h4><font color="red" size="3">关于测试用例要注意以下问题：</font>
-
-<blockquote>
-<p>1.不知道是否较全面的测试了所有功能</p>
-</blockquote>
-<blockquote>
-<p>2.测试的覆盖率，无法衡量</p>
-</blockquote>
-<blockquote>
-<p>3.对新版本的重复测试很难实施</p>
-</blockquote>
-<blockquote>
-<p>4.存在大量冗余测试影响测试效率</p>
-</blockquote>
-<h4 id="举个栗子："><a href="#举个栗子：" class="headerlink" title="举个栗子："></a>举个栗子：</h4><p>假设一个功能点写一条测试用例，1.0版本需要测试100个功能点，请问需要写多少条测试用例？</p>
-<p>若软件升级为1.1版本，在原有的基础上增加了2个功能点，请问需要写多少条测试用例？</p>
-<p>答案：100条、2条</p>
-<h3 id="开发模型"><a href="#开发模型" class="headerlink" title="开发模型"></a>开发模型</h3><p>开发模型大概包括四种：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/开发类型.PNG" height="300" width="500"><br></div>
-
-<blockquote>
-<p>瀑布类型适用于需求稳定的项目，主要用于开发过的项目</p>
-</blockquote>
-<blockquote>
-<p>螺旋项目强调风险，但是比较耗费时间</p>
-</blockquote>
-<blockquote>
-<p>增量迭代其实是两种，增量是将代码逐步叠加到完整，而迭代是写出一个大概轮廓，然后将轮廓细化。</p>
-</blockquote>
-<p>  我们通常将这两种看作一类</p>
-<blockquote>
-<p>敏捷具有注重人与人的沟通、对文档要求低、客户参与度高等特点。</p>
-</blockquote>
-<p>  敏捷是软件公司最受欢迎的开发模型</p>
-<p>所以接下来，我来为大家更加详细的介绍一下<font color="black" size="3">敏捷</font></p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/敏捷.PNG" height="300" width="500"><br></div>
-
-<p>product owner<br>是类似于产品经理的一个职务（简称PO）</p>
-<p>主要工作职责是整理用户故事，定义其商业价值并对其进行排序</p>
-<p>scrum master<br>敏捷教练（简称sm）</p>
-<p>主要工作职责是召开会议，协调项目，为研发团队服务</p>
-<p>team<br>研发团队</p>
-<p>PO，sm都属于team，但是两个有比较特殊一点</p>
-<p>而在敏捷开发模式中，对于测试而言，会有两个挑战：</p>
-<p>轻文档和快速迭代</p>
-<h3 id="软件测试模型（V型和W型）"><a href="#软件测试模型（V型和W型）" class="headerlink" title="软件测试模型（V型和W型）"></a>软件测试模型（V型和W型）</h3><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/V型测试模型.PNG" height="300" width="500"><br></div>
-
-<p>我们可以发现V型测试模型忽略了软件测试的重要性</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5%E7%AF%87/W型测试模型.PNG" height="300" width="500"><br></div>
-
-<p>W型测试模型与V型模型相比，虽然有所改进，但整体仍为串行结构，不能满足需求的变更</p>
-<p>欢迎交流~</p>
-
+              <p>现在的应用系统大多都离不开数据库，而Java程序访问数据库的基本方式是通过JDBC。</p>
+<p>Java Database Connectivity，Java数据库连接。</p>
+<p>用于执行SQL语句的Java API</p>
+<p>JDBC使用流程如下：</p>
+<p><img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/JDBC/%E6%8D%95%E8%8E%B7.PNG"></p>
+          
       
     </div>
     
@@ -447,9 +762,13 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试/">测试</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/12/20/JDBC/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -467,11 +786,11 @@
 
 
   
-    <article id="post-C-的三大特性之多态" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-STL的底层与应用" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/01/C-的三大特性之多态/" class="article-date">
-      <time datetime="2018-07-01T04:12:26.000Z" itemprop="datePublished">2018-07-01</time>
+      <a href="/2018/08/28/STL的底层与应用/" class="article-date">
+      <time datetime="2018-08-28T11:06:53.000Z" itemprop="datePublished">2018-08-28</time>
 </a>
 
 
@@ -486,7 +805,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a>
+      <a class="article-title" href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a>
     </h1>
   
 
@@ -497,44 +816,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容</p>
-<p>接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！ </p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><font color="blue" size="3">首先你可以讲述一下多态的概念</font>
-
-<p>多态，即事物表现出的多种形态</p>
-<p>然后你可以举个栗子~</p>
-<p>就像是一个演员，他可以演好人，也可以演坏人。</p>
-<p>接下来，可以说一下<font color="blue" size="3">多态的种类</font></p>
-<p>多态分为静态多态和动态多态两种</p>
-<h3 id="静态多态（函数重载、泛型编程）"><a href="#静态多态（函数重载、泛型编程）" class="headerlink" title="静态多态（函数重载、泛型编程）"></a>静态多态（函数重载、泛型编程）</h3><p>静态多态是编译器在编译期间完成的，根据实参类型调用函数，若实参类型与形参都不同，则系统会报错</p>
-<p>关于函数重载的实现，可戳</p>
-<h3 id="动态多态：（虚函数）"><a href="#动态多态：（虚函数）" class="headerlink" title="动态多态：（虚函数）"></a>动态多态：（虚函数）</h3><p>动态多态是在程序运行时完成的</p>
-<p>讲到这里你可以讲一下<font color="blue" size="3">动态多态的实现条件</font></p>
-<p>其需要满足两个条件：</p>
-<blockquote>
-<p>1.基类中必须包含虚函数，并且派生类中要对基类中的该虚函数进行重写</p>
-</blockquote>
-<blockquote>
-<p>2.通过基类对象的指针或引用来调用虚函数</p>
-</blockquote>
-<p>关于动态多态的实现，可戳<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A4%9A%E6%80%81.cpp" target="_blank" rel="noopener">动态多态例程</a></p>
-<p>在上面讲述动态多态的实现条件时，提到了<font color="blue" size="3">重写</font>的概念</p>
-<h3 id="重写的实现条件"><a href="#重写的实现条件" class="headerlink" title="重写的实现条件"></a>重写的实现条件</h3><blockquote>
-<p>1.基类中被重写的函数必须为虚函数</p>
-</blockquote>
-<blockquote>
-<p>2.基类和派生类中虚函数的原型必须保持一致（即函数名，函数返回类型，函数参数列表完全相同）</p>
-</blockquote>
-<p>基类中将被重写的虚函数和派生类中与其对应的虚函数的访问限定符可以不同</p>
-<font color="red" size="3">两个例外：</font>
-
-<p>a.析构函数</p>
-<p>b.协变：基类（派生类）虚函数返回基类（派生类）指针或引用</p>
-<p>关于多态实现的原理，请戳</p>
-<p>欢迎交流~</p>
-
+              <p>STL是惠普实现的，其有多个版本，但都是在HP版本的基础上完成的</p>
+<p>STL是C++的标准模板库，包括数据结构和算法的软件框架
+          
       
-    </div>
+    </p></div>
     
     <div class="article-info article-info-index">
       
@@ -545,6 +831,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/08/28/STL的底层与应用/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -562,11 +852,11 @@
 
 
   
-    <article id="post-C-的三大特性之继承" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Python基础小知识" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/27/C-的三大特性之继承/" class="article-date">
-      <time datetime="2018-06-27T04:09:48.000Z" itemprop="datePublished">2018-06-27</time>
+      <a href="/2018/08/01/Python基础小知识/" class="article-date">
+      <time datetime="2018-08-01T11:07:17.000Z" itemprop="datePublished">2018-08-01</time>
 </a>
 
 
@@ -581,7 +871,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a>
+      <a class="article-title" href="/2018/08/01/Python基础小知识/">Python基础小知识</a>
     </h1>
   
 
@@ -592,36 +882,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>今天来为大家介绍一下继承~</p>
-<p>继承使代码可以复用，他是为多态做铺垫的 </p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="继承的格式"><a href="#继承的格式" class="headerlink" title="继承的格式"></a>继承的格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class 派生类名称：继承权限 基类名称</span><br></pre></td></tr></table></figure>
-<h3 id="继承的权限"><a href="#继承的权限" class="headerlink" title="继承的权限"></a>继承的权限</h3><p>继承的权限有public、protected、private</p>
-<p>在这里还要提一下访问权限，有public、protected、private三种</p>
-<p>由于基类中成员访问权限不同，以及派生类派生方式不同，会使派生类的访问权限发生变化</p>
-<p>关系如下表所示：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E7%BB%A7%E6%89%BF/%E7%BB%A7%E6%89%BF%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E5%85%B3%E7%B3%BB.PNG" height="300" width="500"><br></div>
-
-<p>在派生类派生的过程中，需要注意一下几点：</p>
-<blockquote>
-<p>基类private成员不能在派生类中被访问</p>
-</blockquote>
-<blockquote>
-<p>基类protected成员在类外不能被访问，但在派生类中可以</p>
-</blockquote>
-<blockquote>
-<p>父类对象对子类对象也适用</p>
-</blockquote>
-<h3 id="派生类对象模型的构建与销毁"><a href="#派生类对象模型的构建与销毁" class="headerlink" title="派生类对象模型的构建与销毁"></a>派生类对象模型的构建与销毁</h3><p>派生类对象构建时，会先调用派生类成员，再调用基类对象成员</p>
-<p>派生类对象销毁时，会先销毁派生类成员，再销毁基类对象成员</p>
-<p>关于继承体系，要注意：基类对象和派生类对象不在同一作用域</p>
-<p>若基类和派生类中有相同名称的成员，优先访问派生类中的该名称成员</p>
-<p>继承分为普通继承和虚拟继承</p>
-<font color="blue" size="3">首先你可以讲述一下多态的概念</font>
-
-<p>欢迎交流~</p>
-
+              <p>最近开始学习Python，以前只是听说过Python是一种脚本语言，没有进行过多的了解 </p>
+<p>Python拥有强大的类库，支持面向过程、面向对象、函数式编程多种编程风格</p>
+<p>通过今天的学习了解到，Python是一种脚本解释语言，像C、C++都属于编译语言</p>
+<p>我们都了解，C/C++在编译过程中，会生成中间产物—.obj文件等，而Python不会</p>
+<p>Python程序的执行时读一行执行一行，所以程序执行的比较慢</p>
+<p>这也就使得Python不可以做开发底层、移动端开发和游戏</p>
+<p>Python的脚本文件是.py，为了提高其执行效率，执行过的程序会生成.pyc文件</p>
+<p>在执行程序时，若检测到有.pyc文件，会优先选择.pyc文件执行
+          
       
-    </div>
+    </p></div>
     
     <div class="article-info article-info-index">
       
@@ -629,9 +900,13 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2018/08/01/Python基础小知识/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -649,11 +924,11 @@
 
 
   
-    <article id="post-动态内存开辟" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-禅道的安装" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/17/动态内存开辟/" class="article-date">
-      <time datetime="2018-06-17T04:03:54.000Z" itemprop="datePublished">2018-06-17</time>
+      <a href="/2018/07/26/禅道的安装/" class="article-date">
+      <time datetime="2018-07-26T11:06:34.000Z" itemprop="datePublished">2018-07-26</time>
 </a>
 
 
@@ -668,7 +943,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/17/动态内存开辟/">动态内存开辟</a>
+      <a class="article-title" href="/2018/07/26/禅道的安装/">禅道的安装</a>
     </h1>
   
 
@@ -679,139 +954,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="C语言中实现方式"><a href="#C语言中实现方式" class="headerlink" title="C语言中实现方式"></a>C语言中实现方式</h3><p>使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉 </p>
-<h3 id="比较malloc-calloc-realloc"><a href="#比较malloc-calloc-realloc" class="headerlink" title="比较malloc/calloc/realloc"></a>比较malloc/calloc/realloc</h3><p><strong>相同点</strong></p>
-<p>三者都是在堆上申请空间：</p>
-<blockquote>
-<p>若申请成功-&gt;返回申请的空间的首地址</p>
-</blockquote>
-<blockquote>
-<p>若申请失败-&gt;返回空指针</p>
-</blockquote>
-<p>三者的申请空间的释放都是使用free()进行操作</p>
-<p><strong>不同点</strong></p>
-<blockquote>
-<p>malloc:在堆上开辟指定字节数的空间</p>
-</blockquote>
-<blockquote>
-<p>calloc:开辟空间会被0初始化</p>
-</blockquote>
-<blockquote>
-<p>realloc:把原来开辟的空间缩小或扩大</p>
-</blockquote>
-<blockquote>
-<p>——–&gt;缩小空间—&gt;返回原空间的地址，但空间变小<br>​<br>——–&gt;扩大空间—&gt;比较原空间连续的可用空间大小与原空间空间大小之和与申请空间的大小</p>
-<p>——————-&gt;大于—&gt;返回空间首地址</p>
-<p>——————-&gt;小于—&gt;重新开辟空间</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void* malloc(字节数)</span><br><span class="line">void* calloc(元素个数，元素大小)</span><br><span class="line">void* realloc(void* p,字节数)</span><br></pre></td></tr></table></figure>
-<h3 id="malloc实现原理"><a href="#malloc实现原理" class="headerlink" title="malloc实现原理"></a>malloc实现原理</h3><p>在开辟空间时，除了所需的空间之外，还会在所需空间前开辟一个结构体，后面又追加了4个字节，防止越界</p>
-<p><strong>结构体</strong>—共32个字节</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#define nNoManLandSize 4</span><br><span class="line">typedef struct _CrtMemBlockHeader</span><br><span class="line">&#123;</span><br><span class="line">	struct _CrtMMemBlockHeader * pBlockHeaderNext;</span><br><span class="line">	struct _CrtMMemBlockHeader * pBlockHeaderPrev;//双向链表</span><br><span class="line">	char * szFileName;</span><br><span class="line">	int nLine;</span><br><span class="line">	size_t nDataSize;</span><br><span class="line">	int nBlockUse;</span><br><span class="line">	long lRequest;</span><br><span class="line">	unsigned char gap[nNoManLandSize];</span><br><span class="line">&#125;_CrtMenBlockHeader;</span><br></pre></td></tr></table></figure>
-<h3 id="alloca"><a href="#alloca" class="headerlink" title="_alloca"></a>_alloca</h3><p>_alloca是在栈上申请空间的，用户不需要管理，由编译器自动维护。一旦出了使用_alloca的函数，所申请的空间会自动被收回去，不需要显式释放。</p>
-<h3 id="常见的内存泄漏"><a href="#常见的内存泄漏" class="headerlink" title="常见的内存泄漏"></a>常见的内存泄漏</h3><ul>
-<li>内存申请了忘记释放</li>
-<li>指向新空间的两个指针p1、p2，若p1 = p2，这时p1、p2指向同一块空间，若free(p1);free(p2),会使同一块空间被释放两次。原来p2指向的内存块，会丢失，导致内存泄漏。</li>
-<li>使用的空间大于开辟的空间，会将防止越界的四个字节占用，在释放内存时，会出问题</li>
-<li>释放时传入的地址与申请时的地方不同</li>
-</ul>
-<h1 id="C-中申请空间"><a href="#C-中申请空间" class="headerlink" title="C++中申请空间"></a>C++中申请空间</h1><h3 id="关键字new和delete"><a href="#关键字new和delete" class="headerlink" title="关键字new和delete"></a>关键字new和delete</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int* p = new int;</span><br><span class="line">int* p1 = new int(5);</span><br><span class="line">int* p2 = new int[10];</span><br><span class="line"></span><br><span class="line">delete p;</span><br><span class="line">delete p1;</span><br><span class="line">delete[] p2;//释放连续空间</span><br></pre></td></tr></table></figure>
-<ul>
-<li>用new申请出的空间，不需要判空，p2申请的空间时连续的(数组的形式)</li>
-<li>用delete删除连续空间时，需使用释放p2的形式</li>
-<li>delete和new可以进行重载</li>
-<li>new申请的空间，是一个完整的对象</li>
-</ul>
-<p><strong>delete[]和new[]要成对使用，delete和new要成对使用</strong></p>
-<p>接下来看一段代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	Test()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;Test():&quot; &lt;&lt; this &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	~Test()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;~Test():&quot; &lt;&lt; this &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	Test* p1 = (Test*)malloc(sizeof(Test));</span><br><span class="line">	Test* p2 = new Test;</span><br><span class="line">	Test* p3 = new Test[10];</span><br><span class="line">	</span><br><span class="line">	free(p1);</span><br><span class="line">	delete p2;</span><br><span class="line">	delete[] p3;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%BC%80%E8%BE%9F/%E6%8D%95%E8%8E%B7.PNG" height="400" width="350"><br></div>
-
-<p>由此我们可以看出:</p>
-<ul>
-<li>new出一个对象会调用类的构造函数，delete一个对象会调用类的析构函数</li>
-<li>malloc不会调用类的构造函数，free不会调用类的析构函数</li>
-<li>对于p3空间的申请与销毁，p3申请并开辟了10个Test对象的空间，则调用了十次构造函数，销毁时也就调用了10次析构函数</li>
-</ul>
-<p>欢迎交流~</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-中类的实例化对象" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/10/C-中类的实例化对象/" class="article-date">
-      <time datetime="2018-06-10T04:02:19.000Z" itemprop="datePublished">2018-06-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+              <p>测试工具有很多，接下来我将介绍几款比较经典的测试工具
           
-        <p>C语言使用函数对内容进行封装的，而C++是用类进行封装的</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>类的关键字是class，而类的作用域也不同 </p>
-<h3 id="类作用域"><a href="#类作用域" class="headerlink" title="类作用域"></a>类作用域</h3><p> 1.全局域</p>
-<p> 2.局部域</p>
-<p> 3.类域</p>
-<p> 4.名字空间域</p>
-<h3 id="类的实例化"><a href="#类的实例化" class="headerlink" title="类的实例化"></a>类的实例化</h3><p>类的实例化就是用类类型创建对象的过程 </p>
-<p>类在创建实例化对象时，类本身并不被分配空间</p>
-<p>类对象包括类里的成员变量</p>
-<p>若计算类的大小，只需计算成员变量大小之和，但要注意内存对齐</p>
-<p>空类大小为一个字节，为区分不同对象</p>
-<h3 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h3><p>对象模型指的是对象中各个成员在内存中的布局方式 </p>
-<p>注意：对象大小只包括成员变量，不包括方法</p>
-<p>欢迎交流~</p>
-
       
-    </div>
+    </p></div>
     
     <div class="article-info article-info-index">
       
@@ -819,330 +965,13 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
     </div>
 
       
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-的三大特性之封装" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/06/C-的三大特性之封装/" class="article-date">
-      <time datetime="2018-06-06T04:00:28.000Z" itemprop="datePublished">2018-06-06</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？</p>
-<p>C++的三大特性是封装、继承和多态</p>
-<p>接下来我将分三次来讲解关于这三大特性的知识</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="封装的概念"><a href="#封装的概念" class="headerlink" title="封装的概念"></a>封装的概念</h4><p>隐藏对象的属性和实现细节，仅对公开接口和对象进行交互，将数据和操作数据的方法进行有机结合。</p>
-<p>函数是一种封装方式，在C++中更多地是用类进行封装。 </p>
-<h4 id="访问限定符"><a href="#访问限定符" class="headerlink" title="访问限定符"></a>访问限定符</h4><p>提到封装，不得不说一下访问限定符</p>
-<p>从该访问限定符开始，到下一个访问限定符的位置，为该访问限定符的限定范围。</p>
-<p>访问限定符有三种：public(公有)、protected(保护)、private(私有)</p>
-<p>公有即在类外可以访问变量</p>
-<p>保护和私有不可以在类外访问变量，若只是单纯的限定变量访问权限，二者没什么区别，</p>
-<p>但在继承中，作用会有所不同，欲了解可戳<a href="http://www.bingoxin.top/2018/06/%E7%BB%A7%E6%89%BF/">C++的三大特性之继承</a></p>
-<p>访问限定符只是在编译阶段有用，当数据映射到内存后，没有任何访问限定符的区别</p>
-<p>类的默认访问权限为私有，而结构体的默认访问权限为公有(因为结构体兼容C)。</p>
-<h4 id="在类外如何访问私有成员变量"><a href="#在类外如何访问私有成员变量" class="headerlink" title="在类外如何访问私有成员变量"></a>在类外如何访问私有成员变量</h4><p>在类外可以通过函数、指针、引用访问私有成员变量，也可以通过共有函数给私有成员变量赋值。</p>
-<p>请戳链接，可直接看代码<a href="https://github.com/luckypxx/C-plus-plus/blob/master/%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F.cpp" target="_blank" rel="noopener">在类外如何访问私有成员变量</a></p>
-<p>欢迎交流~</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-面向对象or面向过程" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/05/面向对象or面向过程/" class="article-date">
-      <time datetime="2018-06-05T03:58:54.000Z" itemprop="datePublished">2018-06-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。</p>
-<p>也算是感受到了C++的一点点魅力~</p>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="面向过程？面向对象？"><a href="#面向过程？面向对象？" class="headerlink" title="面向过程？面向对象？"></a>面向过程？面向对象？</h3><p>C语言是面向过程的，而JAVA和C++是面向对象的。</p>
-<blockquote>
-<p>艾兰·库伯在《软件创新之路》中提到：</p>
-</blockquote>
-<blockquote>
-<p>“面向过程和面向对象的区别并不像人们想象得那么大，面向对象的大部分思想在面向过程中也能体现,</p>
-</blockquote>
-<blockquote>
-<p>但面向过程最大的问题在于系统的膨胀，面向对象将无法应付，最终导致系统的崩溃。”</p>
-</blockquote>
-<h3 id="面向过程和面向对象的区别大概有如下几个方面："><a href="#面向过程和面向对象的区别大概有如下几个方面：" class="headerlink" title="面向过程和面向对象的区别大概有如下几个方面："></a>面向过程和面向对象的区别大概有如下几个方面：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.面向过程重用的是函数，而面对对象重用的是类（即将数据和处理数据的过程及函数封装在一起的实体）。</span><br><span class="line"> </span><br><span class="line">2.面向过程程序设计方法的实质上是从计算机处理问题的观点来进行程序设计工作：输入--运算--输出；</span><br><span class="line"> </span><br><span class="line">面向对象程序设计方法需要使用结构化的程序来设计。</span><br><span class="line"></span><br><span class="line">3. 面向过程程序设计是一种自上而下的程序设计方法，从程序的一部分入手，一点一点地构建出整个程序；</span><br><span class="line"> </span><br><span class="line">面向对象程序设计是以一数据为中心，类作为表现数据的工具，成为划分程序的基本单位。</span><br></pre></td></tr></table></figure>
-<p>欢迎交流~</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-叩开C-的大门" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/05/叩开C-的大门/" class="article-date">
-      <time datetime="2018-06-05T03:57:30.000Z" itemprop="datePublished">2018-06-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="缺省函数"><a href="#缺省函数" class="headerlink" title="缺省函数"></a>缺省函数</h4><p>如果非要把缺省函数比作一个事物，它更像是一个备胎。</p>
-<p>如果函数传参，就会将传过来的值赋值给形参</p>
-<p>如果没有传参，则就会将缺省值传递给函数</p>
-<p>关于缺省参数要注意以下几点：</p>
-<blockquote>
-<p>a.带缺省值的参数必须放在参数列表的最后面<br>b.缺省参数不能同时在函数声明和定义中出现，只能二者去一<br>c.缺省值必须是常量或者是全局变量<br>d.C语言不支持</p>
-</blockquote>
-<p>####函数重载</p>
-<p>函数重载，即在同一作用域里，声明几个功能相同的函数，形参列表不同或返回值类型不同(参数列表中，参数个数和顺序相同)，即可构成函数重载</p>
-<p>若只是返回值类型不同，不可构成函数重载，在这里也要注意：返回值不属于函数，参数属于函数</p>
-<p>在C语言中，不会构成函数重载，只是由于C语言和C++的编译风格不同</p>
-<p>在C语言中，编译完成后会在函数名前加上“_”，</p>
-<p>在C++中，编译完成后会被修饰成由函数名，函数参数列表和返回值构成的一串特定的字符串，用于区分函数名相同的各个函数</p>
-<p>####引用</p>
-<p>引用，就相当于为一个变量取一个别名</p>
-<p> int a=10;<br> int&amp; ra=a;<br>这就是引用的用法，ra和a的地址相同，变量存放的内容也相同</p>
-<p>引用站在应用层，编译器不为其开辟空间</p>
-<p>在使用引用时要注意：</p>
-<blockquote>
-<p>a.引用在定义时必须有初始化<br>b.一个变量可以有多个引用<br>c.引用一旦引用一个实体，再不能引用其他实体</p>
-</blockquote>
-<p>若初始变量被const修饰，其引用在定义时也要被const修饰，而初始变量就相当于常数</p>
-<p>接下来再来说一下数组引用的代码格式：</p>
-<p> int (&amp;array)[3]={0}; //注意符号优先级</p>
-<p>引用可以作为函数的参数和返回值</p>
-<p>在函数传参时，从底层来看，传引用和传指针效率相差不多</p>
-<p>但是引用和指针还是有区别的，如下：</p>
-<blockquote>
-<p>引用在定义时必须初始化，而指针没有要求<br>指针可以为空，而引用不可以<br>引用一旦有所指向就不能更改，而指针指向一个变量后，还可以更改指向另一个类型相同的变量<br>在sizeof中含义不同：引用的结果为引用类型的大小，但指针始终为4(在Win10，vs2013的环境下)<br>引用自加改变的是变量的大小，指针自加改变的是指针的指向<br>有多级指针，没有多级引用<br>指针需要手动寻址，引用可以通过编译器寻址<br>使用引用更为安全</p>
-</blockquote>
-<p>那么引用相当于void* const类型的指针(可以改变其内容，不可改变其指向)</p>
-<p>####命名空间</p>
-<p>命名空间可以将标识符本地化，避免命名冲突或名字污染</p>
-<p>首先我们先来了解一下命名空间的定义方式：</p>
-<p> namespace N</p>
-<p>关于命名空间和作用域，不得不再多说几句： </p>
-<blockquote>
-<p>a.若一个命名空间为N，“N::”表示其空间作用域，“::”为作用限定符<br>b.相同作用域定义的命名空间名称可以相同，编译器会自动将其合成<br>c.命名空间可以嵌套(“NN1::”)</p>
-</blockquote>
-<p>仅仅学了这几个概念，就觉得C++功能的实现比C语言简单许多</p>
-<p>终于敲开C++的大门啦！</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-函数调用约定" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/05/函数调用约定/" class="article-date">
-      <time datetime="2018-06-05T03:55:09.000Z" itemprop="datePublished">2018-06-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/05/函数调用约定/">函数调用约定</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>在学习C语言的时候，总是碰到__cdecl，一直都只是知道他是一种函数调用约定，</p>
-<p>今天来总结一下函数的调用约定~</p>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="函数调用约定"><a href="#函数调用约定" class="headerlink" title="函数调用约定"></a>函数调用约定</h3><p>当一个函数被调用时，函数的参数会被传递给调用的函数和返回值会被返回给调用函数。函数调用约定就是描述参数是怎么传递和由谁平衡堆栈的，当然还有返回值。<br>​<br>1.<font color="red" size="3">__cdecl</font><br>​    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.参数是从右向左传递的，也是从右向左放在堆栈中的</span><br><span class="line"></span><br><span class="line">2.堆栈平衡是由调用函数来执行的</span><br><span class="line"></span><br><span class="line">3.函数的前面会加一个前缀_(_Test)</span><br></pre></td></tr></table></figure>
-<p>2.<font color="red" size="3">__stdcall</font></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.参数是从右向左传递的，也是从右向左放在堆栈中的</span><br><span class="line"></span><br><span class="line">2.堆栈平衡是由被调用函数来执行的</span><br><span class="line"></span><br><span class="line">3.在函数名前加下划线修饰，在函数名的后面由@来修饰并、加上栈需要的字节数的空间(_Test@8)</span><br></pre></td></tr></table></figure>
-<p>3.<font color="red" size="3">__fastcall</font></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.参数放在寄存器中，而不是栈中</span><br><span class="line"></span><br><span class="line">2.最左边的两个不大于4个字节的参数分别放在ecx和edx寄存器。当寄存器用完的时候，其余参数仍然从右往左的顺序压栈。</span><br></pre></td></tr></table></figure>
-<p>4.<font color="red" size="3">__thiscall</font></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.C++成员函数的默认调用约定，用于限制成员函数</span><br><span class="line"></span><br><span class="line">2.参数从右向左被推入堆栈</span><br><span class="line"></span><br><span class="line">3.通过ecx寄存器来传递this指针，将其传递到X86结构上，而不是堆栈上</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
-    </div>
-
+        <p class="article-more-link">
+          <a href="/2018/07/26/禅道的安装/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1162,7 +991,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -1171,7 +1000,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2018 bingoxin
+                2018-2019 bingoxin
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>

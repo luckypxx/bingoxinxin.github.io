@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="bingoxin&#39;s blog">
 <meta property="og:description" content="Java类集Java类集就是动态数组，类集的使用比较容易操作，但是类集的底层需要用到数据结构和多线程 所有的类集都在java.util包下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-21T14:45:14.688Z">
+<meta property="og:updated_time" content="2018-12-22T09:55:08.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中的类集">
 <meta name="twitter:description" content="Java类集Java类集就是动态数组，类集的使用比较容易操作，但是类集的底层需要用到数据结构和多线程 所有的类集都在java.util包下">
@@ -190,7 +190,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
                     </div>
                 </section>
                 
@@ -349,7 +349,11 @@
 </ul>
 <p>LinkedList底层是双向链表，ArrayList的底层是数组</p>
 <h2 id="Set接口—不允许数据重复"><a href="#Set接口—不允许数据重复" class="headerlink" title="Set接口—不允许数据重复"></a>Set接口—不允许数据重复</h2><p>Set接口没有扩充方法，常用子类有<code>HashSet</code>(无序存储)和<code>TreeSet</code>(有序存储)</p>
-<h3 id="Comparable接口与Compartor接口"><a href="#Comparable接口与Compartor接口" class="headerlink" title="Comparable接口与Compartor接口"></a>Comparable接口与Compartor接口</h3><p>在Java中，若实现自定义类的比较，提供了一下两个接口：</p>
+<p>Set接口本质上就是Map接口，Set就是value值都为PRESENT的Map</p>
+<h3 id="Comparable接口与Comparator接口"><a href="#Comparable接口与Comparator接口" class="headerlink" title="Comparable接口与Comparator接口"></a>Comparable接口与Comparator接口</h3><ul>
+<li>Comparable接口</li>
+</ul>
+<p>在Java中，若实现自定义类的比较，提供了一下两个接口：</p>
 <p>java.lang.Comparable接口（内部比较器）:若一个类实现了Comparable接口，就表示该类可以进行比较并排序的。存放该类的Conllection或数组，可以直接通过<code>Collection.sort()</code>或Array.sort进行排序</p>
 <p>实现了Comparable接口的类可以直接存放在TreeSet或TreeMap中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
@@ -357,10 +361,110 @@
 <p>返回正数：当前对象大于目标对象</p>
 <p>返回负数：当前对象小于目标对象</p>
 <p>返回0：当前对象等于目标对象</p>
+<ul>
+<li>Comparator接口</li>
+</ul>
+<p>Comparator是外部排序接口</p>
+<p>若要控制某个自定义类的顺序，而该类本身不支持排序—实现Comparator接口，覆写compareTo方法或实现一个比较器传入TreeSet或TreeMap中进行比较即可。</p>
+<p>实现了Comparator接口的类作为比较器，通过该比较器来进行类排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1,T o2)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>返回值与compareTo返回值完全一样</p>
+<p>返回正数，o1&gt;o2</p>
+<p>返回负数，o1&lt;o2</p>
+<p>返回0，o1=o2</p>
+<p>实现<code>Comparator</code>接口进行第三方排序—策略模式，此方法更加灵活，可以轻松改变策略进行第三方的排序方法</p>
+<ul>
+<li>Comparable接口与Comparator接口的关系</li>
+</ul>
+<p>Comparable是排序接口，若一个类实现了Comparable接口，意味着该类支持排序，是一个内部比较器（自己去和别人比）</p>
+<p>Comparator接口是比较器接口，类本身不支持排序，专门有若干个第三方的比较器（实现了Comparator接口的类）来进行类排序，是一个外部比较器</p>
 <h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>底层是由哈希表和红黑树，允许存放null，无序储存</p>
 <h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>底层使用红黑树，不允许空值出现，允许储存</p>
 <p>保存自定义类需实现Comparable接口或者传入比较器（compartor接口）</p>
 <h3 id="HashSet和TreeSet的区别"><a href="#HashSet和TreeSet的区别" class="headerlink" title="HashSet和TreeSet的区别"></a>HashSet和TreeSet的区别</h3><p>1、<strong>底层实现不同：</strong>HashSet底层是由哈希表和红黑树，允许存放null，无序储存；TreeSet底层使用红黑树，不允许空值出现，允许储存</p>
+<h3 id="重复元素比较"><a href="#重复元素比较" class="headerlink" title="重复元素比较"></a>重复元素比较</h3><p>TreeSet与TreeMap依靠Comparator或Comparable接口来区别重复元素</p>
+<p>HashMap和HashSet不依赖比较接口，可以通过同时覆写其<code>equals()</code>和<code>HashCode()</code>方法来区分</p>
+<p><strong>元素比较步骤：</strong></p>
+<p>1、调用<code>hashCode()</code>计算出对象hash码决定存放的hash桶</p>
+<p>2、使用<code>equals()</code>方法来判定两个元素内容是否相等，若相等，则不放置元素，若不相等，则在相同桶之后将元素链起来</p>
+<p>object类内置的<code>hashCode()</code>是默认比较对象的地址转为hash码</p>
+<p>两个对象<code>equals()</code>方法返回true，他们的hashCode必然保持相等，</p>
+<p>两个对象的hashCode相等，不能保证他们的<code>equals()</code>一定相等，当且仅当hashCode和equals都返回true是，才说明两个对象都相等</p>
+<ul>
+<li>覆写<code>equals()</code>方法原则</li>
+</ul>
+<blockquote>
+<p>自反性：对于任何非空引用值x，<code>x.equals(x)</code>都返回true</p>
+<p>对称性：对于任何非空的x,y,当且仅当<code>x.equals(y)</code>返回true，<code>y.equals(x)</code>返回true</p>
+<p>传递性：对于任何非空的x,y,z,当<code>x.equals(y)</code>返回true，<code>y.equals(z)</code>返回true,才有<code>x.equals(z)</code>返回true</p>
+<p>一致性：对于任何非空的x,y,若x与y中属性没有变，则多次调用<code>equals()</code>方法，都返回true或false</p>
+<p>非空性：对于任何非空引用值x，<code>x.equlas(null)</code>，返回false</p>
+</blockquote>
+<h3 id="集合输出—迭代器Iterator输出"><a href="#集合输出—迭代器Iterator输出" class="headerlink" title="集合输出—迭代器Iterator输出"></a>集合输出—迭代器Iterator输出</h3><ul>
+<li>迭代输出—Collection接口支持</li>
+</ul>
+<p><strong>Iterator的两个核心方法</strong></p>
+<p>判断是否还有元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>取得下一个元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>单向迭代输出</strong></p>
+<p>调用Collection集合子类的Iterator方法取得内置的迭代器，使用一下输出格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">    System.out.println(iterator.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>双向迭代输出</strong>–ListIterator</p>
+<p>除了<code>hasNext</code>与<code>next</code>方法外还有：</p>
+<p>判断是否有上一个元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hasPrevious();</span><br></pre></td></tr></table></figure>
+<p>取得上一个元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">previous();</span><br></pre></td></tr></table></figure>
+<p>要想从后向前遍历，首先至少要从前向后遍历一次才可使用</p>
+<ul>
+<li>Enumeration枚举输出—Vector类支持</li>
+</ul>
+<p>判断是否有下一个元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hasMoreElements();</span><br></pre></td></tr></table></figure>
+<p>取得下一个元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nextElement();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for-each输出</li>
+</ul>
+<p>能使用for-each的本质是各个集合类都内置了迭代器</p>
+<ul>
+<li>fail-fast机制</li>
+</ul>
+<p>ConcurrentModificationException发生在Collection集合使用迭代器遍历时，使用了集合类提供的修改集合内容方法报错。而如果使用Iterator迭代器的<code>remove()</code>不会出现此类错误</p>
+<p>Collection集合中的modCount表示当前集合修改的次数</p>
+<p>exceptedModCount是迭代器中记录当前集合的修改次数</p>
+<p>当取得集合迭代器时，调用<code>new Itr()</code>会执行expectedModCount = ModCount，换言之，迭代器就是当前集合的一个副本</p>
+<p>快速失败策略保证了所有用户在进行迭代遍历集合时，拿到的数据一定是最新的数据（避免脏读产生）</p>
+<ul>
+<li>fail-safe</li>
+</ul>
+<p>不产生ConcurrentModificationException异常，juc包下的所有线程安全集合（CopyOnWriteArrayList）</p>
+<p><strong>以后再迭代器遍历时，不要修改集合的内容</strong></p>
+<h3 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a>Map集合</h3><p>Map接口是Java中保存二元偶对象的最顶层接口</p>
+<p>Map中key值唯一，即通过可以值就可以找到对应的value值</p>
+<ul>
+<li>核心方法</li>
+</ul>
+<p>向Map中添加数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key,V value)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>根据指定的key值取得相应的value值，若没有key值，返回null</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(K key)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>将Map集合变为Set集合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet();</span><br></pre></td></tr></table></figure>
+<p>返回所有key值集合，key不能重复</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Set&lt;K&gt; <span class="title">keySet</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>返回所有value值，value可以重复</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Collection&lt;V&gt; <span class="title">values</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>Map接口常用子类：HashMap、TreeMap、Hashtable、ConcurrentHashMap</p>
+<ul>
+<li>类比HashMap与Hashtable</li>
+</ul>
+<p>1、<strong>key和value的取值：</strong>HashMap的key值和value值可以取null，而Hashtable中key和value均不能取value值</p>
+<p>2、<strong>出现的版本不同：</strong>JDK1.2产生了HashMap，JDK1.0就产生了Hashtable</p>
+<p>3、<strong>线程安全问题：</strong>HashMap采用异步处理，线程不安全但是效率高，Hashtable采用同步处理，线程安全，效率低</p>
+<p>4、<strong>底层实现：</strong>HashMap的底层是用哈希表和红黑树实现的，Hashtable的底层是用哈希表实现的</p>
 
       
     </div>
@@ -372,7 +476,7 @@
         <p><span>本文标题:</span><a href="/2018/12/21/Java中的类集/">Java中的类集</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
         <p><span>发布时间:</span>2018-12-21, 22:44:51</p>
-        <p><span>最后更新:</span>2018-12-21, 22:45:14</p>
+        <p><span>最后更新:</span>2018-12-22, 17:55:08</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/12/21/Java中的类集/" title="Java中的类集">http://www.bingoxin.top/2018/12/21/Java中的类集/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/12/21/Java中的类集/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -387,10 +491,16 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/25/网络基础概念理解/">
+                    网络基础概念理解
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/05/关于测试/">
-                    关于测试
+                <a href="/2018/12/20/JDBC/">
+                    JDBC
                 </a>
             </div>
         
@@ -402,7 +512,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java类集"><span class="toc-number">1.</span> <span class="toc-text">Java类集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java类集的产生"><span class="toc-number">1.0.1.</span> <span class="toc-text">Java类集的产生</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List接口—允许数据重复"><span class="toc-number">1.1.</span> <span class="toc-text">List接口—允许数据重复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList-Vector-LinkedList的区别"><span class="toc-number">1.1.1.</span> <span class="toc-text">ArrayList/Vector/LinkedList的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set接口—不允许数据重复"><span class="toc-number">1.2.</span> <span class="toc-text">Set接口—不允许数据重复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Comparable接口与Compartor接口"><span class="toc-number">1.2.1.</span> <span class="toc-text">Comparable接口与Compartor接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-number">1.2.2.</span> <span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeSet"><span class="toc-number">1.2.3.</span> <span class="toc-text">TreeSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet和TreeSet的区别"><span class="toc-number">1.2.4.</span> <span class="toc-text">HashSet和TreeSet的区别</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java类集"><span class="toc-number">1.</span> <span class="toc-text">Java类集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java类集的产生"><span class="toc-number">1.0.1.</span> <span class="toc-text">Java类集的产生</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List接口—允许数据重复"><span class="toc-number">1.1.</span> <span class="toc-text">List接口—允许数据重复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList-Vector-LinkedList的区别"><span class="toc-number">1.1.1.</span> <span class="toc-text">ArrayList/Vector/LinkedList的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set接口—不允许数据重复"><span class="toc-number">1.2.</span> <span class="toc-text">Set接口—不允许数据重复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Comparable接口与Comparator接口"><span class="toc-number">1.2.1.</span> <span class="toc-text">Comparable接口与Comparator接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-number">1.2.2.</span> <span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeSet"><span class="toc-number">1.2.3.</span> <span class="toc-text">TreeSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet和TreeSet的区别"><span class="toc-number">1.2.4.</span> <span class="toc-text">HashSet和TreeSet的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重复元素比较"><span class="toc-number">1.2.5.</span> <span class="toc-text">重复元素比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集合输出—迭代器Iterator输出"><span class="toc-number">1.2.6.</span> <span class="toc-text">集合输出—迭代器Iterator输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map集合"><span class="toc-number">1.2.7.</span> <span class="toc-text">Map集合</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -475,19 +585,21 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/12/25/网络基础概念理解/" title="上一篇: 网络基础概念理解">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/05/关于测试/" title="下一篇: 关于测试">
+            <a href="/2018/12/20/JDBC/" title="下一篇: JDBC">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/04/聊天室项目/">聊天室项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/深浅拷贝/">深浅拷贝</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/三范式/">三范式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/20/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/Python基础小知识/">Python基础小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/禅道的安装/">禅道的安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/25/类与结构体/">类与结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/10/测试用例的撰写/">测试用例的撰写</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
 
 
 
@@ -501,7 +613,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2018 bingoxin
+                2018-2019 bingoxin
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>

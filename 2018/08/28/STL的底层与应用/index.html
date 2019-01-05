@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="bingoxin">
+
+
+
+<meta name="description" content="STL是惠普实现的，其有多个版本，但都是在HP版本的基础上完成的 STL是C++的标准模板库，包括数据结构和算法的软件框架">
+<meta name="keywords" content="C&#x2F;C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL的底层与应用">
+<meta property="og:url" content="http://www.bingoxin.top/2018/08/28/STL的底层与应用/index.html">
+<meta property="og:site_name" content="bingoxin&#39;s blog">
+<meta property="og:description" content="STL是惠普实现的，其有多个版本，但都是在HP版本的基础上完成的 STL是C++的标准模板库，包括数据结构和算法的软件框架">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/vector.png">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/vector功能.png">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/单链表底层.png">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/list功能.png">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/deque.png">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/deque底层实现.png">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/deque功能.png">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/malloc.png">
+<meta property="og:image" content="http://www.bingoxin.top/images/posts/STL/空间配置器.png">
+<meta property="og:updated_time" content="2018-12-26T11:10:46.364Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="STL的底层与应用">
+<meta name="twitter:description" content="STL是惠普实现的，其有多个版本，但都是在HP版本的基础上完成的 STL是C++的标准模板库，包括数据结构和算法的软件框架">
+<meta name="twitter:image" content="http://www.bingoxin.top/images/posts/STL/vector.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="bingoxin&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>STL的底层与应用 | bingoxin&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">bingoxin</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.wonderheng.top">wonderheng&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一个下凡搞技术的小仙女~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">bingoxin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">bingoxin</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-STL的底层与应用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/28/STL的底层与应用/" class="article-date">
+      <time datetime="2018-08-28T11:06:53.000Z" itemprop="datePublished">2018-08-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      STL的底层与应用
+    </h1>
+  
+
+              
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>STL是惠普实现的，其有多个版本，但都是在HP版本的基础上完成的</p>
+<p>STL是C++的标准模板库，包括数据结构和算法的软件框架<a id="more"></a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>STL将常用的数据结构封装起来，在封装过程中使用了算法，使用方便</p>
+<p>其具有通用、高效的特点 </p>
+<h3 id="STL的六大组件"><a href="#STL的六大组件" class="headerlink" title="STL的六大组件"></a>STL的六大组件</h3><p>容器、适配器、迭代器、空间配置器、仿函数、算法</p>
+<p>接下来我会从组件功能、组件实例和实例的底层实现等方面来对各组件进行讲解</p>
+<h3 id="容器-vector、slist、array、deque等"><a href="#容器-vector、slist、array、deque等" class="headerlink" title="容器(vector、slist、array、deque等)"></a>容器(vector、slist、array、deque等)</h3><p>容器中数据的区间都是左闭右开的</p>
+<p>容器分两种：线性和特殊线性结构</p>
+<p>线性结构有：array、vector、slist、deque、string等</p>
+<font color="red" size="3">vector</font>
+
+<p>vector的底层是动态顺序表，底层结构：</p>
+<div align="center"><br>    <img src="/images/posts/STL/vector.png" height="300" width="500"><br></div>
+
+<p>由于vector是一段连续的空间，其迭代器被设计成一个原生态指针</p>
+<p>在使用vector时要注意：包含其头文件<vector>并引入标准命名空间std</vector></p>
+<p>其具体功能如下：</p>
+<div align="center"><br>    <img src="/images/posts/STL/vector功能.png" height="500" width="500"><br></div>
+
+<font color="red" size="3">list</font>
+
+<p>list的底层是一个带头结点的双向单链表，底层结构：</p>
+<div align="center"><br>    <img src="/images/posts/STL/单链表底层.png" height="300" width="500"><br></div>
+
+<p>当集合需要大量的插入和删除时，考虑用list</p>
+<p>list的迭代器需要其实现者自己提供</p>
+<p>其具体功能如下：</p>
+<div align="center"><br>    <img src="/images/posts/STL/list功能.png" height="500" width="500"><br></div>
+
+<font color="red" size="3">deque</font>
+
+<p>deque是一段假想的连续空间，是一个双端序列，可以实现动态的二维数组</p>
+<p>deque的两端都可以进行插入和删除，其结构如下：</p>
+<div align="center"><br>    <img src="/images/posts/STL/deque.png" height="400" width="600"><br></div>
+
+<p>deque是分段连续空间，维护其连续的假象的是迭代器</p>
+<p>若迭代器中的cur到了last的位置，即表示已到当前队列的边缘</p>
+<p>在deque的底层，有中控器(map)记录每个队列的迭代器地址(node)，迭代器中有队列的初始位置(first)、末尾位置(last)以及当前指向位置(pur)</p>
+<p>若创建的队列过多，中控器空间不足，则扩容中控器，新的中控器从中间开始存储迭代器(node)的地址</p>
+<p>则deque底层实现如下：</p>
+<div align="center"><br>    <img src="/images/posts/STL/deque底层实现.png" height="300" width="500"><br></div>
+
+<p>deque的操作如下：</p>
+<div align="center"><br>    <img src="/images/posts/STL/deque功能.png" height="300" width="500"><br></div>
+
+<p>array的底层实现是静态顺序表</p>
+<p>string也是静态顺序表，他是用来存放字符串的，而array是用来存放各种数据的</p>
+<p>slist是带头结点的单链表</p>
+<p>这些就不做详细讲解了</p>
+<h3 id="仿函数"><a href="#仿函数" class="headerlink" title="仿函数"></a>仿函数</h3><p>仿函数是一个函数对象，即将一个类像函数一样使用</p>
+<pre><code>class people
+
+{
+
+   public:
+
+      返回值类型 operator()(参数列表);
+
+   成员变量
+
+}；
+</code></pre><h3 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h3><p>适配器是设计模式的一种，该模式的作用是将一个类的接口转换成用户希望的另一个接口</p>
+<p>STL中适配器有三种：应用于容器的适配器、应用于迭代器的适配器、应用于仿函数的适配器</p>
+<h4 id="容器适配器"><a href="#容器适配器" class="headerlink" title="容器适配器"></a>容器适配器</h4><p>stack和queue都是一种特殊的线性数据结构，其只能在固定端插入和删除</p>
+<p>stack无法遍历，无begin(),end()</p>
+<p>由于deque是双开口序列，则将其稍作改装就可以实现stack和queue</p>
+<p>在使用priority_queue时，用户可以以任意次序将数据放进去，但是取出时，会以优先级高低取出</p>
+<p>其以vector为底层结构，加上堆算法重新封装</p>
+<h4 id="关联式容器"><a href="#关联式容器" class="headerlink" title="关联式容器"></a>关联式容器</h4><p>关联式容器是用键值对(&lt;key,value&gt;)来实现的</p>
+<font color="red" size="3">键值对</font>
+
+<p>键值对实际是一个结构体，该结构体具有两个字段，两个字段有着一一对应的关系</p>
+<p>在其应用时</p>
+<pre><code>pair&lt;key,value&gt;(key,value);
+
+make_pair(key,value);
+</code></pre><p>这两种形式都可以创建键值对，第一种是对模板类的实例化，第二种返回键值对</p>
+<h5 id="map-multimap"><a href="#map-multimap" class="headerlink" title="map/multimap"></a>map/multimap</h5><p>序列式容器在查找数据时，时间复杂度为O(n)</p>
+<p>而关联式容器map/multimap底层是由红黑树构成的</p>
+<p>这就使得其在查找数据时时间复杂度变成了O(1)，提高了查找效率</p>
+<font color="red" size="3">数据存储方式：</font>
+
+<p>由于其底层是由红黑树构成的，则在插入变量时，会与key进行比较，则对红黑树进行中序遍历，会得到一个有序序列</p>
+<h4 id="set-multiset"><a href="#set-multiset" class="headerlink" title="set/multiset"></a>set/multiset</h4><p>其底层实现也是红黑树</p>
+<p>其与map的相同之处在于：底层结构都是红黑树</p>
+<p>不同之处是：map中存放的是一个真正的键值对，而set中key与value相同</p>
+<p>map与multimap,set与multiset之间的区别是map/set不可以存储重复的变量，可以去重，而multimap/multiset可以存放相同变量，只是单纯的排序</p>
+<h4 id="unordered-map-unordered-multimap-unordered-set-unordered-multiset"><a href="#unordered-map-unordered-multimap-unordered-set-unordered-multiset" class="headerlink" title="unordered_map/unordered_multimap  unordered_set/unordered_multiset"></a>unordered_map/unordered_multimap  unordered_set/unordered_multiset</h4><p>unordered_map/unordered_multimap放置的内容是一个正常的键值对</p>
+<p>而unordered_set/unordered_multiset放置的内容是key与value相同的键值对</p>
+<p>其底层是由哈希桶实现的，则其的数据存放方式是无序的</p>
+<font color="blue" size="3">map与unordered_map的区别：</font>
+
+<blockquote>
+<p>1.底层：map的底层是红黑树，unordered_map的底层是哈希桶</p>
+</blockquote>
+<blockquote>
+<p>2.查找方式：map的查找效率高，为O(log2n)，而unordered_map的查找效率为O(n)</p>
+</blockquote>
+<blockquote>
+<p>3.map是有序存放的，而unordered_map是无序放的</p>
+</blockquote>
+<blockquote>
+<p>4.两者的应用场景不同</p>
+</blockquote>
+<blockquote>
+<p>5.迭代器方式不同：map可以正向和反向遍历，而unordered_map只可以正向遍历</p>
+</blockquote>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>算法有两种：与数据结构有关的算法(绑定在容器上的算法)和与数据结构无关的算法(通用算法)</p>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>迭代器是一种设计模式，其实际上是一种行为类似于指针的对象，因此指针的功能迭代器都有</p>
+<p>迭代器的实现只要在类中将指针的功能重载即可</p>
+<p>迭代器的提供者就是容器的实现者</p>
+<h3 id="空间管理"><a href="#空间管理" class="headerlink" title="空间管理"></a>空间管理</h3><h4 id="普通存放数据的原理"><a href="#普通存放数据的原理" class="headerlink" title="普通存放数据的原理"></a>普通存放数据的原理</h4><p>需要空间–&gt;new/new[]–&gt;申请空间、构造对象</p>
+<p>new是将malloc重新封装的，使用一次malloc，在内存中除了会开辟所需空间外，还会额外开辟36个字节</p>
+<p>结构如下图：</p>
+<div align="center"><br>    <img src="/images/posts/STL/malloc.png" height="300" width="500"><br></div>
+
+<p>通过这种形式管理空间可以防止越界访问</p>
+<h4 id="普通方式存放数据的缺陷"><a href="#普通方式存放数据的缺陷" class="headerlink" title="普通方式存放数据的缺陷"></a>普通方式存放数据的缺陷</h4><blockquote>
+<p>1.频繁的向系统索要小的内存块，会产生内存碎片</p>
+</blockquote>
+<blockquote>
+<p>2.频繁的向系统索要小的内存块，产生额外开销，效率低</p>
+</blockquote>
+<blockquote>
+<p>3.没有及时的释放空间，造成内存泄漏</p>
+</blockquote>
+<blockquote>
+<p>4.空间不足时，无法获取空间</p>
+</blockquote>
+<h4 id="标准空间配置器"><a href="#标准空间配置器" class="headerlink" title="标准空间配置器"></a>标准空间配置器</h4><p>标准空间配置器只是将new,delete进行简单的封装，与我们平常使用的new和delete没太大区别</p>
+<h4 id="重新设计空间配置器"><a href="#重新设计空间配置器" class="headerlink" title="重新设计空间配置器"></a>重新设计空间配置器</h4><p>重新设计空间配置器有一级空间配置器和二级空间配置器两种</p>
+<p>重新设计空间配置器会根据用户索要空间的大小来选择空间配置器</p>
+<font color="blue" size="3">一级空间配置器</font>
+
+<p>当用户索要空间大于128个字节时，会使用一级空间配置器</p>
+<p>一级空间配置器将malloc和free进行简单的封装</p>
+<pre><code>void* allocate(字节数):malloc
+
+若空间充足，开辟空间成功，直接返回
+
+若空间不充足，开辟空间失败，启动空间不足应对措施(函数指针)
+
+allocate_OOM (字节数)
+
+{
+
+   检测空间不足应对措施是否设置
+
+   是：malloc  //重新开辟空间
+
+   否:throw bad_alloc  //抛异常
+
+}
+
+//将空间归还系统
+
+void deallocate(void* p,size_t size)
+
+{
+
+   free(p);
+
+}
+</code></pre><font color="blue" size="3">二级空间配置器</font>
+
+<p>当用户索取空间小于128个字节时，会使用二级空间配置器</p>
+<p>为了减少多次开辟空间造成的额外消耗，二级空间配置器会开辟一个很大空间作为内存池</p>
+<p>同时会构造一个哈希表，其中会有128/8=16个结点，每个结点下面会挂(n+1)*8字节的内存块，构成哈希桶，以此来管理小的内存块</p>
+<p>结构如下：</p>
+<div align="center"><br>    <img src="/images/posts/STL/空间配置器.png" height="300" width="500"><br></div>
+
+<p>空间管理如下：</p>
+<pre><code>void* allocate(size_t size)
+{
+   if(size&gt;128)
+       一级空间配置器
+   else
+   {
+       1.找size对应的哈希桶
+
+       2.检测该哈希桶有没有结点
+
+        有：将第一块内存给用户
+
+        没有：refill(size向上取整到8的整数倍，向当前链表中补充空间)
+   }
+}
+
+void* refill(size_t size)
+{
+   1.通过chunk_alloc(objs,size)索要nobjs(20)个size个字节的内存块
+
+   2.nobjs = 1---&gt;返回----&gt;将一块内存返回给用户
+
+     20 &gt;= objs &gt; 1 ---&gt;将剩余的内存块挂在链表中
+
+}
+
+void* chunk_alloc(size_t&amp; nobjs,size_t size)
+{
+   从内存池中索要空间
+
+     &gt;1.计算总共需要的字节数  totalBytes = nobjs*size
+
+     &gt;2.计算内存池中剩余的字节数  leftBytes =_endFree-_startFree;
+
+   if(leftByte&gt;=totalBytes)
+   {
+       提供20个内存块
+   }
+   else if (leftBytes&gt;=size)
+   {
+       nobjs=leftBytes/size;
+   }
+   else
+   {
+       0.把内存池剩余的元素处理掉(挂到对应的哈希桶中)
+
+       1.向系统索要空间补充内存池---&gt;成功---&gt;_startFree接受malloc的返回值---&gt;递归chunk_alloc()
+
+       2.如果1失败，从当前链表往后去找是否还有更大的内存块---&gt;找到了---&gt;补充到内存池---&gt;递归chunk_alloc()
+
+       3.使用一级空间配置器(内存不足应对措施)---&gt;递归chunk_alloc()
+
+   }
+}
+</code></pre><p>这种处理内存碎片的方式虽然解决了外部存在大量的内存碎片的问题，但是还是会有在哈希桶上挂的小碎片<br>​<br>可能有的地方叙述的不是很清楚，欢迎交流~</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
+        <p><span>发布时间:</span>2018-08-28, 19:06:53</p>
+        <p><span>最后更新:</span>2018-12-26, 19:10:46</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/28/STL的底层与应用/" title="STL的底层与应用">http://www.bingoxin.top/2018/08/28/STL的底层与应用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/28/STL的底层与应用/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/20/JDBC/">
+                    JDBC
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/08/01/Python基础小知识/">
+                    Python基础小知识
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#STL的六大组件"><span class="toc-number">1.1.</span> <span class="toc-text">STL的六大组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器-vector、slist、array、deque等"><span class="toc-number">1.2.</span> <span class="toc-text">容器(vector、slist、array、deque等)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仿函数"><span class="toc-number">1.3.</span> <span class="toc-text">仿函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器"><span class="toc-number">1.4.</span> <span class="toc-text">适配器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#容器适配器"><span class="toc-number">1.4.1.</span> <span class="toc-text">容器适配器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关联式容器"><span class="toc-number">1.4.2.</span> <span class="toc-text">关联式容器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#map-multimap"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">map/multimap</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set-multiset"><span class="toc-number">1.4.3.</span> <span class="toc-text">set/multiset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unordered-map-unordered-multimap-unordered-set-unordered-multiset"><span class="toc-number">1.4.4.</span> <span class="toc-text">unordered_map/unordered_multimap  unordered_set/unordered_multiset</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法"><span class="toc-number">1.5.</span> <span class="toc-text">算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器"><span class="toc-number">1.6.</span> <span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空间管理"><span class="toc-number">1.7.</span> <span class="toc-text">空间管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#普通存放数据的原理"><span class="toc-number">1.7.1.</span> <span class="toc-text">普通存放数据的原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#普通方式存放数据的缺陷"><span class="toc-number">1.7.2.</span> <span class="toc-text">普通方式存放数据的缺陷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#标准空间配置器"><span class="toc-number">1.7.3.</span> <span class="toc-text">标准空间配置器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重新设计空间配置器"><span class="toc-number">1.7.4.</span> <span class="toc-text">重新设计空间配置器</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"STL的底层与应用　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: 'false',
+        verify: 'false',
+        app_id: "InyV1RI83uI1tCHGmOOx3SYM-gzGzoHsz",
+        app_key: "Sh9QoPKMPDw7kdbkMuqqNRYg",
+        placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/20/JDBC/" title="上一篇: JDBC">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/08/01/Python基础小知识/" title="下一篇: Python基础小知识">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/04/聊天室项目/">聊天室项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/深浅拷贝/">深浅拷贝</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/三范式/">三范式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/20/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/Python基础小知识/">Python基础小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/禅道的安装/">禅道的安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/25/类与结构体/">类与结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/10/测试用例的撰写/">测试用例的撰写</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2019 bingoxin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </div>
+</body>
+</html>

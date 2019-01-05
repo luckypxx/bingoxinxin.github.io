@@ -194,7 +194,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
                     </div>
                 </section>
                 
@@ -267,11 +267,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-数据库基本操作" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-C-中的强制类型转换" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/03/数据库基本操作/" class="article-date">
-      <time datetime="2018-06-03T03:50:34.000Z" itemprop="datePublished">2018-06-03</time>
+      <a href="/2018/07/26/C-中的强制类型转换/" class="article-date">
+      <time datetime="2018-07-26T11:03:31.000Z" itemprop="datePublished">2018-07-26</time>
 </a>
 
 
@@ -286,7 +286,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/03/数据库基本操作/">数据库基本操作</a>
+      <a class="article-title" href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a>
     </h1>
   
 
@@ -297,304 +297,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>刚刚接触数据库，安装了MYSQL5.7，大概需要二十分钟</p>
-<p>接下来，就来说一下关于数据库的一些知识吧~</p>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><blockquote>
-<h2 id="为什么要有数据库？"><a href="#为什么要有数据库？" class="headerlink" title="为什么要有数据库？"></a>为什么要有数据库？</h2></blockquote>
-<p>我们都知道，文件就可以存储数据库</p>
-<p>但是文件存储存在以下几个弊端：</p>
-<blockquote>
-<p>1.文件的安全性</p>
-<p>2.文件不利查询以及对数据进行管理</p>
-<p>3.文件不适合存放海量数据</p>
-<p>4.文件在程序中控制不方便</p>
-</blockquote>
-<p>文件一般存储于内存和磁盘中，内存存储数据的优点是速度快，缺点是一旦断电数据就会消失</p>
-<p>在学习数据库操作语句之前我们应该先搞清楚数据库和表的关系：</p>
-<p>举个栗子：数据库就像图书馆的不同类别的馆，像是通信类、计算机类、自然科学类等等，</p>
-<p>而表就像每个馆里放的书架，不知道这样来说够不够形象 0.0</p>
-<p>接下来，就来说一下</p>
-<h4 id="SQL的分类"><a href="#SQL的分类" class="headerlink" title="SQL的分类:"></a>SQL的分类:</h4><blockquote>
-<p>DDL 数据定义：create,drop,alter</p>
-<p>DML 数据操纵：insert,delete,update</p>
-<p>DML中单独分出来的DQL：select（数据查询）</p>
-<p>DCL 数据控制：grant,revoke,commit</p>
-</blockquote>
-<ul>
-<li><p>创建数据库：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库名;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入数据库：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> 数据库名;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>显示所有数据库：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;show databases;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;create table 表名 (表里存放的内容);&gt;</span><br><span class="line">&lt;例如：create table student (id int,name varchar(32));&gt;</span><br></pre></td></tr></table></figure>
-<p>需要注意的是：表中内容的定义方式与C语言存在差别，数据类型放在数据名的后面，字符型数组在定义时使用()而不是[]。</p>
-</li>
-<li><p>显示数据库中的表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;show tables;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>描绘表中的内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;desc 表名;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在表中插入数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert into 表名(表中内容的定义的变量名) values (变量的具体内容);&gt;</span><br><span class="line"></span><br><span class="line">&lt;例如：insert into student (id,name) values (1,&apos;ht&apos;)；&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在表中查询数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;select * from 表名;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看警告：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;show warnings;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="每条指令输入完成都要以-“-”-结尾，否则计算机会认为输入的语句并未结束"><a href="#每条指令输入完成都要以-“-”-结尾，否则计算机会认为输入的语句并未结束" class="headerlink" title="每条指令输入完成都要以 “;” 结尾，否则计算机会认为输入的语句并未结束"></a>每条指令输入完成都要以 “;” 结尾，否则计算机会认为输入的语句并未结束</h5><p>以上部分指令操作的操作界面如下 ：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/database/data1.png" height="300" width="500"><br></div><br><div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/database/data2.png" height="150" width="250"><br></div>
-
-<ul>
-<li>字符集(出现乱码首先考虑字符集的问题)</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库名 <span class="keyword">charset</span>=utf8;</span><br></pre></td></tr></table></figure>
-<p>使用语句<code>show create database 库名</code>来查看创建库的语句，会出现以下句子：</p>
-<p><code>CREATE DATABASE db1 /*!40100 DEFAULT CHARACTER SET utf8 */</code></p>
-<p>40100是版本号</p>
-<ul>
-<li>校验规则</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库名 <span class="keyword">charset</span>=utf8 <span class="keyword">collate</span> utf8_general_ci;</span><br></pre></td></tr></table></figure>
-<h3 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h3><ul>
-<li>备份</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -P3306 -u root -p 密码 -B 数据库名;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>恢复</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source D:/mysql-5.7.22/mytest.sql;</span><br></pre></td></tr></table></figure>
-<h3 id="查看连接情况"><a href="#查看连接情况" class="headerlink" title="查看连接情况"></a>查看连接情况</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">processlist</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="表的操作"><a href="#表的操作" class="headerlink" title="表的操作"></a>表的操作</h3><ul>
-<li>创建表</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名&#123;</span><br><span class="line">	列名<span class="number">1</span> 类型，</span><br><span class="line">	列名<span class="number">2</span> 类型，</span><br><span class="line">	...</span><br><span class="line">&#125;<span class="built_in">character</span> <span class="keyword">set</span> 字符集 <span class="keyword">collate</span> 校验规则 <span class="keyword">engine</span> 存储引擎;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>描述表的结构</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">des 表名;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改表</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span>(<span class="keyword">column</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-判断两个无头结点的单链表是否相交" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/01/判断两个无头结点的单链表是否相交/" class="article-date">
-      <time datetime="2018-04-01T14:51:08.000Z" itemprop="datePublished">2018-04-01</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+              <p>在学习C语言的过程中，我们会遇到不同类型变量的转换 </p>
+<p>在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？
           
-        <p>在笔试和面试中，常常会出现关于数据结构中的单链表的考题，<br>今天就来说一下关于判断两个无头结点的单链表是否相交的代码</p>
-<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><p>无头结点的单链表自身分为两种情况，带环和不带环，</p>
-<p>l1,l2分别代表两条链表，</p>
-<p>用真值表来表示，1表示带环，0表示不带环</p>
-<p>l1 0 0 1 1<br>l2 0 1 0 1</p>
-<p>首先我们来讨论一下较为简单的不带环的情况：</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List1.gif" height="300" width="500"><br></div>
-
-<p>如图所示，共有两种情况，即相交和不相交。</p>
-<p>相交分为三种情况（可以视为一条链表的尾部分别和另一条链表的不同部分相交）：即头部、中间和尾部。</p>
-<p>由图我们可以看出，若两条链表相交，他们的尾结点一定相同。</p>
-<p>这可以作为我们判断两结点是否相交的判断点。</p>
-<p>代码实现如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 判断两个单链表是否相交---链表不带环 </span><br><span class="line">int IsCrossWithoutCircle(PNode pHead1, PNode pHead2)//pHead1代表链表1，pHead2代表链表2</span><br><span class="line">&#123;</span><br><span class="line">	PNode pTail1 = pHead1;//定义链表1的尾结点，并让其指向链表1的头结点</span><br><span class="line">	PNode pTail2 = pHead2;//定义链表2的尾结点，并让其指向链表2的头结点</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//两链表只要有一个为空即不相交</span><br><span class="line">	if (NULL == pTail1 || NULL == pTail2)</span><br><span class="line">	&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	//遍历链表1，找到尾结点</span><br><span class="line">	while (pTail1-&gt;_pNext)</span><br><span class="line">	&#123;</span><br><span class="line">		pTail1 = pTail1-&gt;_pNext;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//遍历链表2，找到尾结点</span><br><span class="line">	while (pTail2-&gt;_pNext)</span><br><span class="line">	&#123;</span><br><span class="line">		pTail2 = pTail2-&gt;_pNext;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//判断两条链表的尾结点是否相等</span><br><span class="line">	if (pTail1 == pTail2)</span><br><span class="line">	&#123;</span><br><span class="line">		return 1;//相等即相交，返回1</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;//不相等即不相交，返回0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>构建的两条链表如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//构建两条链表</span><br><span class="line">	PNode pHead1;</span><br><span class="line">	PNode pHead2;</span><br><span class="line"></span><br><span class="line">	SListInit(&amp;pHead1);//链表初始化</span><br><span class="line">	SListPushBack(&amp;pHead1, 1);//链表尾插</span><br><span class="line">	SListPushBack(&amp;pHead1, 2);</span><br><span class="line">	SListPushBack(&amp;pHead1, 3);</span><br><span class="line">	</span><br><span class="line">	SListInit(&amp;pHead2);</span><br><span class="line">	SListPushBack(&amp;pHead2, 1);</span><br><span class="line">	SListPushBack(&amp;pHead2, 2);</span><br><span class="line">	SListPushBack(&amp;pHead2, 3);</span><br><span class="line"></span><br><span class="line">	while (pHead1-&gt;_pNext)</span><br><span class="line">	&#123;</span><br><span class="line">		pHead1 = pHead1-&gt;_pNext;</span><br><span class="line">	&#125;</span><br><span class="line">	pHead1-&gt;_pNext = pHead2;</span><br></pre></td></tr></table></figure>
-<p>该种情况为相交的第三种情况，测试结果如下:</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List2.gif" height="300" width="500"><br></div>
-
-<p>输出1，则其相交，其他情况不再一一描述。</p>
-<p>带环的情况也比较多，不过经过分析也不会那么复杂。</p>
-<p>接下来我们来画图进行分析</p>
-<div align="center"><br>    <img src="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/data-structure/List3.gif" height="300" width="500"><br></div>
-
-<p>在画图过程中，我们可以发现：不会出现其中一条链表带环，且两条链表相交的情况。<br>由图我们可以得知，两个带环的链表相交分为，环内相交和环外相交两种。</p>
-<p>在判断两链表是否相交的过程中，我们还需要实现判断链表是否带环，</p>
-<p>判断链表是否带环：</p>
-<p>1、定义两个指针，一个一次走两个结点（pFast），一个一次走一个结点(pSlow)</p>
-<p>2、若有环，pFast会与pSlow相遇，此时返回两指针的地址；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">若无环，如果pFast==NULL，即可证明其无环，返回空指针</span><br></pre></td></tr></table></figure>
-<p>代码实现如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">PNode IsListwithCircle(PNode pHead)</span><br><span class="line">&#123;</span><br><span class="line">		PNode pFast = pHead;</span><br><span class="line">	PNode pSlow = pHead;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	if (NULL == pHead)</span><br><span class="line">	&#123;</span><br><span class="line">		return NULL;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	while (pFast-&gt;_pNext)</span><br><span class="line">	&#123;</span><br><span class="line">		pFast = pFast-&gt;_pNext-&gt;_pNext;</span><br><span class="line">		pSlow = pSlow-&gt;_pNext;</span><br><span class="line">		if (pFast == pSlow)</span><br><span class="line">			return pFast;</span><br><span class="line">	&#125;</span><br><span class="line">	return NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接着判断两个链表是否相交：</p>
-<p>大概思路就是：让两个链表的相遇点一个保持不动，一个往后走（每次走一步），若两个相遇点相遇，即可说明两条链表相交。</p>
-<p>代码实现如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">int IsCrossWithCircle(PNode pHead1, PNode pHead2)</span><br><span class="line">&#123;</span><br><span class="line">	PNode pMeetNode1 = NULL;</span><br><span class="line">	PNode pMeetNode2 = NULL;</span><br><span class="line">	PNode pCur = NULL;</span><br><span class="line">	</span><br><span class="line">	if (NULL == pHead1 || NULL == pHead2)</span><br><span class="line">	&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	pMeetNode1 = IsListwithCircle(pHead1);</span><br><span class="line">	pMeetNode2 = IsListwithCircle(pHead2);</span><br><span class="line">	pCur = pMeetNode1;</span><br><span class="line">	</span><br><span class="line">	//其中一个链表带环或两条链表均不带环</span><br><span class="line">	if (NULL == pMeetNode1 || NULL == pMeetNode2)</span><br><span class="line">		return 0;</span><br><span class="line"></span><br><span class="line">	//两条链表均带环</span><br><span class="line">	while (pMeetNode1 != pMeetNode2)</span><br><span class="line">	&#123;</span><br><span class="line">		pCur = pCur-&gt;_pNext;</span><br><span class="line">		if (pCur == pMeetNode1)</span><br><span class="line">			return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关于测试结果就不在展示了</p>
-<h2 id="寄语"><a href="#寄语" class="headerlink" title="寄语"></a>寄语</h2><p>　　判断两条链表是否相交经常会出现在面试题中，如果把图画出来写程序会更有思路。</p>
-<p>欢迎交流~</p>
-
       
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题分析/">面试题分析</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-自定义类型" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/03/05/自定义类型/" class="article-date">
-      <time datetime="2018-03-05T14:49:02.000Z" itemprop="datePublished">2018-03-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/05/自定义类型/">自定义类型</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="为什么存在内存对齐"><a href="#为什么存在内存对齐" class="headerlink" title="为什么存在内存对齐"></a>为什么存在内存对齐</h3><blockquote>
-<p>1.<strong>平台原因：</strong>不是所有的硬件平台都能访问任意地址上的任意数据的；某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常</p>
-</blockquote>
-<blockquote>
-<p>2.<strong>性能原因：</strong>数据结构(尤其是栈)应该尽可能地在自然边界上对齐<br>–&gt;若访问未对齐的内存，处理器需要做两次内存访问；而对齐的内存访问仅需要访问一次就可以拿到数据</p>
-</blockquote>
-<h3 id="结构体内存对齐规则"><a href="#结构体内存对齐规则" class="headerlink" title="结构体内存对齐规则"></a>结构体内存对齐规则</h3><p>Linux中，默认对齐数是4</p>
-<p>Windows下的vs，默认对齐数是8</p>
-<blockquote>
-<p>1.第一个成员在与结构体变量偏移量为0的地址处</p>
-<p>2.其他成员变量要对齐到某个数字(对齐数)的整数倍的地址处—&gt;对齐数=编译器默认的一个对齐数与该成员大小的较小值</p>
-<p>3.结构体总大小为最大对齐数的整数倍</p>
-<p>4.如果嵌套了结构体的情况，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小就是所有最大对齐数的整数倍</p>
-</blockquote>
-<p>可以说，内存对齐是用时间来弥补空间</p>
-<h3 id="结构体传参"><a href="#结构体传参" class="headerlink" title="结构体传参"></a>结构体传参</h3><p>结构体传参时，考虑变量可能过大，不要传结构体变量，要传结构体指针</p>
-<h3 id="位段"><a href="#位段" class="headerlink" title="位段"></a>位段</h3><p>位段的声明和结构是类似的，有两个不同点：</p>
-<blockquote>
-<p>1.位段的成员必须是int、unsigned int 或 signed int</p>
-<p>2.位段的成员后边有一个冒号和一个数字</p>
-</blockquote>
-<p>位段成员后面的数字表示bit位，位段可以节省空间</p>
-<p><strong>开辟空间方式</strong></p>
-<p>由于位段里变量为int类型，因此在开辟空间时，一次开辟4个字节的空间，即32个bit位。</p>
-<p>需要注意的是：<strong>位段是不可以跨平台的、位段不存在对齐</strong></p>
-<h3 id="枚举-enum"><a href="#枚举-enum" class="headerlink" title="枚举(enum)"></a>枚举(enum)</h3><p>枚举，即一一列举</p>
-<p>枚举列举的是枚举常量，第一个常量为0，之后的常量大小依次+1</p>
-<p><strong>枚举的优点</strong></p>
-<ul>
-<li>增加代码的可读性和可维护性</li>
-<li>和#define定义的标识符比较，枚举有类型检查，更加严谨</li>
-<li>防止命名污染</li>
-<li>便于调试</li>
-<li>使用方便，一次可以定义多个常量</li>
-</ul>
-<h3 id="联合-共用体"><a href="#联合-共用体" class="headerlink" title="联合(共用体)"></a>联合(共用体)</h3><p>在共用体中定义的变量共用一块内存</p>
-<p><strong>空间计算</strong></p>
-<ul>
-<li>联合的大小至少是最大成员的大小</li>
-<li>当最大成员不是最大对齐数的整数倍的时候，就要对齐到最大对齐数的整数倍</li>
-</ul>
-<h3 id="大小端"><a href="#大小端" class="headerlink" title="大小端"></a>大小端</h3><p>小端：低字节放低地址处，高字节放高地址处</p>
-<p>大端：低字节放高地址，高字节放低地址</p>
-<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>IP地址是由点分十进制的方式处理的</p>
-<p>IP地址实际是整型的十进制数字，将十进制数字的每个字节转化成转化成十进制，再用.连接，就是IP地址</p>
-<p>代码实现：<br>​    #include &lt;stdio.h&gt;<br>​    #include &lt;Windows.h&gt;<br>​    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">union un</span><br><span class="line">&#123;</span><br><span class="line">	unsigned int num;</span><br><span class="line">	struct </span><br><span class="line">	&#123;</span><br><span class="line">		unsigned char a;</span><br><span class="line">		unsigned char b;</span><br><span class="line">		unsigned char c;</span><br><span class="line">		unsigned char d;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	union un myip;</span><br><span class="line">	myip.num = 716872929;</span><br><span class="line">	printf(&quot;%d.%d.%d.%d&quot;, myip.d, myip.c, myip.b, myip.a);</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>欢迎交流~~</p>
-
-      
-    </div>
+    </p></div>
     
     <div class="article-info article-info-index">
       
@@ -606,71 +313,8 @@
     </div>
 
       
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-函数栈桢" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/13/函数栈桢/" class="article-date">
-      <time datetime="2017-12-13T14:36:59.000Z" itemprop="datePublished">2017-12-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/13/函数栈桢/">函数栈桢</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>在做面试题的时候，我遇到了这样一道题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void fun()</span><br><span class="line">&#123;</span><br><span class="line">	int tmp=10;</span><br><span class="line">	int* p=(int*)(*(&amp;tmp+1));</span><br><span class="line">	*(p-1)=20;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a=0;</span><br><span class="line">	fun();</span><br><span class="line">	printf(&quot;%d&quot;,a);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一眼看去，a的值好像并未发生改变。但是实际上并不是我们看到的这么简单哦~
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li></ul>
-    </div>
-
-      
         <p class="article-more-link">
-          <a href="/2017/12/13/函数栈桢/#more">阅读全文 >></a>
+          <a href="/2018/07/26/C-中的强制类型转换/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -689,11 +333,11 @@
 
 
   
-    <article id="post-C语言-操作符" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-类与结构体" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/11/12/C语言-操作符/" class="article-date">
-      <time datetime="2017-11-12T10:08:58.000Z" itemprop="datePublished">2017-11-12</time>
+      <a href="/2018/07/25/类与结构体/" class="article-date">
+      <time datetime="2018-07-25T11:06:21.000Z" itemprop="datePublished">2018-07-25</time>
 </a>
 
 
@@ -708,7 +352,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/C语言-操作符/">C语言-操作符</a>
+      <a class="article-title" href="/2018/07/25/类与结构体/">类与结构体</a>
     </h1>
   
 
@@ -719,10 +363,206 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>对于刚接触C语言的人来说，一提到操作符，可能也只有==、+、-、*等等。今天就来了解一下操作符的知识。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>操作符包括算术操作符、移位操作符、位操作符、赋值、单目操作符。关系操作符、逻辑操作符、条件操作符。逗号操作符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">算术操作符有：加（+）、减（-）、乘（*）、除（/）、取模（%）。</span><br></pre></td></tr></table></figure>
-<p>在这些操作符中，需要注意的是除（/）和取模（%）的使用：</p>
+              <p>在学习C语言的时候，我们就已经接触到了结构体，接触到C++我们有学习到了有关于类的知识 </p>
+<p>接下来，让我们来搞懂这些吧~
+          
+      
+    </p></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/07/25/类与结构体/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-测试用例的撰写" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/07/10/测试用例的撰写/" class="article-date">
+      <time datetime="2018-07-10T11:02:59.000Z" itemprop="datePublished">2018-07-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/10/测试用例的撰写/">测试用例的撰写</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>欲了解如何描述有效bug、bug的级别与生命周期和测试用例的设计方法，请看正文 </p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试/">测试</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/07/10/测试用例的撰写/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于测试" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/07/05/关于测试/" class="article-date">
+      <time datetime="2018-07-05T04:13:46.000Z" itemprop="datePublished">2018-07-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/05/关于测试/">关于测试</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>软件开发，包括分析、计划、设计、编码、测试、维护六个过程。 </p>
+<p>软件测试，即验证软件功能是否满足用户的需求（包括检测功能是否完好以及是否存在bug两方面）</p>
+<p>接下来，请收下这篇————测试概念篇</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试/">测试</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/07/05/关于测试/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-C-的三大特性之多态" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/07/01/C-的三大特性之多态/" class="article-date">
+      <time datetime="2018-07-01T04:12:26.000Z" itemprop="datePublished">2018-07-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>若简历中提到了你对C++有所了解，那么面试官会有80%的可能性问关于多态的内容</p>
+<p>接下来就来看一下，我总结的关于面试如何向面试官讲述关于多态的内容吧！ </p>
           
       
     </div>
@@ -738,7 +578,350 @@
 
       
         <p class="article-more-link">
-          <a href="/2017/11/12/C语言-操作符/#more">阅读全文 >></a>
+          <a href="/2018/07/01/C-的三大特性之多态/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-C-的三大特性之继承" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/27/C-的三大特性之继承/" class="article-date">
+      <time datetime="2018-06-27T04:09:48.000Z" itemprop="datePublished">2018-06-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>今天来为大家介绍一下继承~</p>
+<p>继承使代码可以复用，他是为多态做铺垫的 </p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/06/27/C-的三大特性之继承/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-动态内存开辟" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/17/动态内存开辟/" class="article-date">
+      <time datetime="2018-06-17T04:03:54.000Z" itemprop="datePublished">2018-06-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/17/动态内存开辟/">动态内存开辟</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="C语言中实现方式"><a href="#C语言中实现方式" class="headerlink" title="C语言中实现方式"></a>C语言中实现方式</h3><p>使用malloc、alloc、realloc在堆上开辟空间，free将申请的空间释放掉 </p>
+<h3 id="比较malloc-calloc-realloc"><a href="#比较malloc-calloc-realloc" class="headerlink" title="比较malloc/calloc/realloc"></a>比较malloc/calloc/realloc</h3><p><strong>相同点</strong></p>
+<p>三者都是在堆上申请空间：</p>
+<blockquote>
+<p>若申请成功-&gt;返回申请的空间的首地址</p>
+</blockquote>
+<blockquote>
+<p>若申请失败-&gt;返回空指针</p>
+</blockquote>
+<p>三者的申请空间的释放都是使用free()进行操作</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/06/17/动态内存开辟/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-C-中类的实例化对象" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/10/C-中类的实例化对象/" class="article-date">
+      <time datetime="2018-06-10T04:02:19.000Z" itemprop="datePublished">2018-06-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>C语言使用函数对内容进行封装的，而C++是用类进行封装的</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>类的关键字是class，而类的作用域也不同 </p>
+<h3 id="类作用域"><a href="#类作用域" class="headerlink" title="类作用域"></a>类作用域</h3><p> 1.全局域</p>
+<p> 2.局部域</p>
+<p> 3.类域</p>
+<p> 4.名字空间域</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/06/10/C-中类的实例化对象/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-C-的三大特性之封装" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/06/C-的三大特性之封装/" class="article-date">
+      <time datetime="2018-06-06T04:00:28.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>面试中，在问到有关C++的内容时，通常会问到C++的三大特性是什么？</p>
+<p>C++的三大特性是封装、继承和多态</p>
+<p>接下来我将分三次来讲解关于这三大特性的知识</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/06/06/C-的三大特性之封装/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-面向对象or面向过程" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/05/面向对象or面向过程/" class="article-date">
+      <time datetime="2018-06-05T03:58:54.000Z" itemprop="datePublished">2018-06-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>刚刚接触C++，了解到了一些基础概念，在之前学C语言时也没有接触过。</p>
+<p>也算是感受到了C++的一点点魅力~</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/06/05/面向对象or面向过程/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -759,7 +942,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -768,7 +951,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2018 bingoxin
+                2018-2019 bingoxin
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>

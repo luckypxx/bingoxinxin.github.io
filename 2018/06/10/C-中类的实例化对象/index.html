@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="C语言使用函数对内容进行封装的，而C++是用类进行封装的 正文类的关键字是class，而类的作用域也不同  类作用域 1.全局域  2.局部域  3.类域  4.名字空间域 类的实例化类的实例化就是用类类型创建对象的过程  类在创建实例化对象时，类本身并不被分配空间 类对象包括类里的成员变量 若计算类的大小，只需计算成员变量大小之和，但要注意内存对齐 空类大小为一个字节，为区分不同对象 对象模型对">
+<meta name="description" content="C语言使用函数对内容进行封装的，而C++是用类进行封装的 正文类的关键字是class，而类的作用域也不同  类作用域 1.全局域  2.局部域  3.类域  4.名字空间域">
 <meta name="keywords" content="C&#x2F;C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++中类的实例化对象">
 <meta property="og:url" content="http://www.bingoxin.top/2018/06/10/C-中类的实例化对象/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="C语言使用函数对内容进行封装的，而C++是用类进行封装的 正文类的关键字是class，而类的作用域也不同  类作用域 1.全局域  2.局部域  3.类域  4.名字空间域 类的实例化类的实例化就是用类类型创建对象的过程  类在创建实例化对象时，类本身并不被分配空间 类对象包括类里的成员变量 若计算类的大小，只需计算成员变量大小之和，但要注意内存对齐 空类大小为一个字节，为区分不同对象 对象模型对">
+<meta property="og:description" content="C语言使用函数对内容进行封装的，而C++是用类进行封装的 正文类的关键字是class，而类的作用域也不同  类作用域 1.全局域  2.局部域  3.类域  4.名字空间域">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-22T04:03:20.543Z">
+<meta property="og:updated_time" content="2018-12-26T11:18:34.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++中类的实例化对象">
-<meta name="twitter:description" content="C语言使用函数对内容进行封装的，而C++是用类进行封装的 正文类的关键字是class，而类的作用域也不同  类作用域 1.全局域  2.局部域  3.类域  4.名字空间域 类的实例化类的实例化就是用类类型创建对象的过程  类在创建实例化对象时，类本身并不被分配空间 类对象包括类里的成员变量 若计算类的大小，只需计算成员变量大小之和，但要注意内存对齐 空类大小为一个字节，为区分不同对象 对象模型对">
+<meta name="twitter:description" content="C语言使用函数对内容进行封装的，而C++是用类进行封装的 正文类的关键字是class，而类的作用域也不同  类作用域 1.全局域  2.局部域  3.类域  4.名字空间域">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -190,7 +190,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
                     </div>
                 </section>
                 
@@ -308,6 +308,7 @@
 <p> 2.局部域</p>
 <p> 3.类域</p>
 <p> 4.名字空间域</p>
+<a id="more"></a>
 <h3 id="类的实例化"><a href="#类的实例化" class="headerlink" title="类的实例化"></a>类的实例化</h3><p>类的实例化就是用类类型创建对象的过程 </p>
 <p>类在创建实例化对象时，类本身并不被分配空间</p>
 <p>类对象包括类里的成员变量</p>
@@ -327,7 +328,7 @@
         <p><span>本文标题:</span><a href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
         <p><span>发布时间:</span>2018-06-10, 12:02:19</p>
-        <p><span>最后更新:</span>2018-12-22, 12:03:20</p>
+        <p><span>最后更新:</span>2018-12-26, 19:18:34</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/10/C-中类的实例化对象/" title="C++中类的实例化对象">http://www.bingoxin.top/2018/06/10/C-中类的实例化对象/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/10/C-中类的实例化对象/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -450,7 +451,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/04/聊天室项目/">聊天室项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/深浅拷贝/">深浅拷贝</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/三范式/">三范式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/20/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/Python基础小知识/">Python基础小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/禅道的安装/">禅道的安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/25/类与结构体/">类与结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/10/测试用例的撰写/">测试用例的撰写</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
 
 
 
@@ -464,7 +465,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2018 bingoxin
+                2018-2019 bingoxin
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>

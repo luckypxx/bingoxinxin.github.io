@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="bingoxin">
+
+
+
+<meta name="description" content="虚拟机是通过软件模拟的具有完整硬件功能，运行在完全隔离环境中的计算机系统。 使用最多的是VMWare和Virtual Box。 JVM是通过软件模拟Java字节码指令集，JVM只保留了PC寄存器，而普遍的虚拟机有很多寄存器。 做JVM的公司有很多家，从JDK1.3开始，HotSpot为默认JVM。 JVM上不止可以运行Java的代码">
+<meta name="keywords" content="Java,JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM">
+<meta property="og:url" content="http://www.bingoxin.top/2019/01/03/JVM/index.html">
+<meta property="og:site_name" content="bingoxin&#39;s blog">
+<meta property="og:description" content="虚拟机是通过软件模拟的具有完整硬件功能，运行在完全隔离环境中的计算机系统。 使用最多的是VMWare和Virtual Box。 JVM是通过软件模拟Java字节码指令集，JVM只保留了PC寄存器，而普遍的虚拟机有很多寄存器。 做JVM的公司有很多家，从JDK1.3开始，HotSpot为默认JVM。 JVM上不止可以运行Java的代码">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-05T04:18:45.800Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM">
+<meta name="twitter:description" content="虚拟机是通过软件模拟的具有完整硬件功能，运行在完全隔离环境中的计算机系统。 使用最多的是VMWare和Virtual Box。 JVM是通过软件模拟Java字节码指令集，JVM只保留了PC寄存器，而普遍的虚拟机有很多寄存器。 做JVM的公司有很多家，从JDK1.3开始，HotSpot为默认JVM。 JVM上不止可以运行Java的代码">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="bingoxin&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>JVM | bingoxin&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">bingoxin</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.wonderheng.top">wonderheng&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一个下凡搞技术的小仙女~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">bingoxin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">bingoxin</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-JVM" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/03/JVM/" class="article-date">
+      <time datetime="2019-01-03T13:10:46.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JVM
+    </h1>
+  
+
+              
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>虚拟机是通过软件模拟的具有完整硬件功能，运行在完全隔离环境中的计算机系统。</p>
+<p>使用最多的是VMWare和Virtual Box。</p>
+<p>JVM是通过软件<strong>模拟Java字节码指令集</strong>，JVM只保留了PC寄存器，而普遍的虚拟机有很多寄存器。</p>
+<p>做JVM的公司有很多家，从<strong>JDK1.3</strong>开始，HotSpot为默认JVM。</p>
+<p>JVM上<strong>不止可以运行Java的代码</strong></p>
+<a id="more"></a>
+<h3 id="JVM内存区域划分"><a href="#JVM内存区域划分" class="headerlink" title="JVM内存区域划分"></a>JVM内存区域划分</h3><p>Java内存区共分为6块内存</p>
+<h4 id="线程私有内存"><a href="#线程私有内存" class="headerlink" title="线程私有内存"></a>线程私有内存</h4><p>每个线程都有，并且彼此之间相互隔离</p>
+<ul>
+<li>程序计数器</li>
+</ul>
+<p>程序计数器是比较小的内存空间，记录当前线程所执行的字节码的行号指示器。</p>
+<p><strong>程序计数器记录的两种情况：</strong></p>
+<p>1、若当前的线程执行的是Java方法，程序计数器记录的是正在执行的JVM字节码指令地址</p>
+<p>2、若当前的执行线程执行的是Native方法，计数器值为空（监测不到C语言）</p>
+<p>程序计数器是<strong>唯一一块不会产生OOM异常</strong>的区域</p>
+<ul>
+<li>虚拟机栈</li>
+</ul>
+<p>虚拟机栈描述Java<strong>方法</strong>执行的<strong>内存</strong>模型。</p>
+<p>每个方法执行的同时，都会创建一个栈桢来存储<strong>局部变量表、操作数栈、方法出口</strong>等信息。每个方法从调用直到执行完毕的过程，对应一个栈桢在虚拟机栈的入栈和出栈过程。</p>
+<p><strong>局部变量表存放内容：</strong>8种基本数据类型和对象引用（4个字节），因此每次开辟虚拟机栈的大小是确定的。</p>
+<p>生命周期与线程相同：在创建线程时，同时创建线程的虚拟机栈。在线程执行完毕时，虚拟机栈也被一同回收。</p>
+<p><strong>此区域一共会产生两种异常：</strong></p>
+<p>1、若线程请求的栈深度大于JVM允许的深度（-Xss设置栈容量），抛出<code>StackOverFlowError</code>异常。常见于单线程</p>
+<p>2、虚拟机在进行栈的动态扩展时，若无法申请到足够内存，抛出OOM（<code>OutOfMemoryError</code>）异常。常见于多线程</p>
+<ul>
+<li>本地方法栈</li>
+</ul>
+<p>本地方法（<code>Native</code>方法）执行的内存模型</p>
+<p>在<strong>HotSpot虚拟机</strong>中，本地方法栈与虚拟机栈是同一块内存区域。</p>
+<h4 id="线程共享内存"><a href="#线程共享内存" class="headerlink" title="线程共享内存"></a>线程共享内存</h4><p>所有线程共享此内存空间，并且此内存空间<strong>对所有线程可见</strong></p>
+<ul>
+<li>堆（GC堆）</li>
+</ul>
+<p>Java堆是JVM管理的最大内存区域。当JVM启动时创建。所有线程共享此内存，此内存中存放的都是数组和对象实例。</p>
+<p>Java堆是垃圾回收器管理的最主要内存区域。Java堆可以处于物理上不连续的内存空间。-Xmx设置堆最大值，-Xms设置堆最小值</p>
+<p><strong>异常：</strong>若在堆中没有足够的内存完成对象实例分配并且堆无法再次扩展时，抛出OOM异常</p>
+<ul>
+<li>方法区</li>
+</ul>
+<p>用于存储已被JVM加载的类信息、常量、静态变量等数据。JDK8以前，方法区也叫永久代。JDK8以后叫做元空间（Meta Space）</p>
+<p>方法区无法满足内存分配需求时，抛出OOM</p>
+<ul>
+<li>运行时常量池</li>
+</ul>
+<p>运行时常量池是方法区的一部分，存放字面量与符号引用</p>
+<p><strong>字面量：</strong>字符串常量（JDK7中移入堆中）、final常量、基本数据类型的值</p>
+<p><strong>符号引用：</strong>类、字段、方法的完全限定名、名称、描述符</p>
+<p>JVM内存区域划分-&gt;判断对象是否存活-&gt;垃圾回收算法-&gt;</p>
+<h4 id="对象产生的过程"><a href="#对象产生的过程" class="headerlink" title="对象产生的过程"></a>对象产生的过程</h4><p>符号引用-&gt;类-&gt;具体引用 </p>
+<p>根据符号引用去JVM方法区拿到该类的信息，然后再去堆中开辟空间</p>
+<h3 id="OOM"><a href="#OOM" class="headerlink" title="OOM"></a>OOM</h3><p>OOM共有两种：内存溢出和内存泄漏</p>
+<p><strong>内存泄漏：</strong>无用对象无法被垃圾回收，无法解决</p>
+<p><strong>内存溢出：</strong>内存中</p>
+<h3 id="垃圾回收器与内存分配策略"><a href="#垃圾回收器与内存分配策略" class="headerlink" title="垃圾回收器与内存分配策略"></a>垃圾回收器与内存分配策略</h3><h4 id="判断对象是否已死"><a href="#判断对象是否已死" class="headerlink" title="判断对象是否已死"></a>判断对象是否已死</h4><ul>
+<li>引用计数法</li>
+</ul>
+<p>给每个对象附加一个引用计数器，每当有一个地方引用此对象时，计数器+1；每当有一个引用失效时，计数器-1；在任意时刻，只要计数器值为0的对象就是不能再被使用，即对象已死。</p>
+<p>引用计数法实现简单，判定效率较高，但是无法解决循环引用问题。JVM并未采用此算法</p>
+<p><code>-XX:printGC</code>:查看垃圾处理装置</p>
+<ul>
+<li>可达性分析算法</li>
+</ul>
+<p>Java采用可达性分析算法来判断对象是否存活（C#也适用该算法）</p>
+<p><strong>核心思想:</strong>通过一系列<code>GC Roots</code>的对象作为起点，从这些节点开始向下搜索对象，搜索走过的路径，称为“引用链”，当一个对象到任意一个GC Roots对象没有任何的引用链相连时（从GC Roots到对象不可达），证明此对象已死。</p>
+<p><strong>Java中能作为GC Roots的对象包含以下四种：</strong></p>
+<p>1、虚拟机栈中的引用对象</p>
+<p>2、类静态变量引用的对象</p>
+<p>3、本地方法栈中引用的对象</p>
+<p>4、常量引用的对象</p>
+<p><strong>JDK1.2之后对于引用的概念做了扩充：</strong></p>
+<ul>
+<li>强引用-StrongReference</li>
+</ul>
+<p>强引用指的是代码中普遍存在的，类似于Object obj = new Object();</p>
+<p>在JVM中只要强引用还在，垃圾回收器永远不会回收此类对象的空间</p>
+<ul>
+<li>软引用-SoftReference</li>
+</ul>
+<p>软引用用来描述一些有用但不必须的对象，对于仅被软引用指向的对象，在系统将要发生内存溢出之前，会将<strong>所有软引用对象</strong>进行垃圾回收。若内存够用，这些对象仍然保留。在JDK1.2之后，提供了Soft Reference来实现软引用。</p>
+<ul>
+<li>弱引用-WeakReference</li>
+</ul>
+<p>弱引用用来描述一些有用但不必须的对象，但弱引用比软引用更差一点。仅被弱引用关联的对象最多只能生存到下一次GC开始之前。当垃圾回收器开始工作时，<strong>无论当前内存是否够用</strong>，都会回收掉仅被弱引用关联的对象。JDK1.2以后，使用WeakReference来实现弱引用</p>
+<ul>
+<li>虚引用-PhantomReference</li>
+</ul>
+<p>虚引用也称为幽灵引用或幻影引用，是最弱的一种引用关系。一个对象是否有虚引用的存在完全不会对其生存时间有影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用的唯一目的就是在这个对象被GC之前，收到一个系统通知。JDK1.2之后，提供PhantomReference来描述虚引用。</p>
+<p><strong>为什么要有虚引用：</strong></p>
+<p>在一个虚引用被垃圾回收之前，会收到一个通知来告诉JVM该虚引用对象将被销毁</p>
+<h4 id="对象的自我拯救-finalize"><a href="#对象的自我拯救-finalize" class="headerlink" title="对象的自我拯救-finalize"></a>对象的自我拯救-finalize</h4><p>在可达性分析算法中不可达对象，也并非“非死不可”，所有不可达的对象处于缓刑阶段。要宣告一个对象的彻底死亡，需要经历两次标记过程：</p>
+<p>若对象在进行可达性分析之后，发现到GC Roots不可达，此对象会进行一次筛选过程。</p>
+<p><strong>筛选的条件</strong>是此对象是否有必要执行<code>finalize()</code>。当对象没有覆写<code>finalize()</code>或<code>finalize()</code>已被调用过，JVM会将此对象彻底宣判死亡。若筛选成功（对象覆写了<code>finalize()</code>，并且未被执行过），会将此对象放到F-Queue中</p>
+<p>如果对象在finalize方法中成功自救（此对象与任意一个GC Roots建立联系），则对象在第二次标记时被移除回收集合，成功存活；若对象在finalize中仍然与GC Roots不可达，宣告死亡。</p>
+<h4 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h4><p>方法区的回收主要回收两部分内容：废弃常量和无用的类</p>
+<p><strong>判断常量是否被废弃的条件：</strong></p>
+<p>常量未被引用</p>
+<p><strong>判断一个类是无用类的条件：</strong></p>
+<p>1、该类的所有实例都已经被回收，也就是在堆中不存在该类的任何实例。</p>
+<p>2、加载该类的类加载器都被回收</p>
+<p>3、该类的Class对象没有在任何其他地方被引用，也无法通过反射访问该类的所有内容</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/01/03/JVM/">JVM</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
+        <p><span>发布时间:</span>2019-01-03, 21:10:46</p>
+        <p><span>最后更新:</span>2019-01-05, 12:18:45</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/01/03/JVM/" title="JVM">http://www.bingoxin.top/2019/01/03/JVM/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2019/01/03/JVM/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/01/04/聊天室项目/">
+                    聊天室项目
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/01/03/深浅拷贝/">
+                    深浅拷贝
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM内存区域划分"><span class="toc-number">1.</span> <span class="toc-text">JVM内存区域划分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#线程私有内存"><span class="toc-number">1.1.</span> <span class="toc-text">线程私有内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#线程共享内存"><span class="toc-number">1.2.</span> <span class="toc-text">线程共享内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象产生的过程"><span class="toc-number">1.3.</span> <span class="toc-text">对象产生的过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OOM"><span class="toc-number">2.</span> <span class="toc-text">OOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收器与内存分配策略"><span class="toc-number">3.</span> <span class="toc-text">垃圾回收器与内存分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判断对象是否已死"><span class="toc-number">3.1.</span> <span class="toc-text">判断对象是否已死</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象的自我拯救-finalize"><span class="toc-number">3.2.</span> <span class="toc-text">对象的自我拯救-finalize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回收方法区"><span class="toc-number">3.3.</span> <span class="toc-text">回收方法区</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"JVM　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: 'false',
+        verify: 'false',
+        app_id: "InyV1RI83uI1tCHGmOOx3SYM-gzGzoHsz",
+        app_key: "Sh9QoPKMPDw7kdbkMuqqNRYg",
+        placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/01/04/聊天室项目/" title="上一篇: 聊天室项目">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/01/03/深浅拷贝/" title="下一篇: 深浅拷贝">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/04/聊天室项目/">聊天室项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/深浅拷贝/">深浅拷贝</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/三范式/">三范式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/20/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/Python基础小知识/">Python基础小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/禅道的安装/">禅道的安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/25/类与结构体/">类与结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/10/测试用例的撰写/">测试用例的撰写</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2019 bingoxin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </div>
+</body>
+</html>
