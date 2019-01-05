@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
-<meta name="keywords" content="MySQL">
+<meta name="description" content="JDK1.5新特性 方法的可变参数  语法： 数据类型 … 可变参数名称 1int ... data  a. 可变参数的本质是数组 b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库---数据类型">
-<meta property="og:url" content="http://www.bingoxin.top/2018/08/20/数据库-数据类型/index.html">
+<meta property="og:title" content="Java中的泛型">
+<meta property="og:url" content="http://www.bingoxin.top/2019/01/05/Java中的泛型/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
+<meta property="og:description" content="JDK1.5新特性 方法的可变参数  语法： 数据类型 … 可变参数名称 1int ... data  a. 可变参数的本质是数组 b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T11:58:53.114Z">
+<meta property="og:updated_time" content="2019-01-05T12:24:56.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库---数据类型">
-<meta name="twitter:description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
+<meta name="twitter:title" content="Java中的泛型">
+<meta name="twitter:description" content="JDK1.5新特性 方法的可变参数  语法： 数据类型 … 可变参数名称 1int ... data  a. 可变参数的本质是数组 b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>数据库---数据类型 | bingoxin&#39;s blog</title>
+<title>Java中的泛型 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-数据库-数据类型" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java中的泛型" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/20/数据库-数据类型/" class="article-date">
-      <time datetime="2018-08-20T11:57:42.000Z" itemprop="datePublished">2018-08-20</time>
+      <a href="/2019/01/05/Java中的泛型/" class="article-date">
+      <time datetime="2019-01-05T12:24:06.000Z" itemprop="datePublished">2019-01-05</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据库---数据类型
+      Java中的泛型
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,94 +302,85 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>首先我们需要明白一点：<strong>不同的码制一个字符是由不同个数字节组成的</strong></p>
-<p>utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节</p>
-<p>GBK   一个字符两个字节 </p>
+        <h3 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h3><ul>
+<li>方法的可变参数</li>
+</ul>
+<p><strong>语法：</strong></p>
+<p>数据类型 … 可变参数名称</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ... data</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>a. 可变参数的本质是数组</p>
+<p>b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数</p>
+</blockquote>
 <a id="more"></a>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><blockquote>
-<p>char()、varchar()括号内是字符数</p>
-</blockquote>
-<blockquote>
-<p>char()最大为256个<strong>字符</strong>—&gt;数据固定时使用—&gt;效率高</p>
-</blockquote>
-<blockquote>
-<p>varchar是可变长度字符串，最多能放65535个<strong>字节</strong>—&gt;数据长度有变化时使用—&gt;效率低</p>
-</blockquote>
-<blockquote>
-<p>—&gt;有1~2个字节用于存储存放数据的长度，实际上只有65532个字节存放数据</p>
-</blockquote>
-<h3 id="日期和时间类型"><a href="#日期和时间类型" class="headerlink" title="日期和时间类型"></a>日期和时间类型</h3><blockquote>
-<p>datatime:日期+时间—&gt;‘yyyy-mm-dd HH:ii:ss’–&gt;</p>
-</blockquote>
-<blockquote>
-<p>data:日期</p>
-</blockquote>
-<blockquote>
-<p>timestamp:记录表中的最后更改时间</p>
-</blockquote>
-<p>current_timestamp：当前时间距1970-01-01 00:00:01差多少秒</p>
-<h3 id="enum-枚举-和set-集合"><a href="#enum-枚举-和set-集合" class="headerlink" title="enum(枚举)和set(集合)"></a>enum(枚举)和set(集合)</h3><blockquote>
-<p>enum:单选—&gt;数据库会自动将每个选项当做数字1,2,3,4…—&gt;用数字效率更高—&gt;最多存储65535个选项</p>
-</blockquote>
-<blockquote>
-<p>set:多选—&gt;由于多个选项中用’选项1,选项2’表示，则须注意选项之间不要出现英文的逗号—&gt;数据库会自动将每个选项当做数字1,2,4,8…<br>—&gt;最多存储64个选项</p>
-</blockquote>
-<pre><code>select * from 数据库名 where find_in_set (&apos;其中选项&apos;,表名)
-</code></pre><h3 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h3><p>保证数据的合法性</p>
 <ul>
-<li>null/not null</li>
+<li>foreach循环</li>
 </ul>
-<p>可以插入新的一条数据时，可以不为该属性赋值</p>
+<p>只用于数组、类集内容的取得，不能修改原数组、类集内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (数据类型 临时变量 : 数组名/类集名)</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> temp:data)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>default</li>
+<li>静态导入</li>
 </ul>
-<p>默认值，用户可以选择性的使用默认值</p>
+<p>将一个类的所有静态域（包含静态属性、方法），全部导入到使用类中，此时调用属性和方法不再需要类名</p>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h4><p>所谓的泛型指的是在定义类时，并不会设置类中的属性或方法的参数的具体类型，而是在类使用时再定义</p>
+<p>安全性考虑，不再有类型转换异常</p>
 <ul>
-<li>comment</li>
+<li>语法</li>
 </ul>
-<p>列描述，相当于注释</p>
-<pre><code>create table t (a int comment &apos;注释&apos;);
-show create table t \G //查看列描述
-</code></pre><ul>
-<li>zerofill</li>
-</ul>
-<p>零填充，将数据格式化，将无效位置零</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    T t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&lt;&gt;中的T被称为类型参数，用于指代任何类型</p>
 <ul>
-<li>primary key</li>
+<li>出于规范起见，类型参数一般由单个的大写字母来表示：</li>
 </ul>
-<p>主键，用来约束该字段里面的数据，<strong>不能重复，不能为空</strong>，一张表中最多只能有一个主键，主键所在列通常为整型类型</p>
-<blockquote>
-<p>复合主键:将某几个列构成一个主键</p>
-</blockquote>
-<pre><code>create table t (id int, course int ,score int,primary key(id,course));
-</code></pre><blockquote>
-<p>追加主键:</p>
-</blockquote>
-<pre><code>alter table t add primary key (id);
-</code></pre><blockquote>
-<p>删除主键:每个表只有一个主键，因此删除时不需要指定，若删除主键不会改变列not null性质</p>
-</blockquote>
-<pre><code>alter table t drop primary key;
-</code></pre><ul>
-<li>auto_increment</li>
+<p>T：代表用在泛型类声明上，指代泛型类</p>
+<p>E:一般用于属性</p>
+<p>K、V：键值对</p>
+<p>当泛型类中需要多个不同类型变量时，&lt;&gt;以，分隔声明不同大写字母即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;<span class="title">T</span>,<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line">    T t;</span><br><span class="line">    E x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>泛型的出现彻底解决了向下转型带来的ClassCastException问题</strong></p>
+<p><strong>泛型只能用引用数据类型，基本类型使用包装类</strong></p>
+<h4 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h4><ul>
+<li>语法</li>
 </ul>
-<blockquote>
-<p>自增长,当对应的字段不给值时，会自动的被系统触发，系统会从当前字段中已经有的最大值+1操作，得到新的不同的值，该字段只增不减。通常与主键搭配使用，作为逻辑主键。一张表中最多只能有一个自增长</p>
-</blockquote>
-<pre><code>create table t (id int primary key auto_increment,name char(13));
-</code></pre><ul>
-<li>unique key</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当泛型类与泛型方法共存时，泛型方法中的类型参数与泛型类的类型参数无关，泛型方法始终以自己的类型参数为准</p>
+<p>规范起见，当泛型类与泛型方法共存时，请使用不同的类型参数来区分彼此</p>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>解决泛型参数统一化问题</p>
+<ul>
+<li>？通配符</li>
 </ul>
-<blockquote>
-<p>唯一键:可以使多个字段拥有唯一性，唯一键允许为空</p>
-</blockquote>
-<pre><code>create table t (id int primary key auto_increment comment &apos;编号&apos;,num in not null unique comment &apos;学号&apos;)
-</code></pre><ul>
-<li>forigen key</li>
+<p>作用于方法参数声明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(MyClass&lt;?&gt; myClass)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时方法参数表示可以接收任意类型的MyClass对象</p>
+<p>由于无法确定入参的类型，因此？通配符下的泛型参数，只能取得类中属性值，无法进行属性值的设置</p>
+<ul>
+<li>设置泛型上限</li>
 </ul>
-<blockquote>
-<p>外键:将主表和从表关联起来，外键约束主要定义在从表上，主表则必须是有主键约束或unique约束。</p>
-</blockquote>
+<p>用于泛型类声明：<code>T extends 类</code>，即T是这个类本身或其子类</p>
+<p>方法参数：<code>？ extends 类</code></p>
+<p>eg: <code>? extends Number :</code></p>
+<p>表示方法入参只能接收Number以及其子类对象</p>
+<p>方法参数设置泛型上限仍然取得类中属性值，而无法设置，因为设置父类值子类不一定能使用（父类不一定能发生向下转型变为子类）</p>
+<ul>
+<li>设置泛型下限—只能用于方法参数</li>
+</ul>
+<p><code>? super 类()</code>,这个类或这个类的父类</p>
+<p>表示方法入参只能接收类以及其父类对象</p>
+<p>方法参数设置泛型下限不仅可以取得类中属性值，还可以设置属性值。因为子类可以天然向上转型变为父类</p>
+<h4 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h4><ul>
+<li>子类实现接口时继续保留泛型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InterfaceImpl&lt;T&gt; implements IInterface&lt;T&gt;&#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>子类实现接口时就确定好类型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InterfaceImpl implements IImterface&lt;String&gt;&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h4><p><strong>泛型信息仅存在代码编译阶段</strong>，进入JVM之前，与泛型相关的信息会被擦除掉，专业术语就叫做类型擦除</p>
+<p>换句话说，泛型类与普通类在JVM中没有任何差别</p>
+<p>泛型类进入JVM之前会进行类型擦除，泛型类的类型参数如果没有指定类型上限，则擦除成为Object类；如果类型参数指定类型上限，擦除为相应类型上限</p>
+<p>\<t>—&gt; Object</t></p>
+<p>\<t extends="" string=""> -&gt; String</t></p>
+<p>欢迎交流~</p>
 
       
     </div>
@@ -398,13 +389,13 @@ show create table t \G //查看列描述
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/20/数据库-数据类型/">数据库---数据类型</a></p>
+        <p><span>本文标题:</span><a href="/2019/01/05/Java中的泛型/">Java中的泛型</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-08-20, 19:57:42</p>
-        <p><span>最后更新:</span>2018-12-15, 19:58:53</p>
+        <p><span>发布时间:</span>2019-01-05, 20:24:06</p>
+        <p><span>最后更新:</span>2019-01-05, 20:24:56</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/20/数据库-数据类型/" title="数据库---数据类型">http://www.bingoxin.top/2018/08/20/数据库-数据类型/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/20/数据库-数据类型/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/01/05/Java中的泛型/" title="Java中的泛型">http://www.bingoxin.top/2019/01/05/Java中的泛型/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2019/01/05/Java中的泛型/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -416,16 +407,10 @@ show create table t \G //查看列描述
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/28/STL的底层与应用/">
-                    STL的底层与应用
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/18/Python之面向对象/">
-                    Python之面向对象
+                <a href="/2019/01/04/聊天室项目/">
+                    聊天室项目
                 </a>
             </div>
         
@@ -437,7 +422,7 @@ show create table t \G //查看列描述
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串类型"><span class="toc-number">1.0.1.</span> <span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日期和时间类型"><span class="toc-number">1.0.2.</span> <span class="toc-text">日期和时间类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#enum-枚举-和set-集合"><span class="toc-number">1.0.3.</span> <span class="toc-text">enum(枚举)和set(集合)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表的约束"><span class="toc-number">1.0.4.</span> <span class="toc-text">表的约束</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK1-5新特性"><span class="toc-number">1.</span> <span class="toc-text">JDK1.5新特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#泛型"><span class="toc-number">2.</span> <span class="toc-text">泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#泛型类"><span class="toc-number">2.1.</span> <span class="toc-text">泛型类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#泛型方法"><span class="toc-number">2.2.</span> <span class="toc-text">泛型方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通配符"><span class="toc-number">3.</span> <span class="toc-text">通配符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#泛型接口"><span class="toc-number">3.1.</span> <span class="toc-text">泛型接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类型擦除"><span class="toc-number">3.2.</span> <span class="toc-text">类型擦除</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -473,7 +458,7 @@ show create table t \G //查看列描述
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"数据库---数据类型　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java中的泛型　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -510,15 +495,13 @@ show create table t \G //查看列描述
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/28/STL的底层与应用/" title="上一篇: STL的底层与应用">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/18/Python之面向对象/" title="下一篇: Python之面向对象">
+            <a href="/2019/01/04/聊天室项目/" title="下一篇: 聊天室项目">
                 <i class="fa fa-angle-right"></i>
             </a>
         

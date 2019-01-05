@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.bingoxin.top/"/>
-  <updated>2018-12-13T11:35:30.458Z</updated>
+  <updated>2019-01-05T12:24:56.392Z</updated>
   <id>http://www.bingoxin.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java中的泛型</title>
+    <link href="http://www.bingoxin.top/2019/01/05/Java%E4%B8%AD%E7%9A%84%E6%B3%9B%E5%9E%8B/"/>
+    <id>http://www.bingoxin.top/2019/01/05/Java中的泛型/</id>
+    <published>2019-01-05T12:24:06.000Z</published>
+    <updated>2019-01-05T12:24:56.392Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="JDK1-5新特性"><a href="#JDK1-5新特性" class="headerlink" title="JDK1.5新特性"></a>JDK1.5新特性</h3><ul><li>方法的可变参数</li></ul><p><strong>语法：</strong></p><p>数据类型 … 可变参数名称</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ... data</span><br></pre></td></tr></table></figure><blockquote><p>a. 可变参数的本质是数组</p><p>b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数</p></blockquote><a id="more"></a><ul><li>foreach循环</li></ul><p>只用于数组、类集内容的取得，不能修改原数组、类集内容</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (数据类型 临时变量 : 数组名/类集名)</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> temp:data)</span><br></pre></td></tr></table></figure><ul><li>静态导入</li></ul><p>将一个类的所有静态域（包含静态属性、方法），全部导入到使用类中，此时调用属性和方法不再需要类名</p><h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h4><p>所谓的泛型指的是在定义类时，并不会设置类中的属性或方法的参数的具体类型，而是在类使用时再定义</p><p>安全性考虑，不再有类型转换异常</p><ul><li>语法</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    T t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>&lt;&gt;中的T被称为类型参数，用于指代任何类型</p><ul><li>出于规范起见，类型参数一般由单个的大写字母来表示：</li></ul><p>T：代表用在泛型类声明上，指代泛型类</p><p>E:一般用于属性</p><p>K、V：键值对</p><p>当泛型类中需要多个不同类型变量时，&lt;&gt;以，分隔声明不同大写字母即可</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>&lt;<span class="title">T</span>,<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line">    T t;</span><br><span class="line">    E x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>泛型的出现彻底解决了向下转型带来的ClassCastException问题</strong></p><p><strong>泛型只能用引用数据类型，基本类型使用包装类</strong></p><h4 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h4><ul><li>语法</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当泛型类与泛型方法共存时，泛型方法中的类型参数与泛型类的类型参数无关，泛型方法始终以自己的类型参数为准</p><p>规范起见，当泛型类与泛型方法共存时，请使用不同的类型参数来区分彼此</p><h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>解决泛型参数统一化问题</p><ul><li>？通配符</li></ul><p>作用于方法参数声明</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(MyClass&lt;?&gt; myClass)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>此时方法参数表示可以接收任意类型的MyClass对象</p><p>由于无法确定入参的类型，因此？通配符下的泛型参数，只能取得类中属性值，无法进行属性值的设置</p><ul><li>设置泛型上限</li></ul><p>用于泛型类声明：<code>T extends 类</code>，即T是这个类本身或其子类</p><p>方法参数：<code>？ extends 类</code></p><p>eg: <code>? extends Number :</code></p><p>表示方法入参只能接收Number以及其子类对象</p><p>方法参数设置泛型上限仍然取得类中属性值，而无法设置，因为设置父类值子类不一定能使用（父类不一定能发生向下转型变为子类）</p><ul><li>设置泛型下限—只能用于方法参数</li></ul><p><code>? super 类()</code>,这个类或这个类的父类</p><p>表示方法入参只能接收类以及其父类对象</p><p>方法参数设置泛型下限不仅可以取得类中属性值，还可以设置属性值。因为子类可以天然向上转型变为父类</p><h4 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h4><ul><li>子类实现接口时继续保留泛型</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InterfaceImpl&lt;T&gt; implements IInterface&lt;T&gt;&#123;&#125;</span><br></pre></td></tr></table></figure><ul><li>子类实现接口时就确定好类型</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> InterfaceImpl implements IImterface&lt;String&gt;&#123;&#125;</span><br></pre></td></tr></table></figure><h4 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h4><p><strong>泛型信息仅存在代码编译阶段</strong>，进入JVM之前，与泛型相关的信息会被擦除掉，专业术语就叫做类型擦除</p><p>换句话说，泛型类与普通类在JVM中没有任何差别</p><p>泛型类进入JVM之前会进行类型擦除，泛型类的类型参数如果没有指定类型上限，则擦除成为Object类；如果类型参数指定类型上限，擦除为相应类型上限</p><p>\<t>—&gt; Object</t></p><p>\<t extends="" string=""> -&gt; String</t></p><p>欢迎交流~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;JDK1-5新特性&quot;&gt;&lt;a href=&quot;#JDK1-5新特性&quot; class=&quot;headerlink&quot; title=&quot;JDK1.5新特性&quot;&gt;&lt;/a&gt;JDK1.5新特性&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;方法的可变参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;语法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数据类型 … 可变参数名称&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; ... data&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;a. 可变参数的本质是数组&lt;/p&gt;
+&lt;p&gt;b. 一个方法中只允许一个可变参数，可变参数一定是方法最后一个参数&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://www.bingoxin.top/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>聊天室项目</title>
@@ -490,33 +519,6 @@
     <summary type="html">
     
       &lt;p&gt;使用Linux，免不了和开发工具打交道，开发工具都有哪些呢？&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="操作系统" scheme="http://www.bingoxin.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux中的权限</title>
-    <link href="http://www.bingoxin.top/2018/09/03/Linux%E4%B8%AD%E7%9A%84%E6%9D%83%E9%99%90/"/>
-    <id>http://www.bingoxin.top/2018/09/03/Linux中的权限/</id>
-    <published>2018-09-03T11:59:51.000Z</published>
-    <updated>2018-12-15T12:00:47.033Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Linux下的用户"><a href="#Linux下的用户" class="headerlink" title="Linux下的用户"></a>Linux下的用户</h3><ul><li>超级用户—#</li></ul><p>可以在Linux系统下做任何事情</p><ul><li>普通用户—$</li></ul><p>在Linux下做有限的事情</p><a id="more"></a><h3 id="用户切换命令—su"><a href="#用户切换命令—su" class="headerlink" title="用户切换命令—su"></a>用户切换命令—su</h3><ul><li><code>su (root)</code></li></ul><p>由普通用户切换到root用户</p><ul><li><code>su user</code></li></ul><p>由root用户切换到普通用户</p><h3 id="文件类型区分"><a href="#文件类型区分" class="headerlink" title="文件类型区分"></a>文件类型区分</h3><p>在Windows下，文件类型的区分是由文件的后缀决定的，而在Linux下文件的后缀并不起决定性作用</p><p>输入<code>ll</code>，可以得到文件的属性，而第一列就是文件的类型</p><ul><li><p>以-开头为普通文件</p></li><li><p>以d开头为目录文件</p></li><li><p>以p开头为管道文件</p></li><li><p>以l开头为链接文件</p></li></ul><h3 id="Linux权限管理"><a href="#Linux权限管理" class="headerlink" title="Linux权限管理"></a>Linux权限管理</h3><ul><li>文件访问者</li></ul><blockquote><p>a.u—文件和目录的拥有者</p><p>b.g—文件和目录的所有者所在组的用户</p><p>c.o—其他用户</p></blockquote><p>输入<code>ll</code>命令后，除了第一列，其他九列三列为一组，代表拥有者、所属组和other的权限</p><blockquote><p>r–读</p><p>w–写</p><p>x–执行</p></blockquote><p>将权限看做一列，第三列是文件的拥有者，第四列是文件的所属组</p><ul><li>权限修改</li></ul><p><strong>单个权限修改</strong></p><p><code>chmod 访问者 +/- 权限 文件名</code>将文件的访问者某访问权限增加或取消</p><p><strong>多个权限修改</strong></p><p><code>chmod 访问者1 +/- 权限,访问者2 +/- 权限 文件名</code>将文件的多个访问者某访问权限增加或取消</p><p>或者将用二进制来表示访问者的权限，权限共有r/w/x，则r—4，w—2，x—1</p><p>例如：</p><p><code>chmod 777 文件名</code>给所有的访问者赋予所有权限</p><ul><li>修改文件的拥有者和所属组</li></ul><p><code>chown 访问者 文件名</code>将文件的拥有者或所属组进行修改，将普通用户转换为root用户时，需在命令前加sudo关键字</p><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Linux下的用户&quot;&gt;&lt;a href=&quot;#Linux下的用户&quot; class=&quot;headerlink&quot; title=&quot;Linux下的用户&quot;&gt;&lt;/a&gt;Linux下的用户&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;超级用户—#&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;可以在Linux系统下做任何事情&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;普通用户—$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在Linux下做有限的事情&lt;/p&gt;
     
     </summary>
     
