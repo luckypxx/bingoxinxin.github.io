@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
-<meta name="keywords" content="MySQL">
+<meta name="description" content="线程池有三大优点：降低资源消耗、提高响应速度、提高线程的可管理性 线程池的继承关系ExecutorService（普通调度池核心接口）扩展了一个方法：submit()方法可以接受Callable和Runnable对象，并且都有返回值(接收Runnable接口对象也有返回值是因为Runnable对象在其内部会转换成为Callable对象)">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库---数据类型">
-<meta property="og:url" content="http://www.bingoxin.top/2018/08/20/数据库-数据类型/index.html">
+<meta property="og:title" content="Java中的线程池">
+<meta property="og:url" content="http://www.bingoxin.top/2018/11/30/Java中的线程池/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
+<meta property="og:description" content="线程池有三大优点：降低资源消耗、提高响应速度、提高线程的可管理性 线程池的继承关系ExecutorService（普通调度池核心接口）扩展了一个方法：submit()方法可以接受Callable和Runnable对象，并且都有返回值(接收Runnable接口对象也有返回值是因为Runnable对象在其内部会转换成为Callable对象)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T11:58:53.114Z">
+<meta property="og:updated_time" content="2019-01-06T12:39:54.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库---数据类型">
-<meta name="twitter:description" content="首先我们需要明白一点：不同的码制一个字符是由不同个数字节组成的 utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节 GBK   一个字符两个字节">
+<meta name="twitter:title" content="Java中的线程池">
+<meta name="twitter:description" content="线程池有三大优点：降低资源消耗、提高响应速度、提高线程的可管理性 线程池的继承关系ExecutorService（普通调度池核心接口）扩展了一个方法：submit()方法可以接受Callable和Runnable对象，并且都有返回值(接收Runnable接口对象也有返回值是因为Runnable对象在其内部会转换成为Callable对象)">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>数据库---数据类型 | bingoxin&#39;s blog</title>
+<title>Java中的线程池 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-数据库-数据类型" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java中的线程池" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/20/数据库-数据类型/" class="article-date">
-      <time datetime="2018-08-20T11:57:42.000Z" itemprop="datePublished">2018-08-20</time>
+      <a href="/2018/11/30/Java中的线程池/" class="article-date">
+      <time datetime="2018-11-30T12:38:24.000Z" itemprop="datePublished">2018-11-30</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据库---数据类型
+      Java中的线程池
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,94 +302,56 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>首先我们需要明白一点：<strong>不同的码制一个字符是由不同个数字节组成的</strong></p>
-<p>utf-8 一个字符1~4个字节，英文一个字符一个字节，汉字一个字符三个字节</p>
-<p>GBK   一个字符两个字节 </p>
+        <p>线程池有三大优点：降低资源消耗、提高响应速度、提高线程的可管理性</p>
+<h3 id="线程池的继承关系"><a href="#线程池的继承关系" class="headerlink" title="线程池的继承关系"></a>线程池的继承关系</h3><h4 id="ExecutorService（普通调度池核心接口）"><a href="#ExecutorService（普通调度池核心接口）" class="headerlink" title="ExecutorService（普通调度池核心接口）"></a>ExecutorService（普通调度池核心接口）</h4><p>扩展了一个方法：submit()方法可以接受Callable和Runnable对象，并且都有返回值(接收Runnable接口对象也有返回值是因为Runnable对象在其内部会转换成为Callable对象)</p>
 <a id="more"></a>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><blockquote>
-<p>char()、varchar()括号内是字符数</p>
-</blockquote>
-<blockquote>
-<p>char()最大为256个<strong>字符</strong>—&gt;数据固定时使用—&gt;效率高</p>
-</blockquote>
-<blockquote>
-<p>varchar是可变长度字符串，最多能放65535个<strong>字节</strong>—&gt;数据长度有变化时使用—&gt;效率低</p>
-</blockquote>
-<blockquote>
-<p>—&gt;有1~2个字节用于存储存放数据的长度，实际上只有65532个字节存放数据</p>
-</blockquote>
-<h3 id="日期和时间类型"><a href="#日期和时间类型" class="headerlink" title="日期和时间类型"></a>日期和时间类型</h3><blockquote>
-<p>datatime:日期+时间—&gt;‘yyyy-mm-dd HH:ii:ss’–&gt;</p>
-</blockquote>
-<blockquote>
-<p>data:日期</p>
-</blockquote>
-<blockquote>
-<p>timestamp:记录表中的最后更改时间</p>
-</blockquote>
-<p>current_timestamp：当前时间距1970-01-01 00:00:01差多少秒</p>
-<h3 id="enum-枚举-和set-集合"><a href="#enum-枚举-和set-集合" class="headerlink" title="enum(枚举)和set(集合)"></a>enum(枚举)和set(集合)</h3><blockquote>
-<p>enum:单选—&gt;数据库会自动将每个选项当做数字1,2,3,4…—&gt;用数字效率更高—&gt;最多存储65535个选项</p>
-</blockquote>
-<blockquote>
-<p>set:多选—&gt;由于多个选项中用’选项1,选项2’表示，则须注意选项之间不要出现英文的逗号—&gt;数据库会自动将每个选项当做数字1,2,4,8…<br>—&gt;最多存储64个选项</p>
-</blockquote>
-<pre><code>select * from 数据库名 where find_in_set (&apos;其中选项&apos;,表名)
-</code></pre><h3 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h3><p>保证数据的合法性</p>
+<h4 id="ScheduledExecutorService（定时调度池核心接口）"><a href="#ScheduledExecutorService（定时调度池核心接口）" class="headerlink" title="ScheduledExecutorService（定时调度池核心接口）"></a>ScheduledExecutorService（定时调度池核心接口）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//延迟delay个时间单位后开始执行</span></span><br><span class="line">schedule(Runnable|Callable command,<span class="keyword">long</span> delay,TimeUnit unit);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//延迟initialDelay个时间单位后开始执行，并且每隔period个时间单位就执行一次</span></span><br><span class="line">scheduleAtFixedRate(Runnable command,<span class="keyword">long</span> initialDelay,<span class="keyword">long</span> period,TimeUnit unit);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>null/not null</li>
+<li>ThreadPoolExector：普通调度池核心类</li>
+<li>ScheduledThreadPoolExector：定时调度池核心类</li>
+<li>Executors：线程池工具类(内置四大线程池)</li>
 </ul>
-<p>可以插入新的一条数据时，可以不为该属性赋值</p>
+<h3 id="线程池执行流程"><a href="#线程池执行流程" class="headerlink" title="线程池执行流程"></a>线程池执行流程</h3><h4 id="第一步—创建线程需要获得全局锁"><a href="#第一步—创建线程需要获得全局锁" class="headerlink" title="第一步—创建线程需要获得全局锁"></a>第一步—创建线程需要获得全局锁</h4><p>判断核心线程是否已满，如果未满，创建一个新的线程来执行任务。如果已满，判断是否有空闲线程，有的话将任务分配给空闲线程，否则，执行步骤2。</p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>判断工作队列（阻塞队列BlockingQueue）是否已满。如果工作队列未满，将任务储存在工作队列中等待空闲线程调度。如果工作队列已满，执行步骤3。</p>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>判断当前线程池线程数量是否已达到最大值，如果没有达到最大值，则创建新的线程来执行任务。否则，执行步骤4。</p>
+<h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>调用饱和策略来处理此任务</p>
+<h3 id="线程池的使用"><a href="#线程池的使用" class="headerlink" title="线程池的使用"></a>线程池的使用</h3><h4 id="通过new一个ThreadPool"><a href="#通过new一个ThreadPool" class="headerlink" title="通过new一个ThreadPool"></a>通过new一个ThreadPool</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                          TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                          BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                          RejectedExecutionHandler handler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</span><br><span class="line">         Executors.defaultThreadFactory(), handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.corePoolSize（核心线程池大小）</p>
+<p>当提交一个任务到线程池时，只要核心线程池未达到corePoolSize，创建新线程来执行任务。调用<code>preStartAllCoreThreads()</code>，线程池会提前创建并启动所有核心线程。</p>
+<p>2.<code>BlockingQueue&lt;Runnable&gt; workQueue</code>(保存等待执行任务的阻塞队列)</p>
+<p>ArrayBlockingQueue：基于数组的</p>
+<p>maximumPoolSize</p>
+<p>线程池的最大数量</p>
+<p>keepAliveTime</p>
+<p>线程保持存活的时间，如果任务比较多，并且每个人物的执行时间比较短，我们可以调大此参数</p>
+<p>RejectedExecutionHandler handler</p>
+<p>饱和策略，默认采用AbortPolicy：无法处理新任务抛出异常</p>
+<p>CallerRunsPolicy：使用调用者所在线程来处理任务</p>
+<p>DisCardOldestPolicy：丢弃队列中最近的一个任务并执行当前任务</p>
+<p>DisCardPolicy：不处理任务，丢弃任务，也不报异常</p>
+<p>调用Future接口的get方法会阻塞其他线程，直到取得当前线程执行完毕后的返回值</p>
+<p>FutureTask中的任务只会被执行一次。</p>
+<h4 id="关闭线程池方法"><a href="#关闭线程池方法" class="headerlink" title="关闭线程池方法"></a>关闭线程池方法</h4><p><code>executorService.shutdown();</code></p>
+<h3 id="内置四大线程池"><a href="#内置四大线程池" class="headerlink" title="内置四大线程池"></a>内置四大线程池</h3><h4 id="固定大小线程池"><a href="#固定大小线程池" class="headerlink" title="固定大小线程池"></a>固定大小线程池</h4><ul>
+<li>底层实现</li>
+<li>应用场景</li>
+</ul>
+<p>固定大小线程池适用于为了满足资源管理需求，而需要限制当前线程数量的应用。适用于负载较重的服务器。</p>
+<h4 id="单线程池SingleThreadExecutor"><a href="#单线程池SingleThreadExecutor" class="headerlink" title="单线程池SingleThreadExecutor"></a>单线程池SingleThreadExecutor</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newSingleThreadExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FinalizableDelegatedExecutorService</span><br><span class="line">            (<span class="keyword">new</span> ThreadPoolExecutor(<span class="number">1</span>, <span class="number">1</span>,</span><br><span class="line">                                    <span class="number">0L</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">                                    <span class="keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;()));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>default</li>
+<li>应用场景</li>
 </ul>
-<p>默认值，用户可以选择性的使用默认值</p>
+<p>适用于需要保证顺序执行各个任务；并且在任意时间，不会有多个线程</p>
+<h4 id="缓存线程池CachedThreadPool"><a href="#缓存线程池CachedThreadPool" class="headerlink" title="缓存线程池CachedThreadPool"></a>缓存线程池CachedThreadPool</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newCachedThreadPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE,</span><br><span class="line">                                      <span class="number">60L</span>, TimeUnit.SECONDS,</span><br><span class="line">                                      <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>根据需要创建新线程</p>
 <ul>
-<li>comment</li>
+<li>应用场景</li>
 </ul>
-<p>列描述，相当于注释</p>
-<pre><code>create table t (a int comment &apos;注释&apos;);
-show create table t \G //查看列描述
-</code></pre><ul>
-<li>zerofill</li>
-</ul>
-<p>零填充，将数据格式化，将无效位置零</p>
-<ul>
-<li>primary key</li>
-</ul>
-<p>主键，用来约束该字段里面的数据，<strong>不能重复，不能为空</strong>，一张表中最多只能有一个主键，主键所在列通常为整型类型</p>
-<blockquote>
-<p>复合主键:将某几个列构成一个主键</p>
-</blockquote>
-<pre><code>create table t (id int, course int ,score int,primary key(id,course));
-</code></pre><blockquote>
-<p>追加主键:</p>
-</blockquote>
-<pre><code>alter table t add primary key (id);
-</code></pre><blockquote>
-<p>删除主键:每个表只有一个主键，因此删除时不需要指定，若删除主键不会改变列not null性质</p>
-</blockquote>
-<pre><code>alter table t drop primary key;
-</code></pre><ul>
-<li>auto_increment</li>
-</ul>
-<blockquote>
-<p>自增长,当对应的字段不给值时，会自动的被系统触发，系统会从当前字段中已经有的最大值+1操作，得到新的不同的值，该字段只增不减。通常与主键搭配使用，作为逻辑主键。一张表中最多只能有一个自增长</p>
-</blockquote>
-<pre><code>create table t (id int primary key auto_increment,name char(13));
-</code></pre><ul>
-<li>unique key</li>
-</ul>
-<blockquote>
-<p>唯一键:可以使多个字段拥有唯一性，唯一键允许为空</p>
-</blockquote>
-<pre><code>create table t (id int primary key auto_increment comment &apos;编号&apos;,num in not null unique comment &apos;学号&apos;)
-</code></pre><ul>
-<li>forigen key</li>
-</ul>
-<blockquote>
-<p>外键:将主表和从表关联起来，外键约束主要定义在从表上，主表则必须是有主键约束或unique约束。</p>
-</blockquote>
+<p>当提交任务速度快于执行任务速度，缓存线程池会不断创建新线程。</p>
+<p>大小无界线程池，适用于执行很多的短期异步小程序，</p>
+<p>当执行速度比提交速度快，会只有一个线程。当提交速度比执行速度快，会有最大个数线程</p>
+<h4 id="定时调度池ScheduledThreadPool"><a href="#定时调度池ScheduledThreadPool" class="headerlink" title="定时调度池ScheduledThreadPool"></a>定时调度池ScheduledThreadPool</h4><p>需要定时执行任务的应用场景</p>
 
       
     </div>
@@ -398,13 +360,13 @@ show create table t \G //查看列描述
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/20/数据库-数据类型/">数据库---数据类型</a></p>
+        <p><span>本文标题:</span><a href="/2018/11/30/Java中的线程池/">Java中的线程池</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-08-20, 19:57:42</p>
-        <p><span>最后更新:</span>2018-12-15, 19:58:53</p>
+        <p><span>发布时间:</span>2018-11-30, 20:38:24</p>
+        <p><span>最后更新:</span>2019-01-06, 20:39:54</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/20/数据库-数据类型/" title="数据库---数据类型">http://www.bingoxin.top/2018/08/20/数据库-数据类型/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/08/20/数据库-数据类型/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/30/Java中的线程池/" title="Java中的线程池">http://www.bingoxin.top/2018/11/30/Java中的线程池/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/11/30/Java中的线程池/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -417,15 +379,15 @@ show create table t \G //查看列描述
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/28/STL的底层与应用/">
-                    STL的底层与应用
+                <a href="/2018/12/16/进程/">
+                    进程
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/08/18/Python之面向对象/">
-                    Python之面向对象
+                <a href="/2018/11/19/JavaSE之Lock体系/">
+                    JavaSE之Lock体系
                 </a>
             </div>
         
@@ -437,7 +399,7 @@ show create table t \G //查看列描述
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串类型"><span class="toc-number">1.0.1.</span> <span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日期和时间类型"><span class="toc-number">1.0.2.</span> <span class="toc-text">日期和时间类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#enum-枚举-和set-集合"><span class="toc-number">1.0.3.</span> <span class="toc-text">enum(枚举)和set(集合)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表的约束"><span class="toc-number">1.0.4.</span> <span class="toc-text">表的约束</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#线程池的继承关系"><span class="toc-number">1.</span> <span class="toc-text">线程池的继承关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ExecutorService（普通调度池核心接口）"><span class="toc-number">1.1.</span> <span class="toc-text">ExecutorService（普通调度池核心接口）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ScheduledExecutorService（定时调度池核心接口）"><span class="toc-number">1.2.</span> <span class="toc-text">ScheduledExecutorService（定时调度池核心接口）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程池执行流程"><span class="toc-number">2.</span> <span class="toc-text">线程池执行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一步—创建线程需要获得全局锁"><span class="toc-number">2.1.</span> <span class="toc-text">第一步—创建线程需要获得全局锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二步"><span class="toc-number">2.2.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三步"><span class="toc-number">2.3.</span> <span class="toc-text">第三步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第四步"><span class="toc-number">2.4.</span> <span class="toc-text">第四步</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程池的使用"><span class="toc-number">3.</span> <span class="toc-text">线程池的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过new一个ThreadPool"><span class="toc-number">3.1.</span> <span class="toc-text">通过new一个ThreadPool</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关闭线程池方法"><span class="toc-number">3.2.</span> <span class="toc-text">关闭线程池方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内置四大线程池"><span class="toc-number">4.</span> <span class="toc-text">内置四大线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#固定大小线程池"><span class="toc-number">4.1.</span> <span class="toc-text">固定大小线程池</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单线程池SingleThreadExecutor"><span class="toc-number">4.2.</span> <span class="toc-text">单线程池SingleThreadExecutor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓存线程池CachedThreadPool"><span class="toc-number">4.3.</span> <span class="toc-text">缓存线程池CachedThreadPool</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定时调度池ScheduledThreadPool"><span class="toc-number">4.4.</span> <span class="toc-text">定时调度池ScheduledThreadPool</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -473,7 +435,7 @@ show create table t \G //查看列描述
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"数据库---数据类型　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java中的线程池　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -510,7 +472,7 @@ show create table t \G //查看列描述
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/28/STL的底层与应用/" title="上一篇: STL的底层与应用">
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -518,7 +480,7 @@ show create table t \G //查看列描述
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/08/18/Python之面向对象/" title="下一篇: Python之面向对象">
+            <a href="/2018/11/19/JavaSE之Lock体系/" title="下一篇: JavaSE之Lock体系">
                 <i class="fa fa-angle-right"></i>
             </a>
         

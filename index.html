@@ -927,11 +927,11 @@
 
 
   
-    <article id="post-JavaSE之Lock体系" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Java中的线程池" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/19/JavaSE之Lock体系/" class="article-date">
-      <time datetime="2018-11-19T12:35:20.000Z" itemprop="datePublished">2018-11-19</time>
+      <a href="/2018/11/30/Java中的线程池/" class="article-date">
+      <time datetime="2018-11-30T12:38:24.000Z" itemprop="datePublished">2018-11-30</time>
 </a>
 
 
@@ -946,7 +946,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/19/JavaSE之Lock体系/">JavaSE之Lock体系</a>
+      <a class="article-title" href="/2018/11/30/Java中的线程池/">Java中的线程池</a>
     </h1>
   
 
@@ -957,8 +957,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>lock锁与内键锁最大的区别是：需要手动的加锁和解锁</p>
-<p>JDK1.5之后增加java.util.concurrent.locks提供了与内键锁完全不同的实现多线程共享资源访问机制。失去了内键锁隐式的加锁与解锁过程，增加了可中断的获取锁以及超时获取锁以及共享锁等内键锁不具备的特性。</p>
+              <p>线程池有三大优点：降低资源消耗、提高响应速度、提高线程的可管理性</p>
+<h3 id="线程池的继承关系"><a href="#线程池的继承关系" class="headerlink" title="线程池的继承关系"></a>线程池的继承关系</h3><h4 id="ExecutorService（普通调度池核心接口）"><a href="#ExecutorService（普通调度池核心接口）" class="headerlink" title="ExecutorService（普通调度池核心接口）"></a>ExecutorService（普通调度池核心接口）</h4><p>扩展了一个方法：submit()方法可以接受Callable和Runnable对象，并且都有返回值(接收Runnable接口对象也有返回值是因为Runnable对象在其内部会转换成为Callable对象)</p>
           
       
     </div>
@@ -974,7 +974,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2018/11/19/JavaSE之Lock体系/#more">阅读全文 >></a>
+          <a href="/2018/11/30/Java中的线程池/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
