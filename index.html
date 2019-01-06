@@ -927,11 +927,11 @@
 
 
   
-    <article id="乐观锁CAS操作---compare Swap-乐观锁CAS操作---compare-Swap" class="article article-type-乐观锁CAS操作---compare Swap" itemscope="" itemprop="blogPost">
+    <article id="post-JavaSE之Lock体系" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/16/乐观锁CAS操作---compare-Swap/" class="article-date">
-      <time datetime="2018-11-16T12:31:44.000Z" itemprop="datePublished">2018-11-16</time>
+      <a href="/2018/11/19/JavaSE之Lock体系/" class="article-date">
+      <time datetime="2018-11-19T12:35:20.000Z" itemprop="datePublished">2018-11-19</time>
 </a>
 
 
@@ -946,7 +946,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/乐观锁CAS操作---compare-Swap/">post</a>
+      <a class="article-title" href="/2018/11/19/JavaSE之Lock体系/">JavaSE之Lock体系</a>
     </h1>
   
 
@@ -957,9 +957,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h3 id="悲观锁概念—JDK1-6之前"><a href="#悲观锁概念—JDK1-6之前" class="headerlink" title="悲观锁概念—JDK1.6之前"></a>悲观锁概念—JDK1.6之前</h3><p>假设每一次执行同步代码块均会产生冲突，所以当线程获取锁成功，会阻塞其他尝试该锁的线程</p>
-<h3 id="乐观锁概念"><a href="#乐观锁概念" class="headerlink" title="乐观锁概念"></a>乐观锁概念</h3><p>假设所有线程访问共享资源时不会出现冲突，既然不会出现冲突自然就不会阻塞其他线程。线程就不会出现阻塞状态</p>
-<p>CAS是无锁操作，使用CAS叫做比较交换来判断是否出现冲突，出现冲突就重试直到不冲突为止</p>
+              <p>lock锁与内键锁最大的区别是：需要手动的加锁和解锁</p>
+<p>JDK1.5之后增加java.util.concurrent.locks提供了与内键锁完全不同的实现多线程共享资源访问机制。失去了内键锁隐式的加锁与解锁过程，增加了可中断的获取锁以及超时获取锁以及共享锁等内键锁不具备的特性。</p>
           
       
     </div>
@@ -975,7 +974,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2018/11/16/乐观锁CAS操作---compare-Swap/#more">阅读全文 >></a>
+          <a href="/2018/11/19/JavaSE之Lock体系/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>

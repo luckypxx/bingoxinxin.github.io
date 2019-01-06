@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="bingoxin">
+
+
+
+<meta name="description" content="lock锁与内键锁最大的区别是：需要手动的加锁和解锁 JDK1.5之后增加java.util.concurrent.locks提供了与内键锁完全不同的实现多线程共享资源访问机制。失去了内键锁隐式的加锁与解锁过程，增加了可中断的获取锁以及超时获取锁以及共享锁等内键锁不具备的特性。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaSE之Lock体系">
+<meta property="og:url" content="http://www.bingoxin.top/2018/11/19/JavaSE之Lock体系/index.html">
+<meta property="og:site_name" content="bingoxin&#39;s blog">
+<meta property="og:description" content="lock锁与内键锁最大的区别是：需要手动的加锁和解锁 JDK1.5之后增加java.util.concurrent.locks提供了与内键锁完全不同的实现多线程共享资源访问机制。失去了内键锁隐式的加锁与解锁过程，增加了可中断的获取锁以及超时获取锁以及共享锁等内键锁不具备的特性。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-09T12:36:05.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaSE之Lock体系">
+<meta name="twitter:description" content="lock锁与内键锁最大的区别是：需要手动的加锁和解锁 JDK1.5之后增加java.util.concurrent.locks提供了与内键锁完全不同的实现多线程共享资源访问机制。失去了内键锁隐式的加锁与解锁过程，增加了可中断的获取锁以及超时获取锁以及共享锁等内键锁不具备的特性。">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="bingoxin&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>JavaSE之Lock体系 | bingoxin&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">bingoxin</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.wonderheng.top">wonderheng&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一个下凡搞技术的小仙女~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">bingoxin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">bingoxin</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/panxin1123@163.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/luckypxx/bingoxinxin.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-JavaSE之Lock体系" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/19/JavaSE之Lock体系/" class="article-date">
+      <time datetime="2018-11-19T12:35:20.000Z" itemprop="datePublished">2018-11-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaSE之Lock体系
+    </h1>
+  
+
+              
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>lock锁与内键锁最大的区别是：需要手动的加锁和解锁</p>
+<p>JDK1.5之后增加java.util.concurrent.locks提供了与内键锁完全不同的实现多线程共享资源访问机制。失去了内键锁隐式的加锁与解锁过程，增加了可中断的获取锁以及超时获取锁以及共享锁等内键锁不具备的特性。</p>
+<a id="more"></a>
+<h3 id="lock锁的标准使用形式"><a href="#lock锁的标准使用形式" class="headerlink" title="lock锁的标准使用形式"></a>lock锁的标准使用形式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Lock lock = <span class="keyword">new</span> ReentrantLock()</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    lock.lock();</span><br><span class="line">    <span class="comment">//同步块</span></span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    lock.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Lock接口API"><a href="#Lock接口API" class="headerlink" title="Lock接口API"></a>Lock接口API</h3><p>1.<code>void lock();</code>//获取锁</p>
+<p>2.<code>void lockInterruptibly() throws InterruptedException;</code>//获取锁的过程能够响应中断（lock独有）</p>
+<p>3.<code>boolean tryLock();</code>//获取锁返回true，反之返回false，可以响应中断</p>
+<p>4.<code>boolean tryLock(long time,TimeUnit unit);</code>//在3的基础上增加了超时等待机制，规定时间内未获取到锁，线程直接返回（lock独有）</p>
+<p>5.<code>void unlock()</code>//解锁</p>
+<h3 id="Lock体系核心存在—AbstractQueuedSynchronizer-AQS同步器"><a href="#Lock体系核心存在—AbstractQueuedSynchronizer-AQS同步器" class="headerlink" title="Lock体系核心存在—AbstractQueuedSynchronizer(AQS同步器)"></a>Lock体系核心存在—AbstractQueuedSynchronizer(AQS同步器)</h3><ul>
+<li>同步器的作用</li>
+</ul>
+<p>同步器是用来构建锁与其他同步组件的基础框架。它的组成有两部分：FIFO队列（同步队列）、int成员变量（同步状态）</p>
+<p>要使用AQS，推荐使用静态内部类继承AQS，覆写AQS中的protected用来改变同步状态的方法，其他方法主要是实现排队与堵塞机制。状态更新使用<code>getState()</code>、<code>setState()</code>、<code>compareAndSetState()</code></p>
+<p>Lock面向使用者，定义了使用者与锁交互的接口，隐藏了实现细节：</p>
+<p>AQS面向锁的实现者，简化了锁的实现方式，屏蔽同步状态的管理、线程排队、线程等待与唤醒等底层操作</p>
+<h3 id="AQS提供的模板方法"><a href="#AQS提供的模板方法" class="headerlink" title="AQS提供的模板方法"></a>AQS提供的模板方法</h3><p>AQS分为两类：独占锁和共享锁</p>
+<ul>
+<li>独占锁</li>
+</ul>
+<p>1、<code>void acquire(int arg)</code></p>
+<p>独占式获取同步状态，如果获取失败则将当前线程插入同步队列进行等待</p>
+<p>2、<code>void acquireTnterruptibly(int arg)</code></p>
+<p>在1的基础上增加响应中断</p>
+<p>3、<code>boolean tryAcquireNanos(int arg,long nanosTimeOut)</code></p>
+<p>在2的基础上增加超时等待，在规定时间内未获取到同步状态返回false</p>
+<p>4、<code>boolean tryAcquire(int arg)</code></p>
+<p>获取状态成功返回true，否则返回false</p>
+<p>5、<code>boolean release(int arg)</code></p>
+<p>释放同步状态，该方法或唤醒在同步队列中的下一个节点</p>
+<ul>
+<li>共享锁</li>
+</ul>
+<p>AQS中的同步队列是一个带有头尾节点的双向链表，节点的组成为</p>
+<p><code>Node prev</code></p>
+<p><code>Node next</code></p>
+<p><code>Thread thread</code></p>
+<p>将线程封装为Node节点后进行入队与出队处理</p>
+<h3 id="深入理解AQS"><a href="#深入理解AQS" class="headerlink" title="深入理解AQS"></a>深入理解AQS</h3><ul>
+<li>独占式锁的获取—acquire</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用lock()方法的实质是调用sync.lock();</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sync.lock();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//使用CAS将锁的同步状态置为1</span></span><br><span class="line">    <span class="keyword">if</span> (compareAndSetState(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">        <span class="comment">//若成功将当前线程置为持有锁线程</span></span><br><span class="line">        setExclusiveOwnerThread(Thread.currentThread());</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="comment">//调用acquire()方法，尝试获取锁</span></span><br><span class="line">        acquire(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">//再次使用CAS尝试获取同步状态，若获取同步状态成功则直接返回，反之会先调用addWaiter()方法</span></span><br><span class="line">        <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">            selfInterrupt();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//先使用addWaiter()方法，将封装的结点尾插到同步队列中</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Node <span class="title">addWaiter</span><span class="params">(Node mode)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//将当前进程封装成结点</span></span><br><span class="line">            Node node = <span class="keyword">new</span> Node(Thread.currentThread(), mode);</span><br><span class="line">            <span class="comment">// 获取同步队列的尾结点</span></span><br><span class="line">            Node pred = tail;</span><br><span class="line">            <span class="keyword">if</span> (pred != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">//若尾结点不为空，将封装的结点尾插到同步队列中</span></span><br><span class="line">                node.prev = pred;</span><br><span class="line">                <span class="keyword">if</span> (compareAndSetTail(pred, node)) &#123;</span><br><span class="line">                    pred.next = node;</span><br><span class="line">                    <span class="keyword">return</span> node;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//尾结点为空，若同步队列没有进行初始化，将队列先进行初始化，然后将结点尾插到同步队列中</span></span><br><span class="line">            <span class="comment">//若同步队列已经初始化，将结点尾插到同步队列，返回</span></span><br><span class="line">            enq(node);</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用acquireQueued()方法，从尾到头</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">acquireQueued</span><span class="params">(<span class="keyword">final</span> Node node, <span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> failed = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//中断状态</span></span><br><span class="line">            <span class="keyword">boolean</span> interrupted = <span class="keyword">false</span>;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">            <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">                <span class="comment">//记录同步队列尾结点的前驱节点</span></span><br><span class="line">                <span class="keyword">final</span> Node p = node.predecessor();</span><br><span class="line">                <span class="comment">//若p为头结点，及使用CAS获取同步状态成功</span></span><br><span class="line">                <span class="comment">//将node结点设为头结点，删去原来的头结点</span></span><br><span class="line">                <span class="keyword">if</span> (p == head &amp;&amp; tryAcquire(arg)) &#123;</span><br><span class="line">                    <span class="comment">//将node结点设为头结点</span></span><br><span class="line">                    setHead(node);</span><br><span class="line">                    <span class="comment">//将原来的头结点弹出</span></span><br><span class="line">                    p.next = <span class="keyword">null</span>; <span class="comment">// help GC</span></span><br><span class="line">                    failed = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">return</span> interrupted;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//从尾开始将每个结点状态为取消的移出同步队列，状态为其他的结点状态设为阻塞</span></span><br><span class="line">                <span class="keyword">if</span> (shouldParkAfterFailedAcquire(p, node) &amp;&amp;</span><br><span class="line">                    <span class="comment">//判断当前线程是否被中断</span></span><br><span class="line">                    parkAndCheckInterrupt())</span><br><span class="line">                    interrupted = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (failed)</span><br><span class="line">                cancelAcquire(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将前驱节点的状态和当前节点的状态设置为阻塞状态</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">shouldParkAfterFailedAcquire</span><span class="params">(Node pred, Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ws = pred.waitStatus;</span><br><span class="line">        <span class="keyword">if</span> (ws == Node.SIGNAL)</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * This node has already set status asking a release</span></span><br><span class="line"><span class="comment">             * to signal it, so it can safely park.</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (ws &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * Predecessor was cancelled. Skip over predecessors and</span></span><br><span class="line"><span class="comment">             * indicate retry.</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="comment">//将同步队列中的状态为取消的结点去除</span></span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                node.prev = pred = pred.prev;</span><br><span class="line">            &#125; <span class="keyword">while</span> (pred.waitStatus &gt; <span class="number">0</span>);</span><br><span class="line">            pred.next = node;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * waitStatus must be 0 or PROPAGATE.  Indicate that we</span></span><br><span class="line"><span class="comment">             * need a signal, but don't park yet.  Caller will need to</span></span><br><span class="line"><span class="comment">             * retry to make sure it cannot acquire before parking.</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="comment">//将其他状态的结点状态设为阻塞态</span></span><br><span class="line">            compareAndSetWaitStatus(pred, ws, Node.SIGNAL);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="独占式锁的释放-release"><a href="#独占式锁的释放-release" class="headerlink" title="独占式锁的释放-release()"></a>独占式锁的释放-release()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//unlock()实际上调用的是sync的release()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sync.release(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//先调用tryRelease(arg)方法，判断锁的同步状态是否为1</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">release</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (tryRelease(arg)) &#123;</span><br><span class="line">            <span class="comment">//获取到同步队列的头结点</span></span><br><span class="line">            Node h = head;</span><br><span class="line">            <span class="keyword">if</span> (h != <span class="keyword">null</span> &amp;&amp; h.waitStatus != <span class="number">0</span>)</span><br><span class="line">                unparkSuccessor(h);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="独占式锁特性学习"><a href="#独占式锁特性学习" class="headerlink" title="独占式锁特性学习"></a>独占式锁特性学习</h3><ul>
+<li>可中断式获取锁</li>
+</ul>
+<p>调用<code>void lockInterruptibly() throws InterruptedException</code></p>
+<p>最终会调用AQS<code>acquireInterruptibly(int arg)</code>模板方法</p>
+<p>1.先判断线程是否处于中断状态，若中断状态被改变，抛出中断异常后方法直接退出</p>
+<ul>
+<li>超时等待获取锁</li>
+</ul>
+<p>在中断式获取锁的基础上，增加了超时功能</p>
+<p>带方法本质调用AQS的模板方法<code>tryAcquireNano(int arg,long nanosTimeout)</code></p>
+<p>在超时时间范围内，若还没被唤醒，则线程退出</p>
+<h3 id="可重入锁"><a href="#可重入锁" class="headerlink" title="可重入锁"></a>可重入锁</h3><p>reentrantLock（Lock中使用频率最高的类）-可重入锁</p>
+<p>内键锁隐式支持重入性</p>
+<ul>
+<li>重入性实现原理</li>
+</ul>
+<p><strong>特点：</strong></p>
+<p>1.线程获取锁的时候，如果已经获取锁的线程是当前线程直接再次获取</p>
+<p>2.由于锁会被获取N次，因此锁只有被释放N次之后才算真正释放</p>
+<p>拿到当前线程，获取当前同步状态，当前同步状态还未被获取，当前线程使用CAS尝试获取同步状态；</p>
+<p>此时当前线程的同步状态为1 ，判断所持线程是否为当前线程，若是，nextu++;</p>
+<p>返回false</p>
+<h3 id="公平锁与非公平锁"><a href="#公平锁与非公平锁" class="headerlink" title="公平锁与非公平锁"></a>公平锁与非公平锁</h3><p>公平锁：锁的获取顺序一定满足时间上的绝对顺序</p>
+<p>reentrantLock默认使用非公平锁，其还有一个有参构造，传入的是一个Boolean值，来觉得创建的是公平锁还是非公平锁</p>
+<p>在公平锁中，增加了一个hasQueuedPrecessors()方法，用来看当前同步队列中是否存在非空节点，若存在不会再使用CAS。</p>
+<p><strong>公平锁与非公平锁的对比：</strong></p>
+<p>公平锁保证每次获取锁均为同步队列的第一个非空节点，保证了请求资源上的时间绝对顺序，但是效率低，需要频繁的进行上下文切换</p>
+<p>非公平锁会降低性能开销，降低一定要进行上下文切换，但是可能导致其他线程永远无法获取到锁，造成线程的饥饿现象</p>
+<h3 id="ReentrantReadWriteLock"><a href="#ReentrantReadWriteLock" class="headerlink" title="ReentrantReadWriteLock"></a>ReentrantReadWriteLock</h3><p>读写模型：</p>
+<p>读写锁允许同一时刻被多个读线程访问，但是在写线程访问时，所有的读线程以及其他的写线程均会被阻塞</p>
+<ul>
+<li>如何区分读状态和写状态</li>
+</ul>
+<p>同步状态的高16位表示读锁获取次数，低16位表示写锁获取次数</p>
+<h3 id="读锁—共享锁（一般与读写锁一起使用来实现读写模型）"><a href="#读锁—共享锁（一般与读写锁一起使用来实现读写模型）" class="headerlink" title="读锁—共享锁（一般与读写锁一起使用来实现读写模型）"></a>读锁—共享锁（一般与读写锁一起使用来实现读写模型）</h3><ul>
+<li>读锁获取：</li>
+</ul>
+<p>只有当前没有写线程获取到写锁并且读锁的获取次数不超过最大值，读锁就能获取成功</p>
+<ul>
+<li>读写锁应用场景</li>
+</ul>
+<p>缓存的实现</p>
+<h3 id="Condition的await与signal"><a href="#Condition的await与signal" class="headerlink" title="Condition的await与signal"></a>Condition的await与signal</h3><p>Object的wait与notify是与内键锁（对象监视器）搭配使用，完成线程的等待与通知机制</p>
+<p>Condition的await、signal是与Lock体系配合实现线程的等待与通知，Java语言层面实现，具有更高的控制与扩展性</p>
+<p>await():</p>
+<p>1.无参构造   同wait()</p>
+<p>2.<code>awaitUminterruptibly()</code>特性是等待过程不响应中断</p>
+<p>3.<code>boolean await(long time,TimeUnit unit)</code>在1的基础上增加了超时等待功能，可以自定义时间单位</p>
+<p>4.<code>boolean awaitUntil(Date deadline)</code>特性：支持设置截止时间</p>
+<p>signal，signalAll()</p>
+<ul>
+<li>Condition支持多个等待队列</li>
+</ul>
+<p>Condition队列与AQS中的同步队列共享结点（Node）数据结构</p>
+<p>带有头尾指针的单向队列</p>
+<p>每当调用<code>lock.newCondition()</code>就会在绑定的lock锁上新增一个等待队列</p>
+<ul>
+<li>应用场景</li>
+</ul>
+<p>使用Condition实现有界队列</p>
+<h3 id="LockSupport工具类"><a href="#LockSupport工具类" class="headerlink" title="LockSupport工具类"></a>LockSupport工具类</h3><ul>
+<li>与内键锁的阻塞区别</li>
+</ul>
+<p>内键锁阻塞进入BLOCKED</p>
+<p><code>LockSupport.park()</code>进入WAIT</p>
+<ul>
+<li>唤醒</li>
+</ul>
+<p>内键锁由JVM随机挑选一个线程唤醒</p>
+<p><code>LockSupport.unPark(Thread thread)</code>唤醒指定线程</p>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>死锁产生原因：对共享资源的上锁成环</p>
+<p>AQS源码：</p>
+<p>1.独占锁的获得与释放</p>
+<p>2.响应中断和超时等待</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/11/19/JavaSE之Lock体系/">JavaSE之Lock体系</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
+        <p><span>发布时间:</span>2018-11-19, 20:35:20</p>
+        <p><span>最后更新:</span>2019-01-09, 20:36:05</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/19/JavaSE之Lock体系/" title="JavaSE之Lock体系">http://www.bingoxin.top/2018/11/19/JavaSE之Lock体系/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/11/19/JavaSE之Lock体系/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/16/进程/">
+                    进程
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/11/16/乐观锁CAS操作---compare-Swap/">
+                    post
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#lock锁的标准使用形式"><span class="toc-number">1.</span> <span class="toc-text">lock锁的标准使用形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lock接口API"><span class="toc-number">2.</span> <span class="toc-text">Lock接口API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lock体系核心存在—AbstractQueuedSynchronizer-AQS同步器"><span class="toc-number">3.</span> <span class="toc-text">Lock体系核心存在—AbstractQueuedSynchronizer(AQS同步器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AQS提供的模板方法"><span class="toc-number">4.</span> <span class="toc-text">AQS提供的模板方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深入理解AQS"><span class="toc-number">5.</span> <span class="toc-text">深入理解AQS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#独占式锁的释放-release"><span class="toc-number">6.</span> <span class="toc-text">独占式锁的释放-release()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#独占式锁特性学习"><span class="toc-number">7.</span> <span class="toc-text">独占式锁特性学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可重入锁"><span class="toc-number">8.</span> <span class="toc-text">可重入锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公平锁与非公平锁"><span class="toc-number">9.</span> <span class="toc-text">公平锁与非公平锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReentrantReadWriteLock"><span class="toc-number">10.</span> <span class="toc-text">ReentrantReadWriteLock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读锁—共享锁（一般与读写锁一起使用来实现读写模型）"><span class="toc-number">11.</span> <span class="toc-text">读锁—共享锁（一般与读写锁一起使用来实现读写模型）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Condition的await与signal"><span class="toc-number">12.</span> <span class="toc-text">Condition的await与signal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LockSupport工具类"><span class="toc-number">13.</span> <span class="toc-text">LockSupport工具类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#死锁"><span class="toc-number">14.</span> <span class="toc-text">死锁</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"JavaSE之Lock体系　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments" style="margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)">
+    <div id="vcomment" class="comment"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@1.2.0-beta1/dist/Valine.min.js"></script>
+    <script>
+      new Valine({
+        el: '#vcomment',
+        notify: 'false',
+        verify: 'false',
+        app_id: "InyV1RI83uI1tCHGmOOx3SYM-gzGzoHsz",
+        app_key: "Sh9QoPKMPDw7kdbkMuqqNRYg",
+        placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+        avatar: "wavatar"
+      });
+    </script>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/16/进程/" title="上一篇: 进程">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/11/16/乐观锁CAS操作---compare-Swap/" title="下一篇: post">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/JavaSE之线程同步/">JavaSE之线程同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/04/聊天室项目/">聊天室项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/03/深浅拷贝/">深浅拷贝</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/24/java中的抽象类与接口/">Java中的抽象类与接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/21/Java中的类集/">Java中的类集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/20/JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/16/进程/">进程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/19/JavaSE之Lock体系/">JavaSE之Lock体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/乐观锁CAS操作---compare-Swap/">post</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/11/JavaSE之多线程/">JavaSE之多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/JavaSE新特性/">JavaSE新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/Java中的泛型/">Java中的泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/30/Java中的Object类/">Java中的Object类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/29/Java中的模块与包/">Java中的模块与包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/28/Java中的三大设计模式/">Java中的三大设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/Java中的String类/">Java中的String类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/24/Java中接口定义与应用/">Java中接口定义与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/19/Java中的内部类/">Java中的内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/12/Java中的继承与多态/">Java中的继承与多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/09/求1-2-3-n/">求1+2+3+...+n</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/20/初识Java/">初识Java</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/17/线程/">线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/Linux中的开发工具/">Linux中的开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/Linux中的权限/">Linux中的权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/STL的底层与应用/">STL的底层与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/20/数据库-数据类型/">数据库---数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/18/Python之面向对象/">Python之面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/14/Python中的文件操作/">Python中的文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/12/Linux常用指令/">Linux常用指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/Python中的模块和包/">Python中的模块和包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/11/Python-异常/">Python-异常</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/列表与字典的深度学习/">列表与字典的深度学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/07/git常遇问题/">git常遇问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/Python基本语句/">Python基本语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/Python基础小知识/">Python基础小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/禅道的安装/">禅道的安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/25/类与结构体/">类与结构体</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/10/测试用例的撰写/">测试用例的撰写</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/关于测试/">关于测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/01/C-的三大特性之多态/">C++的三大特性之多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/C-的三大特性之继承/">C++的三大特性之继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/17/动态内存开辟/">动态内存开辟</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/10/C-中类的实例化对象/">C++中类的实例化对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/06/C-的三大特性之封装/">C++的三大特性之封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/面向对象or面向过程/">面向对象or面向过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/05/函数调用约定/">函数调用约定</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/数据库基本操作/">数据库基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/判断两个无头结点的单链表是否相交/">判断两个无头结点的单链表是否相交</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/自定义类型/">自定义类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/13/函数栈桢/">函数栈桢</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/12/C语言-操作符/">C语言-操作符</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2019 bingoxin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </div>
+</body>
+</html>
