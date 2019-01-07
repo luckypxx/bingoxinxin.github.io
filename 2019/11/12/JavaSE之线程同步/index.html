@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="同步问题：每一个线程对象轮番强占共享资源带来的问题  同步处理  使用内部关键字synchronized来处理同步问题，synchronized处理同步有两种方式：同步代码块、同步方法  使用同步代码块  设置一个锁定的对象，一般可以锁当前对象this，也可以锁一个类或任意对象  同步方法  在方法上添加synchronized关键字，表示此方法只有一个线程能进入。隐式锁对象，this">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="叩开C++的大门">
-<meta property="og:url" content="http://www.bingoxin.top/2018/06/05/叩开C-的大门/index.html">
+<meta property="og:title" content="JavaSE之线程同步">
+<meta property="og:url" content="http://www.bingoxin.top/2019/11/12/JavaSE之线程同步/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
+<meta property="og:description" content="同步问题：每一个线程对象轮番强占共享资源带来的问题  同步处理  使用内部关键字synchronized来处理同步问题，synchronized处理同步有两种方式：同步代码块、同步方法  使用同步代码块  设置一个锁定的对象，一般可以锁当前对象this，也可以锁一个类或任意对象  同步方法  在方法上添加synchronized关键字，表示此方法只有一个线程能进入。隐式锁对象，this">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-26T11:19:32.927Z">
+<meta property="og:updated_time" content="2019-01-07T12:30:55.864Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="叩开C++的大门">
-<meta name="twitter:description" content="缺省函数如果非要把缺省函数比作一个事物，它更像是一个备胎。 如果函数传参，就会将传过来的值赋值给形参 如果没有传参，则就会将缺省值传递给函数">
+<meta name="twitter:title" content="JavaSE之线程同步">
+<meta name="twitter:description" content="同步问题：每一个线程对象轮番强占共享资源带来的问题  同步处理  使用内部关键字synchronized来处理同步问题，synchronized处理同步有两种方式：同步代码块、同步方法  使用同步代码块  设置一个锁定的对象，一般可以锁当前对象this，也可以锁一个类或任意对象  同步方法  在方法上添加synchronized关键字，表示此方法只有一个线程能进入。隐式锁对象，this">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>叩开C++的大门 | bingoxin&#39;s blog</title>
+<title>JavaSE之线程同步 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-叩开C-的大门" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaSE之线程同步" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/05/叩开C-的大门/" class="article-date">
-      <time datetime="2018-06-05T03:57:30.000Z" itemprop="datePublished">2018-06-05</time>
+      <a href="/2019/11/12/JavaSE之线程同步/" class="article-date">
+      <time datetime="2019-11-12T12:30:09.000Z" itemprop="datePublished">2019-11-12</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      叩开C++的大门
+      JavaSE之线程同步
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,45 +302,64 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="缺省函数"><a href="#缺省函数" class="headerlink" title="缺省函数"></a>缺省函数</h4><p>如果非要把缺省函数比作一个事物，它更像是一个备胎。</p>
-<p>如果函数传参，就会将传过来的值赋值给形参</p>
-<p>如果没有传参，则就会将缺省值传递给函数</p>
+        <p>同步问题：每一个线程对象轮番强占共享资源带来的问题</p>
+<ul>
+<li>同步处理</li>
+</ul>
+<p>使用内部关键字synchronized来处理同步问题，synchronized处理同步有两种方式：同步代码块、同步方法</p>
+<ul>
+<li>使用同步代码块</li>
+</ul>
+<p>设置一个锁定的对象，一般可以锁当前<strong>对象</strong>this，也可以锁一个类或任意对象</p>
+<ul>
+<li>同步方法</li>
+</ul>
+<p>在方法上添加synchronized关键字，表示此方法只有一个线程能进入。<strong>隐式锁对象，this</strong></p>
 <a id="more"></a>
-<p>关于缺省参数要注意以下几点：</p>
+<h3 id="线程由运行态到阻塞态"><a href="#线程由运行态到阻塞态" class="headerlink" title="线程由运行态到阻塞态"></a>线程由运行态到阻塞态</h3><ul>
+<li>调用<code>sleep()</code>方法</li>
+</ul>
+<p>线程由运行态到阻塞态，立刻交出CPU，但不释放对象锁</p>
+<ul>
+<li>线程调用阻塞式IO（BIO）方法</li>
+<li>线程获取锁失败进入阻塞态</li>
+<li>线程调用<code>wait()</code></li>
+<li>线程调用<code>suspend()</code>，将线程挂起</li>
+</ul>
+<p>每个锁对象都有两个队列，一个称为同步队列，存储获取锁失败的线程。另一个称为等待队列，存储调用<code>wait()</code>等待的线程。将线程唤醒实际上是将处于等待队列的线程移到同步队列中竞争锁</p>
+<h3 id="synchronize底层实现"><a href="#synchronize底层实现" class="headerlink" title="synchronize底层实现"></a>synchronize底层实现</h3><ul>
+<li>类锁的实例化对象</li>
+</ul>
+<p><strong>锁当前对象：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">synchronize(<span class="keyword">this</span>)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>锁类对象(全局锁)：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">synchronize(类名称.class)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>任意实例对象：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String lock = <span class="string">""</span>;</span><br><span class="line">synchronize(lock)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>同步方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">普通方法+synchronize :锁得是当前对象</span><br><span class="line">静态方法+synchronize :锁的是类-全局锁，效果等同于同步代码块的锁类对象</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象锁机制—JDK6之前</li>
+</ul>
+<p><strong>执行同步代码块底层操作</strong></p>
 <blockquote>
-<p>a.带缺省值的参数必须放在参数列表的最后面<br>b.缺省参数不能同时在函数声明和定义中出现，只能二者去一<br>c.缺省值必须是常量或者是全局变量<br>d.C语言不支持</p>
+<p>a.执行同步代码块后，首先要执行monitorenter指令，退出时执行monitorexit指令</p>
+<p>b.使用内建锁(synchronized)进行同步，关键在于要获取指定锁对象monitor对象</p>
+<p>c.当线程获取monitor后才能继续向下执行，否则就只能等待。这个获取过程是互斥的，即同一时刻只有一个线程能够获取到对象monitor</p>
+<p>d.通常一个monitorenter指令会包含若干个monitorexit指令。原因在于JVM需要确保在正常执行路径以及异常执行路径上都能够正确解锁</p>
 </blockquote>
-<h4 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h4><p>函数重载，即在同一作用域里，声明几个功能相同的函数，形参列表不同或返回值类型不同(参数列表中，参数个数和顺序相同)，即可构成函数重载</p>
-<p>若只是返回值类型不同，不可构成函数重载，在这里也要注意：返回值不属于函数，参数属于函数</p>
-<p>在C语言中，不会构成函数重载，只是由于C语言和C++的编译风格不同</p>
-<p>在C语言中，编译完成后会在函数名前加上“_”，</p>
-<p>在C++中，编译完成后会被修饰成由函数名，函数参数列表和返回值构成的一串特定的字符串，用于区分函数名相同的各个函数</p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用，就相当于为一个变量取一个别名</p>
-<p> int a=10;<br> int&amp; ra=a;<br>这就是引用的用法，ra和a的地址相同，变量存放的内容也相同</p>
-<p>引用站在应用层，编译器不为其开辟空间</p>
-<p>在使用引用时要注意：</p>
+<p><strong>执行同步方法底层实现</strong></p>
+<p>当使用synchronized标记方法时，编译时字节码中方法的访问标记多了一个ACC_SYNCHRONIZED。该标记表示，进入该方法时，JVM需要进行monitorenter操作，退出该方法时，无论是否正常返回，JVM均需要进行monitorexit操作。也就是说，同步方法只能锁当前对象，同步方法和同步代码块的处理机制是相同的。</p>
+<p><strong>互斥的底层实现：</strong>当执行monitorenter时，如果目标锁对象的monitor计数器为0，表示此对象没有被任何其他对象所特有。此时JVM会将该锁对象的持有线程设置为当前线程，并且将计数器+1；若执行monitorenter时，如果目标锁对象的monitor计数器为1，需判断该锁对象的持有线程是否为当前线程，若不是，则无法获取锁，需要进行等待。</p>
+<p><strong>可重入性的底层实现：</strong></p>
 <blockquote>
-<p>a.引用在定义时必须有初始化<br>b.一个变量可以有多个引用<br>c.引用一旦引用一个实体，再不能引用其他实体</p>
+<p>a.如果目标锁对象的计数器不为0，判断锁对象的持有线程是否是当前线程，如果是再次将计数器+1（锁的可重入性）</p>
+<p>b.如果锁对象的持有线程不是当前线程，当前线程需要等待，直至持有线程释放锁</p>
+<p>c.当执行monitorexit时，JVM会将锁对象的计数器-1，当计数器值减为0时，代表该锁对象已经被释放</p>
 </blockquote>
-<p>若初始变量被const修饰，其引用在定义时也要被const修饰，而初始变量就相当于常数</p>
-<p>接下来再来说一下数组引用的代码格式：</p>
-<p> int (&amp;array)[3]={0}; //注意符号优先级</p>
-<p>引用可以作为函数的参数和返回值</p>
-<p>在函数传参时，从底层来看，传引用和传指针效率相差不多</p>
-<p>但是引用和指针还是有区别的，如下：</p>
-<blockquote>
-<p>引用在定义时必须初始化，而指针没有要求<br>指针可以为空，而引用不可以<br>引用一旦有所指向就不能更改，而指针指向一个变量后，还可以更改指向另一个类型相同的变量<br>在sizeof中含义不同：引用的结果为引用类型的大小，但指针始终为4(在Win10，vs2013的环境下)<br>引用自加改变的是变量的大小，指针自加改变的是指针的指向<br>有多级指针，没有多级引用<br>指针需要手动寻址，引用可以通过编译器寻址<br>使用引用更为安全</p>
-</blockquote>
-<p>那么引用相当于void* const类型的指针(可以改变其内容，不可改变其指向)</p>
-<h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><p>命名空间可以将标识符本地化，避免命名冲突或名字污染</p>
-<p>首先我们先来了解一下命名空间的定义方式：</p>
-<p> namespace N</p>
-<p>关于命名空间和作用域，不得不再多说几句： </p>
-<blockquote>
-<p>a.若一个命名空间为N，“N::”表示其空间作用域，“::”为作用限定符<br>b.相同作用域定义的命名空间名称可以相同，编译器会自动将其合成<br>c.命名空间可以嵌套(“NN1::”)</p>
-</blockquote>
-<p>仅仅学了这几个概念，就觉得C++功能的实现比C语言简单许多</p>
-<p>终于敲开C++的大门啦！</p>
+<p>欢迎交流~</p>
 
       
     </div>
@@ -349,13 +368,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/05/叩开C-的大门/">叩开C++的大门</a></p>
+        <p><span>本文标题:</span><a href="/2019/11/12/JavaSE之线程同步/">JavaSE之线程同步</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-06-05, 11:57:30</p>
-        <p><span>最后更新:</span>2018-12-26, 19:19:32</p>
+        <p><span>发布时间:</span>2019-11-12, 20:30:09</p>
+        <p><span>最后更新:</span>2019-01-07, 20:30:55</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/05/叩开C-的大门/" title="叩开C++的大门">http://www.bingoxin.top/2018/06/05/叩开C-的大门/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/06/05/叩开C-的大门/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/11/12/JavaSE之线程同步/" title="JavaSE之线程同步">http://www.bingoxin.top/2019/11/12/JavaSE之线程同步/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2019/11/12/JavaSE之线程同步/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -367,16 +386,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/05/面向对象or面向过程/">
-                    面向对象or面向过程
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/05/函数调用约定/">
-                    函数调用约定
+                <a href="/2019/01/04/聊天室项目/">
+                    聊天室项目
                 </a>
             </div>
         
@@ -388,9 +401,9 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#缺省函数"><span class="toc-number">1.</span> <span class="toc-text">缺省函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数重载"><span class="toc-number">2.</span> <span class="toc-text">函数重载</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#引用"><span class="toc-number"></span> <span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名空间"><span class="toc-number">1.</span> <span class="toc-text">命名空间</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#线程由运行态到阻塞态"><span class="toc-number">1.</span> <span class="toc-text">线程由运行态到阻塞态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#synchronize底层实现"><span class="toc-number">2.</span> <span class="toc-text">synchronize底层实现</span></a></li></ol>
         
-    </li></div>
+    </div>
     <style>
         .left-col .switch-btn,
         .left-col .switch-area {
@@ -424,7 +437,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"叩开C++的大门　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JavaSE之线程同步　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -461,15 +474,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/05/面向对象or面向过程/" title="上一篇: 面向对象or面向过程">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/05/函数调用约定/" title="下一篇: 函数调用约定">
+            <a href="/2019/01/04/聊天室项目/" title="下一篇: 聊天室项目">
                 <i class="fa fa-angle-right"></i>
             </a>
         
