@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.PNG">
 <meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.PNG">
 <meta property="og:image" content="https://wonderhengblog.oss-cn-beijing.aliyuncs.com/pxx/post/JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/%E5%8D%87%E7%BA%A7%E7%89%88.png">
-<meta property="og:updated_time" content="2019-01-08T13:53:18.739Z">
+<meta property="og:updated_time" content="2019-01-09T13:06:11.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM">
 <meta name="twitter:description" content="虚拟机是通过软件模拟的具有完整硬件功能，运行在完全隔离环境中的计算机系统。 使用最多的是VMWare和Virtual Box。 JVM是通过软件模拟Java字节码指令集，JVM只保留了PC寄存器，而普遍的虚拟机有很多寄存器。 做JVM的公司有很多家，从JDK1.3开始，HotSpot为默认JVM。 JVM上不止可以运行Java的代码">
@@ -499,13 +499,61 @@
 <ul>
 <li>jmap***</li>
 </ul>
+<p>内存映像工具</p>
+<p>jmap用于生成堆转储快照（堆得快照）</p>
+<p><code>jmap -heap PID</code>：显示JVM堆具体信息</p>
+<p><code>jmap -histo PID</code>:显示JVM中对象的统计信息</p>
 <ul>
 <li>jhat</li>
 </ul>
+<p>heap文件的分析工具</p>
+<p><code>jhat heap文件路径</code></p>
 <ul>
 <li>jstack***</li>
 </ul>
-
+<p>Java栈跟踪工具</p>
+<p>jstack生成当前JVM线程的快照。</p>
+<p>可用于定位线程出现长时间停顿的原因</p>
+<h3 id="Java内存模型—JMM"><a href="#Java内存模型—JMM" class="headerlink" title="Java内存模型—JMM"></a>Java内存模型—JMM</h3><p>Java内存模型是基于线程的，JMM定义的主要目标是为了定义程序中各个变量的访问规则（JVM中如何将变量从内存中取出以及如何将变量再写回内存的细节）。此处的变量包括实例字段、静态字段与数组元素</p>
+<h4 id="主内存与工作内存"><a href="#主内存与工作内存" class="headerlink" title="主内存与工作内存"></a>主内存与工作内存</h4><p>主内存是所有线程共享的，而工作内存指的是每个线程独有的</p>
+<p>JMM规定<strong>所有变量必须存储在主内存</strong>中。每条线程都有自己的工作内存，工作内存中保存了该线程使用到的变量的主内存副本。线程对变量的所有操作（读取、赋值等）都必须在工作内存中进行，不能直接读写主内存中的变量。不同线程之间也无法直接访问彼此的工作内存变量，线程间变量值的传递均需要通过主内存来完成。</p>
+<h4 id="内存间交互操作"><a href="#内存间交互操作" class="headerlink" title="内存间交互操作"></a>内存间交互操作</h4><p><strong>JMM内存三大特性：</strong></p>
+<ul>
+<li>原子性</li>
+</ul>
+<p>基本数据类型的访问读写是具有原子性，如若需要更大范围的原子性，需要内键锁或lock体系的支持（i++、i–等操作）</p>
+<ul>
+<li>可见性</li>
+</ul>
+<p>当一个线程修改了共享变量的值，其他线程能够立即得知此修改。volatile、final、synchronized可以实现可见性</p>
+<ul>
+<li>有序性</li>
+</ul>
+<p>如果在本线程内观察，所有操作都是有序的；若在线程之外观察另外一个线程，所有操作都是无序的</p>
+<p>JMM具备先天的有序性，即无须通过任何手段就能保证的有序性。称为JMM的happens-before原则。若两个操作的次序无法从happens-before中推导出来，则无法保证其有序性，JVM可以随意对其重排序。</p>
+<p>要想并发程序正确执行，必须同时保证原子性、可见性以及有序性。只要有任意一个没有被保证，就有可能导致程序运行不正确</p>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>变量规则：对一个变量的写操作先行发生于后面对这个变量的读操作</p>
+<ul>
+<li>保证此变量对所有线程的可见性</li>
+</ul>
+<p>当一条线程修改了这个变量的值，新值对于其他线程来说是可以立即得知的。普通变量无法做到可见性。</p>
+<p>volatile变量在各个线程中是一致的，但是volatile变量的运算在并发下一样是不安全的。Java中运算操作并非原子性操作，必须结合内键锁或lock体系来约束。</p>
+<ul>
+<li>由于volatile变量只保证可见性，在不符合一下两条规则的场景下，仍然需要使用加锁来保证原子性：</li>
+</ul>
+<p>1.运算结果不依赖当前变量的值，或者能够确保只有单一的线程修改变量值</p>
+<p>2.变量不需要与其他的状态变量共同参与不变约束</p>
+<ul>
+<li>并发场景下对于类似i++操作如何保证程序的正确结果：</li>
+</ul>
+<p>1、加锁</p>
+<p>2、使用原子类（java.util.concurrent.atomic包下的所有类-内部使用CAS保证原子性）</p>
+<ul>
+<li>禁止指令重排（内存屏障）</li>
+</ul>
+<p>1.当程序执行到volatile变量的读操作或者写操作时，在其前面的操作更改肯定全部已经执行完毕且结果已经对后面的操作可见，在其后面的操作肯定还没有执行</p>
+<p>2.在进行指令优化时，不能将对volatile变量访问的语句放在其后面执行，也不能提前执行</p>
+<h4 id="懒汉式单例的线程安全问题"><a href="#懒汉式单例的线程安全问题" class="headerlink" title="懒汉式单例的线程安全问题"></a>懒汉式单例的线程安全问题</h4>
       
     </div>
     
@@ -516,7 +564,7 @@
         <p><span>本文标题:</span><a href="/2019/01/03/JVM/">JVM</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
         <p><span>发布时间:</span>2019-01-03, 21:10:46</p>
-        <p><span>最后更新:</span>2019-01-08, 21:53:18</p>
+        <p><span>最后更新:</span>2019-01-09, 21:06:11</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/01/03/JVM/" title="JVM">http://www.bingoxin.top/2019/01/03/JVM/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2019/01/03/JVM/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -552,7 +600,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM内存区域划分"><span class="toc-number">1.</span> <span class="toc-text">JVM内存区域划分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#线程私有内存"><span class="toc-number">1.1.</span> <span class="toc-text">线程私有内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#线程共享内存"><span class="toc-number">1.2.</span> <span class="toc-text">线程共享内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象产生的过程"><span class="toc-number">1.3.</span> <span class="toc-text">对象产生的过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OOM"><span class="toc-number">2.</span> <span class="toc-text">OOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收器与内存分配策略"><span class="toc-number">3.</span> <span class="toc-text">垃圾回收器与内存分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判断对象是否已死"><span class="toc-number">3.1.</span> <span class="toc-text">判断对象是否已死</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象的自我拯救-finalize"><span class="toc-number">3.2.</span> <span class="toc-text">对象的自我拯救-finalize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回收方法区"><span class="toc-number">3.3.</span> <span class="toc-text">回收方法区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收算法"><span class="toc-number">4.</span> <span class="toc-text">垃圾回收算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标记-清除算法"><span class="toc-number">4.1.</span> <span class="toc-text">标记-清除算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制算法-新生代垃圾回收算法"><span class="toc-number">4.2.</span> <span class="toc-text">复制算法-新生代垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JVM改进后的算法"><span class="toc-number">4.3.</span> <span class="toc-text">JVM改进后的算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#标记整理算法—老年代GC算法"><span class="toc-number">4.4.</span> <span class="toc-text">标记整理算法—老年代GC算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分代回收算法"><span class="toc-number">4.5.</span> <span class="toc-text">分代回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Minor-FullGC"><span class="toc-number">4.6.</span> <span class="toc-text">Minor FullGC</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾收集器（垃圾回收算法的具体实现）-JDK8"><span class="toc-number">5.</span> <span class="toc-text">垃圾收集器（垃圾回收算法的具体实现）-JDK8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象分配策略"><span class="toc-number">6.</span> <span class="toc-text">对象分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对象优先在Eden分配"><span class="toc-number">6.1.</span> <span class="toc-text">对象优先在Eden分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大对象直接进入老年代"><span class="toc-number">6.2.</span> <span class="toc-text">大对象直接进入老年代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#长期存活对象进入老年代"><span class="toc-number">6.3.</span> <span class="toc-text">长期存活对象进入老年代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动态年龄判定"><span class="toc-number">6.4.</span> <span class="toc-text">动态年龄判定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK命令行工具"><span class="toc-number">7.</span> <span class="toc-text">JDK命令行工具</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM内存区域划分"><span class="toc-number">1.</span> <span class="toc-text">JVM内存区域划分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#线程私有内存"><span class="toc-number">1.1.</span> <span class="toc-text">线程私有内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#线程共享内存"><span class="toc-number">1.2.</span> <span class="toc-text">线程共享内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象产生的过程"><span class="toc-number">1.3.</span> <span class="toc-text">对象产生的过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OOM"><span class="toc-number">2.</span> <span class="toc-text">OOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收器与内存分配策略"><span class="toc-number">3.</span> <span class="toc-text">垃圾回收器与内存分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判断对象是否已死"><span class="toc-number">3.1.</span> <span class="toc-text">判断对象是否已死</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象的自我拯救-finalize"><span class="toc-number">3.2.</span> <span class="toc-text">对象的自我拯救-finalize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回收方法区"><span class="toc-number">3.3.</span> <span class="toc-text">回收方法区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾回收算法"><span class="toc-number">4.</span> <span class="toc-text">垃圾回收算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标记-清除算法"><span class="toc-number">4.1.</span> <span class="toc-text">标记-清除算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制算法-新生代垃圾回收算法"><span class="toc-number">4.2.</span> <span class="toc-text">复制算法-新生代垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JVM改进后的算法"><span class="toc-number">4.3.</span> <span class="toc-text">JVM改进后的算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#标记整理算法—老年代GC算法"><span class="toc-number">4.4.</span> <span class="toc-text">标记整理算法—老年代GC算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分代回收算法"><span class="toc-number">4.5.</span> <span class="toc-text">分代回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Minor-FullGC"><span class="toc-number">4.6.</span> <span class="toc-text">Minor FullGC</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾收集器（垃圾回收算法的具体实现）-JDK8"><span class="toc-number">5.</span> <span class="toc-text">垃圾收集器（垃圾回收算法的具体实现）-JDK8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象分配策略"><span class="toc-number">6.</span> <span class="toc-text">对象分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对象优先在Eden分配"><span class="toc-number">6.1.</span> <span class="toc-text">对象优先在Eden分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大对象直接进入老年代"><span class="toc-number">6.2.</span> <span class="toc-text">大对象直接进入老年代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#长期存活对象进入老年代"><span class="toc-number">6.3.</span> <span class="toc-text">长期存活对象进入老年代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动态年龄判定"><span class="toc-number">6.4.</span> <span class="toc-text">动态年龄判定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK命令行工具"><span class="toc-number">7.</span> <span class="toc-text">JDK命令行工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java内存模型—JMM"><span class="toc-number">8.</span> <span class="toc-text">Java内存模型—JMM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主内存与工作内存"><span class="toc-number">8.1.</span> <span class="toc-text">主内存与工作内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内存间交互操作"><span class="toc-number">8.2.</span> <span class="toc-text">内存间交互操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile"><span class="toc-number">9.</span> <span class="toc-text">volatile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#懒汉式单例的线程安全问题"><span class="toc-number">9.1.</span> <span class="toc-text">懒汉式单例的线程安全问题</span></a></li></ol></li></ol>
         
     </div>
     <style>
