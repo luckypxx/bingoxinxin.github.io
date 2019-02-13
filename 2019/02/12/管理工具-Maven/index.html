@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="在学习C语言的过程中，我们会遇到不同类型变量的转换  在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？">
-<meta name="keywords" content="C&#x2F;C++">
+<meta name="description" content="Maven用于管理各种第三方jar和打包发布并制定标准化项目结构 标准化项目结构在顶层有一个名字为pom.xml的配置文件 在顶层还有一个目录叫做src 在src目录中有两个文件夹，一个是main文件夹用于存放源代码，一个是test文件夹用于存放测试代码">
+<meta name="keywords" content="JavaEE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++中的强制类型转换">
-<meta property="og:url" content="http://www.bingoxin.top/2018/07/26/C-中的强制类型转换/index.html">
+<meta property="og:title" content="管理工具---Maven">
+<meta property="og:url" content="http://www.bingoxin.top/2019/02/12/管理工具-Maven/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="在学习C语言的过程中，我们会遇到不同类型变量的转换  在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？">
+<meta property="og:description" content="Maven用于管理各种第三方jar和打包发布并制定标准化项目结构 标准化项目结构在顶层有一个名字为pom.xml的配置文件 在顶层还有一个目录叫做src 在src目录中有两个文件夹，一个是main文件夹用于存放源代码，一个是test文件夹用于存放测试代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-26T11:05:00.511Z">
+<meta property="og:updated_time" content="2019-02-13T04:00:53.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++中的强制类型转换">
-<meta name="twitter:description" content="在学习C语言的过程中，我们会遇到不同类型变量的转换  在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？">
+<meta name="twitter:title" content="管理工具---Maven">
+<meta name="twitter:description" content="Maven用于管理各种第三方jar和打包发布并制定标准化项目结构 标准化项目结构在顶层有一个名字为pom.xml的配置文件 在顶层还有一个目录叫做src 在src目录中有两个文件夹，一个是main文件夹用于存放源代码，一个是test文件夹用于存放测试代码">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>C++中的强制类型转换 | bingoxin&#39;s blog</title>
+<title>管理工具---Maven | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-C-中的强制类型转换" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-管理工具-Maven" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/26/C-中的强制类型转换/" class="article-date">
-      <time datetime="2018-07-26T11:03:31.000Z" itemprop="datePublished">2018-07-26</time>
+      <a href="/2019/02/12/管理工具-Maven/" class="article-date">
+      <time datetime="2019-02-12T03:19:38.000Z" itemprop="datePublished">2019-02-12</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      C++中的强制类型转换
+      管理工具---Maven
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/">JavaEE</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,36 +302,74 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在学习C语言的过程中，我们会遇到不同类型变量的转换 </p>
-<p>在C++中，同在也存在，C++中类型转换与C语言的有什么区别呢？<a id="more"></a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>强制类型转换有两种：显式类型转换和隐式类型转换</p>
-<h4 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h4><p>一般应用在不同类型变量的赋值中</p>
-<pre><code>int a = 10;
-
-char b = &apos;0&apos;;
-
-b = a;
-</code></pre><p>不需要加关键字</p>
-<h4 id="显式类型转换"><a href="#显式类型转换" class="headerlink" title="显式类型转换"></a>显式类型转换</h4><p>可以应用在不同类型指针的转换中</p>
-<p>比如：</p>
-<pre><code>int a = 10;
-
-char* p = (char*)&amp;a;
-</code></pre><p>通过(转换后的类型)这种格式来完成转换</p>
-<p>C++中的强制类型转换有四种：static_cast、reinterepret_cast、const_cast、dynamic_cast</p>
-<h3 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h3><p>static_cast类似于隐式类型转换</p>
-<p>例：<br>    int a = 10;</p>
-<pre><code>char b = &apos;0&apos;;
-
-b = static_cast&lt;char&gt;(a);
-</code></pre><h3 id="reinterepret-cast"><a href="#reinterepret-cast" class="headerlink" title="reinterepret_cast"></a>reinterepret_cast</h3><p>reinterepret_cast就类似与显式类型转换</p>
-<p>例：</p>
-<pre><code>int a = 10;
-
-char* p;
-
-p = reinterpret_cast&lt;char*&gt;(&amp;a);
-</code></pre><p>​<br>欢迎交流~</p>
+        <p>Maven用于管理各种第三方jar和打包发布并制定标准化项目结构</p>
+<h3 id="标准化项目结构"><a href="#标准化项目结构" class="headerlink" title="标准化项目结构"></a>标准化项目结构</h3><p>在顶层有一个名字为pom.xml的配置文件</p>
+<p>在顶层还有一个目录叫做src</p>
+<p>在src目录中有两个文件夹，一个是main文件夹用于存放源代码，一个是test文件夹用于存放测试代码</p>
+<a id="more"></a>
+<h3 id="Maven项目的构建"><a href="#Maven项目的构建" class="headerlink" title="Maven项目的构建"></a>Maven项目的构建</h3><ul>
+<li>通过命令行构建</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1  </span><br><span class="line">-DgroupId=com.bittech.hello -DartifactId=hello-app -Dversion=1.0.0</span><br><span class="line"></span><br><span class="line">//自己填写相关信息</span><br><span class="line">mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用开发工具IDEA</li>
+</ul>
+<h3 id="Maven中的三个关键配置"><a href="#Maven中的三个关键配置" class="headerlink" title="Maven中的三个关键配置"></a>Maven中的三个关键配置</h3><ul>
+<li><p>groupId：项目所属的公司或组织名称-用于后续包名称定义</p>
+</li>
+<li><p>artifactId:项目名称</p>
+</li>
+<li><p>version：项目版本号</p>
+</li>
+</ul>
+<h3 id="pom-xml中的关键配置"><a href="#pom-xml中的关键配置" class="headerlink" title="pom.xml中的关键配置"></a>pom.xml中的关键配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--内部导入第三方jar包--&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">  &lt;!--配置所有项目需要的第三方jar包，每个dependency对应一个jar包--&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.11&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Maven中添加依赖"><a href="#Maven中添加依赖" class="headerlink" title="Maven中添加依赖"></a>Maven中添加依赖</h3><p>百度搜索maven，点开maven依赖，查找相关jar包，确定其版本号。将其关键配置信息复制到文件中</p>
+<h3 id="Maven生命周期"><a href="#Maven生命周期" class="headerlink" title="Maven生命周期"></a>Maven生命周期</h3><ul>
+<li>compile</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile //(*.java-&gt;*.class)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>clean清空target目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br></pre></td></tr></table></figure>
+<ul>
+<li>test执行测试用例</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn test</span><br></pre></td></tr></table></figure>
+<ul>
+<li>package将项目打包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package</span><br></pre></td></tr></table></figure>
+<p>在执行package将项目打包过程中会默认执行test命令运行所有测试用例，只有当所有测试用例均通过项目才会打包成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -DskipTests package</span><br></pre></td></tr></table></figure>
+<p>打包过程中不再执行测试用例代码直接将项目打包</p>
+<p>打包生成的结果是一个jar包或是war包（web），命名按照artifactId-version来命名</p>
+<ul>
+<li>构建可执行jar</li>
+</ul>
+<p>1、在pom.xml添加一个打包插件并指明主类来使得打包生成的jar具有可执行能力</p>
+<p>2、使用<code>mvn package</code>将项目打包</p>
+<p>3、<code>java -jar</code>打包后的jar包</p>
+<ul>
+<li>install安装构建到本地仓库</li>
+</ul>
+<p><code>mvn install</code></p>
+<p>本机中的其他项目可以使用dependency来引入项目，maven寻找的jar包顺序：</p>
+<p>先从本地仓库中找，若不存在再去中央仓库中寻找，若中央仓库中都没有则报错</p>
+<ul>
+<li><p>匹配jar包的规则：根据pom文件中指定的dependency中的三个关键配置（groupId-artifactId-version）</p>
+</li>
+<li><p>deploy安装构建到中央仓库</p>
+</li>
+<li>site生成网站</li>
+</ul>
+<p><code>mvn site</code></p>
+<p>将项目信息、依赖等生成网站</p>
+<h3 id="Maven使用掌握点"><a href="#Maven使用掌握点" class="headerlink" title="Maven使用掌握点"></a>Maven使用掌握点</h3><ul>
+<li>重点掌握IDEA创建Maven项目</li>
+<li>使用pom文件添加依赖</li>
+<li>会使用插件构建可执行jar包</li>
+</ul>
 
       
     </div>
@@ -340,13 +378,13 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/26/C-中的强制类型转换/">C++中的强制类型转换</a></p>
+        <p><span>本文标题:</span><a href="/2019/02/12/管理工具-Maven/">管理工具---Maven</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-07-26, 19:03:31</p>
-        <p><span>最后更新:</span>2018-12-26, 19:05:00</p>
+        <p><span>发布时间:</span>2019-02-12, 11:19:38</p>
+        <p><span>最后更新:</span>2019-02-13, 12:00:53</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/26/C-中的强制类型转换/" title="C++中的强制类型转换">http://www.bingoxin.top/2018/07/26/C-中的强制类型转换/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/07/26/C-中的强制类型转换/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/02/12/管理工具-Maven/" title="管理工具---Maven">http://www.bingoxin.top/2019/02/12/管理工具-Maven/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2019/02/12/管理工具-Maven/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -358,16 +396,10 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/07/26/禅道的安装/">
-                    禅道的安装
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/25/类与结构体/">
-                    类与结构体
+                <a href="/2019/01/04/聊天室项目/">
+                    聊天室项目
                 </a>
             </div>
         
@@ -379,7 +411,7 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">1.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式类型转换"><span class="toc-number">1.0.1.</span> <span class="toc-text">隐式类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显式类型转换"><span class="toc-number">1.0.2.</span> <span class="toc-text">显式类型转换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-cast"><span class="toc-number">1.1.</span> <span class="toc-text">static_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reinterepret-cast"><span class="toc-number">1.2.</span> <span class="toc-text">reinterepret_cast</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准化项目结构"><span class="toc-number">1.</span> <span class="toc-text">标准化项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven项目的构建"><span class="toc-number">2.</span> <span class="toc-text">Maven项目的构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven中的三个关键配置"><span class="toc-number">3.</span> <span class="toc-text">Maven中的三个关键配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pom-xml中的关键配置"><span class="toc-number">4.</span> <span class="toc-text">pom.xml中的关键配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven中添加依赖"><span class="toc-number">5.</span> <span class="toc-text">Maven中添加依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven生命周期"><span class="toc-number">6.</span> <span class="toc-text">Maven生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven使用掌握点"><span class="toc-number">7.</span> <span class="toc-text">Maven使用掌握点</span></a></li></ol>
         
     </div>
     <style>
@@ -415,7 +447,7 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"C++中的强制类型转换　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"管理工具---Maven　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -452,15 +484,13 @@ p = reinterpret_cast&lt;char*&gt;(&amp;a);
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/26/禅道的安装/" title="上一篇: 禅道的安装">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/25/类与结构体/" title="下一篇: 类与结构体">
+            <a href="/2019/01/04/聊天室项目/" title="下一篇: 聊天室项目">
                 <i class="fa fa-angle-right"></i>
             </a>
         
