@@ -267,6 +267,126 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Java中的模块与包" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/29/Java中的模块与包/" class="article-date">
+      <time datetime="2018-10-29T12:21:15.000Z" itemprop="datePublished">2018-10-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/29/Java中的模块与包/">Java中的模块与包</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="包的定义与使用"><a href="#包的定义与使用" class="headerlink" title="包的定义与使用"></a>包的定义与使用</h3><p>包就是文件夹</p>
+<p>在源文件首行<code>package 包名称</code></p>
+<ul>
+<li>打包编译命令</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -d . Test.java</span><br></pre></td></tr></table></figure>
+<p>-d ：根据package定义的包名称创建生成目录</p>
+<p>.：在当前目录下生成</p>
+<ul>
+<li>执行命令</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java www.bit.java.Test</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自动打包 编译命令（将当前路径下所有源文件按照主类的使用情况自动编译）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -d . .<span class="comment">/*.java</span></span><br></pre></td></tr></table></figure>
+<h3 id="关键字default"><a href="#关键字default" class="headerlink" title="关键字default"></a>关键字default</h3><ul>
+<li>包访问权限</li>
+</ul>
+<p>定义：本包下的所有源文件可以互相调用属性与方法</p>
+<ul>
+<li>常用包</li>
+</ul>
+<p><strong>java.lang:</strong>系统常用基础类（Object、String(sb)、包装类）</p>
+<p>此包在JDK1.1之后自动导入</p>
+<p><strong>java.util:</strong>java提供的工具程序包，类集（ArrayList、HashMap）</p>
+<p><strong>java.util.concurrent</strong></p>
+<p>在JDK1.8中，接口中的方法用default修饰，方法可以有方法体</p>
+<h3 id="继承访问权限—protected"><a href="#继承访问权限—protected" class="headerlink" title="继承访问权限—protected"></a>继承访问权限—protected</h3><h3 id="异常体系"><a href="#异常体系" class="headerlink" title="异常体系"></a>异常体系</h3><p><strong>Error：</strong>描述Java运行时内部错误与资源耗尽错误。这种内部错误一旦出现，除了告知用户并使程序安全终止之外，再无能为力</p>
+<p><strong>Exception：</strong>（程序出错）</p>
+<p><strong>TOException：</strong>程序本身没有问题，由于IO处理导致的程序错误</p>
+<p><strong>RuntimeException：</strong>由于程序错误导致的</p>
+<p><strong>非受查异常：</strong>所有继承与Error或RuntimeException的异常类称为非受查异常（不需要强制处理）</p>
+<p><strong>受查异常：</strong>所有继承于Exception与IOException的类成为受查异常类（需要强制处理）</p>
+<ul>
+<li>异常处理格式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    code</span><br><span class="line">&#125;[<span class="keyword">catch</span>(异常类 对象)]&#123;</span><br><span class="line">    出异常的操作</span><br><span class="line">&#125;[<span class="keyword">finally</span>]&#123;</span><br><span class="line">    异常出口</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>常用异常格式</li>
+</ul>
+<p>try…catch…</p>
+<p>try…finally…</p>
+<p>try…catch…finally…</p>
+<p>无论是否产生异常，无论try、catch是否返回语句，最终都会执行finally块</p>
+<p><strong>打印错误堆栈</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e.printStackTrace();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>throws关键字</li>
+</ul>
+<p>在进行方法定义时，如果要明确告诉调用者本方法可能产生哪些异常，可以使用throws方法进行声明，表示将异常抛回给调用方。并且当方法出现问题后可以不进行处理</p>
+<ul>
+<li>throw关键字—用在方法中</li>
+</ul>
+<p>throw语句直接用在方法中，表示人为进行异常的抛出，一般与自定义的异常类搭配使用</p>
+<p>如果异常类对象不希望由JVM产生而通过用户产生，就可以使用throw语句来完成</p>
+<p>例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 1).定义一个MulException类继承Exception类，要求两数相乘等于100报错，在主类中定义一个方法，在方法中抛出此异常，在主方法观察结果。</span></span><br><span class="line"><span class="comment"> * 2).定义一个DivException类继承RuntimeException类，要求两数相除等于2报错，在主类中定义一个方法，在方法中抛出此异常，在主方法观察结果。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MulException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MulException</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DivException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DivException</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(str);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String []args)</span></span>&#123;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                test();</span><br><span class="line">            &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            test1();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//Exception是受查异常，必须强制处理</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span>(i*j == <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> MulException(<span class="string">"两数相乘等于100"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">		</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">int</span> x = <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">int</span> y = <span class="number">5</span>;</span><br><span class="line">            <span class="keyword">if</span>(x/y == <span class="number">2</span>)&#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> DivException(<span class="string">"两数相除不能等于2"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>启动断言需要使用-ea参数手工开启，默认不开启断言，属于Error</p>
+<p>欢迎交流~</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Java中的三大设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -891,78 +1011,6 @@
       
         <p class="article-more-link">
           <a href="/2018/09/06/Linux中的开发工具/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Linux中的权限" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/03/Linux中的权限/" class="article-date">
-      <time datetime="2018-09-03T11:59:51.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/Linux中的权限/">Linux中的权限</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="Linux下的用户"><a href="#Linux下的用户" class="headerlink" title="Linux下的用户"></a>Linux下的用户</h3><ul>
-<li>超级用户—#</li>
-</ul>
-<p>可以在Linux系统下做任何事情</p>
-<ul>
-<li>普通用户—$</li>
-</ul>
-<p>在Linux下做有限的事情</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/09/03/Linux中的权限/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>

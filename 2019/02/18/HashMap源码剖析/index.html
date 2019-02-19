@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="Object类是JDK默认提供的一个类。Java中除了Object类，所有的类都存在继承关系，默认会继承Object父类  toString()-取得对象信息  系统输出默认调用对象的toString方法 Object类中的toString方法只是简单输出当前引用的类名称以及对象地址 如果想在类中取得本类属性信息，需要覆写toString(); String类对该方法进行覆写，若String类调用">
+<meta name="description" content="今天就来好好剖析一下HashMap的源码吧~ 不说废话，直接上源码  先说一下参数  123456789 Node&amp;lt;K,V&amp;gt;[] table:真正储存键值对static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4;//初始化容量为16（桶的数量）static final int MAXIMUM_CAPACITY = 1 &amp;lt;&amp;">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java中的Object类">
-<meta property="og:url" content="http://www.bingoxin.top/2018/10/30/Java中的Object类/index.html">
+<meta property="og:title" content="HashMap源码剖析">
+<meta property="og:url" content="http://www.bingoxin.top/2019/02/18/HashMap源码剖析/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="Object类是JDK默认提供的一个类。Java中除了Object类，所有的类都存在继承关系，默认会继承Object父类  toString()-取得对象信息  系统输出默认调用对象的toString方法 Object类中的toString方法只是简单输出当前引用的类名称以及对象地址 如果想在类中取得本类属性信息，需要覆写toString(); String类对该方法进行覆写，若String类调用">
+<meta property="og:description" content="今天就来好好剖析一下HashMap的源码吧~ 不说废话，直接上源码  先说一下参数  123456789 Node&amp;lt;K,V&amp;gt;[] table:真正储存键值对static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4;//初始化容量为16（桶的数量）static final int MAXIMUM_CAPACITY = 1 &amp;lt;&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-31T12:23:17.853Z">
+<meta property="og:updated_time" content="2019-02-18T14:31:46.652Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java中的Object类">
-<meta name="twitter:description" content="Object类是JDK默认提供的一个类。Java中除了Object类，所有的类都存在继承关系，默认会继承Object父类  toString()-取得对象信息  系统输出默认调用对象的toString方法 Object类中的toString方法只是简单输出当前引用的类名称以及对象地址 如果想在类中取得本类属性信息，需要覆写toString(); String类对该方法进行覆写，若String类调用">
+<meta name="twitter:title" content="HashMap源码剖析">
+<meta name="twitter:description" content="今天就来好好剖析一下HashMap的源码吧~ 不说废话，直接上源码  先说一下参数  123456789 Node&amp;lt;K,V&amp;gt;[] table:真正储存键值对static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4;//初始化容量为16（桶的数量）static final int MAXIMUM_CAPACITY = 1 &amp;lt;&amp;">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Java中的Object类 | bingoxin&#39;s blog</title>
+<title>HashMap源码剖析 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-Java中的Object类" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HashMap源码剖析" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/10/30/Java中的Object类/" class="article-date">
-      <time datetime="2018-10-30T12:22:43.000Z" itemprop="datePublished">2018-10-30</time>
+      <a href="/2019/02/18/HashMap源码剖析/" class="article-date">
+      <time datetime="2019-02-18T07:58:55.000Z" itemprop="datePublished">2019-02-18</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java中的Object类
+      HashMap源码剖析
     </h1>
   
 
@@ -302,59 +302,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Object类是JDK默认提供的一个类。Java中除了Object类，所有的类都存在继承关系，默认会继承Object父类</p>
+        <p>今天就来好好剖析一下HashMap的源码吧~</p>
+<p>不说废话，直接上源码</p>
 <ul>
-<li>toString()-取得对象信息</li>
+<li>先说一下参数</li>
 </ul>
-<p>系统输出默认调用对象的toString方法</p>
-<p>Object类中的toString方法只是简单输出当前引用的类名称以及对象地址</p>
-<p>如果想在类中取得本类属性信息，需要覆写toString();</p>
-<p>String类对该方法进行覆写，若String类调用该方法会返回String类的内容</p>
-<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> Node&lt;K,V&gt;[] table:真正储存键值对</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>;<span class="comment">//初始化容量为16（桶的数量）</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;<span class="comment">//负载因子：0.75</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;<span class="comment">//树化门限值：8</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;<span class="comment">//解树化，返回链表的阈值：6</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>; <span class="comment">//树化的最少元素个数：64</span></span><br><span class="line"><span class="keyword">transient</span> Node&lt;K,V&gt;[] table;</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">float</span> loadFactor;<span class="comment">//负载因子</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>对象比较—equals</p>
-</li>
-<li><p>接受引用数据类型</p>
-</li>
+<li>HashMap的无参构造</li>
 </ul>
-<p>Object可以接受所有引用数据类型：数组、类、接口</p>
-<h3 id="包装类—使用Object接受一切数据"><a href="#包装类—使用Object接受一切数据" class="headerlink" title="包装类—使用Object接受一切数据"></a>包装类—使用Object接受一切数据</h3><ul>
-<li>概念</li>
-</ul>
-<p>包装类就是将基本数据类型封装到类中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR; <span class="comment">//初始化加载容量</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>由此可以看出HashMap也是懒加载策略</p>
 <ul>
-<li>包装类的分类</li>
+<li>HashMap的put方法</li>
 </ul>
-<p><strong>数值型包装类</strong>（Number的直接子类）：Byte、Double、Short、Long、Float、Integer</p>
-<p>会发生类型转换异常—&gt;NumberFormatException</p>
-<p><strong>对象型包装类</strong>（Object的直接子类）：Boolean、Character（char）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key,V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用<code>put()</code>实际上调用的是<code>putVal()</code>，那接下来就看一下<code>putVal()</code>方法,后面的<code>hash()</code>方法是用来求哈希值的，我们稍后再讲</p>
 <ul>
-<li>装箱与拆箱</li>
+<li><code>putVal()</code></li>
 </ul>
-<p><strong>装箱：</strong>将基本数据类型变为包装类对象。利用每个包装类提供的构造方法实现。</p>
-<p><strong>拆箱：</strong>将包装类中包装的基本数据类型取出。利用<code>xxValue()</code></p>
-<p>Integer num的值在-128~127范围内赋值，Integer对象在常量池产生，会复用已有对象，这个区间外的所有数据都在堆上产生，不会复用已有对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">10</span>;</span><br><span class="line">Integer i2 = <span class="number">10</span>;</span><br><span class="line">i1 == i2 <span class="comment">//true</span></span><br><span class="line">Integer i3 = <span class="number">200</span>;</span><br><span class="line">Integer i4 = <span class="number">200</span>;</span><br><span class="line">i3 == i4 <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>阿里编码规范</li>
-</ul>
-<p>a.强制要求所有POJO类（简单Java类，类中只有成员变量、构造方法、getter/setter方法）属性必须使用包装类</p>
-<p>b.强制RPC方法返回值和参数必须使用包装类</p>
-<p>c.推荐所有的局部变量使用基本类型</p>
-<ul>
-<li>包装类与字符串的转换</li>
-</ul>
-<p><strong>String变为基本数据类型</strong></p>
-<p>包装类.<code>parsexxx</code>(str)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer.parseInt(str);</span><br></pre></td></tr></table></figure>
-<p>将字符串转换为布尔类型时：true—&gt;true</p>
-<p>不是true—&gt;false</p>
-<p><strong>基本数据类型-&gt;String</strong></p>
-<p>a.””+基本数据类型</p>
-<p>b.String类提供的静态方法valueOf（基本类型），不产生垃圾空间</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = String.valueOf(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-<p>欢迎交流~</p>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hash: hash for key（求key的hash值）</span></span><br><span class="line"><span class="comment">//key: the key  </span></span><br><span class="line"><span class="comment">//value: the value to put</span></span><br><span class="line"><span class="comment">//onlyIfAbsent: if true, don't change existing value（）（如果参数为true，不改变）</span></span><br><span class="line"><span class="comment">//evict: if false, the table is in creation mode.（如果参数为false，表为初始化模式）</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,</span></span></span><br><span class="line"><span class="function"><span class="params">               <span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, i;</span><br><span class="line">    <span class="comment">//当table未初始化即  </span></span><br><span class="line">    <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">        n = (tab = resize()).length;</span><br><span class="line">    <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">        tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Node&lt;K,V&gt; e; K k;</span><br><span class="line">        <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">            ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            e = p;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                    <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                        treeifyBin(tab, hash);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                    ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                p = e;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">            V oldValue = e.value;</span><br><span class="line">            <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                e.value = value;</span><br><span class="line">            afterNodeAccess(e);</span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ++modCount;</span><br><span class="line">    <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">        resize();</span><br><span class="line">    afterNodeInsertion(evict);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -362,13 +329,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/10/30/Java中的Object类/">Java中的Object类</a></p>
+        <p><span>本文标题:</span><a href="/2019/02/18/HashMap源码剖析/">HashMap源码剖析</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-10-30, 20:22:43</p>
-        <p><span>最后更新:</span>2018-12-31, 20:23:17</p>
+        <p><span>发布时间:</span>2019-02-18, 15:58:55</p>
+        <p><span>最后更新:</span>2019-02-18, 22:31:46</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/10/30/Java中的Object类/" title="Java中的Object类">http://www.bingoxin.top/2018/10/30/Java中的Object类/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/10/30/Java中的Object类/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/02/18/HashMap源码剖析/" title="HashMap源码剖析">http://www.bingoxin.top/2019/02/18/HashMap源码剖析/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2019/02/18/HashMap源码剖析/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -380,16 +347,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/11/05/Java中的泛型/">
-                    Java中的泛型
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/10/29/Java中的模块与包/">
-                    Java中的模块与包
+                <a href="/2019/02/12/管理工具-Maven/">
+                    管理工具---Maven
                 </a>
             </div>
         
@@ -401,7 +362,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#包装类—使用Object接受一切数据"><span class="toc-number">1.</span> <span class="toc-text">包装类—使用Object接受一切数据</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -437,7 +398,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Java中的Object类　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"HashMap源码剖析　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -474,15 +435,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/11/05/Java中的泛型/" title="上一篇: Java中的泛型">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/10/29/Java中的模块与包/" title="下一篇: Java中的模块与包">
+            <a href="/2019/02/12/管理工具-Maven/" title="下一篇: 管理工具---Maven">
                 <i class="fa fa-angle-right"></i>
             </a>
         
