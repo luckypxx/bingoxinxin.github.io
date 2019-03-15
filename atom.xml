@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.bingoxin.top/"/>
-  <updated>2019-03-02T10:35:39.872Z</updated>
+  <updated>2019-03-15T04:00:56.252Z</updated>
   <id>http://www.bingoxin.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GoLand安装</title>
+    <link href="http://www.bingoxin.top/2019/03/15/GoLand%E5%AE%89%E8%A3%85/"/>
+    <id>http://www.bingoxin.top/2019/03/15/GoLand安装/</id>
+    <published>2019-03-15T03:25:39.000Z</published>
+    <updated>2019-03-15T04:00:56.252Z</updated>
+    
+    <content type="html"><![CDATA[<p>从昨天下午开始安装，直到现在才弄好</p><p>搭建Go语言环境的方式有很多，可以在IDEA中安装GO插件，或者安装GoLand等等，接下来我会将两种安装方式做一个简单的叙述。</p><p>因为之前一直在尝试，所以在安装过程中也没有截图，还望见谅。</p><p>接下来我尽量在阐述时将画面描绘出来。</p><a id="more"></a><ul><li>首先安装Go</li></ul><p>windows、Linux、mac上就支持Go，下载链接在<a href="https://link.jianshu.com/?t=https%3A%2F%2Fgolang.org%2Fdl%2F" target="_blank" rel="noopener">https://golang.org/dl/</a></p><p>windows系统最好下载.msi文件，这样直接双击一路next就可以了</p><ul><li>在官网下载Goland</li></ul><p>登录JetBrains官网，<a href="https://www.jetbrains.com/，点击上面的" target="_blank" rel="noopener">https://www.jetbrains.com/，点击上面的</a> Tools，选择GoLand下载GoLand安装程序。</p><ul><li>安装GoLand</li></ul><p>双击在官网下载的.exe文件，选择安装路径，基本上也是点next，中间会配置软件是32位还是64位</p><p>设置Create Associations，在.go前面打勾</p><ul><li>配置激活文件</li></ul><p>这也是我在百度找到的</p><p>链接: <a href="https://pan.baidu.com/s/19twh6bNolaQcGFSmovZBVQ" target="_blank" rel="noopener">https://pan.baidu.com/s/19twh6bNolaQcGFSmovZBVQ</a><br>提取码: j6dv</p><p>下载后，解压</p><p>再找到GoLand安装的bin目录，我的是C:\Program Files\JetBrains\GoLand\bin，将激活文件复制并替换到GoLand的bin目录</p><ul><li>激活码</li></ul><p>有三种方式，这个就看自己了</p><ul><li>配置GOROOT和GOPATH</li></ul><p>打开GoLand，找到file-&gt;settings-&gt;GO-&gt;GOROOT或GOPATH</p><p>GOROOT会自动搜索我们之前现在的GO</p><p>GOPATH添加代码存放路径即可</p><p>不知道教程会不会对你有所帮助，有疑问欢迎指出~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从昨天下午开始安装，直到现在才弄好&lt;/p&gt;
+&lt;p&gt;搭建Go语言环境的方式有很多，可以在IDEA中安装GO插件，或者安装GoLand等等，接下来我会将两种安装方式做一个简单的叙述。&lt;/p&gt;
+&lt;p&gt;因为之前一直在尝试，所以在安装过程中也没有截图，还望见谅。&lt;/p&gt;
+&lt;p&gt;接下来我尽量在阐述时将画面描绘出来。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="GO之旅" scheme="http://www.bingoxin.top/tags/GO%E4%B9%8B%E6%97%85/"/>
+    
+  </entry>
   
   <entry>
     <title>千变万化的菲波那契数列</title>
@@ -43,9 +66,17 @@
     <link href="http://www.bingoxin.top/2019/02/20/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95/"/>
     <id>http://www.bingoxin.top/2019/02/20/八大排序方法/</id>
     <published>2019-02-20T04:33:43.000Z</published>
-    <updated>2019-02-20T05:09:12.632Z</updated>
+    <updated>2019-03-08T02:42:31.243Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>插入排序其实就是从指定下标的元素开始，判断前面的元素是否比指定下标元素大</p><p>—&gt;若前面的元素比指定下标元素大—&gt;从指定下标前一个元素开始向前找，知道找到比他小的元素或者到下标为0 的位置，吧中间遍历的元素向后搬移一个单位。再将指定下标的元素放到比其小的元素之后的位置</p><p>—&gt;若前面的元素比指定元素小，将指定元素改为指定元素的下一个下标位置的元素</p><p>代码实现如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] insertionSort(<span class="keyword">int</span>[] array) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = array.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; len;++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> index = array[i];</span><br><span class="line">            <span class="keyword">if</span>(index &lt; array[i - <span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span>(;j &gt;= <span class="number">0</span> &amp;&amp; array[j] &gt; index;--j)&#123;</span><br><span class="line">                    array[j + <span class="number">1</span>] = array[j];</span><br><span class="line">                &#125;</span><br><span class="line">                array[j + <span class="number">1</span>] = index;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;插入排序&quot;&gt;&lt;a href=&quot;#插入排序&quot; class=&quot;headerlink&quot; title=&quot;插入排序&quot;&gt;&lt;/a&gt;插入排序&lt;/h3&gt;&lt;p&gt;插入排序其实就是从指定下标的元素开始，判断前面的元素是否比指定下标元素大&lt;/p&gt;
+&lt;p&gt;—&amp;gt;若前面的元素比指定下标元素
+      
     
     </summary>
     
@@ -330,9 +361,9 @@
     <link href="http://www.bingoxin.top/2018/12/02/Java%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%B0%84/"/>
     <id>http://www.bingoxin.top/2018/12/02/Java中的反射/</id>
     <published>2018-12-02T12:40:53.000Z</published>
-    <updated>2019-01-06T12:41:20.948Z</updated>
+    <updated>2019-03-05T13:57:05.267Z</updated>
     
-    <content type="html"><![CDATA[<p>反射指的是对象的反向处理，根据对象倒推类的组成</p><h3 id="反射的核心类—class类"><a href="#反射的核心类—class类" class="headerlink" title="反射的核心类—class类"></a>反射的核心类—class类</h3><p>反射的核心类是专门描述其他类的组成</p><p>Object类中取得对象的class对象，class对象是用来描述接口与类的组成的，由JVM在第一次加载类时产生，并且全局唯一。</p><a id="more"></a><h4 id="取得任意类Class对象方法"><a href="#取得任意类Class对象方法" class="headerlink" title="取得任意类Class对象方法"></a>取得任意类Class对象方法</h4><ul><li><code>调用对象.getClass()</code>取得Class对象</li><li><code>类名称.class</code>取得Class对象</li><li><code>Class.forName(类全称-&gt;包名.类名)</code>取得类对象</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过反射实例化类对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">newInstance</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure><h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><ul><li>类加载的定义</li></ul><p>通过一个类的全名称来获取此类的二进制字节流</p><ul><li>类加载器</li></ul><p>实现类加载功能的代码模块</p><h3 id="JDK内置的三大类加载器"><a href="#JDK内置的三大类加载器" class="headerlink" title="JDK内置的三大类加载器"></a>JDK内置的三大类加载器</h3><ul><li>启动类加载器—BootStrap</li></ul><p>1.使用C++语言实现，是JVM自身的一部分，独立于JVM外部，并且无法被Java程序直接引用</p><p>2.负责将存放于JAVA_HOME\lib目录下的能被JVM识别的所有类库加载到JVM中</p><p>例如：rt.jar是Java的基础类库</p><ul><li>扩展类加载器—ExtClassLoader</li></ul><p>1.使用Java语言实现，可以被Java程序直接引用</p><p>2.负责将存放于JAVA_HOME\lib\ext(xml文件解析类、界面框架类)目录下的所有能被JVM识别的类库</p><ul><li>应用程序类加载器—AppClassLoader</li></ul><p>1.使用Java程序实现，如果用户没有自定义类加载器，则APPClassLoader就是程序中默认的类加载器</p><p>2.负责加载用户classPath指定的类库</p><h3 id="类加载器的双亲委派模型"><a href="#类加载器的双亲委派模型" class="headerlink" title="类加载器的双亲委派模型"></a>类加载器的双亲委派模型</h3><ul><li>定义</li></ul><p>四种类加载器的层次关系称为类加载器双亲委派模型</p><ul><li>工作流程</li></ul><p>如果一个类加载器收到了类加载的请求，首先不会自己尝试自己加载此类，而是将类加载器请求委托给父类加载器完成，每一层的类加载器都是如此。只有当父加载器无法加载此类时，子加载器才会尝试自己去加载。</p><ul><li>存在意义</li></ul><p>双亲委派模型对于保证Java程序的稳定运行十分重要。</p><p>例如：Java.lang.Object，它存放在rt.jar中，由于双亲委派模型的存在，无论哪一类类加载器要加载此类，最终都是委派给处于顶端的启动类加载器进行加载的。因此，Object类在程序的各种类加载器环境中都是同一个类。</p><p><strong>比较两个类是否相同的前提条件：</strong>这两个类是由同一个类加载器加载的。</p><p>否则即使两个类来源同一个Class文件，被同一个JVM加载，只有加载这两个类的类加载器不是同一个，这两个类就不说同一个类</p><h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p>代理类不再实现某一具体接口，而要实现InvocationHandler接口</p>]]></content>
+    <content type="html"><![CDATA[<p>反射指的是对象的反向处理，根据对象倒推类的组成</p><h3 id="反射的核心类—class类"><a href="#反射的核心类—class类" class="headerlink" title="反射的核心类—class类"></a>反射的核心类—class类</h3><p>反射的核心类是专门描述其他类的组成</p><p>Object类中取得对象的class对象，class对象是用来描述接口与类的组成的，由JVM在第一次加载类时产生，并且全局唯一。</p><a id="more"></a><h4 id="取得任意类Class对象方法"><a href="#取得任意类Class对象方法" class="headerlink" title="取得任意类Class对象方法"></a>取得任意类Class对象方法</h4><ul><li><code>调用对象.getClass()</code>取得Class对象</li><li><code>类名称.class</code>取得Class对象</li><li><code>Class.forName(类全称-&gt;包名.类名)</code>取得类对象</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过反射实例化类对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">newInstance</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure><h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><ul><li>类加载的定义                       </li></ul><p>通过一个类的全名称来获取此类的二进制字节流</p><ul><li>类加载器</li></ul><p>实现类加载功能的代码模块</p><h3 id="JDK内置的三大类加载器"><a href="#JDK内置的三大类加载器" class="headerlink" title="JDK内置的三大类加载器"></a>JDK内置的三大类加载器</h3><ul><li>启动类加载器—BootStrap</li></ul><p>1.使用C++语言实现，是JVM自身的一部分，独立于JVM外部，并且无法被Java程序直接引用</p><p>2.负责将存放于JAVA_HOME\lib目录下的能被JVM识别的所有类库加载到JVM中</p><p>例如：rt.jar是Java的基础类库</p><ul><li>扩展类加载器—ExtClassLoader</li></ul><p>1.使用Java语言实现，可以被Java程序直接引用</p><p>2.负责将存放于JAVA_HOME\lib\ext(xml文件解析类、界面框架类)目录下的所有能被JVM识别的类库</p><ul><li>应用程序类加载器—AppClassLoader</li></ul><p>1.使用Java程序实现，如果用户没有自定义类加载器，则APPClassLoader就是程序中默认的类加载器</p><p>2.负责加载用户classPath指定的类库</p><h3 id="类加载器的双亲委派模型"><a href="#类加载器的双亲委派模型" class="headerlink" title="类加载器的双亲委派模型"></a>类加载器的双亲委派模型</h3><ul><li>定义</li></ul><p>四种类加载器的层次关系称为类加载器双亲委派模型</p><ul><li>工作流程</li></ul><p>如果一个类加载器收到了类加载的请求，首先不会自己尝试自己加载此类，而是将类加载器请求委托给父类加载器完成，每一层的类加载器都是如此。只有当父加载器无法加载此类时，子加载器才会尝试自己去加载。</p><ul><li>存在意义</li></ul><p>双亲委派模型对于保证Java程序的稳定运行十分重要。</p><p>例如：Java.lang.Object，它存放在rt.jar中，由于双亲委派模型的存在，无论哪一类类加载器要加载此类，最终都是委派给处于顶端的启动类加载器进行加载的。因此，Object类在程序的各种类加载器环境中都是同一个类。</p><p><strong>比较两个类是否相同的前提条件：</strong>这两个类是由同一个类加载器加载的。</p><p>否则即使两个类来源同一个Class文件，被同一个JVM加载，只有加载这两个类的类加载器不是同一个，这两个类就不说同一个类</p><h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p>代理类不再实现某一具体接口，而要实现InvocationHandler接口</p>]]></content>
     
     <summary type="html">
     
@@ -462,35 +493,6 @@
 &lt;li&gt;线程概念&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;进程中的一个任务，一个进程中包含N个线程&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="http://www.bingoxin.top/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaSE新特性</title>
-    <link href="http://www.bingoxin.top/2018/11/05/JavaSE%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    <id>http://www.bingoxin.top/2018/11/05/JavaSE新特性/</id>
-    <published>2018-11-05T12:25:43.000Z</published>
-    <updated>2019-01-06T12:27:10.689Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>定义一个表示基本颜色的类—多例模式</p><ul><li>语法</li></ul><p>枚举使用enum关键字定义枚举，枚举就是一种多例模式</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color&#123;</span><br><span class="line">    RED,BLUE,GREEN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>Enum类</li></ul><p>JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类</p><a id="more"></a><p><strong>属性：</strong></p><p>取得枚举名字</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">name</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><p>取得枚举编号</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">ordinal</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><p>取得所有枚举对象:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">枚举类.values():Enum[]</span><br></pre></td></tr></table></figure><h4 id="enum与Enum的区别"><a href="#enum与Enum的区别" class="headerlink" title="enum与Enum的区别"></a>enum与Enum的区别</h4><p>enum是一个关键字，使用enum定义的枚举类本质上就相对于一个类继承了Enum这个抽象类</p><h4 id="枚举中定义其他结构"><a href="#枚举中定义其他结构" class="headerlink" title="枚举中定义其他结构"></a>枚举中定义其他结构</h4><ul><li>普通属性</li><li>普通方法</li><li>内部类</li><li>实现接口：此时枚举中的每个对象都成为了接口对象</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IColor</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">color</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">enum</span> Color implements IColor&#123;</span><br><span class="line">    RED,BLUE,GREEN;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.title;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><font color="red"><strong>枚举对象必须放在首行声明</strong></font><h3 id="注解—Annotation"><a href="#注解—Annotation" class="headerlink" title="注解—Annotation"></a>注解—Annotation</h3><ul><li>JDK提供的三大内置注解</li></ul><p><strong>声明覆写---@Override</strong></p><p>检查当前类中的覆写方法与父类定义的同名方法是否相同，如果有任何一个地方不同，编译报错</p><p><strong>声明过期处理---@Deprecated</strong></p><p>原有类或者方法在旧版本没有问题，但是在新版本不推荐使用，可以加上该关键字注解，明确表示不建议用户使用此类</p><p><strong>@SuppressWarnings</strong></p><p>当调用某些操作可能产生问题时，就会出现警告信息，警告信息并不是Exception</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"unused"</span>&#125;)</span><br></pre></td></tr></table></figure><h3 id="JDK1-8新特性"><a href="#JDK1-8新特性" class="headerlink" title="JDK1.8新特性"></a>JDK1.8新特性</h3><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul><li>可以使用default来定义普通方法，需要通过对象来调用</li><li>可以使用static来定义静态方法，通过接口来调用</li></ul><h4 id="lambda表达式—函数式编程"><a href="#lambda表达式—函数式编程" class="headerlink" title="lambda表达式—函数式编程"></a>lambda表达式—函数式编程</h4><p>要想使用函数式编程有一个前提：接口必须只有一个方法。</p><p>如果接口中存在两个以上的方法，无法使用函数式编程语法。</p><p>如果现在某个接口就是为了函数式编程而生，@FunctionalInterface定义在接口上，检查此接口是否只存在一个方法。</p><ul><li>lambda表达式语法</li></ul><p>单行无返回值、单行有返回值:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">()-&gt;...方法代码;</span><br></pre></td></tr></table></figure><p>多行有返回值：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">()-&gt;&#123;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> 返回值语句;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>欢迎交流~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;枚举&quot;&gt;&lt;a href=&quot;#枚举&quot; class=&quot;headerlink&quot; title=&quot;枚举&quot;&gt;&lt;/a&gt;枚举&lt;/h3&gt;&lt;p&gt;定义一个表示基本颜色的类—多例模式&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;语法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;枚举使用enum关键字定义枚举，枚举就是一种多例模式&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;enum&lt;/span&gt; Color&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    RED,BLUE,GREEN;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;Enum类&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类&lt;/p&gt;
     
     </summary>
     

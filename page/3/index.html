@@ -194,7 +194,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GO之旅/">GO之旅</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题分析/">面试题分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
                     </div>
                 </section>
                 
@@ -266,6 +266,80 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-JavaSE新特性" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/05/JavaSE新特性/" class="article-date">
+      <time datetime="2018-11-05T12:25:43.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/05/JavaSE新特性/">JavaSE新特性</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>定义一个表示基本颜色的类—多例模式</p>
+<ul>
+<li>语法</li>
+</ul>
+<p>枚举使用enum关键字定义枚举，枚举就是一种多例模式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Color&#123;</span><br><span class="line">    RED,BLUE,GREEN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Enum类</li>
+</ul>
+<p>JDK1.5新增的enum枚举结构并不是新的结构，使用enum定义的枚举本质上是一个类，默认继承java.lang.Enum父类</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/11/05/JavaSE新特性/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Java中的泛型" class="article article-type-post" itemscope="" itemprop="blogPost">
   
@@ -951,82 +1025,6 @@
       
         <p class="article-more-link">
           <a href="/2018/10/09/求1-2-3-n/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-初识Java" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/20/初识Java/" class="article-date">
-      <time datetime="2018-09-20T12:06:27.000Z" itemprop="datePublished">2018-09-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/初识Java/">初识Java</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>首先说一下Java的源文件</p>
-<p>Java源文件的格式是：文件名.java，以此来保存原始java代码</p>
-<p>Java是一种半解释半编译语言</p>
-<p><strong>编译过程：</strong></p>
-<p>输入命令javac 要编译的源文件，生成.class 文件（二进制文件），来给JVM阅读的，启动JVM小虚拟机</p>
-<p>若源文件中有汉字，编译命令需使用：</p>
-<pre><code>javac -encoding UTF-8 文件名.java
-</code></pre><p><strong>解释过程：</strong></p>
-<p>输入命令：java 主类名</p>
-<p>若要给主类中默认参数赋值，在解释过程中使用</p>
-<pre><code>java 主类名 参数1 参数2 ... 
-</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/09/20/初识Java/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
