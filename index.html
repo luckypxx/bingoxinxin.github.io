@@ -267,6 +267,161 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Java虚拟机中方法调用的执行" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/10/Java虚拟机中方法调用的执行/" class="article-date">
+      <time datetime="2019-05-10T02:41:19.000Z" itemprop="datePublished">2019-05-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/10/Java虚拟机中方法调用的执行/">Java虚拟机中方法调用的执行</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="虚拟机中方法重载的实现"><a href="#虚拟机中方法重载的实现" class="headerlink" title="虚拟机中方法重载的实现"></a>虚拟机中方法重载的实现</h3><ul>
+<li>方法重载的概念</li>
+</ul>
+<p>在同一个类中定义名字相同，参数类型必须不同的方法。</p>
+<ul>
+<li>编译器选取重载方法的过程</li>
+</ul>
+<p>1.不考虑对基本数据类型自动拆装箱及可变参数</p>
+<p>2.允许自动拆装箱，但不允许可变参数列表</p>
+<p>3.允许自动拆装箱和可变参数列表</p>
+<p>若Java编译器在同一阶段中找到了多个适配的方法，则其会根据形式参数类型的继承关系进行选择（即优先选择子类方法）</p>
+<h3 id="JVM的静态绑定和动态绑定"><a href="#JVM的静态绑定和动态绑定" class="headerlink" title="JVM的静态绑定和动态绑定"></a>JVM的静态绑定和动态绑定</h3><p>所谓静态绑定和动态绑定其实对于的就是动态多态和静态多态</p>
+<ul>
+<li>Java虚拟机识别方法的方式</li>
+</ul>
+<p>Java虚拟机识别方法的关键在于类名、方法名、以及方法描述符（参数类型和返回值类型）</p>
+<ul>
+<li>Java虚拟机中重写的判定</li>
+</ul>
+<p>如果子类定义了与父类中非私有、非静态方法同名的方法，两个方法的参数类型以及返回值类型一致</p>
+<h3 id="调用指令的符号引用"><a href="#调用指令的符号引用" class="headerlink" title="调用指令的符号引用"></a>调用指令的符号引用</h3><p>在编译过程中，Java编译器会暂时用符合引用来表示该目标方法，符号引用储存在class文件的常量池之中</p>
+<p>对于非接口符号引用，假定该符号引用所指向的类为 C，则 Java 虚拟机会按照如下步骤进行查找。</p>
+<ol>
+<li>在 C 中查找符合名字及描述符的方法。</li>
+<li>如果没有找到，在 C 的父类中继续搜索，直至 Object 类。</li>
+<li>如果没有找到，在 C 所直接实现或间接实现的接口中搜索，这一步搜索得到的目标方法必须是非私有、非静态的。并且，如果目标方法在间接实现的接口中，则需满足 C 与该接口之间没有其他符合条件的目标方法。如果有多个符合条件的目标方法，则任意返回其中一个。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java虚拟机类加载" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/10/Java虚拟机类加载/" class="article-date">
+      <time datetime="2019-05-10T02:39:58.000Z" itemprop="datePublished">2019-05-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/10/Java虚拟机类加载/">Java虚拟机类加载</a>
+    </h1>
+  
+
+              
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>Java虚拟机的类加载，实际上就是讲class文件转换为内存中的类</p>
+<p>Java中语言的类型可以分为两大类：基本数据类型和引用类型</p>
+<p>引用类型共有四种：类、接口、数组类、泛型参数，泛型参数会在编译过程中被擦除，数组类是由Java虚拟机直接生成的，另外两种则有对应的字节流</p>
+<p>在该转换过程中，共有三步：加载、链接、初始化</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2019/05/10/Java虚拟机类加载/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-GoLand安装" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -825,143 +980,6 @@
       
         <p class="article-more-link">
           <a href="/2019/01/03/Java中的深浅拷贝/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-网络基础概念理解" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/25/网络基础概念理解/" class="article-date">
-      <time datetime="2018-12-25T09:20:25.000Z" itemprop="datePublished">2018-12-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/25/网络基础概念理解/">网络基础概念理解</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>总是听到身边的人说局域网，那么局域网到底是什么呢？</p>
-<p>如何将一个数据发送到另一台主机呢？</p>
-<p>操作系统是如何知道网卡中有数据发来呢？</p>
-<p>请接下这篇博客
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统和网络/">操作系统和网络</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/12/25/网络基础概念理解/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-java中的抽象类与接口" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/24/java中的抽象类与接口/" class="article-date">
-      <time datetime="2018-12-24T12:13:33.000Z" itemprop="datePublished">2018-12-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/24/java中的抽象类与接口/">Java中的抽象类与接口</a>
-    </h1>
-  
-
-              
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="抽象类的定义"><a href="#抽象类的定义" class="headerlink" title="抽象类的定义"></a>抽象类的定义</h3><p>抽象类只是比普通类多了一些抽象方法</p>
-<ul>
-<li>抽象方法</li>
-</ul>
-<p>只声明而未实现的方法（没有方法体），抽象方法必须使用abstract关键字类定义。并且抽象方法所在的类也一定要使用abstract来定义</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/12/24/java中的抽象类与接口/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>

@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="接口的定义及使用 接口优先原则  在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口  接口的概念  接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口">
-<meta name="keywords" content="Java">
+<meta name="description" content="Java虚拟机的类加载，实际上就是讲class文件转换为内存中的类 Java中语言的类型可以分为两大类：基本数据类型和引用类型 引用类型共有四种：类、接口、数组类、泛型参数，泛型参数会在编译过程中被擦除，数组类是由Java虚拟机直接生成的，另外两种则有对应的字节流 在该转换过程中，共有三步：加载、链接、初始化">
+<meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java中接口定义与应用">
-<meta property="og:url" content="http://www.bingoxin.top/2018/10/24/Java中接口定义与应用/index.html">
+<meta property="og:title" content="Java虚拟机类加载">
+<meta property="og:url" content="http://www.bingoxin.top/2019/05/10/Java虚拟机类加载/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="接口的定义及使用 接口优先原则  在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口  接口的概念  接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口">
+<meta property="og:description" content="Java虚拟机的类加载，实际上就是讲class文件转换为内存中的类 Java中语言的类型可以分为两大类：基本数据类型和引用类型 引用类型共有四种：类、接口、数组类、泛型参数，泛型参数会在编译过程中被擦除，数组类是由Java虚拟机直接生成的，另外两种则有对应的字节流 在该转换过程中，共有三步：加载、链接、初始化">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-24T12:15:42.589Z">
+<meta property="og:updated_time" content="2019-05-10T02:43:39.917Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java中接口定义与应用">
-<meta name="twitter:description" content="接口的定义及使用 接口优先原则  在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口  接口的概念  接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口">
+<meta name="twitter:title" content="Java虚拟机类加载">
+<meta name="twitter:description" content="Java虚拟机的类加载，实际上就是讲class文件转换为内存中的类 Java中语言的类型可以分为两大类：基本数据类型和引用类型 引用类型共有四种：类、接口、数组类、泛型参数，泛型参数会在编译过程中被擦除，数组类是由Java虚拟机直接生成的，另外两种则有对应的字节流 在该转换过程中，共有三步：加载、链接、初始化">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Java中接口定义与应用 | bingoxin&#39;s blog</title>
+<title>Java虚拟机类加载 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-Java中接口定义与应用" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java虚拟机类加载" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/10/24/Java中接口定义与应用/" class="article-date">
-      <time datetime="2018-10-24T12:15:13.000Z" itemprop="datePublished">2018-10-24</time>
+      <a href="/2019/05/10/Java虚拟机类加载/" class="article-date">
+      <time datetime="2019-05-10T02:39:58.000Z" itemprop="datePublished">2019-05-10</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java中接口定义与应用
+      Java虚拟机类加载
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,56 +302,74 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="接口的定义及使用"><a href="#接口的定义及使用" class="headerlink" title="接口的定义及使用"></a>接口的定义及使用</h3><ul>
-<li>接口优先原则</li>
-</ul>
-<p>在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口</p>
-<ul>
-<li>接口的概念</li>
-</ul>
-<p>接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口</p>
+        <p>Java虚拟机的类加载，实际上就是讲class文件转换为内存中的类</p>
+<p>Java中语言的类型可以分为两大类：基本数据类型和引用类型</p>
+<p>引用类型共有四种：类、接口、数组类、泛型参数，泛型参数会在编译过程中被擦除，数组类是由Java虚拟机直接生成的，另外两种则有对应的字节流</p>
+<p>在该转换过程中，共有三步：加载、链接、初始化</p>
 <a id="more"></a>
-<ul>
-<li>接口命名规则</li>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><ul>
+<li>概念</li>
 </ul>
-<p>使用I开头</p>
+<p>加载是指查找字节流，并且根据字节流来创建类的过程。</p>
+<p>数组类并没有对应的字节流，而是由Java虚拟机直接生成的，其他类Java虚拟机则需要借助类加载器来完成查找字节流的过程</p>
 <ul>
-<li>接口的继承</li>
+<li>类加载器的种类</li>
 </ul>
-<p>子类要想使用接口，<code>implements</code>实现接口，一个子类可以同时实现多个父接口（避免单继承局限）</p>
+<p><strong>启动类加载器</strong></p>
+<p>1.使用C++语言实现，是JVM自身的一部分，独立于JVM外部，并且无法被Java程序直接引用</p>
+<p>2.负责将存放于JAVA_HOME\lib目录下的能被JVM识别的所有类库加载到JVM中</p>
+<p><strong>扩展类加载器</strong></p>
+<p>扩展类加载器加载相对次要，但又通用的类</p>
+<p>1.使用Java语言实现，可以被Java程序直接引用</p>
+<p>2.负责将存放于JAVA_HOME\lib\ext(xml文件解析类、界面框架类)目录下的所有能被JVM识别的类库</p>
+<p><strong>应用类加载器</strong></p>
+<p>1.使用Java程序实现，如果用户没有自定义类加载器，则APPClassLoader就是程序中默认的类加载器</p>
+<p>2.负责加载用户classPath（应用程序路径下的）指定的类库</p>
 <ul>
-<li>子类命名规范</li>
+<li>双亲委派模型</li>
 </ul>
-<p>接口名为IMyInterFace，子类实现此接口命名为MyInterFaceImpl</p>
-<p>父接口间的相互转换：前提是两个父接口拥有共同的实现子类</p>
+<p>如果一个类加载器收到了类加载的请求，首先不会自己尝试自己加载此类，而是将类加载器请求委托给父类加载器完成，每一层的类加载器都是如此。只有当父加载器无法加载此类时，子加载器才会尝试自己去加载。</p>
+<p><strong>比较两个类是否相同的前提条件：</strong>这两个类是由同一个类加载器加载的。</p>
+<p>否则即使两个类来源同一个Class文件，被同一个JVM加载，只有加载这两个类的类加载器不是同一个，这两个类就不说同一个类</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><ul>
+<li>概念</li>
+</ul>
+<p>将创建成的类合并至Java虚拟机中，使之能够执行的过程</p>
+<p>链接中共有三个阶段：验证、准备、解析</p>
 <ul>
-<li>接口使用限制</li>
+<li>验证</li>
 </ul>
-<p>接口中只允许public权限（不管是方法还是常量，即便不写修饰权限也是public）</p>
+<p>确保被加载的类能够满足Java虚拟机约束条件</p>
 <ul>
-<li>阿里编码规约</li>
+<li>准备</li>
 </ul>
-<p>接口中不要出现任何修饰符号，public也不要加</p>
+<p>为被加载类的静态字段分配内存</p>
 <ul>
-<li>子类接口与继承</li>
+<li>解析</li>
 </ul>
-<p>当子类既需要接口又需要继承抽象类时，请先使用extends继承一个抽象类，而后使用implements实现多个接口</p>
+<p>将符号引用解析为实际引用</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
+<li>概念</li>
+</ul>
+<p>初始化也就是为标记为常量值的字段赋值，以及执行<code>&lt;clinit&gt;</code>方法的过程。</p>
+<p>看完这句话，你可能是一头雾水，有很多问题，比如什么是<code>&lt;clinit&gt;</code>方法？什么是被标记为常量值的字段呢？</p>
+<p><strong>标记为常量的静态字段</strong></p>
+<p>直接赋值的静态字段被final所修饰，并且其类型是基本类型或者字符串，则会被Java编译器直接标记成常量值，其初始化直接由Java虚拟机来完成</p>
+<p><strong><code>clinit</code>方法的由来</strong></p>
+<p>除了上述数据类型之外的数据进行直接赋值操作，以及所有静态代码块中的代码，则会被Java编译器置于同一方法中，并将其命名为<code>clinit</code></p>
 <ul>
-<li>抽象类与接口</li>
+<li>类的初始化触发条件</li>
 </ul>
-<p>一个抽象类可以使用implements实现多个接口，接口不能继承抽象类</p>
-<ul>
-<li>接口的继承</li>
-</ul>
-<p>一个抽象类可以使用implements实现多个接口，接口不能继承抽象类</p>
-<ul>
-<li>接口的应用</li>
-</ul>
-<blockquote>
-<p>a.定义操作标准</p>
-<p>b.表示能力</p>
-<p>c.分布式开发之中暴露远程服务方法</p>
-</blockquote>
+<ol>
+<li>当虚拟机启动时，初始化用户指定的主类；</li>
+<li>当遇到用以新建目标类实例的 new 指令时，初始化 new 指令的目标类；</li>
+<li>当遇到调用静态方法的指令时，初始化该静态方法所在的类；</li>
+<li>当遇到访问静态字段的指令时，初始化该静态字段所在的类；</li>
+<li>子类的初始化会触发父类的初始化；</li>
+<li>如果一个接口定义了 default 方法，那么直接实现或者间接实现该接口的类的初始化，会触发该接口的初始化；</li>
+<li>使用反射 API 对某个类进行反射调用时，初始化这个类；</li>
+<li>当初次调用 MethodHandle 实例时，初始化该 MethodHandle 指向的方法所在的类。</li>
+</ol>
 
       
     </div>
@@ -360,13 +378,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/10/24/Java中接口定义与应用/">Java中接口定义与应用</a></p>
+        <p><span>本文标题:</span><a href="/2019/05/10/Java虚拟机类加载/">Java虚拟机类加载</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-10-24, 20:15:13</p>
-        <p><span>最后更新:</span>2018-12-24, 20:15:42</p>
+        <p><span>发布时间:</span>2019-05-10, 10:39:58</p>
+        <p><span>最后更新:</span>2019-05-10, 10:43:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/10/24/Java中接口定义与应用/" title="Java中接口定义与应用">http://www.bingoxin.top/2018/10/24/Java中接口定义与应用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/10/24/Java中接口定义与应用/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/05/10/Java虚拟机类加载/" title="Java虚拟机类加载">http://www.bingoxin.top/2019/05/10/Java虚拟机类加载/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2019/05/10/Java虚拟机类加载/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -379,15 +397,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/10/27/Java中的String类/">
-                    Java中的String类
+                <a href="/2019/05/10/Java虚拟机中方法调用的执行/">
+                    Java虚拟机中方法调用的执行
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/10/19/Java中的内部类/">
-                    Java中的内部类
+                <a href="/2019/03/15/GoLand安装/">
+                    GoLand安装
                 </a>
             </div>
         
@@ -399,7 +417,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口的定义及使用"><span class="toc-number">1.</span> <span class="toc-text">接口的定义及使用</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载"><span class="toc-number">1.</span> <span class="toc-text">加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接"><span class="toc-number">2.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-number">3.</span> <span class="toc-text">初始化</span></a></li></ol>
         
     </div>
     <style>
@@ -435,7 +453,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Java中接口定义与应用　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java虚拟机类加载　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -472,7 +490,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/10/27/Java中的String类/" title="上一篇: Java中的String类">
+            <a href="/2019/05/10/Java虚拟机中方法调用的执行/" title="上一篇: Java虚拟机中方法调用的执行">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -480,7 +498,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/10/19/Java中的内部类/" title="下一篇: Java中的内部类">
+            <a href="/2019/03/15/GoLand安装/" title="下一篇: GoLand安装">
                 <i class="fa fa-angle-right"></i>
             </a>
         

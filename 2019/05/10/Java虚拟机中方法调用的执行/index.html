@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="接口的定义及使用 接口优先原则  在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口  接口的概念  接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口">
-<meta name="keywords" content="Java">
+<meta name="description" content="虚拟机中方法重载的实现 方法重载的概念  在同一个类中定义名字相同，参数类型必须不同的方法。  编译器选取重载方法的过程  1.不考虑对基本数据类型自动拆装箱及可变参数 2.允许自动拆装箱，但不允许可变参数列表 3.允许自动拆装箱和可变参数列表 若Java编译器在同一阶段中找到了多个适配的方法，则其会根据形式参数类型的继承关系进行选择（即优先选择子类方法） JVM的静态绑定和动态绑定所谓静态绑定和">
+<meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java中接口定义与应用">
-<meta property="og:url" content="http://www.bingoxin.top/2018/10/24/Java中接口定义与应用/index.html">
+<meta property="og:title" content="Java虚拟机中方法调用的执行">
+<meta property="og:url" content="http://www.bingoxin.top/2019/05/10/Java虚拟机中方法调用的执行/index.html">
 <meta property="og:site_name" content="bingoxin&#39;s blog">
-<meta property="og:description" content="接口的定义及使用 接口优先原则  在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口  接口的概念  接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口">
+<meta property="og:description" content="虚拟机中方法重载的实现 方法重载的概念  在同一个类中定义名字相同，参数类型必须不同的方法。  编译器选取重载方法的过程  1.不考虑对基本数据类型自动拆装箱及可变参数 2.允许自动拆装箱，但不允许可变参数列表 3.允许自动拆装箱和可变参数列表 若Java编译器在同一阶段中找到了多个适配的方法，则其会根据形式参数类型的继承关系进行选择（即优先选择子类方法） JVM的静态绑定和动态绑定所谓静态绑定和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-24T12:15:42.589Z">
+<meta property="og:updated_time" content="2019-05-10T02:42:39.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java中接口定义与应用">
-<meta name="twitter:description" content="接口的定义及使用 接口优先原则  在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口  接口的概念  接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口">
+<meta name="twitter:title" content="Java虚拟机中方法调用的执行">
+<meta name="twitter:description" content="虚拟机中方法重载的实现 方法重载的概念  在同一个类中定义名字相同，参数类型必须不同的方法。  编译器选取重载方法的过程  1.不考虑对基本数据类型自动拆装箱及可变参数 2.允许自动拆装箱，但不允许可变参数列表 3.允许自动拆装箱和可变参数列表 若Java编译器在同一阶段中找到了多个适配的方法，则其会根据形式参数类型的继承关系进行选择（即优先选择子类方法） JVM的静态绑定和动态绑定所谓静态绑定和">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Java中接口定义与应用 | bingoxin&#39;s blog</title>
+<title>Java虚拟机中方法调用的执行 | bingoxin&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -261,11 +261,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-Java中接口定义与应用" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java虚拟机中方法调用的执行" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/10/24/Java中接口定义与应用/" class="article-date">
-      <time datetime="2018-10-24T12:15:13.000Z" itemprop="datePublished">2018-10-24</time>
+      <a href="/2019/05/10/Java虚拟机中方法调用的执行/" class="article-date">
+      <time datetime="2019-05-10T02:41:19.000Z" itemprop="datePublished">2019-05-10</time>
 </a>
 
 
@@ -280,7 +280,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java中接口定义与应用
+      Java虚拟机中方法调用的执行
     </h1>
   
 
@@ -292,7 +292,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -302,56 +302,33 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="接口的定义及使用"><a href="#接口的定义及使用" class="headerlink" title="接口的定义及使用"></a>接口的定义及使用</h3><ul>
-<li>接口优先原则</li>
+        <h3 id="虚拟机中方法重载的实现"><a href="#虚拟机中方法重载的实现" class="headerlink" title="虚拟机中方法重载的实现"></a>虚拟机中方法重载的实现</h3><ul>
+<li>方法重载的概念</li>
 </ul>
-<p>在一个操作既可以使用抽象类又可以使用接口的时候，优先考虑使用接口</p>
+<p>在同一个类中定义名字相同，参数类型必须不同的方法。</p>
 <ul>
-<li>接口的概念</li>
+<li>编译器选取重载方法的过程</li>
 </ul>
-<p>接口就是抽象方法与全局常量的集合（纯粹版的抽象类），interface关键字定义接口</p>
-<a id="more"></a>
+<p>1.不考虑对基本数据类型自动拆装箱及可变参数</p>
+<p>2.允许自动拆装箱，但不允许可变参数列表</p>
+<p>3.允许自动拆装箱和可变参数列表</p>
+<p>若Java编译器在同一阶段中找到了多个适配的方法，则其会根据形式参数类型的继承关系进行选择（即优先选择子类方法）</p>
+<h3 id="JVM的静态绑定和动态绑定"><a href="#JVM的静态绑定和动态绑定" class="headerlink" title="JVM的静态绑定和动态绑定"></a>JVM的静态绑定和动态绑定</h3><p>所谓静态绑定和动态绑定其实对于的就是动态多态和静态多态</p>
 <ul>
-<li>接口命名规则</li>
+<li>Java虚拟机识别方法的方式</li>
 </ul>
-<p>使用I开头</p>
+<p>Java虚拟机识别方法的关键在于类名、方法名、以及方法描述符（参数类型和返回值类型）</p>
 <ul>
-<li>接口的继承</li>
+<li>Java虚拟机中重写的判定</li>
 </ul>
-<p>子类要想使用接口，<code>implements</code>实现接口，一个子类可以同时实现多个父接口（避免单继承局限）</p>
-<ul>
-<li>子类命名规范</li>
-</ul>
-<p>接口名为IMyInterFace，子类实现此接口命名为MyInterFaceImpl</p>
-<p>父接口间的相互转换：前提是两个父接口拥有共同的实现子类</p>
-<ul>
-<li>接口使用限制</li>
-</ul>
-<p>接口中只允许public权限（不管是方法还是常量，即便不写修饰权限也是public）</p>
-<ul>
-<li>阿里编码规约</li>
-</ul>
-<p>接口中不要出现任何修饰符号，public也不要加</p>
-<ul>
-<li>子类接口与继承</li>
-</ul>
-<p>当子类既需要接口又需要继承抽象类时，请先使用extends继承一个抽象类，而后使用implements实现多个接口</p>
-<ul>
-<li>抽象类与接口</li>
-</ul>
-<p>一个抽象类可以使用implements实现多个接口，接口不能继承抽象类</p>
-<ul>
-<li>接口的继承</li>
-</ul>
-<p>一个抽象类可以使用implements实现多个接口，接口不能继承抽象类</p>
-<ul>
-<li>接口的应用</li>
-</ul>
-<blockquote>
-<p>a.定义操作标准</p>
-<p>b.表示能力</p>
-<p>c.分布式开发之中暴露远程服务方法</p>
-</blockquote>
+<p>如果子类定义了与父类中非私有、非静态方法同名的方法，两个方法的参数类型以及返回值类型一致</p>
+<h3 id="调用指令的符号引用"><a href="#调用指令的符号引用" class="headerlink" title="调用指令的符号引用"></a>调用指令的符号引用</h3><p>在编译过程中，Java编译器会暂时用符合引用来表示该目标方法，符号引用储存在class文件的常量池之中</p>
+<p>对于非接口符号引用，假定该符号引用所指向的类为 C，则 Java 虚拟机会按照如下步骤进行查找。</p>
+<ol>
+<li>在 C 中查找符合名字及描述符的方法。</li>
+<li>如果没有找到，在 C 的父类中继续搜索，直至 Object 类。</li>
+<li>如果没有找到，在 C 所直接实现或间接实现的接口中搜索，这一步搜索得到的目标方法必须是非私有、非静态的。并且，如果目标方法在间接实现的接口中，则需满足 C 与该接口之间没有其他符合条件的目标方法。如果有多个符合条件的目标方法，则任意返回其中一个。</li>
+</ol>
 
       
     </div>
@@ -360,13 +337,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/10/24/Java中接口定义与应用/">Java中接口定义与应用</a></p>
+        <p><span>本文标题:</span><a href="/2019/05/10/Java虚拟机中方法调用的执行/">Java虚拟机中方法调用的执行</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">bingoxin</a></p>
-        <p><span>发布时间:</span>2018-10-24, 20:15:13</p>
-        <p><span>最后更新:</span>2018-12-24, 20:15:42</p>
+        <p><span>发布时间:</span>2019-05-10, 10:41:19</p>
+        <p><span>最后更新:</span>2019-05-10, 10:42:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/10/24/Java中接口定义与应用/" title="Java中接口定义与应用">http://www.bingoxin.top/2018/10/24/Java中接口定义与应用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2018/10/24/Java中接口定义与应用/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/05/10/Java虚拟机中方法调用的执行/" title="Java虚拟机中方法调用的执行">http://www.bingoxin.top/2019/05/10/Java虚拟机中方法调用的执行/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.bingoxin.top/2019/05/10/Java虚拟机中方法调用的执行/　　作者: bingoxin" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -378,16 +355,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/10/27/Java中的String类/">
-                    Java中的String类
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/10/19/Java中的内部类/">
-                    Java中的内部类
+                <a href="/2019/05/10/Java虚拟机类加载/">
+                    Java虚拟机类加载
                 </a>
             </div>
         
@@ -399,7 +370,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口的定义及使用"><span class="toc-number">1.</span> <span class="toc-text">接口的定义及使用</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟机中方法重载的实现"><span class="toc-number">1.</span> <span class="toc-text">虚拟机中方法重载的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM的静态绑定和动态绑定"><span class="toc-number">2.</span> <span class="toc-text">JVM的静态绑定和动态绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用指令的符号引用"><span class="toc-number">3.</span> <span class="toc-text">调用指令的符号引用</span></a></li></ol>
         
     </div>
     <style>
@@ -435,7 +406,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Java中接口定义与应用　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java虚拟机中方法调用的执行　| bingoxin's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -472,15 +443,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/10/27/Java中的String类/" title="上一篇: Java中的String类">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/10/19/Java中的内部类/" title="下一篇: Java中的内部类">
+            <a href="/2019/05/10/Java虚拟机类加载/" title="下一篇: Java虚拟机类加载">
                 <i class="fa fa-angle-right"></i>
             </a>
         
